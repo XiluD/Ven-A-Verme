@@ -111,4 +111,24 @@ for link in links:
     elif re.search('tripadvisor.es\/(.*)_Review', link).group(1) == 'Restaurant':
         print('Restaurant')
         getRestaurants(link)
+
+
+'''
+sql = "INSERT INTO tripadvisorcards (cardLink, innerCardTitle, innerCardDireccion, 
+                                     sentimentAnalysis) VALUES (%s, %s, %s, %s)"
+                                                                                
+val = [("/Attraction_Review-g1047902-d15619441-Reviews-Bodega_Cerron-Fuente_Alamo_Province_of_Albacete_Castile_La_Mancha.html",
+        "Burrolandia", "Tres Cantos, Camino de la Moraleja", "muyRecomendado")
+        ]
+
+sql = "INSERT INTO innercardimages (imageLink, cardLink) VALUES (%s, %s)"
+                                                                                
+val = [(https://media-cdn.tripadvisor.com/media/photo-o/0b/b3/41/34/paseo-en-carro.jpg,
+        "/Attraction_Review-g1047902-d15619441-Reviews-Bodega_Cerron-Fuente_Alamo_Province_of_Albacete_Castile_La_Mancha.html"),
         
+        (https://media-cdn.tripadvisor.com/media/photo-o/0b/b3/41/34/paseo-en-carro.jpg,
+        "/Attraction_Review-g1047902-d15619441-Reviews-Bodega_Cerron-Fuente_Alamo_Province_of_Albacete_Castile_La_Mancha.html"),
+        
+        (https://media-cdn.tripadvisor.com/media/photo-o/0b/b3/41/34/paseo-en-carro.jpg,
+        "/Attraction_Review-g1047902-d15619441-Reviews-Bodega_Cerron-Fuente_Alamo_Province_of_Albacete_Castile_La_Mancha.html")]
+'''

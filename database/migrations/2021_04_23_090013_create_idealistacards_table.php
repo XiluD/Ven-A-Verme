@@ -17,11 +17,11 @@ class CreateIdealistacardsTable extends Migration
             $table->string('cardLink', 100)->primary();
             $table->string('placeLink', 100)->index('fk_placeLink');
             $table->string('cardTitle', 45);
-            $table->integer('cardPrice');
+            $table->string('cardPrice', 50);
             $table->string('cardDetail', 100);
             $table->string('cardDescription', 300);
-            $table->integer('cardContact');
-            $table->string('cardImage', 100);
+            $table->string('cardContact', 20);
+            $table->string('cardImage', 300);
             $table->set('cardType', ['onRent', 'onSale']);
         });
     }

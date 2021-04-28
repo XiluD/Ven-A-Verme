@@ -17,9 +17,9 @@ class CreateTripadvisorcardsTable extends Migration
             $table->string('cardLink', 100)->primary();
             $table->string('placeLink', 100)->index('fk_placeLink');
             $table->string('cardTitle', 45);
-            $table->string('cardSubtitle', 45);
-            $table->string('cardImage', 100);
-            $table->set('cardType', ['queVisitar', 'alojamiento', 'dondeComer']);
+            $table->string('cardSubtitle', 45)->nullable();
+            $table->string('cardImage', 300)->nullable();
+            $table->set('cardType', ['queVisitar', 'alojamiento', 'dondeComer', 'otros']);
         });
     }
 

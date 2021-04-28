@@ -14,12 +14,17 @@ class CreatePlaceinfoTable extends Migration
     public function up()
     {
         Schema::create('placeinfo', function (Blueprint $table) {
-            $table->string('placeLink', 100)->primary();
+            $table->string('placeLink', 100);
             $table->string('provincia', 45);
             $table->string('municipio', 45);
             $table->set('linkType', ['tripadvisor', 'idealista']);
+            $table->date('expirationDate');
             $table->index(['provincia', 'municipio'], 'fk_prov_mun');
+            $table->primary(['placeLink', 'municipio']);
+
         });
+
+        
     }
 
     /**

@@ -19,44 +19,90 @@ options.add_argument("--window-size=1920,1080")
 driver = webdriver.Firefox(executable_path=f"{os.path.dirname(__file__)}/geckodriver.exe", options=options)
 
 driver.get(link)
-
-WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'idealista-banner-wrapper')))
-
-soup = BeautifulSoup(driver.page_source, 'html.parser')
-
-main_content = soup.find(class_ = 'detail-container')
-
-content = {}
-
-content['inner_card_title'] = main_content.find('span', class_='main-info__title-main').text
-content['inner_card_place'] = main_content.find('span', class_='main-info__title-minor').text
-content['inner_card_detail'] = main_content.find('div', class_='info-features').text.strip('\n').replace('\n', ' ')
-content['inner_card_price'] = main_content.find('span', class_='info-data-price').text
-content['inner_card_description'] = main_content.find('div', class_= 'adCommentsLanguage').text.strip('\n').replace('\n', ' ')
-content['inner_card_contact'] = main_content.find('p', class_= '_browserPhone').text.strip('\n')
-content['inner_card_link'] = link
-
-card_features_container = main_content.find('section', id = 'details')
-
-features_containers = card_features_container.find_all(class_ = 'details-property_features')
-
 try:
-    content['inner_card_feautures'] = {'basic_fe': [feature.text.strip('\n').strip() for feature in features_containers[0].find_all('li')]}
-    content['inner_card_feautures'].update({'building_fe': [feature.text.strip('\n') for feature in features_containers[1].find_all('li')]})
-    content['inner_card_feautures'].update({'equipment_fe': [feature.text.strip('\n') for feature in features_containers[2].find_all('li')]})
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'idealista-banner-wrapper')))
+
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+    main_content = soup.find(class_ = 'detail-container')
+
+    content = {}
+
+    content['inner_card_title'] = main_content.find('span', class_='main-info__title-main').text
+    content['inner_card_place'] = main_content.find('span', class_='main-info__title-minor').text
+    content['inner_card_detail'] = main_content.find('div', class_='info-features').text.strip('\n').replace('\n', ' ')
+    content['inner_card_price'] = main_content.find('span', class_='info-data-price').text
+    content['inner_card_description'] = main_content.find('div', class_= 'adCommentsLanguage').text.strip('\n').replace('\n', ' ')
+    content['inner_card_contact'] = main_content.find('p', class_= '_browserPhone').text.strip('\n')
+    content['inner_card_link'] = link
+
+    card_features_container = main_content.find('section', id = 'details')
+
+    features_containers = card_features_container.find_all(class_ = 'details-property_features')
+
+    try:
+        content['inner_card_feautures'] = {'basic_fe': [feature.text.strip('\n').strip() for feature in features_containers[0].find_all('li')]}
+        content['inner_card_feautures'].update({'building_fe': [feature.text.strip('\n') for feature in features_containers[1].find_all('li')]})
+        content['inner_card_feautures'].update({'equipment_fe': [feature.text.strip('\n') for feature in features_containers[2].find_all('li')]})
+    except:
+        pass
+
+    imgs_container = main_content.find('div', id = 'main-multimedia')
+    imgs_src = imgs_container.find_all('img', class_='detail-image-gallery')
+    card_images = []
+    for img in imgs_src:
+        card_images.append(img['data-ondemand-img'])
+    content['inner_card_images'] = card_images
+
+    driver.quit()
+
+    print(json.dumps(content))
 except:
-    pass
+    print(json.dumps({
+        'error': 'Fail to connect/not existing resource'
+    }))
 
-imgs_container = main_content.find('div', id = 'main-multimedia')
-imgs_src = imgs_container.find_all('img', class_='detail-image-gallery')
-card_images = []
-for img in imgs_src:
-    card_images.append(img['data-ondemand-img'])
-content['inner_card_images'] = card_images
+'''
+sql = "INSERT INTO idealistainnercard (cardLink, innerCardTitle, innerCardPlace, innerCardDetail,
+                                        innerCardPrice, innerCardDescription, innerCardContact) VALUES (%s, %s, %s, %s
+                                                                                                        %s, %s, %s)"
+                                                                                
+val = [(https://www.idealista.com/inmueble/93804699/,
+        Alquiler de Piso en avenida de Madrid, Primera Fase - Nuevo Tres Cantos, Tres Cantos, 67 m²   2 hab.   Planta 3ª con ascensor   Garaje incluido,
+        630 €/mes, 630€ ¡Esta primavera renuévate! Alquila este mes y consigue 3 meses gratis. ¡Renta mensual equivalente al primer año y medio resultado, 
+        914 874 913),
 
-driver.quit()
+        (https://www.idealista.com/inmueble/93804699/,
+        Alquiler de Piso en avenida de Madrid, Primera Fase - Nuevo Tres Cantos, Tres Cantos, 67 m²   2 hab.   Planta 3ª con ascensor   Garaje incluido,
+        630 €/mes, 630€ ¡Esta primavera renuévate! Alquila este mes y consigue 3 meses gratis. ¡Renta mensual equivalente al primer año y medio resultado, 
+        914 874 913),
 
-print(json.dumps(content))
+        (https://www.idealista.com/inmueble/93804699/,
+        Alquiler de Piso en avenida de Madrid, Primera Fase - Nuevo Tres Cantos, Tres Cantos, 67 m²   2 hab.   Planta 3ª con ascensor   Garaje incluido,
+        630 €/mes, 630€ ¡Esta primavera renuévate! Alquila este mes y consigue 3 meses gratis. ¡Renta mensual equivalente al primer año y medio resultado, 
+        914 874 913)
+        ]
+
+sql = "INSERT INTO idealistainnercardfeatures (cardLink, featureData, featureType) VALUES (%s, %s, %s)"
+
+val = [(https://www.idealista.com/inmueble/93804699/, '67 m² construidos, 52 m² útiles', basic),
+        (https://www.idealista.com/inmueble/93804699/, 'Planta 3ª', building),
+        (https://www.idealista.com/inmueble/93804699/, 'Se admiten mascotas', equipment),
+        (https://www.idealista.com/inmueble/93804699/, 'Se admiten mascotas', building),
+        (https://www.idealista.com/inmueble/93804699/, 'Se admiten mascotas', equipment)]
+
+sql = "INSERT INTO innercardimages (imageLink, cardLink) VALUES (%s, %s)"
+                                                                                
+val = [("https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/19/87/9b/872117586.jpg",
+        "https://www.idealista.com/inmueble/93804699/"),
+        
+        ("https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/19/87/9b/872117586.jpg",
+        "https://www.idealista.com/inmueble/93804699/"),
+        
+        ("https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/19/87/9b/872117586.jpg",
+        "https://www.idealista.com/inmueble/93804699/")
+        ]
+'''
 
 '''
 # Example of tripadvisor content we can return in the API

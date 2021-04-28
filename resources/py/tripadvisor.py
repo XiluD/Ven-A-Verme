@@ -4,6 +4,7 @@ import re
 import itertools
 import json
 import sys
+from db_connector import insertIntoDB
 
 link = f"https://www.tripadvisor.es{sys.argv[1]}"
 
@@ -13,57 +14,79 @@ soup = BeautifulSoup(page.content, 'html.parser')
 main_content = soup.find(class_='_1HQROFP')
 
 header_titles = main_content.find_all('h3', class_='_1QGef_ZJ')
-header_subtitles = main_content.find_all('div', class_='_3U8VGyWC')
 cards_containers = main_content.find_all('ul', class_='_5Vb6a0_6')
 image_container = str(soup.find_all('script')[-1])
 
-content = []
-
-for header_title, header_subtitle, cards_container in list(itertools.zip_longest(header_titles, header_subtitles, cards_containers, fillvalue='')):
-
-    container = {}
-    container['header_title'] = header_title.text
-    # print(header_title.text)
-    try:
-        container['hearder_subtitle'] = header_subtitle.text
-        # print(header_subtitle.text)
-    except:
-        container['hearder_subtitle'] = ''
-
-    card_list = []
+val = []
+for header_title, cards_container in list(itertools.zip_longest(header_titles, cards_containers, fillvalue='')):
     for card in cards_container:
-        card_obj = {}
+        content = []
+        #cardLink
+        try:
+            cardLink = card.find('a', '_37QDe3gr')['href']
+            content.append(cardLink)
+        except:
+            content.append(None)
 
-        card_obj['card_title'] = card.find('div', 'VQlgmkyI').text
-        #print(card.find('div', 'VQlgmkyI').text)
+        #placeLink
+        content.append(sys.argv[1])
+
+        #cardTitle
+        content.append(card.find('div', 'VQlgmkyI').text)
+
+        #cardSubtitle
         try:
-            card_obj['card_subtitle'] = card.find('div', '_3gC8zGeY').text
-            #print(card.find('div', '_3gC8zGeY').text)
+            content.append(card.find('div', '_3gC8zGeY').text)
         except:
-            card_obj['card_subtitle'] = ''
+            content.append(None)
+
+        #cardImage
         try:
-            card_link = card.find('a', '_37QDe3gr')['href']
-            card_obj['card_link'] = card_link
-            #print(card.find('a', '_37QDe3gr')['href'])
-        except:
-            card_obj['card_link'] = ''
-        try:
-            img_regex = card_link + '.*?(https.*?)\\"}'
-            img = re.search(f'\{img_regex}', image_container).group(1)
+            img_regex = cardLink + '.*?(https.*?)\\"}'
+            img = re.search('\{img_regex}'.format(img_regex = img_regex), image_container).group(1)
             img = img[:-1].replace('w=100&h=100', 'w=800&h=800')
-            card_obj['card_img'] = img
+            content.append(img)
         except:
-            card_obj['card_img'] = ''
+            content.append(None)
 
-        card_list.append(card_obj)
+        #cardType
+        if (header_title.text == 'Haz cosas'):
+            content.append('queVisitar')
+        elif (header_title.text == 'Alójate'):
+            content.append('alojamiento')
+        elif (header_title.text == 'Come'):
+            content.append('dondeComer')
+        else:
+            content.append('otros')
 
-    container['cards'] = card_list
-
-    content.append(container)
+        val.append(tuple(content))
 
 
-print(json.dumps(content))
+sql = "INSERT INTO tripadvisorcards (cardLink, placeLink, cardTitle, cardSubtitle, cardImage, cardType) VALUES (%s, %s, %s, %s, %s, %s)"
+insertIntoDB(sql, val)
 
+
+'''
+sql = "INSERT INTO tripadvisorcards (cardLink, placeLink, cardTitle, 
+                                     cardSubtitle, cardImage, cardType) VALUES (%s, %s, %s,
+                                                                                %s, %s, %s)"
+                                                                                
+val = [("/Attraction_Review-g1047902-d15619441-Reviews-Bodega_Cerron-Fuente_Alamo_Province_of_Albacete_Castile_La_Mancha.html",
+        "https://www.tripadvisor.es//Tourism-g1435648-Bonete_Province_of_Albacete_Castile_La_Mancha-Vacations.html", "Bodega Cerrón",
+        "Bodegas y viñedos", "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/e9/7e/bf/getlstd-property-photo.jpg?w=800&h=800&s=1",
+        "queVisitar"),
+        
+        ("/Attraction_Review-g1047902-d15619441-Reviews-Bodega_Cerron-Fuente_Alamo_Province_of_Albacete_Castile_La_Mancha.html",
+        "https://www.tripadvisor.es//Tourism-g1435648-Bonete_Province_of_Albacete_Castile_La_Mancha-Vacations.html", "Bodega Cerrón",
+        "Bodegas y viñedos", "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/e9/7e/bf/getlstd-property-photo.jpg?w=800&h=800&s=1",
+        "queVisitar"),
+
+        ("/Attraction_Review-g1047902-d15619441-Reviews-Bodega_Cerron-Fuente_Alamo_Province_of_Albacete_Castile_La_Mancha.html",
+        "https://www.tripadvisor.es//Tourism-g1435648-Bonete_Province_of_Albacete_Castile_La_Mancha-Vacations.html", "Bodega Cerrón",
+        "Bodegas y viñedos", "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/e9/7e/bf/getlstd-property-photo.jpg?w=800&h=800&s=1",
+        "queVisitar")
+        ]
+'''
 
 '''
 # Example of tripadvisor content we can return in the API

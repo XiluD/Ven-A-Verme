@@ -9,6 +9,8 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.options import Options
 import json
+from db_connector import insertIntoDB
+
 
 def get_data(link, driver):
     driver.get(link)
@@ -57,14 +59,50 @@ if __name__ == '__main__':
     options.add_argument("--window-size=1920,1080")
     driver = webdriver.Firefox(executable_path=f"{os.path.dirname(__file__)}/geckodriver.exe", options=options)
     
+    sql = """INSERT INTO idealistacards (cardLink, placeLink, cardTitle, cardPrice, cardDetail,
+     cardDescription, cardContact, cardImage, cardType) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""" 
+    
     content = {}
 
     content['onRent'] = get_data(f"https://www.idealista.com/alquiler-viviendas/{sys.argv[1]}/", driver)
-    content['onSale'] = get_data(f"https://www.idealista.com/venta-viviendas/{sys.argv[1]}/", driver)
     
+    val = [(card['card_link'], f'/alquiler-viviendas/{sys.argv[1]}/', card['card_title'],
+     card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onRent') for card in content['onRent']]
+
+    insertIntoDB(sql, val)
+
+    content['onSale'] = get_data(f"https://www.idealista.com/venta-viviendas/{sys.argv[1]}/", driver)
+
+    val = [(card['card_link'], f'/venta-viviendas/{sys.argv[1]}/', card['card_title'],
+     card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onSale') for card in content['onSale']]
+    
+    insertIntoDB(sql, val)
+
     driver.quit()
 
-    print(json.dumps(content))
+
+'''  
+
+sql = "INSERT INTO idealistacards (cardLink, placeLink, cardTitle, cardPrice, cardDetail,
+                                     cardDescription, cardContact, cardImage, cardType) VALUES (%s, %s, %s,
+                                                                                                %s, %s, %s,
+            
+val = [(https://www.idealista.com/inmueble/93804699/, https://www.idealista.com/venta-viviendas/tres-cantos-madrid/,
+        Piso en avenida de Madrid, Primera Fase - Nuevo Tres Cantos, Tres Cantos, 630€/mes, 2 hab. 67 m² Planta 3ª  con ascensor Publicado ayer,
+        630€ ¡Esta primavera renuévate! Alquila este mes y consigue 3 meses gratis.\n¡Renta mensual equivalente al primer año y medio resultado d...,
+        914 874 913, https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/8c/26/7f/872117581.jpg, onRent),
+
+        (https://www.idealista.com/inmueble/93804699/, https://www.idealista.com/venta-viviendas/tres-cantos-madrid/,
+        Piso en avenida de Madrid, Primera Fase - Nuevo Tres Cantos, Tres Cantos, 630€/mes, 2 hab. 67 m² Planta 3ª  con ascensor Publicado ayer,
+        630€ ¡Esta primavera renuévate! Alquila este mes y consigue 3 meses gratis.\n¡Renta mensual equivalente al primer año y medio resultado d...,
+        914 874 913, https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/8c/26/7f/872117581.jpg, onRent),
+
+        (https://www.idealista.com/inmueble/93804699/, https://www.idealista.com/venta-viviendas/tres-cantos-madrid/,
+        Piso en avenida de Madrid, Primera Fase - Nuevo Tres Cantos, Tres Cantos, 630€/mes, 2 hab. 67 m² Planta 3ª  con ascensor Publicado ayer,
+        630€ ¡Esta primavera renuévate! Alquila este mes y consigue 3 meses gratis.\n¡Renta mensual equivalente al primer año y medio resultado d...,
+        914 874 913, https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/8c/26/7f/872117581.jpg, onSale),
+        ]
+'''
 
 '''
 # Example of tripadvisor content we can return in the API

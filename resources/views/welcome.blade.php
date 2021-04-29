@@ -5,6 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>React with Laravel API + Python application</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
     </head>
     <body>
         <div id="root"></div>

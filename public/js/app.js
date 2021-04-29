@@ -1937,15 +1937,214 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/app.css */ "./resources/css/app.css");
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App */ "./resources/js/components/App.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Login2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Login2 */ "./resources/js/components/Login2.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, {
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_App__WEBPACK_IMPORTED_MODULE_3__.default, {})
-}), document.getElementById('root'));
+
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, {
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Login2__WEBPACK_IMPORTED_MODULE_4__.default, {})
+}), document.getElementById("root"));
+
+/***/ }),
+
+/***/ "./resources/js/components/Login2.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Login2.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _css_Login2_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css/Login2.css */ "./resources/css/Login2.css");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function Login2() {
+  var textos = ["¡Encantados de verte de nuevo! Introduce tus datos para iniciar sesión y proceder al uso de la aplicación. Si no tienes una cuenta, selecciona Registrarse para navegar al formulario de creación de cuenta.", "¡Bienvenido! Muchas gracias por elegir utilizar nuestra aplicación, esperamos que te sea de utilidad. Rellena los campos con tus datos y pulsa Enviar para crear tu cuenta y acceder a nuestros servicios."];
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      classAnimation = _useState2[0],
+      setClassAnimation = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(textos[0]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      welcomeText = _useState4[0],
+      setWelcomeText = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("Registrarse"),
+      _useState6 = _slicedToArray(_useState5, 2),
+      buttonText = _useState6[0],
+      setButtonText = _useState6[1];
+
+  var goToRegister = function goToRegister() {
+    if (classAnimation === "" || classAnimation === "animation-goToLogin") {
+      setClassAnimation("animation-goToRegister");
+      setWelcomeText(textos[1]);
+      setButtonText("Ingresar");
+    } else {
+      setClassAnimation("animation-goToLogin");
+      setWelcomeText(textos[0]);
+      setButtonText("Registrarse");
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "login-card",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "left-container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "left-container-aligner",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+          children: "Ingreso"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input_text_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            className: "material-icons",
+            children: "email"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "email",
+            name: "email",
+            placeholder: "Correo electr\xF3nico",
+            id: "user_email",
+            required: true
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input_text_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            className: "material-icons",
+            children: "vpn_key"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "password",
+            name: "password",
+            placeholder: "Contrase\xF1a",
+            id: "user_password",
+            required: true
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "submit",
+          name: "submit"
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "right-container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "right-container-aligner",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+          children: "Registro"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input_text_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            className: "material-icons",
+            children: "account_circle"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            name: "name",
+            placeholder: "Nombre de Usuario",
+            id: "user_name",
+            required: true
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input_text_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            className: "material-icons",
+            children: "email"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "email",
+            name: "email",
+            placeholder: "Correo electr\xF3nico",
+            id: "user_email",
+            required: true
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input_text_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            className: "material-icons",
+            children: "vpn_key"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "password",
+            name: "password",
+            placeholder: "Contrase\xF1a",
+            id: "user_password",
+            required: true
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input_text_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            className: "material-icons",
+            children: "vpn_key"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "password",
+            name: "password",
+            placeholder: "Confirmar Contrase\xF1a",
+            id: "user_password_verify",
+            required: true
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input_text_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            className: "material-icons",
+            children: "admin_panel_settings"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            name: "employee_key",
+            placeholder: "Token de administrador*",
+            id: "employee_key"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: "*Este campo solo es requerido para crear una cuenta de arministraci\xF3n"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "submit",
+          name: "submit"
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "moving-panel " + classAnimation,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "login-welcome",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input_text_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            src: "assets/village_96px.png",
+            alt: "village logo"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+            children: "Ven a Verme"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: welcomeText
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: goToRegister,
+          children: buttonText
+        })]
+      })
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login2);
 
 /***/ }),
 
@@ -6386,6 +6585,32 @@ react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Login2.css":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Login2.css ***!
+  \********************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto&display=swap);"]);
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Orelega+One&display=swap);"]);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n  --primary1: #00e0ff;\r\n  --primary2: #4d9bac;\r\n  --primary3: #e5feff;\r\n  --primary4: #e6f4f1;\r\n  --secondary1: #94ff31;\r\n  --secondary2: #81986e;\r\n  --secondary3: #f6fbf2;\r\n}\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\nbody {\r\n  font-family: \"Roboto\", sans-serif;\r\n  background-color: var(--secondary2);\r\n}\r\n.login-card {\r\n  border-radius: 1vw;\r\n  border-style: none;\r\n  width: 55vw;\r\n  height: 75vh;\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  background-color: var(--secondary1);\r\n  display: flex;\r\n  flex-direction: row;\r\n  overflow: hidden;\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);\r\n}\r\n.left-container,\r\n.right-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  text-align: center;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n.left-container {\r\n  justify-content: flex-start;\r\n  padding-top: 5%;\r\n}\r\n.left-container-aligner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: flex-start;\r\n}\r\n.right-container {\r\n  justify-content: flex-end;\r\n  padding-bottom: 5%;\r\n  padding-left: 5%;\r\n}\r\n.right-container-aligner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: flex-end;\r\n}\r\n/* ----------------------------MOVING PANEL---------------------------------------- */\r\n.moving-panel {\r\n  border-top-left-radius: 0;\r\n  border-bottom-left-radius: 0;\r\n  border-top-right-radius: 2vw;\r\n  border-bottom-right-radius: 2vw;\r\n  position: absolute;\r\n  z-index: 1;\r\n  width: 200%;\r\n  height: 90%;\r\n  left: -20%; /* -50+top */\r\n  top: 30%;\r\n  background-color: white;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-around;\r\n  align-items: center;\r\n  transform: rotate(-33deg);\r\n}\r\n.moving-panel p {\r\n  text-align: justify;\r\n  text-justify: inter-word;\r\n  font-size: 0.8vw;\r\n}\r\n.moving-panel h1 {\r\n  font-family: \"Orelega One\", cursive;\r\n  color: #71a63c;\r\n  font-size: 2.5vw;\r\n  margin-bottom: 8%;\r\n}\r\n.moving-panel img {\r\n  width: 15%;\r\n  margin-bottom: 9%;\r\n}\r\n.login-welcome {\r\n  width: 16%;\r\n  transform: rotate(33deg);\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-content: center;\r\n}\r\n.input_text_container {\r\n  margin-top: 5%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-content: center;\r\n  align-items: center;\r\n}\r\n/* -------------------------FIN DE MOVING PANEL------------------------------------- */\r\ninput[type=\"email\"],\r\n[type=\"text\"],\r\n[type=\"password\"] {\r\n  margin-left: 0.5vw;\r\n  padding: 1% 2%;\r\n  width: 15vw;\r\n  border: none;\r\n  background-color: transparent;\r\n  border-bottom: 2px solid rgb(87, 87, 87);\r\n  font-size: 1vw;\r\n}\r\ninput[type=\"email\"]:focus,\r\n[type=\"text\"]:focus,\r\n[type=\"password\"]:focus {\r\n  outline-width: 0px;\r\n  background-color: #82db2f;\r\n}\r\ninput[type=\"submit\"],\r\nbutton {\r\n  width: 100%;\r\n  margin-top: 8%;\r\n  padding: 2% 4%;\r\n  border-width: 0;\r\n  border-radius: 1vw;\r\n  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);\r\n  background-color: #2bc069;\r\n  font-size: 1vw;\r\n  transition: background-color 0.3s;\r\n}\r\ninput[type=\"submit\"]:hover,\r\nbutton:hover {\r\n  background-color: #1e914e;\r\n}\r\n.right-container p {\r\n  margin-top: 1%;\r\n  font-size: 0.55vw;\r\n  color: rgb(97, 97, 97);\r\n}\r\n\r\n/* ---------------------------ANIMATIONS--------------------------------------- */\r\n.animation-goToLogin {\r\n  -webkit-animation-name: goToLogin;\r\n          animation-name: goToLogin;\r\n  -webkit-animation-duration: 1.5s;\r\n          animation-duration: 1.5s;\r\n  -webkit-animation-timing-function: ease-in-out;\r\n          animation-timing-function: ease-in-out;\r\n  -webkit-animation-fill-mode: forwards;\r\n          animation-fill-mode: forwards;\r\n}\r\n.animation-goToRegister {\r\n  -webkit-animation-name: goToRegister;\r\n          animation-name: goToRegister;\r\n  -webkit-animation-duration: 1.5s;\r\n          animation-duration: 1.5s;\r\n  -webkit-animation-timing-function: ease-in-out;\r\n          animation-timing-function: ease-in-out;\r\n  -webkit-animation-fill-mode: forwards;\r\n          animation-fill-mode: forwards;\r\n}\r\n@-webkit-keyframes goToLogin {\r\n  0% {\r\n    left: -75%; /* -50+top */\r\n    top: -25%;\r\n  }\r\n  100% {\r\n    left: -20%; /* -50+top */\r\n    top: 30%;\r\n  }\r\n}\r\n@keyframes goToLogin {\r\n  0% {\r\n    left: -75%; /* -50+top */\r\n    top: -25%;\r\n  }\r\n  100% {\r\n    left: -20%; /* -50+top */\r\n    top: 30%;\r\n  }\r\n}\r\n@-webkit-keyframes goToRegister {\r\n  0% {\r\n    left: -20%; /* -50+top */\r\n    top: 30%;\r\n  }\r\n  100% {\r\n    left: -75%; /* -50+top */\r\n    top: -25%;\r\n  }\r\n}\r\n@keyframes goToRegister {\r\n  0% {\r\n    left: -20%; /* -50+top */\r\n    top: 30%;\r\n  }\r\n  100% {\r\n    left: -75%; /* -50+top */\r\n    top: -25%;\r\n  }\r\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
@@ -66871,6 +67096,36 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
 }
 
+
+/***/ }),
+
+/***/ "./resources/css/Login2.css":
+/*!**********************************!*\
+  !*** ./resources/css/Login2.css ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Login2_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./Login2.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/Login2.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Login2_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Login2_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 

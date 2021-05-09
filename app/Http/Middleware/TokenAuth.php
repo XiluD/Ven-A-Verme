@@ -25,7 +25,7 @@ class TokenAuth
             return $next($request);
         }
         else{
-            return response()->json(['error' => 'API Token not valid', 'Supplied Token ' => $request->query('api_token')], JsonResponse::HTTP_OK);
+            return response()->json(['error' => 'API Token not valid', 'Supplied Token ' => $request->query('api_token')], JsonResponse::HTTP_UNAUTHORIZED);
         }
     }
 }

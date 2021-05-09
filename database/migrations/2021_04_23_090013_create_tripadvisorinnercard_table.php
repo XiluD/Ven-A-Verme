@@ -15,8 +15,8 @@ class CreateTripadvisorinnercardTable extends Migration
     {
         Schema::create('tripadvisorinnercard', function (Blueprint $table) {
             $table->string('cardLink', 100)->index('pk_fk_cardLink');
-            $table->string('innerCardTitle', 45);
-            $table->string('innerCardDireccion', 45);
+            $table->string('innerCardTitle', 55);
+            $table->string('innerCardDireccion', 50);
             $table->set('sentimentAnalysis', ['pocoRecomendado', 'valoracionesVariadas', 'muyRecomendado']);
             $table->primary(['cardLink']);
         });

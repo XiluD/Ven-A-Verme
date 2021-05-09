@@ -10,6 +10,8 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.options import Options
 import json
 
+from db_connector import insertIntoDB
+
 
 link = sys.argv[1]
 
@@ -41,9 +43,9 @@ try:
     features_containers = card_features_container.find_all(class_ = 'details-property_features')
 
     try:
-        content['inner_card_feautures'] = {'basic_fe': [feature.text.strip('\n').strip() for feature in features_containers[0].find_all('li')]}
-        content['inner_card_feautures'].update({'building_fe': [feature.text.strip('\n') for feature in features_containers[1].find_all('li')]})
-        content['inner_card_feautures'].update({'equipment_fe': [feature.text.strip('\n') for feature in features_containers[2].find_all('li')]})
+        content['inner_card_features'] = {'basic': [feature.text.strip('\n').strip() for feature in features_containers[0].find_all('li')]}
+        content['inner_card_features'].update({'building': [feature.text.strip('\n') for feature in features_containers[1].find_all('li')]})
+        content['inner_card_features'].update({'equipment': [feature.text.strip('\n') for feature in features_containers[2].find_all('li')]})
     except:
         pass
 
@@ -56,7 +58,32 @@ try:
 
     driver.quit()
 
-    print(json.dumps(content))
+    #print(json.dumps(content))
+
+    # Full insert into idealistainnercard
+    
+    sql = """INSERT INTO idealistainnercard (cardLink, innerCardTitle, innerCardPlace,
+     innerCardDetail, innerCardPrice, innerCardDescription, innerCardContact) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+    val = [(link, content['inner_card_title'], content['inner_card_place'], content['inner_card_detail'],
+     content['inner_card_price'], content['inner_card_description'], content['inner_card_contact'])]
+    insertIntoDB(sql, val)
+    
+
+    # Full insert into idealistainnercardfeatures
+    
+    sql = "INSERT INTO idealistainnercardfeatures (cardLink, featureData, featureType) VALUES (%s, %s, %s)"
+    val = [(link, feature_value, key) for key, feature in content['inner_card_features'].items() for feature_value in feature]
+    insertIntoDB(sql, val)
+    
+    '''
+    FORING KEY ERROR!!!!!!!!!!!!! Needs to be fixed
+    '''
+    # Full insert into innercardimages (idealista images)
+    sql = "INSERT INTO innercardimages (imageLink, cardLink) VALUES (%s, %s)"
+    val = [(image, link) for image in content['inner_card_images']]
+    insertIntoDB(sql, val)
+
+
 except:
     print(json.dumps({
         'error': 'Fail to connect/not existing resource'

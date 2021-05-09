@@ -16,8 +16,8 @@ class CreateTripadvisorcardsTable extends Migration
         Schema::create('tripadvisorcards', function (Blueprint $table) {
             $table->string('cardLink', 100)->primary();
             $table->string('placeLink', 100)->index('fk_placeLink');
-            $table->string('cardTitle', 45);
-            $table->string('cardSubtitle', 45)->nullable();
+            $table->string('cardTitle', 55);
+            $table->string('cardSubtitle', 90)->nullable();
             $table->string('cardImage', 300)->nullable();
             $table->set('cardType', ['queVisitar', 'alojamiento', 'dondeComer', 'otros']);
         });

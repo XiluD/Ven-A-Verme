@@ -14,23 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
-//Route::get('blogs', 'BlogsController@index');
- 
-//Route::get('blogs/{id}', 'BlogsController@show');
- 
-//Route::post('blogs','BlogsController@store');
- 
-//Route::put('blogs/{id}','BlogsController@update');
- 
-//Route::delete('blogs/{id}', 'BlogsController@delete');
-
 Route::get('admin', 'AdminsController@create');
-
-//Route::middleware('api_auth')->get('/py{api_token?}', 'PythonController@show_py');
 
 Route::middleware('api_auth')->group(function () {
     

@@ -1,0 +1,120 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel OpenApi Demo Documentation",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "dvicentevila@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/trip/{provincia}/{municipio}": {
+            "get": {
+                "tags": [
+                    "Tripadvisor"
+                ],
+                "summary": "Get tripadvisor main content",
+                "description": "Get tripadvisor content based on place info",
+                "operationId": "getTrip",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "municipio",
+                        "in": "path",
+                        "description": "Nombre del municipio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api_token",
+                        "in": "query",
+                        "description": "API TOKEN Authentication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/idea/{provincia}/{municipio}": {
+            "get": {
+                "tags": [
+                    "Idealista"
+                ],
+                "summary": "Get Idealista main content",
+                "description": "Get idealista content based on place info",
+                "operationId": "getTrip",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "municipio",
+                        "in": "path",
+                        "description": "Nombre del municipio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api_token",
+                        "in": "query",
+                        "description": "API TOKEN Authentication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Ven a Verme",
+            "description": "API Endpoints of Ven A Verme"
+        }
+    ],
+    "security": [
+        []
+    ]
+}

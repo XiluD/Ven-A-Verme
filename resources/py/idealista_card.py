@@ -9,7 +9,6 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.options import Options
 import json
-
 from db_connector import insertIntoDB
 
 
@@ -61,7 +60,6 @@ try:
     #print(json.dumps(content))
 
     # Full insert into idealistainnercard
-    
     sql = """INSERT INTO idealistainnercard (cardLink, innerCardTitle, innerCardPlace,
      innerCardDetail, innerCardPrice, innerCardDescription, innerCardContact) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
     val = [(link, content['inner_card_title'], content['inner_card_place'], content['inner_card_detail'],
@@ -70,16 +68,13 @@ try:
     
 
     # Full insert into idealistainnercardfeatures
-    
     sql = "INSERT INTO idealistainnercardfeatures (cardLink, featureData, featureType) VALUES (%s, %s, %s)"
     val = [(link, feature_value, key) for key, feature in content['inner_card_features'].items() for feature_value in feature]
     insertIntoDB(sql, val)
     
-    '''
-    FORING KEY ERROR!!!!!!!!!!!!! Needs to be fixed
-    '''
+
     # Full insert into innercardimages (idealista images)
-    sql = "INSERT INTO innercardimages (imageLink, cardLink) VALUES (%s, %s)"
+    sql = "INSERT INTO ideainnercardimages (imageLink, cardLink) VALUES (%s, %s)"
     val = [(image, link) for image in content['inner_card_images']]
     insertIntoDB(sql, val)
 

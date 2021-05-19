@@ -11,7 +11,7 @@ class AdminsController extends Controller
 {
     protected function create(/*array $data*/)
 {
-    $data = ['email'=> 'pilombo@gmail.com', 'password'=> '123abc'];
+    $data = ['email'=> 'admin@admin.com', 'password'=> 'grupo8D'];
     return Admin::forceCreate([
         'email' => $data['email'],
         'password' => Hash::make($data['password']),

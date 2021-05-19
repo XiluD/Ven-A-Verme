@@ -56,10 +56,8 @@ def getHotel(link):
     title = soup.find('h1', id='HEADING').text
     print(title)
 
-    
     address = soup.find('span', {'class':['_3ErVArsu', 'jke2_wbp']}).text
     print(address)
-    
     
     img = soup.find('img', {'class':['_1a4WY7aS', 'RcPVTgNb']})['src']
     print(img)
@@ -74,7 +72,6 @@ def getRestaurants(link):
     title = soup.find('h1', class_='_3a1XQ88S').text
     print(title)
 
-    
     address = soup.find('span', class_='_2saB_OSe').text
     print(address)
     

@@ -14,7 +14,7 @@ soup = BeautifulSoup(page.content, 'html.parser')
 main_content = soup.find(class_='_1HQROFP')
 
 header_titles = main_content.find_all('h3', class_='_1QGef_ZJ')
-cards_containers = main_content.find_all('ul', class_='_5Vb6a0_6')
+cards_containers = main_content.find_all('ul', class_='_19Yovgro')
 image_container = str(soup.find_all('script')[-1])
 
 val = []

@@ -1,9 +1,9 @@
 
-<h1  class="code-line"  data-line-start=0  data-line-end=1  ><a  id="Dillinger_0"></a>Ven A Verme <g-emoji  class="g-emoji"  alias="airplane"  fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2708.png">✈️</g-emoji></h1>
+<h1  class="code-line"  data-line-start=0  data-line-end=1  ><a  id="Dillinger_0"></a>Ven A Verme <g-emoji  class="g-emoji"  alias="airplane"  fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2708.png">🏞️</h1>
 
-<h2  class="code-line"  data-line-start=1  data-line-end=2  ><a  id="_The_Last_Markdown_Editor_Ever__1"></a><em>Subtitle (on development...)</em></h2>
+<h2  class="code-line"  data-line-start=1  data-line-end=2  ><a  id="_The_Last_Markdown_Editor_Ever__1"></a><em>Subtitle (on development!)</em></h2>
 
-## About the project (on development...)
+## About the project (on development!)
 
 ## Team members
 
@@ -89,7 +89,7 @@ composer global require "laravel/installer"
 
   
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a free API Key at [https://example.com](https://example.com) (on development!)
 
 2. Clone the repo
 
@@ -99,19 +99,19 @@ git clone https://github.com/your_username_/Project-Name.git
 
 ```
 
-3. Install NPM packages
-
-```sh
-
-npm install
-
-```
-
-4. React scaffolding
+3. React scaffolding
 
 ```sh
 
 composer require laravel/ui
+
+```
+
+4. Install NPM packages
+
+```sh
+
+npm install
 
 ```
 
@@ -152,7 +152,7 @@ php artisan key:generate
 
 ```
 
-4. Enter your API in `config.js`
+9. Enter your API in `config.js` (on development!)
 
 ```JS
 
@@ -182,7 +182,7 @@ php artisan serve
 
 ```
 
-## Usage (on development...)
+## Usage (on development!)
 
   
 

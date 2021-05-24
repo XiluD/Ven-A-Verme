@@ -10,31 +10,13 @@ use App\Models\IdealistaInnerCardFeatures;
 use App\Models\Place;
 use App\Models\PlaceInfo;
 use App\Models\TripadvisorCards;
+use App\Models\TripadvisorInnerCards;
+use App\Models\TripInnerCardImages;
 use DateInterval;
 use DateTime;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-
-/**
- * @OA\Info(
- *      version="1.0.0",
- *      title="Laravel OpenApi Demo Documentation",
- *      description="L5 Swagger OpenApi description",
- *      @OA\Contact(
- *          email="dvicentevila@admin.com"
- *      ),
- *      @OA\License(
- *          name="Apache 2.0",
- *          url="http://www.apache.org/licenses/LICENSE-2.0.html"
- *      )
- * )
- *
- * @OA\Tag(
- *     name="Ven a Verme",
- *     description="API Endpoints of Ven A Verme"
- * )
- */
 
 /**
  * @OA\Get(
@@ -82,8 +64,44 @@ use Illuminate\Http\JsonResponse;
  *     )
  */
 
+/**
+ * @OA\Get(
+ *      path="/api/tripCard{cardLink?}{api_token?}",
+ *      operationId="getTripCard",
+ *      tags={"Tripadvisor Card"},
+ *      summary="Get Tripadvisor Card inner content",
+ *      description="Get Tripadvisor card inner content based on a card link",
+ *      @OA\Parameter(
+ *          name="cardLink",
+ *          description="Enlace de la tarjeta (ej. /Attraction_Review-g187486-d10786893-Reviews-Parque_de_la_Pulgosa-Albacete_Province_of_Albacete_Cast)",
+ *          required=true,
+ *          in="query",
+ *          @OA\Schema(
+ *              type="string"
+ *          )
+ *      ),
 
- 
+ *      @OA\Parameter(
+ *          name="api_token",
+ *          description="API TOKEN Authentication",
+ *          required=true,
+ *          in="query",
+ *          @OA\Schema(
+ *              type="string"
+ *          )
+ *      ),
+ * @OA\Response(
+ *          response=200,
+ *          description="Successful operation",
+ *          
+ *       ),
+ *      @OA\Response(
+ *          response=401,
+ *          description="Unauthenticated",
+ *      ),
+ *     )
+ */
+
 /**
  * @OA\Get(
  *      path="/api/idea/{provincia}/{municipio}",
@@ -109,6 +127,45 @@ use Illuminate\Http\JsonResponse;
  *              type="string"
  *          )
  *      ),
+ *      @OA\Parameter(
+ *          name="api_token",
+ *          description="API TOKEN Authentication",
+ *          required=true,
+ *          in="query",
+ *          @OA\Schema(
+ *              type="string"
+ *          )
+ *      ),
+ * @OA\Response(
+ *          response=200,
+ *          description="Successful operation",
+ *          
+ *       ),
+ *      @OA\Response(
+ *          response=401,
+ *          description="Unauthenticated",
+ *      ),
+ *     )
+ */
+
+
+/**
+ * @OA\Get(
+ *      path="/api/ideaCard{cardLink?}{api_token?}",
+ *      operationId="getIdeaCard",
+ *      tags={"Idealista Card"},
+ *      summary="Get Idealista Card inner content",
+ *      description="Get idealista card inner content based on a card link",
+ *      @OA\Parameter(
+ *          name="cardLink",
+ *          description="Enlace de la tarjeta (ej. https://www.idealista.com/inmueble/1710415/)",
+ *          required=true,
+ *          in="query",
+ *          @OA\Schema(
+ *              type="string"
+ *          )
+ *      ),
+
  *      @OA\Parameter(
  *          name="api_token",
  *          description="API TOKEN Authentication",
@@ -204,8 +261,34 @@ class PythonController extends Controller
     public function getTripCard(Request $request)
     {
         $py_path = 'resources\py\tripadvisor_card.py';
-        $search_param = '/Attraction_Review-g562662-d10021149-Reviews-Burrolandia-Tres_Cantos.html';
-        $this->scrapeData($py_path, $search_param);
+        $cardLink = $request->query('cardLink');
+        $query_result = TripadvisorInnerCards::where('cardLink', $cardLink)->first();
+        //If these is existing tripadvisor cardLink content for incoming cardLink
+        if($query_result){
+            $result = (object)[
+                'cardLink' => $query_result->cardLink,
+                'innerCardTitle' => $query_result->innerCardTitle,
+                'innerCardAddress' => $query_result->innerCardAddress,
+                'ratingSentimentPoints' => $query_result->ratingSentimentPoints,
+                'ratingSentimentFeed' => $query_result->ratingSentimentFeed,
+                'cardImages' => TripInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
+            ];
+            return response()->json($result, JsonResponse::HTTP_OK);
+        }
+        //If there is not (else)
+        else{
+            $this->scrapeData($py_path, $cardLink);
+            $query_result = TripadvisorInnerCards::where('cardLink', $cardLink)->first();
+            $result = (object)[
+                'cardLink' => $query_result->cardLink,
+                'innerCardTitle' => $query_result->innerCardTitle,
+                'innerCardAddress' => $query_result->innerCardAddress,
+                'ratingSentimentPoints' => $query_result->ratingSentimentPoints,
+                'ratingSentimentFeed' => $query_result->ratingSentimentFeed,
+                'cardImages' => TripInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
+            ];
+            return response()->json($result, JsonResponse::HTTP_OK);
+        }
     }
 
     public function getIdea($provincia, $municipio)
@@ -352,6 +435,55 @@ class PythonController extends Controller
 
     }
 
+    public function closeDistances($provincia, $municipio){
+
+
+        $coordinatesFrom = Place::select('cLatitud', 'cLongitud')->where('provincia', $provincia)->where('municipio', $municipio)->first();
+
+        //Tripadvisor
+        $provMunsCoordinates = Place::select('provincia','municipio', 'cLatitud', 'cLongitud')->where('municipio', '!=', $municipio)
+        ->whereExists(function ($query) {
+            $query->select(PlaceInfo::raw(1))
+                  ->from('placeinfo')
+                  ->whereColumn('placeinfo.municipio', 'place.municipio')
+                  ->where('linkType', 'tripadvisor');
+        })->get();
+        
+        $distanceTo = 1000;
+        $closestPlaceTo = null;
+        foreach($provMunsCoordinates as $munCoordinates){
+            $earthRadius = 6371;
+            // convert from degrees to radians (references: https://stackoverflow.com/a/14751773)
+            $latFrom = deg2rad($coordinatesFrom->cLatitud);
+            $lonFrom = deg2rad($coordinatesFrom->cLongitud);
+
+            $latTo = deg2rad($munCoordinates->cLatitud);
+            $lonTo = deg2rad($munCoordinates->cLongitud);
+
+            $latDelta = $latTo - $latFrom;
+            $lonDelta = $lonTo - $lonFrom;
+            # haversine distance
+            $distance = 2 * $earthRadius * asin(sqrt(pow(sin($latDelta / 2), 2) +
+                cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+            
+            if ($distance < $distanceTo){
+                $distanceTo = $distance;
+                $closestPlaceTo=(object)[
+                    'provincia'=>$munCoordinates->provincia,
+                    'municipio'=>$munCoordinates->municipio,
+                    'distanceTo'=>$distance
+                ];
+            }
+            /*
+            array_push($closestPlaceTo, (object)[
+                'municipio'=>$munCoordinates->municipio,
+                'distanceTo'=>$distance
+            ]);*/
+            
+        }
+        
+        dd($closestPlaceTo);
+    }
     private function normalize($string)
     {
         $table = array(

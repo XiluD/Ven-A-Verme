@@ -13,6 +13,32 @@
         "version": "1.0.0"
     },
     "paths": {
+        "prueba": {
+            "get": {
+                "tags": [
+                    "prueba"
+                ],
+                "summary": "Get prueba",
+                "description": "Get prueba",
+                "operationId": "prueba",
+                "parameters": [
+                    {
+                        "name": "api_token",
+                        "in": "query",
+                        "description": "API TOKEN Authentication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
         "/api/trip/{provincia}/{municipio}": {
             "get": {
                 "tags": [
@@ -60,6 +86,44 @@
                 }
             }
         },
+        "/api/tripCard{cardLink?}{api_token?}": {
+            "get": {
+                "tags": [
+                    "Tripadvisor Card"
+                ],
+                "summary": "Get Tripadvisor Card inner content",
+                "description": "Get Tripadvisor card inner content based on a card link",
+                "operationId": "getTripCard",
+                "parameters": [
+                    {
+                        "name": "cardLink",
+                        "in": "query",
+                        "description": "Enlace de la tarjeta (ej. /Attraction_Review-g187486-d10786893-Reviews-Parque_de_la_Pulgosa-Albacete_Province_of_Albacete_Cast)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api_token",
+                        "in": "query",
+                        "description": "API TOKEN Authentication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
         "/api/idea/{provincia}/{municipio}": {
             "get": {
                 "tags": [
@@ -82,6 +146,44 @@
                         "name": "municipio",
                         "in": "path",
                         "description": "Nombre del municipio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api_token",
+                        "in": "query",
+                        "description": "API TOKEN Authentication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/ideaCard{cardLink?}{api_token?}": {
+            "get": {
+                "tags": [
+                    "Idealista Card"
+                ],
+                "summary": "Get Idealista Card inner content",
+                "description": "Get idealista card inner content based on a card link",
+                "operationId": "getIdeaCard",
+                "parameters": [
+                    {
+                        "name": "cardLink",
+                        "in": "query",
+                        "description": "Enlace de la tarjeta (ej. https://www.idealista.com/inmueble/1710415/)",
                         "required": true,
                         "schema": {
                             "type": "string"

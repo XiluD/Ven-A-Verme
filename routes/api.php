@@ -22,6 +22,8 @@ Route::get('/provsMunsBasic', 'DevApisController@getMunsEV');
 
 Route::get('/evOrder/{provincia}', 'DevApisController@getMunsFromProvEVOrdered');
 
+Route::get('/distances/{provincia}/{municipio}', 'PythonController@closeDistances');
+
 //Routes with API_AUTH Middleware
 Route::middleware('api_auth')->group(function () {
     

@@ -5,7 +5,49 @@ namespace App\Http\Controllers;
 use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+/**
+ * @OA\Info(
+ *      version="1.0.0",
+ *      title="Laravel OpenApi Demo Documentation",
+ *      description="L5 Swagger OpenApi description",
+ *      @OA\Contact(
+ *          email="dvicentevila@admin.com"
+ *      ),
+ *      @OA\License(
+ *          name="Apache 2.0",
+ *          url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ *      )
+ * )
+ *
+ * @OA\Tag(
+ *     name="Ven a Verme",
+ *     description="API Endpoints of Ven A Verme"
+ * )
+ */
 
+ /**
+ * @OA\Get(
+ *      path="prueba",
+ *      operationId="prueba",
+ *      tags={"prueba"},
+ *      summary="Get prueba",
+ *      description="Get prueba",
+ *      @OA\Parameter(
+ *          name="api_token",
+ *          description="API TOKEN Authentication",
+ *          required=true,
+ *          in="query",
+ *          @OA\Schema(
+ *              type="string"
+ *          )
+ *      ),
+ * @OA\Response(
+ *          response=200,
+ *          description="Successful operation",
+ *          
+ *       ),
+ *     )
+ */
 
 class DevApisController extends Controller
 {

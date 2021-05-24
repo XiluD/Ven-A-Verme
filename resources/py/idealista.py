@@ -8,13 +8,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.options import Options
-import json
 from db_connector import insertIntoDB
-
 
 def get_data(link, driver):
     driver.get(link)
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'main-footer')))
+
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     main_content = soup.find(id = 'main-content')
     cards_containers = main_content.find_all('article', class_='item-multimedia-container')
@@ -54,13 +53,14 @@ def get_data(link, driver):
     return content
 
 if __name__ == '__main__':
+
     options = Options()
     options.add_argument('--headless')
     options.add_argument("--window-size=1920,1080")
     driver = webdriver.Firefox(executable_path=f"{os.path.dirname(__file__)}/geckodriver.exe", options=options)
-    
+
     sql = """INSERT INTO idealistacards (cardLink, placeLink, cardTitle, cardPrice, cardDetail,
-     cardDescription, cardContact, cardImage, cardType) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""" 
+     cardDescription, cardContact, cardImage, cardType) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE cardLink=VALUES(cardLink)""" 
     
     content = {}
 
@@ -85,7 +85,7 @@ if __name__ == '__main__':
 
 sql = "INSERT INTO idealistacards (cardLink, placeLink, cardTitle, cardPrice, cardDetail,
                                      cardDescription, cardContact, cardImage, cardType) VALUES (%s, %s, %s,
-                                                                                                %s, %s, %s,
+                                                                                                %s, %s, %s)
             
 val = [(https://www.idealista.com/inmueble/93804699/, https://www.idealista.com/venta-viviendas/tres-cantos-madrid/,
         Piso en avenida de Madrid, Primera Fase - Nuevo Tres Cantos, Tres Cantos, 630€/mes, 2 hab. 67 m² Planta 3ª  con ascensor Publicado ayer,

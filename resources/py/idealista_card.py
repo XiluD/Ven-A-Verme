@@ -57,7 +57,6 @@ try:
 
     driver.quit()
 
-    #print(json.dumps(content))
 
     # Full insert into idealistainnercard
     sql = """INSERT INTO idealistainnercard (cardLink, innerCardTitle, innerCardPlace,
@@ -77,7 +76,6 @@ try:
     sql = "INSERT INTO ideainnercardimages (imageLink, cardLink) VALUES (%s, %s)"
     val = [(image, link) for image in content['inner_card_images']]
     insertIntoDB(sql, val)
-
 
 except:
     print(json.dumps({

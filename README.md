@@ -107,7 +107,14 @@ composer require laravel/ui
 
 ```
 
-4. Install NPM packages
+4. Laravel Swagger Package for API Documentation
+```sh
+
+composer require darkaonline/l5-swagger
+
+```
+
+5. Install NPM packages
 
 ```sh
 
@@ -115,7 +122,7 @@ npm install
 
 ```
 
-5. Install Python packages
+6. Install Python packages
 
 ```sh
 
@@ -123,10 +130,10 @@ pip3 install -r pyrequirements.txt
 
 ```
 
-6. Create the database by importing the mysql file into your favourite MySQL service (PHPMyAdmin)
+7. Create the database by importing the mysql file into your favourite MySQL service (PHPMyAdmin)
 
   
-7. Configure the environment in `.env (rename 'env.example' to 'env')`
+8. Configure the environment in `.env (rename 'env.example' to 'env')`
 
 ```sh
 
@@ -144,7 +151,7 @@ DB_PASSWORD=
 
 ```
 
-8. Set your own application encryption key
+9. Set your own application encryption key
 
 ```sh
 
@@ -152,7 +159,7 @@ php artisan key:generate
 
 ```
 
-9. Enter your API in `config.js` (on development!)
+10. Enter your API in `config.js` (on development!)
 
 ```JS
 

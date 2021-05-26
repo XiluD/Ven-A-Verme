@@ -1,5 +1,6 @@
 import os
 import sys
+from typing_extensions import final
 from bs4 import BeautifulSoup
 import re
 from selenium import webdriver
@@ -19,9 +20,9 @@ options.add_argument('--headless')
 options.add_argument("--window-size=1920,1080")
 driver = webdriver.Firefox(executable_path=f"{os.path.dirname(__file__)}/geckodriver.exe", options=options)
 
-driver.get(link)
 try:
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'idealista-banner-wrapper')))
+    driver.get(link)
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, 'idealista-banner-wrapper')))
 
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -77,11 +78,10 @@ try:
     val = [(image, link) for image in content['inner_card_images']]
     insertIntoDB(sql, val)
 
-except:
-    print(json.dumps({
-        'error': 'Fail to connect/not existing resource'
-    }))
-
+    print(json.dumps({'operation': 'Success'}))
+except TimeoutException:
+    driver.quit()
+    print(json.dumps({'operation': 'Error'}))
 '''
 sql = "INSERT INTO idealistainnercard (cardLink, innerCardTitle, innerCardPlace, innerCardDetail,
                                         innerCardPrice, innerCardDescription, innerCardContact) VALUES (%s, %s, %s, %s

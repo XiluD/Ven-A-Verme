@@ -24,7 +24,7 @@ use Illuminate\Http\JsonResponse;
  *      operationId="getTrip",
  *      tags={"Tripadvisor"},
  *      summary="Get tripadvisor main content",
- *      description="Get tripadvisor content based on place info",
+ *      description="Get tripadvisor content based on place info (provincia and municipio)",
  *      @OA\Parameter(
  *          name="provincia",
  *          description="Nombre de la provincia",
@@ -52,7 +52,8 @@ use Illuminate\Http\JsonResponse;
  *              type="string"
  *          )
  *      ),
- * @OA\Response(
+ * 
+ *      @OA\Response(
  *          response=200,
  *          description="Successful operation",
  *          
@@ -61,14 +62,18 @@ use Illuminate\Http\JsonResponse;
  *          response=401,
  *          description="Unauthenticated",
  *      ),
+ *      @OA\Response(
+ *          response=406,
+ *          description="No information was found with those names.",
+ *      ),
  *     )
- */
+ **/
 
 /**
  * @OA\Get(
  *      path="/api/tripCard{cardLink?}{api_token?}",
  *      operationId="getTripCard",
- *      tags={"Tripadvisor Card"},
+ *      tags={"Tripadvisor"},
  *      summary="Get Tripadvisor Card inner content",
  *      description="Get Tripadvisor card inner content based on a card link",
  *      @OA\Parameter(
@@ -80,7 +85,6 @@ use Illuminate\Http\JsonResponse;
  *              type="string"
  *          )
  *      ),
-
  *      @OA\Parameter(
  *          name="api_token",
  *          description="API TOKEN Authentication",
@@ -90,17 +94,23 @@ use Illuminate\Http\JsonResponse;
  *              type="string"
  *          )
  *      ),
- * @OA\Response(
+ * 
+ *      @OA\Response(
  *          response=200,
  *          description="Successful operation",
  *          
- *       ),
+ *      ),
+ *      @OA\Response(
+ *          response=400,
+ *          description="Bad request. Invalid format.",
+ *          
+ *      ),
  *      @OA\Response(
  *          response=401,
  *          description="Unauthenticated",
  *      ),
  *     )
- */
+ **/
 
 /**
  * @OA\Get(
@@ -136,24 +146,32 @@ use Illuminate\Http\JsonResponse;
  *              type="string"
  *          )
  *      ),
- * @OA\Response(
+ * 
+ *      @OA\Response(
  *          response=200,
  *          description="Successful operation",
- *          
- *       ),
+ *      ),
  *      @OA\Response(
  *          response=401,
  *          description="Unauthenticated",
  *      ),
+ *      @OA\Response(
+ *          response=406,
+ *          description="No information was found with those names.",
+ *      ),
+ *      @OA\Response(
+ *          response=503,
+ *          description="Service Unavailable. Due to a TimeoutException when trying to collect the page data",
+ *      ),
  *     )
- */
+ **/
 
 
 /**
  * @OA\Get(
  *      path="/api/ideaCard{cardLink?}{api_token?}",
  *      operationId="getIdeaCard",
- *      tags={"Idealista Card"},
+ *      tags={"Idealista"},
  *      summary="Get Idealista Card inner content",
  *      description="Get idealista card inner content based on a card link",
  *      @OA\Parameter(
@@ -165,7 +183,6 @@ use Illuminate\Http\JsonResponse;
  *              type="string"
  *          )
  *      ),
-
  *      @OA\Parameter(
  *          name="api_token",
  *          description="API TOKEN Authentication",
@@ -175,34 +192,44 @@ use Illuminate\Http\JsonResponse;
  *              type="string"
  *          )
  *      ),
- * @OA\Response(
+ * 
+ *      @OA\Response(
  *          response=200,
  *          description="Successful operation",
  *          
- *       ),
+ *      ),
+ *      @OA\Response(
+ *          response=400,
+ *          description="Bad request. Invalid format.",
+ *          
+ *      ),
  *      @OA\Response(
  *          response=401,
  *          description="Unauthenticated",
  *      ),
+ *      @OA\Response(
+ *          response=503,
+ *          description="Service Unavailable. Due to a TimeoutException when trying to collect the page data",
+ *      ),
  *     )
- */
+ **/
 
 class PythonController extends Controller
 {
     public function getTrip($provincia, $municipio)
     {
-        $py_path = 'resources\py\tripadvisor.py';
-        $query_result = PlaceInfo::where('provincia', 'like', $provincia)->where('municipio', 'like', $municipio)->where('linkType', 'tripadvisor')->first();
-        if (is_null($query_result)) {
-
-            /*
-            ***TODO***
-            Find closest place(based on coordinates) and show its placeLink (it must have a placeLink)
-            */
-
-            
-            //return response()->json(['error' => 'Nothing found'], JsonResponse::HTTP_NOT_FOUND);
-        } else {
+        if(Place::where('provincia', $provincia)->where('municipio', $municipio)->first()){
+            $py_path = 'resources\py\tripadvisor.py';
+            $query_result = PlaceInfo::where('provincia', $provincia)->where('municipio',  $municipio)->where('linkType', 'tripadvisor')->first();
+            $closePlaceHandler = false;
+            if (is_null($query_result)) {
+                //Find closest place(based on coordinates) and show its placeLink (it must have a placeLink)
+                $closestPlaceInfo = $this->closeDistances($provincia, $municipio);
+                $query_result = (object)['placeLink'=>$closestPlaceInfo[2]];
+                $closestPlaceProv = $closestPlaceInfo[0];
+                $closestPlaceMun = $closestPlaceInfo[1];
+                $closePlaceHandler = true;
+            }
             //If there is content for placeLink in TripadvisorCards
             if (count(TripadvisorCards::where('placeLink', $query_result->placeLink)->get()) != 0) {
                 $currentDate = new DateTime("now");
@@ -229,7 +256,13 @@ class PythonController extends Controller
                         where('placeLink', $query_result->placeLink)->
                         where('cardType', 'otros')->get(),
                     ];
-                    return response()->json($result, JsonResponse::HTTP_OK);
+                    if($closePlaceHandler){
+                        return response()->json(['closestPlace'=>true,'closestPlaceProv'=>$closestPlaceProv,
+                        'closestPlaceMun'=>$closestPlaceMun, 'data'=>$result], JsonResponse::HTTP_OK);
+                    }
+                    else{
+                        return response()->json($result, JsonResponse::HTTP_OK);
+                    }
                 }
 
             } else {
@@ -252,87 +285,125 @@ class PythonController extends Controller
                     where('cardType', 'otros')->get(),
 
                 ];
-                return response()->json($result, JsonResponse::HTTP_OK);
+                if($closePlaceHandler){
+                    return response()->json(['closestPlace'=>true,'closestPlaceProv'=>$closestPlaceProv,
+                    'closestPlaceMun'=>$closestPlaceMun, 'data'=>$result], JsonResponse::HTTP_OK);
+                }
+                else{
+                    return response()->json($result, JsonResponse::HTTP_OK);
+                }
                 //return response()->json(TripadvisorCards::where('placeLink', $query_result->placeLink)->get(), JsonResponse::HTTP_OK);
             }
+        }
+        else{
+            return response()->json(['error'=>"We couldn't find a place with those names in our application. We know Spain is to big and some places may not be in our database,
+            try again with another place names and we'll do our best to find it."], JsonResponse::HTTP_NOT_ACCEPTABLE);
         }
     }
 
     public function getTripCard(Request $request)
     {
-        $py_path = 'resources\py\tripadvisor_card.py';
         $cardLink = $request->query('cardLink');
-        $query_result = TripadvisorInnerCards::where('cardLink', $cardLink)->first();
-        //If these is existing tripadvisor cardLink content for incoming cardLink
-        if($query_result){
-            $result = (object)[
-                'cardLink' => $query_result->cardLink,
-                'innerCardTitle' => $query_result->innerCardTitle,
-                'innerCardAddress' => $query_result->innerCardAddress,
-                'ratingSentimentPoints' => $query_result->ratingSentimentPoints,
-                'ratingSentimentFeed' => $query_result->ratingSentimentFeed,
-                'cardImages' => TripInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
-            ];
-            return response()->json($result, JsonResponse::HTTP_OK);
-        }
-        //If there is not (else)
-        else{
-            $this->scrapeData($py_path, $cardLink);
+        if(str_starts_with($cardLink, '/Attraction_Review') || str_starts_with($cardLink, '/Hotel_Review') ||
+         str_starts_with($cardLink, '/Restaurant_Review') || str_starts_with($cardLink, '/VacationRentalReview')){
+            $py_path = 'resources\py\tripadvisor_card.py';
             $query_result = TripadvisorInnerCards::where('cardLink', $cardLink)->first();
-            $result = (object)[
-                'cardLink' => $query_result->cardLink,
-                'innerCardTitle' => $query_result->innerCardTitle,
-                'innerCardAddress' => $query_result->innerCardAddress,
-                'ratingSentimentPoints' => $query_result->ratingSentimentPoints,
-                'ratingSentimentFeed' => $query_result->ratingSentimentFeed,
-                'cardImages' => TripInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
-            ];
-            return response()->json($result, JsonResponse::HTTP_OK);
+            //If these is existing tripadvisor cardLink content for incoming cardLink
+            if($query_result){
+                $result = (object)[
+                    'cardLink' => $query_result->cardLink,
+                    'innerCardTitle' => $query_result->innerCardTitle,
+                    'innerCardAddress' => $query_result->innerCardAddress,
+                    'ratingSentimentPoints' => $query_result->ratingSentimentPoints,
+                    'ratingSentimentFeed' => $query_result->ratingSentimentFeed,
+                    'cardImages' => TripInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
+                ];
+                return response()->json($result, JsonResponse::HTTP_OK);
+            }
+            //If there is not (else)
+            else{
+                $this->scrapeData($py_path, $cardLink);
+                $query_result = TripadvisorInnerCards::where('cardLink', $cardLink)->first();
+                $result = (object)[
+                    'cardLink' => $query_result->cardLink,
+                    'innerCardTitle' => $query_result->innerCardTitle,
+                    'innerCardAddress' => $query_result->innerCardAddress,
+                    'ratingSentimentPoints' => $query_result->ratingSentimentPoints,
+                    'ratingSentimentFeed' => $query_result->ratingSentimentFeed,
+                    'cardImages' => TripInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
+                ];
+                return response()->json($result, JsonResponse::HTTP_OK);
+            }
         }
+        else{
+            return response()->json(['error'=>'Invalid format for cardLink'], JsonResponse::HTTP_BAD_REQUEST);
+        }
+
     }
 
     public function getIdea($provincia, $municipio)
     {
-        $py_path = 'resources\py\idealista.py';
-        $query_result = PlaceInfo::where('provincia', 'like', $provincia)->where('municipio', 'like', $municipio)->where('linkType', 'idealista')->first();
-        if (is_null($query_result)) {
-
-            /*
-            ***TODO***
-            Find for a result(scrapeData), if no result was found -> Find closest place(based on coordinates) and show its placeLink (it must have a placeLink)
-            */
-            //$search_param = 'tres-cantos-madrid';
-            $search_param = $this->normalize(str_replace(' ', '-', ($municipio . ' ' . $provincia)));
-            $currentDate = new DateTime("now");
-            $expirationDate = date_format($currentDate->add(new DateInterval('P15D')), 'Y-m-d');
-
-            PlaceInfo::insert([
-                [
-                    'placeLink' => '/' . 'alquiler-viviendas/' . $search_param . '/',
-                    'provincia' => $provincia,
-                    'municipio' => $municipio,
-                    'linkType' => 'idealista',
-                    'expirationDate' => $expirationDate
-                ],
-                [
-                    'placeLink' => '/' . 'venta-viviendas/' . $search_param . '/',
-                    'provincia' => $provincia,
-                    'municipio' => $municipio,
-                    'linkType' => 'idealista',
-                    'expirationDate' => $expirationDate
-                ]
-            ]);
-
-            // Temporal fix
-            try {
-                $this->scrapeData($py_path, $search_param);
+        if(Place::where('provincia', $provincia)->where('municipio', $municipio)->first()){
+            $py_path = 'resources\py\idealista.py';
+            $query_result = PlaceInfo::where('provincia', $provincia)->where('municipio', $municipio)->where('linkType', 'idealista')->first();
+            if (is_null($query_result)) {
+    
+                /*
+                ***TODO***
+                Find for a result(scrapeData), if no result was found (control that in py if no info was found) -> Find closest place(based on coordinates) and
+                show its placeLink (it must have a placeLink)
+                */
+                //$search_param = 'tres-cantos-madrid';
+                $search_param = $this->normalize(str_replace(' ', '-', ($municipio . ' ' . $provincia)));
+                $currentDate = new DateTime("now");
+                $expirationDate = date_format($currentDate->add(new DateInterval('P15D')), 'Y-m-d');
+    
+                PlaceInfo::insert([
+                    [
+                        'placeLink' => '/' . 'alquiler-viviendas/' . $search_param . '/',
+                        'provincia' => $provincia,
+                        'municipio' => $municipio,
+                        'linkType' => 'idealista',
+                        'expirationDate' => $expirationDate
+                    ],
+                    [
+                        'placeLink' => '/' . 'venta-viviendas/' . $search_param . '/',
+                        'provincia' => $provincia,
+                        'municipio' => $municipio,
+                        'linkType' => 'idealista',
+                        'expirationDate' => $expirationDate
+                    ]
+                ]);
+    
+                $operationHandler = $this->scrapeData($py_path, $search_param);
+                if($operationHandler->operation == 'Success'){
+                    $result = (object)[
+                        'onRent'=> PlaceInfo::join('idealistacards', 'placeinfo.placeLink', '=', 'idealistacards.placeLink')->
+                        where('placeinfo.municipio',$municipio)->
+                        select('idealistacards.cardLink', 'idealistacards.placeLink', 'idealistacards.cardTitle', 'idealistacards.cardPrice',
+                        'idealistacards.cardDetail', 'idealistacards.cardDescription', 'idealistacards.cardContact', 'idealistacards.cardImage')->
+                        where('idealistacards.cardType', 'onRent')->get(),
+    
+                        'onSale'=> PlaceInfo::join('idealistacards', 'placeinfo.placeLink', '=', 'idealistacards.placeLink')->
+                        where('placeinfo.municipio',$municipio)->
+                        select('idealistacards.cardLink', 'idealistacards.placeLink', 'idealistacards.cardTitle', 'idealistacards.cardPrice',
+                        'idealistacards.cardDetail', 'idealistacards.cardDescription', 'idealistacards.cardContact', 'idealistacards.cardImage')->
+                        where('idealistacards.cardType', 'onSale')->get(),
+                    ];
+                    return response()->json($result, JsonResponse::HTTP_OK);
+                }
+                else{
+                    PlaceInfo::where('municipio', $municipio)->where('linkType', 'idealista')->delete();
+                    return response()->json(['error'=> 'Could not fetch the data due to a TimeoutException when trying to collect the page data'], JsonResponse::HTTP_SERVICE_UNAVAILABLE);
+                }
+            } else {
                 $result = (object)[
                     'onRent'=> PlaceInfo::join('idealistacards', 'placeinfo.placeLink', '=', 'idealistacards.placeLink')->
                     where('placeinfo.municipio',$municipio)->
                     select('idealistacards.cardLink', 'idealistacards.placeLink', 'idealistacards.cardTitle', 'idealistacards.cardPrice',
                     'idealistacards.cardDetail', 'idealistacards.cardDescription', 'idealistacards.cardContact', 'idealistacards.cardImage')->
                     where('idealistacards.cardType', 'onRent')->get(),
-
+    
                     'onSale'=> PlaceInfo::join('idealistacards', 'placeinfo.placeLink', '=', 'idealistacards.placeLink')->
                     where('placeinfo.municipio',$municipio)->
                     select('idealistacards.cardLink', 'idealistacards.placeLink', 'idealistacards.cardTitle', 'idealistacards.cardPrice',
@@ -340,103 +411,88 @@ class PythonController extends Controller
                     where('idealistacards.cardType', 'onSale')->get(),
                 ];
                 return response()->json($result, JsonResponse::HTTP_OK);
-                /*
-                return response()->json(PlaceInfo::join('idealistacards', 'placeinfo.placeLink', '=', 'idealistacards.placeLink')->
-                where('placeinfo.municipio',$municipio)->
-                select('idealistacards.*')->get(), JsonResponse::HTTP_OK);
-                */
-
-            } catch (Exception $e) {
-                PlaceInfo::where('municipio', $municipio)->where('linkType', 'idealista')->delete();
-                dd($e->getMessage());
             }
-        } else {
-            $result = (object)[
-                'onRent'=> PlaceInfo::join('idealistacards', 'placeinfo.placeLink', '=', 'idealistacards.placeLink')->
-                where('placeinfo.municipio',$municipio)->
-                select('idealistacards.cardLink', 'idealistacards.placeLink', 'idealistacards.cardTitle', 'idealistacards.cardPrice',
-                'idealistacards.cardDetail', 'idealistacards.cardDescription', 'idealistacards.cardContact', 'idealistacards.cardImage')->
-                where('idealistacards.cardType', 'onRent')->get(),
-
-                'onSale'=> PlaceInfo::join('idealistacards', 'placeinfo.placeLink', '=', 'idealistacards.placeLink')->
-                where('placeinfo.municipio',$municipio)->
-                select('idealistacards.cardLink', 'idealistacards.placeLink', 'idealistacards.cardTitle', 'idealistacards.cardPrice',
-                'idealistacards.cardDetail', 'idealistacards.cardDescription', 'idealistacards.cardContact', 'idealistacards.cardImage')->
-                where('idealistacards.cardType', 'onSale')->get(),
-            ];
-            return response()->json($result, JsonResponse::HTTP_OK);
+        }
+        else{
+            return response()->json(['error'=>"We couldn't find a place with those names in our application. We know Spain is to big and some places may not be in our database,
+            try again with another place names and we'll do our best to find it."], JsonResponse::HTTP_NOT_ACCEPTABLE);
         }
     }
 
     public function getIdeaCard(Request $request)
     {
-        $py_path = 'resources\py\idealista_card.py';
-        
         $cardLink = $request->query('cardLink');
-        //dd($cardLink);
-        //$search_param = 'https://www.idealista.com/inmueble/91763008/';
-        
-        //If these is existing idealista cardLink content for incoming cardLink
-        $query_result = IdealistaInnerCard::where('cardLink', $cardLink)->first();
-        if($query_result){
+        if(str_starts_with($cardLink, 'https://www.idealista.com/inmueble')){
+            $py_path = 'resources\py\idealista_card.py';
 
-            $result = (object)[
-                'cardLink' => $query_result->cardLink,
-                'innerCardTitle' => $query_result->innerCardTitle,
-                'innerCardPlace' => $query_result->innerCardPlace,
-                'innerCardDetail' => $query_result->innerCardDetail,
-                'innerCardPrice' => $query_result->innerCardPrice,
-                'innerCardDescription' => $query_result->innerCardDescription,
-                'innerCardContact' => $query_result->innerCardContact,
-                'innerCardFeatures' => [
-                    'basic' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'basic')->get()->pluck('featureData'),
-                    'building' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'building')->get()->pluck('featureData'),
-                    'equipment' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'equipment')->get()->pluck('featureData')
-                ],
-                'innerCardImages' => IdeaInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
-            ];
-            return response()->json($result, JsonResponse::HTTP_OK);
-            
-        }
-        //If there is not (else)
-        else{
-            $this->scrapeData($py_path, $cardLink);
+            //If these is existing idealista cardLink content for incoming cardLink
             $query_result = IdealistaInnerCard::where('cardLink', $cardLink)->first();
-            $result = (object)[
-                'cardLink' => $query_result->cardLink,
-                'innerCardTitle' => $query_result->innerCardTitle,
-                'innerCardPlace' => $query_result->innerCardPlace,
-                'innerCardDetail' => $query_result->innerCardDetail,
-                'innerCardPrice' => $query_result->innerCardPrice,
-                'innerCardDescription' => $query_result->innerCardDescription,
-                'innerCardContact' => $query_result->innerCardContact,
-                'innerCardFeatures' => [
-                    'basic' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'basic')->get()->pluck('featureData'),
-                    'building' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'building')->get()->pluck('featureData'),
-                    'equipment' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'equipment')->get()->pluck('featureData')
-                ],
-                'innerCardImages' => IdeaInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
-            ];
-            return response()->json($result, JsonResponse::HTTP_OK);
+            if($query_result){
+    
+                $result = (object)[
+                    'cardLink' => $query_result->cardLink,
+                    'innerCardTitle' => $query_result->innerCardTitle,
+                    'innerCardPlace' => $query_result->innerCardPlace,
+                    'innerCardDetail' => $query_result->innerCardDetail,
+                    'innerCardPrice' => $query_result->innerCardPrice,
+                    'innerCardDescription' => $query_result->innerCardDescription,
+                    'innerCardContact' => $query_result->innerCardContact,
+                    'innerCardFeatures' => [
+                        'basic' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'basic')->get()->pluck('featureData'),
+                        'building' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'building')->get()->pluck('featureData'),
+                        'equipment' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'equipment')->get()->pluck('featureData')
+                    ],
+                    'innerCardImages' => IdeaInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
+                ];
+                return response()->json($result, JsonResponse::HTTP_OK);
+                
+            }
+            //If there is not (else)
+            else{
+                $operationHandler = $this->scrapeData($py_path, $cardLink);
+                if($operationHandler->operation == 'Success'){
+                    $query_result = IdealistaInnerCard::where('cardLink', $cardLink)->first();
+                    $result = (object)[
+                        'cardLink' => $query_result->cardLink,
+                        'innerCardTitle' => $query_result->innerCardTitle,
+                        'innerCardPlace' => $query_result->innerCardPlace,
+                        'innerCardDetail' => $query_result->innerCardDetail,
+                        'innerCardPrice' => $query_result->innerCardPrice,
+                        'innerCardDescription' => $query_result->innerCardDescription,
+                        'innerCardContact' => $query_result->innerCardContact,
+                        'innerCardFeatures' => [
+                            'basic' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'basic')->get()->pluck('featureData'),
+                            'building' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'building')->get()->pluck('featureData'),
+                            'equipment' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'equipment')->get()->pluck('featureData')
+                        ],
+                        'innerCardImages' => IdeaInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
+                    ];
+                    return response()->json($result, JsonResponse::HTTP_OK);
+                }
+                else{
+                    return response()->json(['error'=> 'Could not fetch the data due to a TimeoutException when trying to collect the page data'], JsonResponse::HTTP_SERVICE_UNAVAILABLE);
+                }
+            }
         }
+        else{
+            return response()->json(['error'=>'Invalid format for cardLink'], JsonResponse::HTTP_BAD_REQUEST);
+        }
+
     }
 
     private function scrapeData(string $py_path, string $search_param)
     {
         $python = "python";
-
         $cmd = $python . ' ' . base_path($py_path) . ' ' . $search_param;
-        //dd($cmd);
-        shell_exec($cmd);
 
-        //$data = shell_exec($cmd);
-        //dd($data);
-        //return response()->json(json_decode($data), JsonResponse::HTTP_OK);
+        $data = shell_exec($cmd);
+        $operationHandler = json_decode($data);
 
+        return $operationHandler;
+        
     }
 
     public function closeDistances($provincia, $municipio){
-
 
         $coordinatesFrom = Place::select('cLatitud', 'cLongitud')->where('provincia', $provincia)->where('municipio', $municipio)->first();
 
@@ -453,7 +509,7 @@ class PythonController extends Controller
         $closestPlaceTo = null;
         foreach($provMunsCoordinates as $munCoordinates){
             $earthRadius = 6371;
-            // convert from degrees to radians (references: https://stackoverflow.com/a/14751773)
+            // Haversine distance algorithm (references: https://stackoverflow.com/a/14751773)
             $latFrom = deg2rad($coordinatesFrom->cLatitud);
             $lonFrom = deg2rad($coordinatesFrom->cLongitud);
 
@@ -474,15 +530,13 @@ class PythonController extends Controller
                     'distanceTo'=>$distance
                 ];
             }
-            /*
-            array_push($closestPlaceTo, (object)[
-                'municipio'=>$munCoordinates->municipio,
-                'distanceTo'=>$distance
-            ]);*/
-            
+
         }
-        
-        dd($closestPlaceTo);
+
+        $queryPlaceTo = PlaceInfo::select('placeLink', 'provincia', 'municipio', 'linkType')->where('provincia', $closestPlaceTo->provincia)->where('municipio', $closestPlaceTo->municipio)->first();
+        $placeLinkTo = $queryPlaceTo->placeLink;
+        //dd($placeLinkTo);
+        return [$closestPlaceTo->provincia, $closestPlaceTo->municipio, $placeLinkTo];
     }
     private function normalize($string)
     {

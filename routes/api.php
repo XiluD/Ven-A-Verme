@@ -18,11 +18,30 @@ use Illuminate\Support\Facades\Route;
 Route::get('admin', 'AdminsController@create');
 
 //Basic routes without authentication needed
-Route::get('/provsMunsBasic', 'DevApisController@getMunsEV');
+Route::get('/provsMunsBasic', 'DevApisController@getProvMunsBasic');
 
-Route::get('/evOrder/{provincia}', 'DevApisController@getMunsFromProvEVOrdered');
+Route::get('/provsMunsUltraBasic', 'DevApisController@getProvMunsUltraBasic');
 
-Route::get('/distances/{provincia}/{municipio}', 'PythonController@closeDistances');
+Route::get('/munsBasic', 'DevApisController@getMunicipiosBasic');
+
+Route::get('/provsBasic', 'DevApisController@getProvinciasBasic');
+
+Route::get('/munsOf/{provincia}', 'DevApisController@getMunsFromProvAll');
+
+Route::get('/munsPoblationOrdered/{poblacion}', 'DevApisController@getMunsPoblacionBasedOrdered');
+
+Route::get('/munsOfPoblationOrdered/{provincia}/{poblacion}', 'DevApisController@getMunsFromProvPoblacionBasedOrdered');
+
+Route::get('/munsEv', 'DevApisController@getMunsEV');
+
+Route::get('/munsEvOf/{provincia}', 'DevApisController@getMunsFromProvEV');
+
+Route::get('/munsEvOrderedOf/{provincia}', 'DevApisController@getMunsFromProvEVOrdered');
+
+Route::get('/provMunCodesOf/{provincia}', 'DevApisController@getCodesFromMun');
+
+Route::get('/provMunCoordinatesOf/{provincia}', 'DevApisController@getCoordinatesFromMun');
+
 
 //Routes with API_AUTH Middleware
 Route::middleware('api_auth')->group(function () {

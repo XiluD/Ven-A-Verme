@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.options import Options
+import json
 from db_connector import insertIntoDB
 
 def get_data(link, driver):
@@ -63,22 +64,26 @@ if __name__ == '__main__':
      cardDescription, cardContact, cardImage, cardType) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE cardLink=VALUES(cardLink)""" 
     
     content = {}
+    try:
+        content['onRent'] = get_data(f"https://www.idealista.com/alquiler-viviendas/{sys.argv[1]}/", driver)
+        
+        val = [(card['card_link'], f'/alquiler-viviendas/{sys.argv[1]}/', card['card_title'],
+        card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onRent') for card in content['onRent']]
 
-    content['onRent'] = get_data(f"https://www.idealista.com/alquiler-viviendas/{sys.argv[1]}/", driver)
-    
-    val = [(card['card_link'], f'/alquiler-viviendas/{sys.argv[1]}/', card['card_title'],
-     card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onRent') for card in content['onRent']]
+        insertIntoDB(sql, val)
 
-    insertIntoDB(sql, val)
+        content['onSale'] = get_data(f"https://www.idealista.com/venta-viviendas/{sys.argv[1]}/", driver)
 
-    content['onSale'] = get_data(f"https://www.idealista.com/venta-viviendas/{sys.argv[1]}/", driver)
+        val = [(card['card_link'], f'/venta-viviendas/{sys.argv[1]}/', card['card_title'],
+        card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onSale') for card in content['onSale']]
+        
+        insertIntoDB(sql, val)
 
-    val = [(card['card_link'], f'/venta-viviendas/{sys.argv[1]}/', card['card_title'],
-     card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onSale') for card in content['onSale']]
-    
-    insertIntoDB(sql, val)
-
-    driver.quit()
+        driver.quit()
+        print(json.dumps({'operation': 'Success'}))
+    except TimeoutException:
+        driver.quit()
+        print(json.dumps({'operation': 'Error'}))
 
 
 '''  

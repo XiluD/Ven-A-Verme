@@ -43,12 +43,16 @@ def getAttraction(link):
             title = soup.find('h1', class_="qf3QTY0F").text
         
         contentData['title'] = title
-    
-        ad1 = re.search('"addressLocality":"(.*?)"', soup.prettify()).group(1)
-        ad2 = re.search('"streetAddress":"(.*?)"', soup.prettify()).group(1)
+
+        try:
+            ad1 = re.search('"addressLocality":"(.*?)"', soup.prettify()).group(1)
+            ad2 = re.search('"streetAddress":"(.*?)"', soup.prettify()).group(1)
         
-        address = f'{ad1}, {ad2}'
-        contentData['address'] = address
+            address = f'{ad1}, {ad2}'
+            contentData['address'] = address
+        except:
+            contentData['address'] = ""
+
         
         imgs = soup.find_all('meta', property='og:image', content=re.compile('jpg$'))
         contentData['images'] = [img['content'] for img in imgs]
@@ -88,8 +92,12 @@ def getHotel(link):
         title = soup.find('h1', id='HEADING').text
         contentData['title'] = title
 
-        address = soup.find('span', {'class':['_3ErVArsu', 'jke2_wbp']}).text
-        contentData['address'] = address        
+        try:
+            address = soup.find('span', {'class':['_3ErVArsu', 'jke2_wbp']}).text
+            contentData['address'] = address
+        except:
+            contentData['address'] = ""
+
         
         img = soup.find('img', {'class':['_1a4WY7aS', 'RcPVTgNb']})['src']
         contentData['images'] = img
@@ -121,8 +129,12 @@ def getRestaurants(link):
             title = soup.find('h1', class_='_3a1XQ88S').text
             contentData['title'] = title
             
-            address = soup.find('span', class_='_2saB_OSe').text
-            contentData['address'] = address
+            try:
+                address = soup.find('span', class_='_2saB_OSe').text
+                contentData['address'] = address
+            except:
+                contentData['address'] = ""
+
 
             imgs_container = soup.find('div', class_='mosaic_photos')
             imgs = imgs_container.find_all('img', class_='basicImg')

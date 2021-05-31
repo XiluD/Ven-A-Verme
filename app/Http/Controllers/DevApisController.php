@@ -113,6 +113,34 @@ use Illuminate\Http\JsonResponse;
  *     )
  **/
 
+ /**
+ * @OA\Get(
+ *      path="/api/munBasicOf/{municipio}",
+ *      operationId="getMunData",
+ *      tags={"Provincia Municipio Basic"},
+ *      summary="Get 'Municipio' basic data from a given 'Municipio'",
+ *      description="Get 'Municipio' basic data from a given 'Municipio'",
+ *      @OA\Parameter(
+ *          name="municipio",
+ *          description="Nombre del municipio",
+ *          required=true,
+ *          in="path",
+ *          @OA\Schema(
+ *              type="string"
+ *          )
+ *      ),
+ * 
+ *      @OA\Response(
+ *          response=200,
+ *          description="Successful operation",
+ *      ),
+ *      @OA\Response(
+ *          response=406,
+ *          description="No information was found with those names.",
+ *      ),
+ *     )
+ **/
+
 /**
  * @OA\Get(
  *      path="/api/munsPoblationOrdered/{poblacion}",
@@ -319,7 +347,7 @@ class DevApisController extends Controller
 {
     //Return Place basic data
     public function getProvMunsBasic(){
-        return response()->json(Place::select('provincia', 'municipio', 'codigoProvincia', 'codigoMunicipio', 'poblacion', 'imagenMunicipio')->get(), JsonResponse::HTTP_OK);
+        return response()->json(Place::select('provincia', 'municipio', 'codigoProvincia', 'codigoMunicipio', 'poblacion', 'imagenMunicipio', 'despoblacion')->get(), JsonResponse::HTTP_OK);
     }
 
     //Return Place ultra basic data (provincias and municipios of database)
@@ -345,6 +373,16 @@ class DevApisController extends Controller
         }
         else{
             return response()->json(['error'=>"We couldn't find any place with that 'provincia' name in our application."], JsonResponse::HTTP_NOT_ACCEPTABLE);
+        }
+    }
+
+    //Return 'MUNICIPIO' basic data from a given 'MUNICIPIO'
+    public function getMunData($municipio){
+        if(Place::where('municipio', $municipio)->first()){
+            return response()->json(Place::where('municipio', $municipio)->first(), JsonResponse::HTTP_OK);
+        }
+        else{
+            return response()->json(['error'=>"We couldn't find any place with that 'municipio' name in our application."], JsonResponse::HTTP_NOT_ACCEPTABLE);
         }
     }
 

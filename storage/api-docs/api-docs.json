@@ -102,6 +102,35 @@
                 }
             }
         },
+        "/api/munBasicOf/{municipio}": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Basic"
+                ],
+                "summary": "Get 'Municipio' basic data from a given 'Municipio'",
+                "description": "Get 'Municipio' basic data from a given 'Municipio'",
+                "operationId": "getMunData",
+                "parameters": [
+                    {
+                        "name": "municipio",
+                        "in": "path",
+                        "description": "Nombre del municipio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    }
+                }
+            }
+        },
         "/api/munsPoblationOrdered/{poblacion}": {
             "get": {
                 "tags": [
@@ -303,7 +332,7 @@
                 }
             }
         },
-        "/api/trip/{provincia}/{municipio}": {
+        "/api/trip/{provincia}/{municipio}{api_token?}": {
             "get": {
                 "tags": [
                     "Tripadvisor"
@@ -394,7 +423,7 @@
                 }
             }
         },
-        "/api/idea/{provincia}/{municipio}": {
+        "/api/idea/{provincia}/{municipio}{api_token?}": {
             "get": {
                 "tags": [
                     "Idealista"

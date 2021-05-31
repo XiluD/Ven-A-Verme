@@ -20,7 +20,7 @@ use Illuminate\Http\JsonResponse;
 
 /**
  * @OA\Get(
- *      path="/api/trip/{provincia}/{municipio}",
+ *      path="/api/trip/{provincia}/{municipio}{api_token?}",
  *      operationId="getTrip",
  *      tags={"Tripadvisor"},
  *      summary="Get tripadvisor main content",
@@ -114,7 +114,7 @@ use Illuminate\Http\JsonResponse;
 
 /**
  * @OA\Get(
- *      path="/api/idea/{provincia}/{municipio}",
+ *      path="/api/idea/{provincia}/{municipio}{api_token?}",
  *      operationId="getTrip",
  *      tags={"Idealista"},
  *      summary="Get Idealista main content",
@@ -218,6 +218,8 @@ class PythonController extends Controller
 {
     public function getTrip($provincia, $municipio)
     {
+        $provincia = strtolower($provincia);
+        $municipio = strtolower($municipio);
         if(Place::where('provincia', $provincia)->where('municipio', $municipio)->first()){
             $py_path = 'resources\py\tripadvisor.py';
             $query_result = PlaceInfo::where('provincia', $provincia)->where('municipio',  $municipio)->where('linkType', 'tripadvisor')->first();
@@ -343,6 +345,8 @@ class PythonController extends Controller
 
     public function getIdea($provincia, $municipio)
     {
+        $provincia = strtolower($provincia);
+        $municipio = strtolower($municipio);
         if(Place::where('provincia', $provincia)->where('municipio', $municipio)->first()){
             $py_path = 'resources\py\idealista.py';
             $query_result = PlaceInfo::where('provincia', $provincia)->where('municipio', $municipio)->where('linkType', 'idealista')->first();
@@ -442,7 +446,7 @@ class PythonController extends Controller
                         'building' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'building')->get()->pluck('featureData'),
                         'equipment' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'equipment')->get()->pluck('featureData')
                     ],
-                    'innerCardImages' => IdeaInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
+                    'cardImages' => IdeaInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
                 ];
                 return response()->json($result, JsonResponse::HTTP_OK);
                 
@@ -465,7 +469,7 @@ class PythonController extends Controller
                             'building' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'building')->get()->pluck('featureData'),
                             'equipment' => IdealistaInnerCardFeatures::select('featureData')->where('cardLink', $cardLink)->where('featureType', 'equipment')->get()->pluck('featureData')
                         ],
-                        'innerCardImages' => IdeaInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
+                        'cardImages' => IdeaInnerCardImages::select('imageLink')->where('cardLink', $cardLink)->get()->pluck('imageLink')
                     ];
                     return response()->json($result, JsonResponse::HTTP_OK);
                 }

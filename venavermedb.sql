@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2021 a las 23:46:11
+-- Tiempo de generación: 01-06-2021 a las 13:22:09
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `venavermedb`
 --
-CREATE DATABASE IF NOT EXISTS `venavermedb` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `venavermedb`;
+CREATE DATABASE IF NOT EXISTS `venavermedb2` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `venavermedb2`;
 
 -- --------------------------------------------------------
 
@@ -417,7 +417,8 @@ INSERT INTO `ideainnercardimages` (`imageLink`, `cardLink`) VALUES
 ('https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/1b/41/98/882488018.jpg', 'https://www.idealista.com/inmueble/93363246/'),
 ('https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/1b/85/c6/882488005.jpg', 'https://www.idealista.com/inmueble/93363246/'),
 ('https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/1f/f0/b8/860982159.jpg', 'https://www.idealista.com/inmueble/93363246/'),
-('https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/21/0a/82/882488046.jpg', 'https://www.idealista.com/inmueble/93363246/'),
+('https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/21/0a/82/882488046.jpg', 'https://www.idealista.com/inmueble/93363246/');
+INSERT INTO `ideainnercardimages` (`imageLink`, `cardLink`) VALUES
 ('https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/21/34/34/882488007.jpg', 'https://www.idealista.com/inmueble/93363246/'),
 ('https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/23/4f/da/880233947.jpg', 'https://www.idealista.com/inmueble/93363246/'),
 ('https://img3.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/26/0f/9c/860982177.jpg', 'https://www.idealista.com/inmueble/93363246/'),
@@ -661,7 +662,8 @@ INSERT INTO `idealistacards` (`cardLink`, `placeLink`, `cardTitle`, `cardPrice`,
 ('https://www.idealista.com/inmueble/93654709/', '/venta-viviendas/madrid-madrid/', 'Piso en Almagro, Madrid', '1.830.000€', '5 hab. 288 m² Planta 4ª exterior con ascensor', 'PROMORA MADRID vende vivienda a reformar en Almagro. 288m2. 4 dormitorios, 3 baños, zona de servicio completa, garaje y portero físico. V...', '914 310 431', 'https://img3.idealista.com/blur/WEB_LISTING_TOP/0/id.pro.es.image.master/9d/4f/b4/880935589.jpg', 'onSale'),
 ('https://www.idealista.com/inmueble/93682574/', '/venta-viviendas/tres-cantos-madrid/', 'Casa o chalet independiente en Soto de Viñuelas, Tres C', '995.000€', '5 hab. 400 m²', 'Arroyo & Villena vende exclusivo chalet independiente de 2 alturas, en la mejor zona del Soto de Viñuelas, con más de 400 m² construidos...\n\n\nLujo', '918 008 164', 'https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/84/5d/74/871377175.jpg', 'onSale'),
 ('https://www.idealista.com/inmueble/93696893/', '/alquiler-viviendas/madrid-madrid/', 'Dúplex en San Pascual, Madrid', '3.250€/mes', '4 hab. 273 m² Planta 4ª exterior con ascensor', 'Luminoso ático dúplex en una urbanización con piscina en la zona Arturo Soria.\nIMMOMADRID une équipe française à votre service.\nDISTRIB...', '639 391 764', 'https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/50/4d/0c/869862858.jpg', 'onRent'),
-('https://www.idealista.com/inmueble/93755291/', '/alquiler-viviendas/madrid-madrid/', 'Chalet adosado en Salvador, Madrid', '2.500€/mes', '4 hab. 250 m²', 'Espacioso chalet adosado en una zona tranquila de El Salvador.\nIMMOMADRID une équipe française à votre service.\nDISTRIBUCIÓN:\n- PLANTA...', '639 391 764', 'https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/e4/8e/54/871025896.jpg', 'onRent'),
+('https://www.idealista.com/inmueble/93755291/', '/alquiler-viviendas/madrid-madrid/', 'Chalet adosado en Salvador, Madrid', '2.500€/mes', '4 hab. 250 m²', 'Espacioso chalet adosado en una zona tranquila de El Salvador.\nIMMOMADRID une équipe française à votre service.\nDISTRIBUCIÓN:\n- PLANTA...', '639 391 764', 'https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/e4/8e/54/871025896.jpg', 'onRent');
+INSERT INTO `idealistacards` (`cardLink`, `placeLink`, `cardTitle`, `cardPrice`, `cardDetail`, `cardDescription`, `cardContact`, `cardImage`, `cardType`) VALUES
 ('https://www.idealista.com/inmueble/93828099/', '/alquiler-viviendas/almansa-albacete/', 'Piso en Callejita, 2, Almansa', '450€/mes', '1 hab. 65 m² Planta 2ª exterior con ascensor', 'En perfecto estado a estrenar, televisión curva 55 pulgadas (todo recién reformado). Puerta principal en calle callejita n2 y garaje call...', '610 209 707', 'https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/c7/fd/e3/872679088.jpg', 'onRent'),
 ('https://www.idealista.com/inmueble/93840785/', '/alquiler-viviendas/almansa-albacete/', 'Piso en Almansa', '400€/mes', '2 hab. 70 m² Planta 3ª  con ascensor', 'Piso de 2 habitaciones con armarios empotrados, cocina con despensa, baño completo y salón. Se alquila para cortas estancias.', '967 560 892', 'https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/d2/ac/e5/872998270.jpg', 'onRent'),
 ('https://www.idealista.com/inmueble/93854288/', '/venta-viviendas/tres-cantos-madrid/', 'Piso en avenida del 21 de marzo esquina calle Santiago ', '374.900€', '4 hab. 150 m² Planta 1ª exterior con ascensor', 'iKasaClass Nuevo Tres Cantos es un proyecto residencial de viviendas, en régimen de cooperativa, que iKasa Class tiene intención de desar...', '912 182 986', 'https://img3.idealista.com/blur/WEB_LISTING/0/id.pro.es.image.master/d2/c9/34/865848377.jpg', 'onSale'),
@@ -1245,7 +1247,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Albacete', 'Albatana', 2, 4, 679, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.W0FJISN_ZM41whvyYh2HQAHaDQ%26pid%3DApi&f=1;', 38.5708754, -1.52275248, 1),
 ('Albacete', 'Alborea', 2, 5, 664, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.2dev0Z7GpQ4o6wHQdMG0pwHaE8%26pid%3DApi&f=1;', 39.27835442, -1.39670449, 1),
 ('Albacete', 'Alcadozo', 2, 6, 647, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Zqar2bKpv5p55GWeokvYCwHaFj%26pid%3DApi&f=1;', 38.6489758, -1.9802275, 1),
-('Albacete', 'Alcalá del Júcar', 2, 7, 1194, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.plQgohgQiuOifL9yYeeQzAHaHa%26pid%3DApi&f=1;', 39.1932018, -1.42932697, 1),
+('Albacete', 'Alcalá del Júcar', 2, 7, 1194, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.plQgohgQiuOifL9yYeeQzAHaHa%26pid%3DApi&f=1;', 39.1932018, -1.42932697, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Albacete', 'Alcaraz', 2, 8, 1324, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.5r8ssztcv7zwnfUBteXYyAHaE8%26pid%3DApi&f=1;', 38.66425104, -2.49034957, 1),
 ('Albacete', 'Almansa', 2, 9, 24511, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.nn_QJwEQrkFCpkvZrNDwuwHaE6%26pid%3DApi&f=1;', 38.86968811, -1.09414681, 0),
 ('Albacete', 'Alpera', 2, 10, 2261, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.uNgOtOmNtazXNSMGCkAUNgHaCt%26pid%3DApi&f=1;', 38.95969094, -1.23080245, 0),
@@ -1492,7 +1495,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Asturias', 'Cangas de Onís', 33, 12, 6209, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.OSPI6S26OuJR5UGri2hypQHaE8%26pid%3DApi&f=1;', 43.34839001, -5.12749781, 0),
 ('Asturias', 'Cangas del Narcea', 33, 11, 12124, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.-JngASPm5iGoJtmHION7nwHaFj%26pid%3DApi&f=1;', 43.1772214, -6.55205753, 0),
 ('Asturias', 'Caravia', 33, 13, 469, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.P_YEmP98pr7M1ocNGEfRfgHaE6%26pid%3DApi&f=1;', 43.46368272, -5.18701706, 1),
-('Asturias', 'Carreño', 33, 14, 10301, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.apTbDEKUYs0_UuKl1IhpIgHaE8%26pid%3DApi&f=1;', 43.5901987, -5.76718059, 0),
+('Asturias', 'Carreño', 33, 14, 10301, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.apTbDEKUYs0_UuKl1IhpIgHaE8%26pid%3DApi&f=1;', 43.5901987, -5.76718059, 0);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Asturias', 'Caso', 33, 15, 1457, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.PiBJG2C_V49oj7kB4xU0gAHaEK%26pid%3DApi&f=1;', 43.18235684, -5.34401882, 1),
 ('Asturias', 'Castrillón', 33, 16, 22273, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.qcGc9TVnPwioFazcdo3ZWAAAAA%26pid%3DApi&f=1;', 43.55998379, -5.97389938, 0),
 ('Asturias', 'Castropol', 33, 17, 3342, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.MAQiOefW6KMrumbjojkXGwHaFj%26pid%3DApi&f=1;', 43.52757398, -7.03005089, 0),
@@ -1739,7 +1743,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Ávila', 'Riocabado', 5, 194, 137, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.NdAzQ6ekoZ6xE84iX-jNRQHaE7%26pid%3DApi&f=1;', 40.83337644, -4.80605215, 1),
 ('Ávila', 'Riofrío', 5, 195, 203, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.wIz5kbl14XLVabmrqGV0EQHaEO%26pid%3DApi&f=1;', 40.54728355, -4.7779986, 1),
 ('Ávila', 'Rivilla de Barajas', 5, 196, 67, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.UV5crQTWIjHk9hmH3vcR2QHaE-%26pid%3DApi&f=1;', 40.90129693, -4.98775612, 1),
-('Ávila', 'Salobral', 5, 197, 112, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.0etRTFNgSD_yADzaFvPcQQHaFe%26pid%3DApi&f=1;', 40.6114066, -4.81089062, 1),
+('Ávila', 'Salobral', 5, 197, 112, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.0etRTFNgSD_yADzaFvPcQQHaFe%26pid%3DApi&f=1;', 40.6114066, -4.81089062, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Ávila', 'Salvadiós', 5, 198, 69, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.jxY3bScd6cgEOktcXQOJ7QHaE6%26pid%3DApi&f=1;', 40.87683079, -5.09616762, 1),
 ('Ávila', 'San Bartolomé de Béjar', 5, 199, 39, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.XteP8A_MCx1WvwFPcrHwwwHaC_%26pid%3DApi&f=1;', 40.40828588, -5.66269263, 1),
 ('Ávila', 'San Bartolomé de Corneja', 5, 200, 44, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.aqA02-TS4L_9BWYP4yIxwQHaE6%26pid%3DApi&f=1;', 40.49287529, -5.3852527, 1),
@@ -1981,7 +1986,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Barcelona', 'Argentona', 8, 9, 12536, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.gscjb5MC7tBB2R_Zz-MaPQHaJ4%26pid%3DApi&f=1;', 41.55414605, 2.40073304, 0),
 ('Barcelona', 'Artés', 8, 10, 5762, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.tHKmPy_XkUkEKjdcEaKonQHaEK%26pid%3DApi&f=1;', 41.799633, 1.95102866, 0),
 ('Barcelona', 'Avià', 8, 11, 2220, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.S-UmoUglp5_aIabGsYMNJgHaE8%26pid%3DApi&f=1;', 42.07523966, 1.82510758, 0),
-('Barcelona', 'Avinyó', 8, 12, 2289, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.jk5Jxhj2DK3e5FZZpgZdkwHaHa%26pid%3DApi&f=1;', 41.86339433, 1.97121783, 0),
+('Barcelona', 'Avinyó', 8, 12, 2289, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.jk5Jxhj2DK3e5FZZpgZdkwHaHa%26pid%3DApi&f=1;', 41.86339433, 1.97121783, 0);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Barcelona', 'Avinyonet del Penedès', 8, 13, 1697, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.WkAgte9N3NVMBrTbMGZmpAHaEF%26pid%3DApi&f=1;', 41.36153844, 1.77692952, 0),
 ('Barcelona', 'Badalona', 8, 15, 223166, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.3F9-8DbSMvHHl2OIqtWNLwHaE8%26pid%3DApi&f=1;', 41.45262481, 2.24625368, 0),
 ('Barcelona', 'Badia del Vallès', 8, 904, 13415, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.pwAKNVpsf_bkRrXXLLGixwHaE8%26pid%3DApi&f=1;', 41.50774059, 2.1146554, 0),
@@ -2222,7 +2228,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Barcelona', 'Sant Vicenç dels Horts', 8, 263, 28268, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.XnRkAh9pxc3v_mxikIQICAHaFc%26pid%3DApi&f=1;', 41.39272464, 2.01065601, 0),
 ('Barcelona', 'Santa Cecília de Voltregà', 8, 243, 182, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.R8f09t9l7aptCrvYr0b3eAHaFS%26pid%3DApi&f=1;', 41.99305489, 2.22232505, 1),
 ('Barcelona', 'Santa Coloma de Cervelló', 8, 244, 8268, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Uhq1XanQM-OAyUH-_lvsOAHaE4%26pid%3DApi&f=1;', 41.3663146, 2.01483385, 0),
-('Barcelona', 'Santa Coloma de Gramenet', 8, 245, 120443, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.7eCmq3-ikulRVJdQAM2lhQHaLL%26pid%3DApi&f=1;', 41.45365731, 2.2121554, 0),
+('Barcelona', 'Santa Coloma de Gramenet', 8, 245, 120443, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.7eCmq3-ikulRVJdQAM2lhQHaLL%26pid%3DApi&f=1;', 41.45365731, 2.2121554, 0);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Barcelona', 'Santa Eugènia de Berga', 8, 246, 2278, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.UYOXuDbJYey0C-DG0HxL9wHaFj%26pid%3DApi&f=1;', 41.9004949, 2.2834746, 0),
 ('Barcelona', 'Santa Eulàlia de Riuprimer', 8, 247, 1383, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.8JintPcYyMOu95lEHyR_fwHaFj%26pid%3DApi&f=1;', 41.91018978, 2.18914692, 1),
 ('Barcelona', 'Santa Eulàlia de Ronçana', 8, 248, 7426, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.8DoCaTFQWuDeTpToucjsUwHaEN%26pid%3DApi&f=1;', 41.65270716, 2.2265844, 0),
@@ -2468,7 +2475,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Burgos', 'Cayuela', 9, 93, 183, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.J_gRx57dCQ4sA_TU34hzuAHaJG%26pid%3DApi&f=1;', 42.27236862, -3.8195445, 1),
 ('Burgos', 'Cebrecos', 9, 94, 52, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.dFwwxm_PjKg5uSysuJmglwHaE8%26pid%3DApi&f=1;', 41.98487122, -3.59626288, 1),
 ('Burgos', 'Celada del Camino', 9, 95, 115, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.zELnJoEnhK3XZHg1oh7LBwHaE8%26pid%3DApi&f=1;', 42.26383898, -3.93401407, 1),
-('Burgos', 'Cerezo de Río Tirón', 9, 98, 541, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Er3SuYSKHvjkEAyRiJ9xlgHaE8%26pid%3DApi&f=1;', 42.49270686, -3.1363812, 1),
+('Burgos', 'Cerezo de Río Tirón', 9, 98, 541, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Er3SuYSKHvjkEAyRiJ9xlgHaE8%26pid%3DApi&f=1;', 42.49270686, -3.1363812, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Burgos', 'Cerratón de Juarros', 9, 100, 55, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.-sCJ7XX5TKXH9CqtjCP7YAHaE3%26pid%3DApi&f=1;', 42.42238418, -3.37386887, 1),
 ('Burgos', 'Ciadoncha', 9, 101, 80, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Eoq_cq5grkpONsRoknSBIAHaE8%26pid%3DApi&f=1;', 42.15850774, -3.93458074, 1),
 ('Burgos', 'Cillaperlata', 9, 102, 31, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.nUZHeyHcAq_4IhTSmojePAHaFj%26pid%3DApi&f=1;', 42.78086636, -3.35706163, 1),
@@ -2711,7 +2719,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Burgos', 'Valle de Santibáñez', 9, 902, 483, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.mB7NQTneRfSUPVNfGU9T_AHaE8%26pid%3DApi&f=1;', 42.48024014, -3.78269696, 1),
 ('Burgos', 'Valle de Sedano', 9, 905, 421, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.dEqhjRqSjzbP_p59_py49AHaFj%26pid%3DApi&f=1;', 42.71683185, -3.74995215, 1),
 ('Burgos', 'Valle de Tobalina', 9, 412, 909, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.AIDTWoNYwrynJ8xkQ2cqkgHaFj%26pid%3DApi&f=1;', 42.79190737, -3.27153208, 1),
-('Burgos', 'Valle de Valdebezana', 9, 413, 456, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.zWykNDbRvv_LXXqKR8o84QHaLH%26pid%3DApi&f=1;', 42.97075766, -3.78736247, 1),
+('Burgos', 'Valle de Valdebezana', 9, 413, 456, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.zWykNDbRvv_LXXqKR8o84QHaLH%26pid%3DApi&f=1;', 42.97075766, -3.78736247, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Burgos', 'Valle de Valdelaguna', 9, 414, 186, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.i22Ido9-StArmoZUdYhCFwHaE8%26pid%3DApi&f=1;', 42.11533459, -3.14706703, 1),
 ('Burgos', 'Valle de Valdelucio', 9, 415, 330, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.N6DS_SBseXi0hBD4JqYocwHaFj%26pid%3DApi&f=1;', 42.71786101, -4.12062831, 1),
 ('Burgos', 'Valle de Zamanzas', 9, 416, 53, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.Oo10lVlBvi_42Z29bIKKfgHaFj%26pid%3DApi&f=1;', 42.84963647, -3.75400319, 1),
@@ -2954,7 +2963,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Cáceres', 'Torre de Don Miguel', 10, 187, 484, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.aJSFxc4gTNt2UOX1eg5rTAHaJ4%26pid%3DApi&f=1;', 40.22395082, -6.57715506, 1),
 ('Cáceres', 'Torre de Santa María', 10, 188, 532, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.CZqdbCEQiSGWK6hLj4tG1AHaJ4%26pid%3DApi&f=1;', 39.25249826, -6.11727571, 1),
 ('Cáceres', 'Torrecilla de los Ángeles', 10, 185, 601, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.BI9tP1ZEc4_JC3Lug1ihCwHaFj%26pid%3DApi&f=1;', 40.24765973, -6.4197124, 1),
-('Cáceres', 'Torrecillas de la Tiesa', 10, 186, 1070, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.qXV9Wk3dgpGMnJaGti_GqQHaKT%26pid%3DApi&f=1;', 39.56981387, -5.74220897, 1),
+('Cáceres', 'Torrecillas de la Tiesa', 10, 186, 1070, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.qXV9Wk3dgpGMnJaGti_GqQHaKT%26pid%3DApi&f=1;', 39.56981387, -5.74220897, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Cáceres', 'Torrejón el Rubio', 10, 190, 546, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.kfq3dl6sQNj7wxe6IYb1XAHaE7%26pid%3DApi&f=1;', 39.76976899, -6.01386845, 1),
 ('Cáceres', 'Torrejoncillo', 10, 189, 2910, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.v91K2mae-CYmFuyZAHNPzgHaE7%26pid%3DApi&f=1;', 39.89652929, -6.46584885, 0),
 ('Cáceres', 'Torremenga', 10, 191, 587, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Ui3FfOY1Qk_KAwBv5x78nAHaFj%26pid%3DApi&f=1;', 40.04684668, -5.77495187, 1),
@@ -3194,7 +3204,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Castelló/Castellón', 'Higueras', 12, 69, 48, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.ivBAj8z8J7frBRYt82FxIgHaFj%26pid%3DApi&f=1;', 39.9846095, -0.50146217, 1),
 ('Castelló/Castellón', 'Jérica', 12, 71, 1559, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.5eLhdIoej__j6u9EjBOOQAHaLH%26pid%3DApi&f=1;', 39.91126253, -0.57174676, 0),
 ('Castelló/Castellón', 'l\'Alcora', 12, 5, 10417, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.GLNlUEsXmyG6_jgFIp-v7QHaE8%26pid%3DApi&f=1;', 40.07561838, -0.21228342, 0),
-('Castelló/Castellón', 'la Jana', 12, 70, 676, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.2GUc6U4nxg96c3NVOE2oiAAAAA%26pid%3DApi&f=1;', 40.51267486, 0.25301474, 1),
+('Castelló/Castellón', 'la Jana', 12, 70, 676, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.2GUc6U4nxg96c3NVOE2oiAAAAA%26pid%3DApi&f=1;', 40.51267486, 0.25301474, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Castelló/Castellón', 'la Llosa', 12, 74, 982, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Jjlp1L_nwaMVTZeGVF7Z0AHaEK%26pid%3DApi&f=1;', 39.76840044, -0.20470723, 1),
 ('Castelló/Castellón', 'la Mata de Morella', 12, 75, 160, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.LKDFLy88rsJ2enREqDs-tQHaFj%26pid%3DApi&f=1;', 40.61665451, -0.2803286, 1),
 ('Castelló/Castellón', 'la Pobla de Benifassà', 12, 93, 199, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.RWEqP6zQfcTQkIc3Hsj-8gHaFj%26pid%3DApi&f=1;', 40.65677431, 0.1560176, 1),
@@ -3431,7 +3442,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Córdoba', 'Priego de Córdoba', 14, 55, 22367, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.FmblM-2XFmEmHM41JWezSgHaFj%26pid%3DApi&f=1;', 37.43981618, -4.191759, 0),
 ('Córdoba', 'Puente Genil', 14, 56, 29943, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.z5Tcw0vJDvduhCoHiFpLnwHaEy%26pid%3DApi&f=1;', 37.3883058, -4.77225259, 0),
 ('Córdoba', 'Rute', 14, 58, 9898, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Yixo43oBbBkv7xu-iiqjZgHaJP%26pid%3DApi&f=1;', 37.32526431, -4.37022684, 0),
-('Córdoba', 'San Sebastián de los Ballesteros', 14, 59, 804, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ohAyusLI6XvicbEqXM7DQgHaEH%26pid%3DApi&f=1;', 37.65457388, -4.82514553, 1),
+('Córdoba', 'San Sebastián de los Ballesteros', 14, 59, 804, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ohAyusLI6XvicbEqXM7DQgHaEH%26pid%3DApi&f=1;', 37.65457388, -4.82514553, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Córdoba', 'Santa Eufemia', 14, 61, 743, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.2XBt5zIS27w61zPRye2GfAHaL-%26pid%3DApi&f=1;', 38.59608265, -4.90500504, 1),
 ('Córdoba', 'Santaella', 14, 60, 4614, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.P9oI1Jm1b9Q-wUP6vyu-JQHaFj%26pid%3DApi&f=1;', 37.56749755, -4.84662658, 0),
 ('Córdoba', 'Torrecampo', 14, 62, 1040, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Jk7iAT1foqOSSEDeGHZapQHaEK%26pid%3DApi&f=1;', 38.47447529, -4.68026045, 1),
@@ -3674,7 +3686,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Cuenca', 'Villarejo-Periesteban', 16, 266, 382, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.f6EgJP57zXG0fF8jjuYKkQHaFj%26pid%3DApi&f=1;', 39.87090712, -2.44122987, 1),
 ('Cuenca', 'Villares del Saz', 16, 269, 414, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.vilucoJ3K2Fma9EiRaKecwHaE8%26pid%3DApi&f=1;', 39.84039096, -2.50690692, 1),
 ('Cuenca', 'Villarrubio', 16, 270, 191, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.Le-oIq7FgGnSZR7f7ybuiwHaE8%26pid%3DApi&f=1;', 39.94465693, -2.8951749, 1),
-('Cuenca', 'Villarta', 16, 271, 843, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.rEErDEutlAjPIKxDGVzb_gHaE8%26pid%3DApi&f=1;', 39.4404108, -1.65250364, 1),
+('Cuenca', 'Villarta', 16, 271, 843, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.rEErDEutlAjPIKxDGVzb_gHaE8%26pid%3DApi&f=1;', 39.4404108, -1.65250364, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Cuenca', 'Villas de la Ventosa', 16, 272, 213, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.GUUsqTLd8AR_XMl750GZAAHaFj%26pid%3DApi&f=1;', 40.2054271, -2.43187557, 1),
 ('Cuenca', 'Villaverde y Pasaconsol', 16, 273, 328, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.FRdbAQuwX2WHTAOLj76nVgHaE6%26pid%3DApi&f=1;', 39.7704989, -2.2650562, 1),
 ('Cuenca', 'Víllora', 16, 274, 109, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.cUqcB109nQTiF_Wnf-cRjgHaFj%26pid%3DApi&f=1;', 39.75307038, -1.58635049, 1),
@@ -3922,7 +3935,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Girona', 'Rupià', 17, 153, 273, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.pqXZagb9B2yFEC1QXPIUWQHaHa%26pid%3DApi&f=1;', 42.0207872, 3.01059017, 1),
 ('Girona', 'Sales de Llierca', 17, 154, 159, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.lCwVaw_nuPBuC3RkpnvFHwHaFi%26pid%3DApi&f=1;', 42.23567261, 2.65000194, 1),
 ('Girona', 'Salt', 17, 155, 32138, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.CH-ziFtqsk4gJIxpQh_VWwHaJk%26pid%3DApi&f=1;', 41.97437513, 2.78141235, 0),
-('Girona', 'Sant Andreu Salou', 17, 157, 160, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.QmdGyQXXvWpmxlfUQ7jyXQHaFj%26pid%3DApi&f=1;', 41.87385206, 2.82513664, 1),
+('Girona', 'Sant Andreu Salou', 17, 157, 160, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.QmdGyQXXvWpmxlfUQ7jyXQHaFj%26pid%3DApi&f=1;', 41.87385206, 2.82513664, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Girona', 'Sant Aniol de Finestres', 17, 183, 345, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.6vaksGoheuMP0Wn4OXgsTwHaLH%26pid%3DApi&f=1;', 42.0901244, 2.58653291, 1),
 ('Girona', 'Sant Climent Sescebes', 17, 158, 707, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.2TBEbNwoloABkR6mlz1uXwHaFj%26pid%3DApi&f=1;', 42.36874691, 2.98034137, 1),
 ('Girona', 'Sant Feliu de Buixalleu', 17, 159, 797, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.xHGQPyksTOpyMWLZ6FtauAHaFj%26pid%3DApi&f=1;', 41.79126137, 2.58617731, 1),
@@ -4168,7 +4182,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Guadalajara', 'Alarilla', 19, 5, 137, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.00uMg5-94GNk_MZ2Bi00pQHaLH%26pid%3DApi&f=1;', 40.84985405, -3.10521744, 1),
 ('Guadalajara', 'Albalate de Zorita', 19, 6, 930, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.u8ymaZq6gN1n_2tfDH33hwHaE8%26pid%3DApi&f=1;', 40.30728662, -2.84352592, 1),
 ('Guadalajara', 'Albares', 19, 7, 513, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.kpSu1bqz7BuTZoSAIBzQGQHaE3%26pid%3DApi&f=1;', 40.30753483, -3.0113022, 1),
-('Guadalajara', 'Albendiego', 19, 8, 50, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.ATcZVlappRR9-bSutuc7tQHaEg%26pid%3DApi&f=1;', 41.22747368, -3.05238595, 1),
+('Guadalajara', 'Albendiego', 19, 8, 50, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.ATcZVlappRR9-bSutuc7tQHaEg%26pid%3DApi&f=1;', 41.22747368, -3.05238595, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Guadalajara', 'Alcocer', 19, 9, 328, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.abuoOBRBGukvotmh9jn3YQHaEK%26pid%3DApi&f=1;', 40.4688863, -2.60873463, 1),
 ('Guadalajara', 'Alcolea de las Peñas', 19, 10, 14, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.lpHi0iM2jpicnbSwu87NRQHaF8%26pid%3DApi&f=1;', 41.20964689, -2.78476205, 1),
 ('Guadalajara', 'Alcolea del Pinar', 19, 11, 327, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.xR-oWCToOuf5wi-64o8oeAHaE7%26pid%3DApi&f=1;', 41.03561797, -2.46742871, 1),
@@ -4409,7 +4424,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Guadalajara', 'Torremochuela', 19, 284, 9, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.8PcNxEAm1AgMkY3Niv1EwQHaE9%26pid%3DApi&f=1;', 40.76529267, -1.84156508, 1),
 ('Guadalajara', 'Torrubia', 19, 285, 20, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.27NawLrvh8DYJjWxZRlmAgHaE6%26pid%3DApi&f=1;', 40.96530954, -1.90131794, 1),
 ('Guadalajara', 'Tórtola de Henares', 19, 286, 1165, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.QZIbqe75d8i-yzpTxCT7jAHaE7%26pid%3DApi&f=1;', 40.70678766, -3.12462121, 1),
-('Guadalajara', 'Tortuera', 19, 287, 191, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.a_WB7_WKmZqJkmMWOqv-LQHaDt%26pid%3DApi&f=1;', 40.97132501, -1.79916266, 1),
+('Guadalajara', 'Tortuera', 19, 287, 191, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.a_WB7_WKmZqJkmMWOqv-LQHaDt%26pid%3DApi&f=1;', 40.97132501, -1.79916266, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Guadalajara', 'Tortuero', 19, 288, 16, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.explicit.bing.net%2Fth%3Fid%3DOIP._Ad3Zl0SRJQp-vM8qzO_ZgAAAA%26pid%3DApi&f=1;', 40.93669183, -3.35274619, 1),
 ('Guadalajara', 'Traíd', 19, 289, 25, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.EZ0XBft1pKu-jM3Rdn32jgHaEU%26pid%3DApi&f=1;', 40.66912026, -1.80808217, 1),
 ('Guadalajara', 'Trijueque', 19, 290, 1226, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.6zNq6cq76H96bPIDX4qZeQHaFj%26pid%3DApi&f=1;', 40.77732863, -2.9958891, 1),
@@ -4655,7 +4671,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Huesca', 'Lupiñén-Ortilla', 22, 905, 335, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.wsF3DVjRwRi4UVRageklZAAAAA%26pid%3DApi&f=1;', 42.17563439, -0.58075054, 1),
 ('Huesca', 'Monesma y Cajigar', 22, 155, 72, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.x6Y8wRTGfqO8Kw8OgDy8-gAAAA%26pid%3DApi&f=1;', 42.22341094, 0.61645888, 1),
 ('Huesca', 'Monflorite-Lascasas', 22, 156, 405, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.vdB0xqs96LderKilFni58AHaGV%26pid%3DApi&f=1;', 42.09424689, -0.356665, 1),
-('Huesca', 'Montanuy', 22, 157, 210, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.wOrn4ljaOM_emGM5sGyyFwHaEK%26pid%3DApi&f=1;', 42.46577115, 0.69475456, 1),
+('Huesca', 'Montanuy', 22, 157, 210, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.wOrn4ljaOM_emGM5sGyyFwHaEK%26pid%3DApi&f=1;', 42.46577115, 0.69475456, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Huesca', 'Monzón', 22, 158, 17469, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.71msBqY7ggeOEOIY_IVS7gHaLJ%26pid%3DApi&f=1;', 41.91031171, 0.1946465, 0),
 ('Huesca', 'Naval', 22, 160, 265, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.xAmbiWZylVJu-mXEY0RJWwHaDP%26pid%3DApi&f=1;', 42.19264069, 0.15082578, 1),
 ('Huesca', 'Novales', 22, 162, 152, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.EV2ZTlCZiXJlom7jpOc2lwHaFj%26pid%3DApi&f=1;', 42.03197393, -0.28613293, 1),
@@ -4901,7 +4918,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('La Rioja', 'Albelda de Iregua', 26, 5, 3481, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.enuaMMnlMHhvNkvFREsEtwHaFl%26pid%3DApi&f=1;', 42.35697454, -2.47260697, 0),
 ('La Rioja', 'Alberite', 26, 6, 2457, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.9vJd7pcFWmXz6gQA5vfmlgHaEm%26pid%3DApi&f=1;', 42.40622168, -2.44084091, 0),
 ('La Rioja', 'Alcanadre', 26, 7, 638, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.wm4jj7CPmtpAc7ItXs0CAwHaFj%26pid%3DApi&f=1;', 42.40429832, -2.12053306, 1),
-('La Rioja', 'Aldeanueva de Ebro', 26, 8, 2760, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.e9cZnU1KXKLWlO5lPQ170AHaFt%26pid%3DApi&f=1;', 42.22958732, -1.8880546, 0),
+('La Rioja', 'Aldeanueva de Ebro', 26, 8, 2760, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.e9cZnU1KXKLWlO5lPQ170AHaFt%26pid%3DApi&f=1;', 42.22958732, -1.8880546, 0);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('La Rioja', 'Alesanco', 26, 9, 504, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.jO-LKnKOEy5pCgc-crGEAwHaFj%26pid%3DApi&f=1;', 42.41347595, -2.81705346, 1),
 ('La Rioja', 'Alesón', 26, 10, 94, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.4PPoCDZxvsqShCt0XipB9gHaFW%26pid%3DApi&f=1;', 42.40509672, -2.69021015, 1),
 ('La Rioja', 'Alfaro', 26, 11, 9611, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.boOZNS1JkHVoJn-P-v_5xgHaJi%26pid%3DApi&f=1;', 42.17839836, -1.749283, 0),
@@ -5145,7 +5163,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('León', 'Castrotierra de Valmadrigal', 24, 50, 114, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.Nt283rC6cjOOIABly74hzgHaFj%26pid%3DApi&f=1;', 42.34738751, -5.24735525, 1),
 ('León', 'Cea', 24, 51, 403, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.7qWTmZlgP2LHlvuOUWmzjgHaCC%26pid%3DApi&f=1;', 42.4634107, -5.01311003, 1),
 ('León', 'Cebanico', 24, 52, 148, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%3Fid%3DOIP.WwQUhOLzMNqOZ3VNKhHdMwHaE8%26pid%3DApi&f=1;', 42.72527481, -5.02399649, 1),
-('León', 'Cebrones del Río', 24, 53, 439, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.DxExxfUb8sMUw0U4LHjbAQHaFj%26pid%3DApi&f=1;', 42.25787482, -5.82509544, 1),
+('León', 'Cebrones del Río', 24, 53, 439, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.DxExxfUb8sMUw0U4LHjbAQHaFj%26pid%3DApi&f=1;', 42.25787482, -5.82509544, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('León', 'Chozas de Abajo', 24, 65, 2561, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.30KJjzPxqIZCIdNHntSzlAHaE8%26pid%3DApi&f=1;', 42.50667469, -5.6871874, 0),
 ('León', 'Cimanes de la Vega', 24, 54, 449, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.YRBEzVvzNVro0HKxIDgBbgHaFj%26pid%3DApi&f=1;', 42.11662767, -5.59842569, 1),
 ('León', 'Cimanes del Tejar', 24, 55, 719, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.yNBEGVNvimT5JsnCFgvNNQHaE8%26pid%3DApi&f=1;', 42.6180036, -5.80621428, 1),
@@ -5390,7 +5409,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Lleida', 'Els Torms', 25, 224, 138, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.gpukqQHZvYzbthl2glH1RgHaFj%26pid%3DApi&f=1;', 41.39404826, 0.71976235, 1),
 ('Lleida', 'Es Bòrdes', 25, 57, 255, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.h2xaBRNFBv81dexHTGA8UQHaFj%26pid%3DApi&f=1;', 42.73749625, 0.71934111, 1),
 ('Lleida', 'Espot', 25, 82, 366, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.iby1NK7Aj7byk02pKs45awHaFj%26pid%3DApi&f=1;', 42.5765545, 1.08869741, 1),
-('Lleida', 'Estamariu', 25, 88, 125, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.rzKQn_jbDoHxb2o7GYfPZQHaE7%26pid%3DApi&f=1;', 42.37320251, 1.52322739, 1),
+('Lleida', 'Estamariu', 25, 88, 125, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.rzKQn_jbDoHxb2o7GYfPZQHaE7%26pid%3DApi&f=1;', 42.37320251, 1.52322739, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Lleida', 'Estaràs', 25, 85, 156, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.imQS0cKLvDFUjq97RoUnlQHaE8%26pid%3DApi&f=1;', 41.69219421, 1.37833145, 1),
 ('Lleida', 'Esterri d\'Àneu', 25, 86, 804, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.HcvvzYHt63mjnPmz193QlAHaFj%26pid%3DApi&f=1;', 42.62786267, 1.12329592, 1),
 ('Lleida', 'Esterri de Cardós', 25, 87, 64, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.j-5ERbbTzwBNoqPhtNBtOwHaEK%26pid%3DApi&f=1;', 42.59289783, 1.26147622, 1),
@@ -5637,7 +5657,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Madrid', 'Cadalso de los Vidrios', 28, 31, 3047, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.iQAEUeV2xcieBxSjrLKuGAHaE8%26pid%3DApi&f=1;', 40.30162349, -4.44264984, 0),
 ('Madrid', 'Camarma de Esteruelas', 28, 32, 7437, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.sye_nq8nn9-sYmVgMETVMAHaFj%26pid%3DApi&f=1;', 40.55005773, -3.37906937, 0),
 ('Madrid', 'Campo Real', 28, 33, 6420, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.zT-VNXWMIa0w02AhdQVMMwHaCe%26pid%3DApi&f=1;', 40.33920494, -3.38276454, 0),
-('Madrid', 'Canencia', 28, 34, 447, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.WA8V7rYCtu597yNewkznJgAAAA%26pid%3DApi&f=1;', 40.90960627, -3.73782303, 1),
+('Madrid', 'Canencia', 28, 34, 447, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.WA8V7rYCtu597yNewkznJgAAAA%26pid%3DApi&f=1;', 40.90960627, -3.73782303, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Madrid', 'Carabaña', 28, 35, 2081, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.gcJnTbjwl-JBODmXKuAkxwHaFi%26pid%3DApi&f=1;', 40.25687898, -3.23708598, 0),
 ('Madrid', 'Casarrubuelos', 28, 36, 3845, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Otv3gxTwwgQH9uAGqAvJSAHaFj%26pid%3DApi&f=1;', 40.17177164, -3.83356503, 0),
 ('Madrid', 'Cenicientos', 28, 37, 2038, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.-YkW-_EK17p4UDrSyXcdAgHaFj%26pid%3DApi&f=1;', 40.26404347, -4.4666061, 0),
@@ -5881,7 +5902,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Málaga', 'Teba', 29, 89, 3744, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.4j1qAIhH9uT6oPOb-SyiVQHaEK%26pid%3DApi&f=1;', 36.98132441, -4.92158172, 0),
 ('Málaga', 'Tolox', 29, 90, 2136, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.aTqDRuPJLloztM2IRBS5FwHaFj%26pid%3DApi&f=1;', 36.68777428, -4.90449425, 0),
 ('Málaga', 'Torremolinos', 29, 901, 69166, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.EqqwcvgOocpt_d_oS7QRGQGKCe%26pid%3DApi&f=1;', 36.62118405, -4.49759729, 0),
-('Málaga', 'Torrox', 29, 91, 17943, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.yytb0RYt2Hj6qD5AWGt51wHaEx%26pid%3DApi&f=1;', 36.75862084, -3.95292767, 0),
+('Málaga', 'Torrox', 29, 91, 17943, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.yytb0RYt2Hj6qD5AWGt51wHaEx%26pid%3DApi&f=1;', 36.75862084, -3.95292767, 0);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Málaga', 'Totalán', 29, 92, 737, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.YOSBSf9SW6QftuZSuzOOmQHaEK%26pid%3DApi&f=1;', 36.76519001, -4.29735785, 1),
 ('Málaga', 'Valle de Abdalajís', 29, 93, 2502, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.NY1Ekkoi3cvMkmdmylTQnQAAAA%26pid%3DApi&f=1;', 36.93133959, -4.68249864, 0),
 ('Málaga', 'Vélez-Málaga', 29, 94, 82365, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.JN_aKxg2wqKJ6L-eJ3zhdwAAAA%26pid%3DApi&f=1;', 36.7827081, -4.10210923, 0),
@@ -6128,7 +6150,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Navarra', 'Murillo el Fruto', 31, 179, 662, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.oYiE8_YkSrFwhaom9qVWCAHaEN%26pid%3DApi&f=1;', 42.39245289, -1.46147304, 1),
 ('Navarra', 'Muruzábal', 31, 180, 235, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%3Fid%3DOIP.goCGdXPsd2Nq5CdAsd8SYAHaEK%26pid%3DApi&f=1;', 42.68838411, -1.76993681, 1),
 ('Navarra', 'Navascués/Nabaskoze', 31, 181, 126, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.ShXE-uCDyQSzOULUndCnnwHaLH%26pid%3DApi&f=1;', 42.71754642, -1.11395116, 1),
-('Navarra', 'Nazar', 31, 182, 30, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.389l6N8fJmc7f4rsJjwssgHaLH%26pid%3DApi&f=1;', 42.63629664, -2.28051155, 1),
+('Navarra', 'Nazar', 31, 182, 30, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.389l6N8fJmc7f4rsJjwssgHaLH%26pid%3DApi&f=1;', 42.63629664, -2.28051155, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Navarra', 'Noáin (Valle de Elorz)/Noain (Elortzibar)', 31, 88, 8354, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.gFlm9if_ztQuQfoHsWzhowHaE1%26pid%3DApi&f=1;', 42.73342707, -1.56130558, 0),
 ('Navarra', 'Obanos', 31, 183, 940, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.hN6qTYtP4BZB_euXKDOe1AHaFj%26pid%3DApi&f=1;', 42.67949847, -1.78621093, 1),
 ('Navarra', 'Ochagavía/Otsagabia', 31, 185, 501, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.209FNyLR1j4AuLSqAdIApQHaHa%26pid%3DApi&f=1;', 42.90487815, -1.09027535, 1),
@@ -6372,7 +6395,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Palencia', 'Hornillos de Cerrato', 34, 87, 143, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.CRwvkVrHV8XHQy0ilPwqWwHaE8%26pid%3DApi&f=1;', 41.98823088, -4.27221272, 1),
 ('Palencia', 'Husillos', 34, 88, 330, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.FA0Zgib4QqbDP5fPUOxOJgHaFl%26pid%3DApi&f=1;', 42.09041806, -4.52703996, 1),
 ('Palencia', 'Itero de la Vega', 34, 89, 154, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.bEJjTCPmzU5klFOi2R9OAAHaJ4%26pid%3DApi&f=1;', 42.28654926, -4.25876959, 1),
-('Palencia', 'La Pernía', 34, 904, 316, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.ANN-ab2hBhNh0AyKRT_tzwHaEK%26pid%3DApi&f=1;', 42.9666745, -4.49558517, 1),
+('Palencia', 'La Pernía', 34, 904, 316, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.ANN-ab2hBhNh0AyKRT_tzwHaEK%26pid%3DApi&f=1;', 42.9666745, -4.49558517, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Palencia', 'La Puebla de Valdavia', 34, 140, 95, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.myc_yWo0q0KxkFZodvJaggHaE9%26pid%3DApi&f=1;', 42.67556786, -4.60926598, 1),
 ('Palencia', 'La Serna', 34, 175, 95, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.lx2SR-bq9rubqQyhqPbyQgHaE8%26pid%3DApi&f=1;', 42.4151941, -4.66461413, 1),
 ('Palencia', 'La Vid de Ojeda', 34, 93, 90, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.HhlTbHC1Nvw7Vu9U1qG3BwHaE8%26pid%3DApi&f=1;', 42.6591355, -4.38494988, 1),
@@ -6614,7 +6638,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Salamanca', 'Canillas de Abajo', 37, 79, 77, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.OBK3VT3yIFfvUX0On6brzwHaE8%26pid%3DApi&f=1;', 40.9216334, -5.92972802, 1),
 ('Salamanca', 'Cantagallo', 37, 80, 265, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.L134FY_FwUISS9ppLZVDFAHaFj%26pid%3DApi&f=1;', 40.37163169, -5.8185424, 1),
 ('Salamanca', 'Cantalapiedra', 37, 81, 950, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.vtdTRfQkiV4WFvJNUeqEWQHaFj%26pid%3DApi&f=1;', 41.12548761, -5.18358635, 1),
-('Salamanca', 'Cantalpino', 37, 82, 833, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.dpBRRfeLQtYheJBsjOEfiwHaJ4%26pid%3DApi&f=1;', 41.05273729, -5.32798426, 1),
+('Salamanca', 'Cantalpino', 37, 82, 833, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.dpBRRfeLQtYheJBsjOEfiwHaJ4%26pid%3DApi&f=1;', 41.05273729, -5.32798426, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Salamanca', 'Cantaracillo', 37, 83, 191, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.XYG2F7T4KxSN668JclJZoQHaJm%26pid%3DApi&f=1;', 40.90331594, -5.16330853, 1),
 ('Salamanca', 'Carbajosa de la Sagrada', 37, 85, 7251, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.xsMtm4Ah6l2w92-Jc5nEbgHaE8%26pid%3DApi&f=1;', 40.93294687, -5.65118116, 0),
 ('Salamanca', 'Carpio de Azaba', 37, 86, 113, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.eBROkivfZQ8uTI0R5Tx6rwHaE8%26pid%3DApi&f=1;', 40.5958664, -6.64678892, 1),
@@ -6853,7 +6878,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Salamanca', 'Serradilla del Llano', 37, 307, 153, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.ODOc15zaD1isiE55jOzVFQHaFC%26pid%3DApi&f=1;', 40.49971011, -6.35841689, 1),
 ('Salamanca', 'Sieteiglesias de Tormes', 37, 310, 193, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.nDk0vyXXGuTfQ0PTckUO7QHaE8%26pid%3DApi&f=1;', 40.74204319, -5.5775814, 1),
 ('Salamanca', 'Sobradillo', 37, 311, 203, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.rrcFEwQmf-nZIwmtKviVLgHaFj%26pid%3DApi&f=1;', 40.9163486, -6.79664077, 1),
-('Salamanca', 'Sorihuela', 37, 312, 253, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.rA4a1K04Xuz0YXX3zqsu4gHaFj%26pid%3DApi&f=1;', 40.44295235, -5.67882185, 1),
+('Salamanca', 'Sorihuela', 37, 312, 253, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.rA4a1K04Xuz0YXX3zqsu4gHaFj%26pid%3DApi&f=1;', 40.44295235, -5.67882185, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Salamanca', 'Sotoserrano', 37, 313, 557, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.3czJHQ2muc2sXGg5M4qb8gHaFK%26pid%3DApi&f=1;', 40.43779271, -6.03293691, 1),
 ('Salamanca', 'Tabera de Abajo', 37, 314, 103, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Pm1x9TEBFLgk_DTReCYBZAHaEK%26pid%3DApi&f=1;', 40.90939939, -6.00191132, 1),
 ('Salamanca', 'Tamames', 37, 316, 784, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._yoRqvN4V5KcvKGLetK9GQHaHz%26pid%3DApi&f=1;', 40.65780109, -6.105106, 1),
@@ -7091,7 +7117,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Segovia', 'Mozoncillo', 40, 134, 879, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.rXHs5S8pvah7tdGqbRRbiAHaFj%26pid%3DApi&f=1;', 41.14804665, -4.18621521, 1),
 ('Segovia', 'Muñopedro', 40, 135, 313, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.ArL8jL36iElnTBNJXuDFHQHaFj%26pid%3DApi&f=1;', 40.88802611, -4.47204119, 1),
 ('Segovia', 'Muñoveros', 40, 136, 143, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.CZAty_ZfL2e-LfS4n48EdQHaE8%26pid%3DApi&f=1;', 41.17282217, -3.95180035, 1),
-('Segovia', 'Nava de la Asunción', 40, 138, 2747, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.02__SUAbjKQsu06zx1tltwHaFh%26pid%3DApi&f=1;', 41.15663877, -4.48896287, 0),
+('Segovia', 'Nava de la Asunción', 40, 138, 2747, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.02__SUAbjKQsu06zx1tltwHaFh%26pid%3DApi&f=1;', 41.15663877, -4.48896287, 0);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Segovia', 'Navafría', 40, 139, 285, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.6E2ZeDcoxyhkrT-hC1DWVQHaEt%26pid%3DApi&f=1;', 41.05708619, -3.82456811, 1),
 ('Segovia', 'Navalilla', 40, 140, 100, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.JMf8CIhVu91tP1ri0Fxa7AAAAA%26pid%3DApi&f=1;', 41.34072629, -3.93225985, 1),
 ('Segovia', 'Navalmanzano', 40, 141, 1047, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.1XpN7YUdq3KdKHS7opL7LAHaM1%26pid%3DApi&f=1;', 41.21472716, -4.25628481, 1),
@@ -7334,7 +7361,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Soria', 'Carrascosa de Abajo', 42, 53, 20, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.bcutF5A0LqN4pq4XC048hAHaJ4%26pid%3DApi&f=1;', 41.42370985, -3.09027549, 1),
 ('Soria', 'Carrascosa de la Sierra', 42, 54, 17, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.ad-v2If3gpTI3a0ZE_2xtAHaDi%26pid%3DApi&f=1;', 41.89442214, -2.28181482, 1),
 ('Soria', 'Casarejos', 42, 55, 161, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.w9Ej7Mje9ljOy2QUSvQOEAHaE8%26pid%3DApi&f=1;', 41.79771472, -3.03204425, 1),
-('Soria', 'Castilfrío de la Sierra', 42, 56, 37, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.fw_MKoLGzvlinn9c_IE5xgHaFj%26pid%3DApi&f=1;', 41.9199039, -2.30546691, 1),
+('Soria', 'Castilfrío de la Sierra', 42, 56, 37, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.fw_MKoLGzvlinn9c_IE5xgHaFj%26pid%3DApi&f=1;', 41.9199039, -2.30546691, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Soria', 'Castillejo de Robledo', 42, 58, 101, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.AoJg5ms35kdkfMrPvCkPIwHaJ4%26pid%3DApi&f=1;', 41.55738726, -3.49563009, 1),
 ('Soria', 'Castilruiz', 42, 57, 161, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.explicit.bing.net%2Fth%3Fid%3DOIP.oEXLhOvRRpa2i757JIy6IwHaJ4%26pid%3DApi&f=1;', 41.87708655, -2.0592022, 1),
 ('Soria', 'Centenera de Andaluz', 42, 59, 19, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.sT5enGHdFHMW7dz03hhLxwHaFj%26pid%3DApi&f=1;', 41.50700994, -2.71848608, 1),
@@ -7580,7 +7608,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Tarragona', 'Maspujols', 43, 81, 823, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.e_zBoeQcv0ZbOyENjXbA-QHaJ4%26pid%3DApi&f=1;', 41.18225397, 1.0466141, 1),
 ('Tarragona', 'Miravet', 43, 84, 706, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.JLcmQWJ88QMvbb6LNdgKrAHaE7%26pid%3DApi&f=1;', 41.03588382, 0.59641776, 1),
 ('Tarragona', 'Mont-ral', 43, 91, 168, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.XsBkKDe_zGkXSKeXpnWOcwHaC7%26pid%3DApi&f=1;', 41.28739255, 1.09811364, 1),
-('Tarragona', 'Mont-roig del Camp', 43, 92, 12460, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.tTxzJiz0U-8OmJMYgufBMQHaE8%26pid%3DApi&f=1;', 41.08777318, 0.95911492, 0),
+('Tarragona', 'Mont-roig del Camp', 43, 92, 12460, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.tTxzJiz0U-8OmJMYgufBMQHaE8%26pid%3DApi&f=1;', 41.08777318, 0.95911492, 0);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Tarragona', 'Montblanc', 43, 86, 7379, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.2Ag8pHyH2It27umYvVVCOgHaHa%26pid%3DApi&f=1;', 41.37705549, 1.16171565, 0),
 ('Tarragona', 'Montbrió del Camp', 43, 88, 2909, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.ktPJzCSnqJ9CEwmCTYOB6gAAAA%26pid%3DApi&f=1;', 41.12007791, 1.00361357, 0),
 ('Tarragona', 'Montferri', 43, 89, 403, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8q__H6Y1eOVXlgPorg7gxQHaFk%26pid%3DApi&f=1;', 41.26554806, 1.3660963, 1),
@@ -7826,7 +7855,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Teruel', 'Rillo', 44, 195, 85, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.y76RxWmE5frUlAS9nHp-LQHaHa%26pid%3DApi&f=1;', 40.72202645, -0.99528718, 1),
 ('Teruel', 'Riodeva', 44, 196, 134, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.twXYDnPO_F0_ChWfSvzkpwHaEs%26pid%3DApi&f=1;', 40.1165373, -1.14833026, 1),
 ('Teruel', 'Ródenas', 44, 197, 62, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.FjQUFceC2HjBiKbIpzFSQgHaJ_%26pid%3DApi&f=1;', 40.64096456, -1.51630483, 1),
-('Teruel', 'Royuela', 44, 198, 210, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP._7VNrrzrEJuJuqCq3SdDcgHaE7%26pid%3DApi&f=1;', 40.37702113, -1.51258302, 1),
+('Teruel', 'Royuela', 44, 198, 210, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP._7VNrrzrEJuJuqCq3SdDcgHaE7%26pid%3DApi&f=1;', 40.37702113, -1.51258302, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Teruel', 'Rubiales', 44, 199, 49, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.QXeVggsllmbFjuQaJg0_mgAAAA%26pid%3DApi&f=1;', 40.27642388, -1.26998871, 1),
 ('Teruel', 'Rubielos de la Cérida', 44, 200, 39, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.gXdZzIaueVtggZUfe7_6LAHaJ4%26pid%3DApi&f=1;', 40.7700109, -1.21341829, 1),
 ('Teruel', 'Rubielos de Mora', 44, 201, 635, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.XNa2QwTdaR_ASa-bkp5UYwHaFj%26pid%3DApi&f=1;', 40.19007338, -0.65143314, 1),
@@ -8070,7 +8100,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Toledo', 'Ugena', 45, 176, 5467, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.9yULrrs1oGRgLAkODlAyKQHaE8%26pid%3DApi&f=1;', 40.15531568, -3.87693675, 0),
 ('Toledo', 'Urda', 45, 177, 2477, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.hXe_h7ffhWbE_FPCyfw7yQHaFe%26pid%3DApi&f=1;', 39.41215105, -3.7158477, 0),
 ('Toledo', 'Valdeverdeja', 45, 179, 549, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%3Fid%3DOIP.pttOiAXNWACIrHe28MHCPQHaEK%26pid%3DApi&f=1;', 39.79534783, -5.24328716, 1),
-('Toledo', 'Valmojado', 45, 180, 4371, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.MZRNJqsFm_A5ITwkMjiFxQHaDa%26pid%3DApi&f=1;', 40.20534407, -4.09118625, 0),
+('Toledo', 'Valmojado', 45, 180, 4371, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.MZRNJqsFm_A5ITwkMjiFxQHaDa%26pid%3DApi&f=1;', 40.20534407, -4.09118625, 0);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Toledo', 'Velada', 45, 181, 2903, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.UHs8dy5O-Hi-WF3HMF7D_QHaE0%26pid%3DApi&f=1;', 39.97755339, -4.9778848, 0),
 ('Toledo', 'Villacañas', 45, 185, 9489, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.22ldLljK1iwRr1T-b-lMzQHaFj%26pid%3DApi&f=1;', 39.62406188, -3.33308335, 0),
 ('Toledo', 'Villafranca de los Caballeros', 45, 187, 4876, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.CvfvRfmMVHuG8W4SYFe6GAHaE8%26pid%3DApi&f=1;', 39.42604853, -3.36272107, 0),
@@ -8304,7 +8335,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('València/Valencia', 'Riba-roja de Túria', 46, 214, 22761, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Gda9ud62Uu3cJZwtwiFx8QHaFj%26pid%3DApi&f=1;', 39.54602535, -0.57061222, 0),
 ('València/Valencia', 'Riola', 46, 215, 1790, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Xc4ckiZ9uenPRopWIQyQ7AHaHa%26pid%3DApi&f=1;', 39.19728362, -0.33313298, 0),
 ('València/Valencia', 'Rocafort', 46, 216, 7314, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.EyQElEvuund0Bd5fmipx0QHaE2%26pid%3DApi&f=1;', 39.53068545, -0.41059109, 0),
-('València/Valencia', 'Rotglà i Corberà', 46, 217, 1117, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.6F8rr3jh4kzKNZyxO0qmjAHaGl%26pid%3DApi&f=1;', 39.0056957, -0.56324832, 1),
+('València/Valencia', 'Rotglà i Corberà', 46, 217, 1117, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.6F8rr3jh4kzKNZyxO0qmjAHaGl%26pid%3DApi&f=1;', 39.0056957, -0.56324832, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('València/Valencia', 'Rótova', 46, 218, 1293, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fqJNPrqfABcq-wqH4TOQswHaFj%26pid%3DApi&f=1;', 38.93270557, -0.25563045, 1),
 ('València/Valencia', 'Rugat', 46, 219, 174, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.bALYO3wIi-o15gSa_7ZkFAHaFj%26pid%3DApi&f=1;', 38.87897808, -0.3616423, 1),
 ('València/Valencia', 'Sagunto/Sagunt', 46, 220, 67173, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.GorobhgcBfROFKomeFCCqQHaEA%26pid%3DApi&f=1;', 39.68008485, -0.2759603, 0),
@@ -8541,7 +8573,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Valladolid', 'Vega de Valdetronco', 47, 188, 118, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.CzQHg2UR8O2mr_dd62dq8wHaFk%26pid%3DApi&f=1;', 41.59306513, -5.11388975, 1),
 ('Valladolid', 'Velascálvaro', 47, 189, 165, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.UWPCN6O4Vms9jeGhDeHN3wHaC_%26pid%3DApi&f=1;', 41.23066807, -4.97165423, 1),
 ('Valladolid', 'Velilla', 47, 190, 114, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.PJ3ro7WLYdrn5_SYjxYfhQHaBu%26pid%3DApi&f=1;', 41.55785547, -5.00544372, 1),
-('Valladolid', 'Velliza', 47, 191, 112, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.4cUbsy994Y-cQ6VIKNER4gEsDh%26pid%3DApi&f=1;', 41.57855537, -4.9466238, 1),
+('Valladolid', 'Velliza', 47, 191, 112, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.4cUbsy994Y-cQ6VIKNER4gEsDh%26pid%3DApi&f=1;', 41.57855537, -4.9466238, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Valladolid', 'Ventosa de la Cuesta', 47, 192, 96, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fk_xbVj4SJxPMVLzlY8DigHaE6%26pid%3DApi&f=1;', 41.41275888, -4.83130316, 1),
 ('Valladolid', 'Viana de Cega', 47, 193, 2062, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.of3FJPx2CsYZYEuV94rz0QHaFj%26pid%3DApi&f=1;', 41.52943052, -4.75422166, 0),
 ('Valladolid', 'Villabáñez', 47, 195, 489, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.DhJSZYbR_ireeYHrIbABdwHaFe%26pid%3DApi&f=1;', 41.62974679, -4.52245761, 1),
@@ -8782,7 +8815,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Zamora', 'Trefacio', 49, 224, 185, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.HaZgf6o8Tmsegyv8IsQKmgHaE8%26pid%3DApi&f=1;', 42.12258528, -6.64972585, 1),
 ('Zamora', 'Uña de Quintana', 49, 225, 131, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.explicit.bing.net%2Fth%3Fid%3DOIP.Lcvmt5S8v69tjHDdUDx7YgHaEx%26pid%3DApi&f=1;', 42.08656089, -6.14388293, 1),
 ('Zamora', 'Vadillo de la Guareña', 49, 226, 250, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.s0f7HtOV2o8EtaydJm0iBQHaFj%26pid%3DApi&f=1;', 41.28300466, -5.35252265, 1),
-('Zamora', 'Valcabado', 49, 227, 404, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.RtpypnBWYdSJ5yXsynrrrAHaFi%26pid%3DApi&f=1;', 41.54846402, -5.7486511, 1),
+('Zamora', 'Valcabado', 49, 227, 404, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.RtpypnBWYdSJ5yXsynrrrAHaFi%26pid%3DApi&f=1;', 41.54846402, -5.7486511, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Zamora', 'Valdefinjas', 49, 228, 54, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.xrwkj9G9anzb2gFELvbSWwHaE8%26pid%3DApi&f=1;', 41.45247708, -5.45321321, 1),
 ('Zamora', 'Valdescorriel', 49, 229, 125, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.ozrnZVMzQNxAz8WubKnIRAHaE8%26pid%3DApi&f=1;', 42.02245452, -5.51034025, 1),
 ('Zamora', 'Vallesa de la Guareña', 49, 230, 81, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.iAuufXN963_5ql2DKlLgkgHaMW%26pid%3DApi&f=1;', 41.13536155, -5.32698432, 1),
@@ -9028,7 +9062,8 @@ INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicip
 ('Zaragoza', 'Osera de Ebro', 50, 199, 383, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.dQbsuK7Ry-CXXbDe64eAUgHaFj%26pid%3DApi&f=1;', 41.53436117, -0.58064613, 1),
 ('Zaragoza', 'Paniza', 50, 200, 619, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.explicit.bing.net%2Fth%3Fid%3DOIP.Ka6TgZiEN9pyOGCFgw8rJAHaPa%26pid%3DApi&f=1;', 41.2846371, -1.21201905, 1),
 ('Zaragoza', 'Paracuellos de Jiloca', 50, 201, 573, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.DCPXdqMUx_5LtRFtUxA75AHaED%26pid%3DApi&f=1;', 41.31360004, -1.6396572, 1),
-('Zaragoza', 'Paracuellos de la Ribera', 50, 202, 136, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.o21pA5lV19A2Q3PpSFwBtAHaEk%26pid%3DApi&f=1;', 41.42296962, -1.562104, 1),
+('Zaragoza', 'Paracuellos de la Ribera', 50, 202, 136, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.o21pA5lV19A2Q3PpSFwBtAHaEk%26pid%3DApi&f=1;', 41.42296962, -1.562104, 1);
+INSERT INTO `place` (`provincia`, `municipio`, `codigoProvincia`, `codigoMunicipio`, `poblacion`, `imagenMunicipio`, `cLatitud`, `cLongitud`, `despoblacion`) VALUES
 ('Zaragoza', 'Pastriz', 50, 203, 1300, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Kfp37pFHWCIVLL_iz1sBaAHaLI%26pid%3DApi&f=1;', 41.61871805, -0.78336563, 1),
 ('Zaragoza', 'Pedrola', 50, 204, 3587, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.zUK1Zu-1jKjwuCgmw8j71AHaJ4%26pid%3DApi&f=1;', 41.79055322, -1.21554213, 0),
 ('Zaragoza', 'Perdiguera', 50, 206, 572, '//external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.4NuN5_Gkm6ZqYF0r5FDwVQHaFj%26pid%3DApi&f=1;', 41.75356921, -0.63050338, 1),
@@ -9514,7 +9549,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g1064323-Albarracin_Province_of_Teruel_Aragon-Vacations.html', 'Teruel', 'Albarracín', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1064324-Villafranca_del_Bierzo_Province_of_Leon_Castile_and_Leon-Vacations.html', 'León', 'Berlanga del Bierzo', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1064324-Villafranca_del_Bierzo_Province_of_Leon_Castile_and_Leon-Vacations.html', 'León', 'Noceda del Bierzo', 'tripadvisor', '2021-05-29'),
-('/Tourism-g1064324-Villafranca_del_Bierzo_Province_of_Leon_Castile_and_Leon-Vacations.html', 'León', 'Priaranza del Bierzo', 'tripadvisor', '2021-05-29'),
+('/Tourism-g1064324-Villafranca_del_Bierzo_Province_of_Leon_Castile_and_Leon-Vacations.html', 'León', 'Priaranza del Bierzo', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g1064324-Villafranca_del_Bierzo_Province_of_Leon_Castile_and_Leon-Vacations.html', 'León', 'Villafranca del Bierzo', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1064326-Utiel_Province_of_Valencia_Valencian_Country-Vacations.html', 'València/Valencia', 'Utiel', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1064328-San_Andres_del_Rabanedo_Province_of_Leon_Castile_and_Leon-Vacations.html', 'León', 'San Andrés del Rabanedo', 'tripadvisor', '2021-05-29'),
@@ -9884,7 +9920,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g1082183-Chilches_Province_of_Castellon_Valencian_Country-Vacations.html', 'Castelló/Castellón', 'Chilches/Xilxes', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g10821968-Villadiego_Province_of_Burgos_Castile_and_Leon-Vacations.html', 'Burgos', 'Villadiego', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g10825989-Gilena_Province_of_Seville_Andalucia-Vacations.html', 'Sevilla', 'Gilena', 'tripadvisor', '2021-05-29'),
-('/Tourism-g10826288-Melon_Province_of_Ourense_Galicia-Vacations.html', 'Ourense', 'Melón', 'tripadvisor', '2021-05-29'),
+('/Tourism-g10826288-Melon_Province_of_Ourense_Galicia-Vacations.html', 'Ourense', 'Melón', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g1082741-Guadalupe_Province_of_Caceres_Extremadura-Vacations.html', 'Cáceres', 'Guadalupe', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1082743-Guijo_de_Santa_Barbara_Province_of_Caceres_Extremadura-Vacations.html', 'Cáceres', 'Guijo de Coria', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1082743-Guijo_de_Santa_Barbara_Province_of_Caceres_Extremadura-Vacations.html', 'Cáceres', 'Guijo de Galisteo', 'tripadvisor', '2021-05-29'),
@@ -10259,7 +10296,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g12508028-Perdosillo_de_los_Aires_Province_of_Salamanca_Castile_and_Leon-Vacations.html', 'Salamanca', 'Villarino de los Aires', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g12508042-Toen_Province_of_Ourense_Galicia-Vacations.html', 'Ourense', 'Toén', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g12508054-Baleira_Province_of_Lugo_Galicia-Vacations.html', 'Lugo', 'Baleira', 'tripadvisor', '2021-05-29'),
-('/Tourism-g12508058-Benquerencia_Province_of_Caceres_Extremadura-Vacations.html', 'Cáceres', 'Benquerencia', 'tripadvisor', '2021-05-29'),
+('/Tourism-g12508058-Benquerencia_Province_of_Caceres_Extremadura-Vacations.html', 'Cáceres', 'Benquerencia', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g12508063-Trevino_Province_of_Burgos_Castile_and_Leon-Vacations.html', 'Burgos', 'Condado de Treviño', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g12508065-Zarra_Province_of_Valencia_Valencian_Country-Vacations.html', 'València/Valencia', 'Zarra', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g12508072-Aldeatejada_Province_of_Salamanca_Castile_and_Leon-Vacations.html', 'Salamanca', 'Aldeatejada', 'tripadvisor', '2021-05-29'),
@@ -10615,7 +10653,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g1437497-Majaelrayo_Province_of_Guadalajara_Castile_La_Mancha-Vacations.html', 'Guadalajara', 'Majaelrayo', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1437498-Mandayona_Province_of_Guadalajara_Castile_La_Mancha-Vacations.html', 'Guadalajara', 'Mandayona', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1437499-Mantiel_Province_of_Guadalajara_Castile_La_Mancha-Vacations.html', 'Guadalajara', 'Mantiel', 'tripadvisor', '2021-05-29'),
-('/Tourism-g1437500-Maqueda_Province_of_Toledo_Castile_La_Mancha-Vacations.html', 'Toledo', 'Maqueda', 'tripadvisor', '2021-05-29'),
+('/Tourism-g1437500-Maqueda_Province_of_Toledo_Castile_La_Mancha-Vacations.html', 'Toledo', 'Maqueda', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g1437501-Maranchon_Province_of_Guadalajara_Castile_La_Mancha-Vacations.html', 'Guadalajara', 'Maranchón', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1437502-Marchamalo_Province_of_Guadalajara_Castile_La_Mancha-Vacations.html', 'Guadalajara', 'Marchamalo', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1437503-Mariana_Province_of_Cuenca_Castile_La_Mancha-Vacations.html', 'Cuenca', 'Mariana', 'tripadvisor', '2021-05-29'),
@@ -10970,7 +11009,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g1590735-Corcubion_Province_of_A_Coruna_Galicia-Vacations.html', 'A Coruña', 'Corcubión', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1590742-Cee_Province_of_A_Coruna_Galicia-Vacations.html', 'A Coruña', 'Cee', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1591092-Albons_Costa_Brava_Province_of_Girona_Catalonia-Vacations.html', 'Girona', 'Albons', 'tripadvisor', '2021-05-29'),
-('/Tourism-g1591104-Les_Planes_d_Hostoles_Province_of_Girona_Catalonia-Vacations.html', 'Girona', 'Les Planes d\'Hostoles', 'tripadvisor', '2021-05-29'),
+('/Tourism-g1591104-Les_Planes_d_Hostoles_Province_of_Girona_Catalonia-Vacations.html', 'Girona', 'Les Planes d\'Hostoles', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g1591111-Vidreres_Province_of_Girona_Catalonia-Vacations.html', 'Girona', 'Vidreres', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1591137-Llers_Province_of_Girona_Catalonia-Vacations.html', 'Girona', 'Llers', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g1591141-Vilanant_Province_of_Girona_Catalonia-Vacations.html', 'Girona', 'Vilanant', 'tripadvisor', '2021-05-29'),
@@ -11344,7 +11384,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g187491-Burgos_Province_of_Burgos_Castile_and_Leon-Vacations.html', 'Burgos', 'Saldaña de Burgos', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g187491-Burgos_Province_of_Burgos_Castile_and_Leon-Vacations.html', 'Burgos', 'Villalbilla de Burgos', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g187492-Leon_Province_of_Leon_Castile_and_Leon-Vacations.html', 'León', 'León', 'tripadvisor', '2021-05-29'),
-('/Tourism-g187493-Salamanca_Province_of_Salamanca_Castile_and_Leon-Vacations.html', 'Salamanca', 'Doñinos de Salamanca', 'tripadvisor', '2021-05-29'),
+('/Tourism-g187493-Salamanca_Province_of_Salamanca_Castile_and_Leon-Vacations.html', 'Salamanca', 'Doñinos de Salamanca', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g187493-Salamanca_Province_of_Salamanca_Castile_and_Leon-Vacations.html', 'Salamanca', 'Salamanca', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g187494-Segovia_Province_of_Segovia_Castile_and_Leon-Vacations.html', 'Segovia', 'Segovia', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g187495-Valladolid_Province_of_Valladolid_Castile_and_Leon-Vacations.html', 'Valladolid', 'Valladolid', 'tripadvisor', '2021-05-29'),
@@ -11710,7 +11751,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g2054725-El_Pont_De_Vilomara_Bages_Catalonia-Vacations.html', 'Barcelona', 'El Pont de Vilomara i Rocafort', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2054728-Santa_Maria_De_Palautordera_Catalonia-Vacations.html', 'Barcelona', 'Santa Maria de Palautordera', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2054733-La_Riera_de_Gaia_Costa_Dorada_Province_of_Tarragona_Catalonia-Vacations.html', 'Tarragona', 'La Riera de Gaià', 'tripadvisor', '2021-05-29'),
-('/Tourism-g2054733-La_Riera_de_Gaia_Costa_Dorada_Province_of_Tarragona_Catalonia-Vacations.html', 'Tarragona', 'Vespella de Gaià', 'tripadvisor', '2021-05-29'),
+('/Tourism-g2054733-La_Riera_de_Gaia_Costa_Dorada_Province_of_Tarragona_Catalonia-Vacations.html', 'Tarragona', 'Vespella de Gaià', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g2054737-Els_Omells_De_Na_Gaia_Province_of_Lleida_Catalonia-Vacations.html', 'Lleida', 'Els Omells de na Gaia', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2054738-Ponts_Province_of_Lleida_Catalonia-Vacations.html', 'Lleida', 'Ponts', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2054739-Guissona_Province_of_Lleida_Catalonia-Vacations.html', 'Lleida', 'Guissona', 'tripadvisor', '2021-05-29'),
@@ -12086,7 +12128,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g2338184-Maracena_Province_of_Granada_Andalucia-Vacations.html', 'Granada', 'Maracena', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2356015-Val_de_San_Vicente_Cantabria-Vacations.html', 'Cantabria', 'Val de San Vicente', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2356040-Coles_Province_of_Ourense_Galicia-Vacations.html', 'Ourense', 'Coles', 'tripadvisor', '2021-05-29'),
-('/Tourism-g2356054-Pol_Province_of_Lugo_Galicia-Vacations.html', 'Lugo', 'Pol', 'tripadvisor', '2021-05-29'),
+('/Tourism-g2356054-Pol_Province_of_Lugo_Galicia-Vacations.html', 'Lugo', 'Pol', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g2356096-Poza_de_la_Sal_Province_of_Burgos_Castile_and_Leon-Vacations.html', 'Burgos', 'Poza de la Sal', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2359638-Villanueva_de_la_Vera_Province_of_Caceres_Extremadura-Vacations.html', 'Cáceres', 'Villanueva de la Vera', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2360368-Marganell_Bages_Catalonia-Vacations.html', 'Barcelona', 'Marganell', 'tripadvisor', '2021-05-29'),
@@ -12455,7 +12498,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g2468011-Piedralaves_Province_of_Avila_Castile_and_Leon-Vacations.html', 'Ávila', 'Piedralaves', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2468016-Gomesende_Province_of_Ourense_Galicia-Vacations.html', 'Ourense', 'Gomesende', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2468019-Buenavista_Province_of_Salamanca_Castile_and_Leon-Vacations.html', 'Salamanca', 'Buenavista', 'tripadvisor', '2021-05-29'),
-('/Tourism-g2468028-Vidra_Province_of_Girona_Catalonia-Vacations.html', 'Girona', 'Vidrà', 'tripadvisor', '2021-05-29'),
+('/Tourism-g2468028-Vidra_Province_of_Girona_Catalonia-Vacations.html', 'Girona', 'Vidrà', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g2468039-Astudillo_Province_of_Palencia_Castile_and_Leon-Vacations.html', 'Palencia', 'Astudillo', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2468058-San_Felices_de_los_Gallegos_Province_of_Salamanca_Castile_and_Leon-Vacations.html', 'Salamanca', 'San Felices de los Gallegos', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2468070-Mendigorria_Navarra-Vacations.html', 'Navarra', 'Mendigorría', 'tripadvisor', '2021-05-29'),
@@ -12827,7 +12871,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g2569354-Malejan_Province_of_Zaragoza_Aragon-Vacations.html', 'Zaragoza', 'Maleján', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2569358-Estadilla_Province_of_Huesca_Aragon-Vacations.html', 'Huesca', 'Estadilla', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2569360-Villarquemado_Province_of_Teruel_Aragon-Vacations.html', 'Teruel', 'Villarquemado', 'tripadvisor', '2021-05-29'),
-('/Tourism-g2569392-Alcampell_Province_of_Huesca_Aragon-Vacations.html', 'Huesca', 'Alcampell', 'tripadvisor', '2021-05-29'),
+('/Tourism-g2569392-Alcampell_Province_of_Huesca_Aragon-Vacations.html', 'Huesca', 'Alcampell', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g2569400-Las_Cuerlas_Province_of_Zaragoza_Aragon-Vacations.html', 'Zaragoza', 'Las Cuerlas', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2569416-Yesero_Province_of_Huesca_Aragon-Vacations.html', 'Huesca', 'Yésero', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g2569423-Riglos_Province_of_Huesca_Aragon-Vacations.html', 'Huesca', 'Las Peñas de Riglos', 'tripadvisor', '2021-05-29'),
@@ -13193,7 +13238,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g3326127-Taboadela_Province_of_Ourense_Galicia-Vacations.html', 'Ourense', 'Taboadela', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g3329372-L_Enova_Province_of_Valencia_Valencian_Country-Vacations.html', 'València/Valencia', 'l\'Ènova', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g3329375-Zucaina_Province_of_Castellon_Valencian_Country-Vacations.html', 'Castelló/Castellón', 'Zucaina', 'tripadvisor', '2021-05-29'),
-('/Tourism-g3329380-Banos_de_Rioja_La_Rioja-Vacations.html', 'La Rioja', 'Baños de Rioja', 'tripadvisor', '2021-05-29'),
+('/Tourism-g3329380-Banos_de_Rioja_La_Rioja-Vacations.html', 'La Rioja', 'Baños de Rioja', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g3329381-Ollauri_La_Rioja-Vacations.html', 'La Rioja', 'Ollauri', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g3329414-San_Cristovo_de_Cea_Province_of_Ourense_Galicia-Vacations.html', 'Ourense', 'San Cristovo de Cea', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g3329415-Abegondo_Province_of_A_Coruna_Galicia-Vacations.html', 'A Coruña', 'Abegondo', 'tripadvisor', '2021-05-29'),
@@ -13561,7 +13607,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g4581521-Aceuchal_Province_of_Badajoz_Extremadura-Vacations.html', 'Badajoz', 'Aceuchal', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g4583120-Nerva_Province_of_Huelva_Andalucia-Vacations.html', 'Huelva', 'Nerva', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g4583124-Numancia_de_la_Sagra_Province_of_Toledo_Castile_La_Mancha-Vacations.html', 'Madrid', 'Cubas de la Sagra', 'tripadvisor', '2021-05-29'),
-('/Tourism-g4583124-Numancia_de_la_Sagra_Province_of_Toledo_Castile_La_Mancha-Vacations.html', 'Toledo', 'Numancia de la Sagra', 'tripadvisor', '2021-05-29'),
+('/Tourism-g4583124-Numancia_de_la_Sagra_Province_of_Toledo_Castile_La_Mancha-Vacations.html', 'Toledo', 'Numancia de la Sagra', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g4583124-Numancia_de_la_Sagra_Province_of_Toledo_Castile_La_Mancha-Vacations.html', 'Toledo', 'Villaluenga de la Sagra', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g4583124-Numancia_de_la_Sagra_Province_of_Toledo_Castile_La_Mancha-Vacations.html', 'Toledo', 'Villaseca de la Sagra', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g4586022-El_Royo_Province_of_Soria_Castile_and_Leon-Vacations.html', 'Soria', 'El Royo', 'tripadvisor', '2021-05-29'),
@@ -13939,7 +13986,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g644308-Cazalla_de_la_Sierra_Province_of_Seville_Andalucia-Vacations.html', 'Madrid', 'Becerril de la Sierra', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g644308-Cazalla_de_la_Sierra_Province_of_Seville_Andalucia-Vacations.html', 'Madrid', 'Cabanillas de la Sierra', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g644308-Cazalla_de_la_Sierra_Province_of_Seville_Andalucia-Vacations.html', 'Sevilla', 'Cazalla de la Sierra', 'tripadvisor', '2021-05-29'),
-('/Tourism-g644308-Cazalla_de_la_Sierra_Province_of_Seville_Andalucia-Vacations.html', 'Madrid', 'Guadalix de la Sierra', 'tripadvisor', '2021-05-29'),
+('/Tourism-g644308-Cazalla_de_la_Sierra_Province_of_Seville_Andalucia-Vacations.html', 'Madrid', 'Guadalix de la Sierra', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g644308-Cazalla_de_la_Sierra_Province_of_Seville_Andalucia-Vacations.html', 'Madrid', 'Horcajo de la Sierra-Aoslos', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g644308-Cazalla_de_la_Sierra_Province_of_Seville_Andalucia-Vacations.html', 'Madrid', 'Horcajuelo de la Sierra', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g644309-Roquetas_de_Mar_Province_of_Almeria_Andalucia-Vacations.html', 'Almería', 'Roquetas de Mar', 'tripadvisor', '2021-05-29'),
@@ -14310,7 +14358,8 @@ INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `exp
 ('/Tourism-g7361533-Granon_La_Rioja-Vacations.html', 'La Rioja', 'Grañón', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g7361534-Los_Molinos_de_Ocon_La_Rioja-Vacations.html', 'La Rioja', 'Ocón', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g7361536-Clavijo_La_Rioja-Vacations.html', 'La Rioja', 'Clavijo', 'tripadvisor', '2021-05-29'),
-('/Tourism-g7362544-Legutio_Province_of_Alava_Basque_Country-Vacations.html', 'Araba/Álava', 'Legutio', 'tripadvisor', '2021-05-29'),
+('/Tourism-g7362544-Legutio_Province_of_Alava_Basque_Country-Vacations.html', 'Araba/Álava', 'Legutio', 'tripadvisor', '2021-05-29');
+INSERT INTO `placeinfo` (`placeLink`, `provincia`, `municipio`, `linkType`, `expirationDate`) VALUES
 ('/Tourism-g7362733-Zegama_Province_of_Guipuzcoa_Basque_Country-Vacations.html', 'Gipuzkoa', 'Zegama', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g7362772-Berastegi_Province_of_Guipuzcoa_Basque_Country-Vacations.html', 'Gipuzkoa', 'Berastegi', 'tripadvisor', '2021-05-29'),
 ('/Tourism-g7362789-Idiazabal_Province_of_Guipuzcoa_Basque_Country-Vacations.html', 'Gipuzkoa', 'Idiazabal', 'tripadvisor', '2021-05-29'),
@@ -14783,7 +14832,8 @@ INSERT INTO `tripadvisorcards` (`cardLink`, `placeLink`, `cardTitle`, `cardSubti
 ('/Attraction_Review-g6372497-d12183197-Reviews-Ermita_Nuestra_Senora_de_La_Merced-Ares_Province_of_A_', '/Tourism-g6372497-Ares_Province_of_A_Coruna_Galicia-Vacations.html', 'Ermita Nuestra Señora de La Merced', 'Iglesias y catedrales', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/7e/81/e6/iglesia-de-la-merced.jpg?w=800&h=800&s=1', 'queVisitar'),
 ('/Attraction_Review-g6372497-d8122087-Reviews-Mirador_A_Bailadora_Montefaro-Ares_Province_of_A_Coruna', '/Tourism-g6372497-Ares_Province_of_A_Coruna_Galicia-Vacations.html', 'Mirador A Bailadora Montefaro', 'Puntos emblemáticos y de interés, Miradores', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/fa/b3/1e/mirador-a-bailadora-montefaro.jpg?w=800&h=800&s=1', 'queVisitar'),
 ('/Attraction_Review-g6372497-d8180216-Reviews-Playa_de_Estacas-Ares_Province_of_A_Coruna_Galicia.html', '/Tourism-g6372497-Ares_Province_of_A_Coruna_Galicia-Vacations.html', 'Playa de Estacas', 'Playas', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/46/eb/4f/playa-de-la-estaca.jpg?w=800&h=800&s=1', 'queVisitar'),
-('/Attraction_Review-g6372497-d8358037-Reviews-Puerto_de_Redes-Ares_Province_of_A_Coruna_Galicia.html', '/Tourism-g6372497-Ares_Province_of_A_Coruna_Galicia-Vacations.html', 'Puerto de Redes', 'Paseos marítimos y malecones', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/2c/cb/03/puerto-de-redes.jpg?w=800&h=800&s=1', 'queVisitar'),
+('/Attraction_Review-g6372497-d8358037-Reviews-Puerto_de_Redes-Ares_Province_of_A_Coruna_Galicia.html', '/Tourism-g6372497-Ares_Province_of_A_Coruna_Galicia-Vacations.html', 'Puerto de Redes', 'Paseos marítimos y malecones', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/2c/cb/03/puerto-de-redes.jpg?w=800&h=800&s=1', 'queVisitar');
+INSERT INTO `tripadvisorcards` (`cardLink`, `placeLink`, `cardTitle`, `cardSubtitle`, `cardImage`, `cardType`) VALUES
 ('/Attraction_Review-g6372497-d8608903-Reviews-Playa_de_Chanteiro-Ares_Province_of_A_Coruna_Galicia.ht', '/Tourism-g6372497-Ares_Province_of_A_Coruna_Galicia-Vacations.html', 'Playa de Chanteiro', 'Playas', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/e4/e5/36/playa-de-chanteiro.jpg?w=800&h=800&s=1', 'queVisitar'),
 ('/Hotel_Review-g1026170-d1736361-Reviews-Camino_de_Soto_B_B-Soto_del_Real.html', '/Tourism-g1063662-Colmenar_Viejo-Vacations.html', 'Camino de Soto B&B', 'A 7,7 km de Colmenar Viejo', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-s/01/76/04/dd/garden-swimming-pool.jpg?w=800&h=800&s=1', 'alojamiento'),
 ('/Hotel_Review-g1028223-d1012253-Reviews-Hotel_Blu_Almansa-Almansa_Province_of_Albacete_Castile_La_Ma', '/Tourism-g1028223-Almansa_Province_of_Albacete_Castile_La_Mancha-Vacations.html', 'Hotel Blu Almansa', NULL, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/45/21/60/hotel-blu-almansa.jpg?w=800&h=800&s=1', 'alojamiento'),
@@ -14932,7 +14982,8 @@ INSERT INTO `tripadvisorcards` (`cardLink`, `placeLink`, `cardTitle`, `cardSubti
 ('/Restaurant_Review-g1063662-d7254740-Reviews-La_Sede_Restaurante-Colmenar_Viejo.html', '/Tourism-g1063662-Colmenar_Viejo-Vacations.html', 'La Sede Restaurante', '€€ - €€€ • Mediterránea, Española, Opciones vegetarianas', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/ad/dc/6e/restaurante-la-sede.jpg?w=800&h=800&s=1', 'dondeComer'),
 ('/Restaurant_Review-g1063662-d7254867-Reviews-PIZZERIA_MAMMA_MIA_COLMENAR_C_B-Colmenar_Viejo.html', '/Tourism-g1063662-Colmenar_Viejo-Vacations.html', 'PIZZERIA MAMMA MIA COLMENAR C.B.', '€ • Italiana, Pizza, Mediterránea', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/73/64/f5/canolo-siciliano-exquisito.jpg?w=800&h=800&s=1', 'otros'),
 ('/Restaurant_Review-g1063662-d7295370-Reviews-El_Lagar-Colmenar_Viejo.html', '/Tourism-g1063662-Colmenar_Viejo-Vacations.html', 'El Lagar', '€€ - €€€ • Mediterránea, Española', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/14/d7/72/desayunos-platos-y-aperitivos.jpg?w=800&h=800&s=1', 'dondeComer'),
-('/Restaurant_Review-g1063662-d7618502-Reviews-Horas_Extras_Colmenar_Viejo-Colmenar_Viejo.html', '/Tourism-g1063662-Colmenar_Viejo-Vacations.html', 'Horas Extras Colmenar Viejo', '€ • Italiana, Pizza, Mediterránea', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/8e/ab/72/postre-mixto-casero-tiramisu.jpg?w=800&h=800&s=1', 'otros'),
+('/Restaurant_Review-g1063662-d7618502-Reviews-Horas_Extras_Colmenar_Viejo-Colmenar_Viejo.html', '/Tourism-g1063662-Colmenar_Viejo-Vacations.html', 'Horas Extras Colmenar Viejo', '€ • Italiana, Pizza, Mediterránea', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/8e/ab/72/postre-mixto-casero-tiramisu.jpg?w=800&h=800&s=1', 'otros');
+INSERT INTO `tripadvisorcards` (`cardLink`, `placeLink`, `cardTitle`, `cardSubtitle`, `cardImage`, `cardType`) VALUES
 ('/Restaurant_Review-g1063662-d7714217-Reviews-Hamburgueseria_de_Teresa-Colmenar_Viejo.html', '/Tourism-g1063662-Colmenar_Viejo-Vacations.html', 'Hamburgueseria de Teresa', '€', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/b9/87/dd/para-llevar-y-comer-tranquilam.jpg?w=800&h=800&s=1', 'dondeComer'),
 ('/Restaurant_Review-g1063662-d7722679-Reviews-Restaurante_Jumar_III-Colmenar_Viejo.html', '/Tourism-g1063662-Colmenar_Viejo-Vacations.html', 'Restaurante Jumar III', '€ • Española', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/3c/70/02/20171104-153759-largejpg.jpg?w=800&h=800&s=1', 'otros'),
 ('/Restaurant_Review-g1064054-d5003660-Reviews-Muino_Vello-Carral_Province_of_A_Coruna_Galicia.html', '/Tourism-g3329415-Abegondo_Province_of_A_Coruna_Galicia-Vacations.html', 'Muino Vello', '€€ - €€€ • Mediterránea, Española, Vinoteca', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/7f/89/77/img-20170831-wa0007-largejpg.jpg?w=800&h=800&s=1', 'dondeComer'),
@@ -15076,7 +15127,8 @@ INSERT INTO `tripadvisorcards` (`cardLink`, `placeLink`, `cardTitle`, `cardSubti
 ('/Restaurant_Review-g609027-d10467980-Reviews-Casa_Pedreiro_Rozas_Pekin_Expres-Lugo_Province_of_Lugo_', '/Tourism-g609027-Lugo_Province_of_Lugo_Galicia-Vacations.html', 'Casa Pedreiro Rozas Pekin Expres', '€€ - €€€ • Española, Opciones vegetarianas, Opciones veganas', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/34/c8/b0/casa-pedreiro.jpg?w=800&h=800&s=1', 'dondeComer'),
 ('/Restaurant_Review-g609027-d12817696-Reviews-La_Urbana-Lugo_Province_of_Lugo_Galicia.html', '/Tourism-g609027-Lugo_Province_of_Lugo_Galicia-Vacations.html', 'La Urbana', '€€ - €€€ • Americana, Saludable, Opciones vegetarianas', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/64/50/23/urbana-mexicana.jpg?w=800&h=800&s=1', 'dondeComer'),
 ('/Restaurant_Review-g609027-d15810724-Reviews-Sibuya_Urban_Sushi_Bar_Lugo-Lugo_Province_of_Lugo_Galic', '/Tourism-g609027-Lugo_Province_of_Lugo_Galicia-Vacations.html', 'Sibuya Urban Sushi Bar Lugo', '€€ - €€€ • Japonesa, Sushi, Asiática', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/4f/0d/61/freestyle-52pz.jpg?w=800&h=800&s=1', 'dondeComer'),
-('/Restaurant_Review-g609027-d1830760-Reviews-Restaurante_Espana-Lugo_Province_of_Lugo_Galicia.html', '/Tourism-g609027-Lugo_Province_of_Lugo_Galicia-Vacations.html', 'Restaurante España', '€€€€ • Europea, Española, Fusión', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/64/b1/27/logotipo-del-espana.jpg?w=800&h=800&s=1', 'otros'),
+('/Restaurant_Review-g609027-d1830760-Reviews-Restaurante_Espana-Lugo_Province_of_Lugo_Galicia.html', '/Tourism-g609027-Lugo_Province_of_Lugo_Galicia-Vacations.html', 'Restaurante España', '€€€€ • Europea, Española, Fusión', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/64/b1/27/logotipo-del-espana.jpg?w=800&h=800&s=1', 'otros');
+INSERT INTO `tripadvisorcards` (`cardLink`, `placeLink`, `cardTitle`, `cardSubtitle`, `cardImage`, `cardType`) VALUES
 ('/Restaurant_Review-g609027-d2012790-Reviews-Fiordilatte-Lugo_Province_of_Lugo_Galicia.html', '/Tourism-g609027-Lugo_Province_of_Lugo_Galicia-Vacations.html', 'Fiordilatte', '€ • Postres, Café, Opciones sin gluten', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/f1/4c/e0/en-el-local-de-bispo.jpg?w=800&h=800&s=1', 'otros'),
 ('/Restaurant_Review-g609027-d2490635-Reviews-Restaurante_Paprica-Lugo_Province_of_Lugo_Galicia.html', '/Tourism-g609027-Lugo_Province_of_Lugo_Galicia-Vacations.html', 'Restaurante Paprica', '€€€€ • Española, Contemporánea, Fusión', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/f5/f7/57/sushi-paprica.jpg?w=800&h=800&s=1', 'otros'),
 ('/Restaurant_Review-g609027-d3162258-Reviews-Mazo_de_Santa_Comba-Lugo_Province_of_Lugo_Galicia.html', '/Tourism-g609027-Lugo_Province_of_Lugo_Galicia-Vacations.html', 'Mazo de Santa Comba', '€€ - €€€ • Española, Opciones vegetarianas, Opciones sin gluten', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/11/e0/78/mazo-de-santa-comba.jpg?w=800&h=800&s=1', 'dondeComer'),
@@ -15174,6 +15226,9 @@ INSERT INTO `tripadvisorinnercard` (`cardLink`, `innerCardTitle`, `innerCardAddr
 ('/Attraction_Review-g1028223-d10344645-Reviews-Iglesia_Arciprestal_de_la_Asuncion-Almansa_Province_of', 'Iglesia Arciprestal de la Asunción', 'Almansa, Calle Virgen de Belen ', 7.782, 'recomendado'),
 ('/Attraction_Review-g1064074-d10465108-Reviews-Iglesia_de_Santa_Maria_del_Azogue-Betanzos_Province_of', 'Iglesia de Santa Maria del Azogue', 'Betanzos, Plaza Fernan Perez de Andrade \\', 8.588, 'muyRecomendado'),
 ('/Attraction_Review-g1435588-d10817251-Reviews-Multiaventura_Los_Olivos-Alcala_del_Jucar_Province_of_', 'Alcal\\u00E1 del J\\u00FAcar', ', Carretera de Tolosa Calle Berrocal 20 bajo', 10, 'muyRecomendado'),
+('/Attraction_Review-g1435588-d15523373-Reviews-Bodega_La_Cepa_de_Pelayo-Alcala_del_Jucar_Province_of_', 'Bodega La Cepa de Pelayo', ', Calle Bat\\u00E1n, 9', 9.6, 'muyRecomendado'),
+('/Attraction_Review-g1435690-d10251768-Reviews-Bodegas_Gratias-Casas_Ibanez_Province_of_Albacete_Cast', 'Casas Ib\\u00E1\\u00F1ez', 'Casas Ib\\u00E1\\u00F1ez, Calle A, 12 Poligono Indus', 9.6, 'muyRecomendado'),
+('/Attraction_Review-g1435764-d7347812-Reviews-Bodega_Iniesta-Fuentealbilla_Province_of_Albacete_Casti', 'Bodega Iniesta', 'Fuentealbilla, Crta. Fuentealbilla \\u2013 Villamal', 9.57, 'muyRecomendado'),
 ('/Attraction_Review-g265784-d10256525-Reviews-Mirador_del_Puente_Nuevo-Ronda_Costa_del_Sol_Province_o', 'Mirador del Puente Nuevo', 'Ronda, Plaza de Espa\\u00F1a Virgen de la Paz, s\\u0', 9.111, 'muyRecomendado'),
 ('/Attraction_Review-g265784-d265828-Reviews-El_Tajo_de_Ronda-Ronda_Costa_del_Sol_Province_of_Malaga_A', 'El Tajo de Ronda', 'Ronda, C\\u002F de Armi\\u00F1\\u00E1n ', 9.826, 'muyRecomendado'),
 ('/Attraction_Review-g265784-d3728938-Reviews-Banos_Arabes-Ronda_Costa_del_Sol_Province_of_Malaga_Anda', 'Baños Arabes', 'Ronda, 11, Calle Molino de Alarc\\u00F3n ', 8.576, 'muyRecomendado'),
@@ -15235,6 +15290,15 @@ INSERT INTO `tripinnercardimages` (`imageLink`, `cardLink`) VALUES
 ('https://media-cdn.tripadvisor.com/media/photo-s/1c/fd/1b/15/multiaventura-los-olivos.jpg', '/Attraction_Review-g1435588-d10817251-Reviews-Multiaventura_Los_Olivos-Alcala_del_Jucar_Province_of_'),
 ('https://media-cdn.tripadvisor.com/media/photo-s/1c/fd/1b/60/multiaventura-los-olivos.jpg', '/Attraction_Review-g1435588-d10817251-Reviews-Multiaventura_Los_Olivos-Alcala_del_Jucar_Province_of_'),
 ('https://media-cdn.tripadvisor.com/media/photo-s/1c/fe/1c/d1/multiaventura-los-olivos.jpg', '/Attraction_Review-g1435588-d10817251-Reviews-Multiaventura_Los_Olivos-Alcala_del_Jucar_Province_of_'),
+('https://media-cdn.tripadvisor.com/media/photo-s/16/9b/0f/47/la-sala-de-los-depositos.jpg', '/Attraction_Review-g1435588-d15523373-Reviews-Bodega_La_Cepa_de_Pelayo-Alcala_del_Jucar_Province_of_'),
+('https://media-cdn.tripadvisor.com/media/photo-s/1c/5b/53/24/bodega-la-cepa-de-pelayo.jpg', '/Attraction_Review-g1435588-d15523373-Reviews-Bodega_La_Cepa_de_Pelayo-Alcala_del_Jucar_Province_of_'),
+('https://media-cdn.tripadvisor.com/media/photo-s/0b/85/5d/57/por-dentro.jpg', '/Attraction_Review-g1435690-d10251768-Reviews-Bodegas_Gratias-Casas_Ibanez_Province_of_Albacete_Cast'),
+('https://media-cdn.tripadvisor.com/media/photo-s/0d/08/a5/49/detalle-de-la-calidad.jpg', '/Attraction_Review-g1435690-d10251768-Reviews-Bodegas_Gratias-Casas_Ibanez_Province_of_Albacete_Cast'),
+('https://media-cdn.tripadvisor.com/media/photo-s/1a/f5/9e/e5/preparando-los-ancestrales.jpg', '/Attraction_Review-g1435690-d10251768-Reviews-Bodegas_Gratias-Casas_Ibanez_Province_of_Albacete_Cast'),
+('https://media-cdn.tripadvisor.com/media/photo-s/1a/f5/9f/7f/ancestrales-a-punto-de.jpg', '/Attraction_Review-g1435690-d10251768-Reviews-Bodegas_Gratias-Casas_Ibanez_Province_of_Albacete_Cast'),
+('https://media-cdn.tripadvisor.com/media/photo-s/1a/f5/a0/97/bodega-natural-que-hace.jpg', '/Attraction_Review-g1435690-d10251768-Reviews-Bodegas_Gratias-Casas_Ibanez_Province_of_Albacete_Cast'),
+('https://media-cdn.tripadvisor.com/media/photo-s/1a/f5/a0/99/comboi-blanco-vestido.jpg', '/Attraction_Review-g1435690-d10251768-Reviews-Bodegas_Gratias-Casas_Ibanez_Province_of_Albacete_Cast'),
+('https://media-cdn.tripadvisor.com/media/photo-s/1a/f5/a0/9e/poda-y-sarmentando-labores.jpg', '/Attraction_Review-g1435690-d10251768-Reviews-Bodegas_Gratias-Casas_Ibanez_Province_of_Albacete_Cast'),
 ('https://media-cdn.tripadvisor.com/media/photo-s/0e/cd/3e/bb/bubble-soccer-mira-que.jpg', '/Attraction_Review-g562662-d12257045-Reviews-Noname_Sport-Tres_Cantos.html'),
 ('https://media-cdn.tripadvisor.com/media/photo-s/0f/c8/90/a3/quien-ha-dicho-que-las.jpg', '/Attraction_Review-g562662-d12257045-Reviews-Noname_Sport-Tres_Cantos.html'),
 ('https://media-cdn.tripadvisor.com/media/photo-s/1c/67/49/3f/photo1jpg.jpg', '/Attraction_Review-g562662-d12257045-Reviews-Noname_Sport-Tres_Cantos.html'),

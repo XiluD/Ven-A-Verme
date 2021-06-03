@@ -1,9 +1,10 @@
 
 <h1  class="code-line"  data-line-start=0  data-line-end=1  ><a  id="Dillinger_0"></a>Ven A Verme <g-emoji  class="g-emoji"  alias="airplane"  fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2708.png">🏞️</h1>
 
-<h2  class="code-line"  data-line-start=1  data-line-end=2  ><a  id="_The_Last_Markdown_Editor_Ever__1"></a><em>Subtitle (on development!)</em></h2>
+<h2  class="code-line"  data-line-start=1  data-line-end=2  ><a  id="_The_Last_Markdown_Editor_Ever__1"></a><em>Your travel and housing application in Spain that supports the recovery "La España Vacía". </em></h2>
 
-## About the project (on development!)
+## About the project
+
 
 ## Team members
 
@@ -49,23 +50,10 @@
 </table>
   
 
-## Getting Started (on development...)
-
-  
-
-This is an example of how you may give instructions on setting up your project locally.
-
-To get a local copy up and running follow these simple example steps.
-
-  
+## Getting Started
 
 ### Prerequisites
 
-  
-
-This is an example of how to list things you need to use the software and how to install them.
-
-  
 
 First of all you'll need to have installed:
 
@@ -85,36 +73,30 @@ composer global require "laravel/installer"
 
   
 
-### Installation (still on development...)
+### Installation
 
-  
 
-1. Get a free API Key at [https://example.com](https://example.com) (on development!)
-
-2. Clone the repo
+1. Download or clone the repo from the master branch
 
 ```sh
 
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/XiluD/Ven-A-Verme.git
 
 ```
 
-3. React scaffolding
+
+#### Inside the proyect, open a terminal and:
+
+
+2. Install Composer packages
 
 ```sh
 
-composer require laravel/ui
+composer install
 
 ```
 
-4. Laravel Swagger Package for API Documentation
-```sh
-
-composer require darkaonline/l5-swagger
-
-```
-
-5. Install NPM packages
+3. Install NPM packages
 
 ```sh
 
@@ -122,7 +104,7 @@ npm install
 
 ```
 
-6. Install Python packages
+4. Install Python packages
 
 ```sh
 
@@ -130,10 +112,18 @@ pip3 install -r pyrequirements.txt
 
 ```
 
-7. Create the database by importing the mysql file into your favourite MySQL service (PHPMyAdmin)
+
+#### Download SQL Database and import into PHPMyAdmin:
+
+5. Download from the database-files branch the SQL File including the database of the application (you can also download the image with the logical desing to understand in deep the structure of the database).
+
+6. Load the database in your system by importing the mysql file into your favourite MySQL service (PHPMyAdmin). [Importing database into PHPMyadmin](https://help.dreamhost.com/hc/en-us/articles/214395768-phpMyAdmin-How-to-import-or-restore-a-database-or-table).
 
   
-8. Configure the environment in `.env (rename 'env.example' to 'env')`
+
+#### Configure the environment:
+
+7. Configure the environment in `.env (rename 'env.example' to 'env')`
 
 ```sh
 
@@ -143,7 +133,7 @@ DB_HOST=127.0.0.1
 
 DB_PORT=3306
 
-DB_DATABASE=*************nombre de la base de datos***********
+DB_DATABASE=venavermedb
 
 DB_USERNAME=root
 
@@ -151,27 +141,15 @@ DB_PASSWORD=
 
 ```
 
-9. Set your own application encryption key
+8. Set your own application encryption key
 
 ```sh
 
 php artisan key:generate
 
 ```
-
-10. Enter your API in `config.js` (on development!)
-
-```JS
-
-const  API_KEY = 'ENTER YOUR API';
-
-```
-
   
-
 ### How to run it
-
-  
 
 1. Compile JavaScript files for React
 
@@ -189,13 +167,12 @@ php artisan serve
 
 ```
 
-## Usage (on development!)
+## Usage
 
   
-
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-  
+
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 

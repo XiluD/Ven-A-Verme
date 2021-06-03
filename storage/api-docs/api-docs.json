@@ -49,7 +49,7 @@
                     "Provincia Municipio Basic"
                 ],
                 "summary": "Get municipios basic data",
-                "description": "Get municipios basic data",
+                "description": "Get municipios basic data\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
                 "operationId": "getMunicipiosBasic",
                 "responses": {
                     "200": {
@@ -64,7 +64,7 @@
                     "Provincia Municipio Basic"
                 ],
                 "summary": "Get provincias basic data",
-                "description": "Get provincias basic data\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "description": "Get provincias basic data",
                 "operationId": "getProvinciasBasic",
                 "responses": {
                     "200": {
@@ -165,8 +165,8 @@
                 "tags": [
                     "Provincia Municipio Advance"
                 ],
-                "summary": "Get 'Municipios' from given 'PROVINCIA' ordered by given 'Population'",
-                "description": "Get 'Municipios' from given 'PROVINCIA' ordered by given 'Population'\r\n *      WARNING! Large body response, so it could take a while depending of the number supplied. Instead is recommended to see the API endpoint directly on the URL.",
+                "summary": "Get 'Municipios' from given 'PROVINCIA' ordered by given 'Population' with optional consider of 'España Vacia'",
+                "description": "Get 'Municipios' from given 'PROVINCIA' ordered by given 'Population'\r\n *      WARNING! Large body response depending of the parameters entered, so please note that it may take a while. Instead is recommended to see the API endpoint directly on the URL.",
                 "operationId": "getMunsFromProvPoblacionBasedOrdered",
                 "parameters": [
                     {
@@ -185,6 +185,15 @@
                         "required": true,
                         "schema": {
                             "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "ev",
+                        "in": "query",
+                        "description": "Optional parameter to consider also based on the base parameters, show only the places considered from 'España Vacia' or not ",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
                         }
                     }
                 ],
@@ -222,7 +231,7 @@
                     "Provincia Municipio Advance"
                 ],
                 "summary": "Get 'Municipios' from a given 'Provincia' considered from 'España Vacia'",
-                "description": "Get 'Municipios' from a given 'Provincia' considered from 'España Vacia'\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "description": "Get 'Municipios' from a given 'Provincia' considered from 'España Vacia'",
                 "operationId": "getMunsFromProvEV",
                 "parameters": [
                     {
@@ -280,7 +289,7 @@
                     "Provincia Municipio Advance"
                 ],
                 "summary": "Get 'Provincia' and 'Municipios' 'Codes' from given 'Provincia'",
-                "description": "Get 'Provincia' and 'Municipios' 'Codes' from given 'Provincia'\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "description": "Get 'Provincia' and 'Municipios' 'Codes' from given 'Provincia'",
                 "operationId": "getCodesFromMun",
                 "parameters": [
                     {
@@ -309,7 +318,7 @@
                     "Provincia Municipio Advance"
                 ],
                 "summary": "Get 'Provincia' and 'Municipios' 'Coordinates' from given 'Provincia'",
-                "description": "Get 'Provincia' and 'Municipios' 'Coordinates' from given 'Provincia'\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "description": "Get 'Provincia' and 'Municipios' 'Coordinates' from given 'Provincia'",
                 "operationId": "getCoordinatesFromMun",
                 "parameters": [
                     {
@@ -332,7 +341,7 @@
                 }
             }
         },
-        "/api/trip/{provincia}/{municipio}{api_token?}": {
+        "/api/trip/{provincia}/{municipio}": {
             "get": {
                 "tags": [
                     "Tripadvisor"
@@ -423,7 +432,7 @@
                 }
             }
         },
-        "/api/idea/{provincia}/{municipio}{api_token?}": {
+        "/api/idea/{provincia}/{municipio}": {
             "get": {
                 "tags": [
                     "Idealista"

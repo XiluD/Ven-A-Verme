@@ -61,7 +61,8 @@ use Illuminate\Http\JsonResponse;
  *      operationId="getMunicipiosBasic",
  *      tags={"Provincia Municipio Basic"},
  *      summary="Get municipios basic data",
- *      description="Get municipios basic data",
+ *      description="Get municipios basic data
+ *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
  *      @OA\Response(
  *          response=200,
  *          description="Successful operation",
@@ -75,8 +76,7 @@ use Illuminate\Http\JsonResponse;
  *      operationId="getProvinciasBasic",
  *      tags={"Provincia Municipio Basic"},
  *      summary="Get provincias basic data",
- *      description="Get provincias basic data
- *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+ *      description="Get provincias basic data",
  *      @OA\Response(
  *          response=200,
  *          description="Successful operation",
@@ -175,9 +175,9 @@ use Illuminate\Http\JsonResponse;
  *      path="/api/munsOfPoblationOrdered/{provincia}/{poblacion}",
  *      operationId="getMunsFromProvPoblacionBasedOrdered",
  *      tags={"Provincia Municipio Advance"},
- *      summary="Get 'Municipios' from given 'PROVINCIA' ordered by given 'Population'",
+ *      summary="Get 'Municipios' from given 'PROVINCIA' ordered by given 'Population' with optional consider of 'España Vacia'",
  *      description="Get 'Municipios' from given 'PROVINCIA' ordered by given 'Population'
- *      WARNING! Large body response, so it could take a while depending of the number supplied. Instead is recommended to see the API endpoint directly on the URL.",
+ *      WARNING! Large body response depending of the parameters entered, so please note that it may take a while. Instead is recommended to see the API endpoint directly on the URL.",
  *      @OA\Parameter(
  *          name="provincia",
  *          description="Nombre de la provincia",
@@ -194,6 +194,15 @@ use Illuminate\Http\JsonResponse;
  *          in="path",
  *          @OA\Schema(
  *              type="integer"
+ *          )
+ *      ),
+ *      @OA\Parameter(
+ *          name="ev",
+ *          description="Optional parameter to consider also based on the base parameters, show only the places considered from 'España Vacia' or not ",
+ *          required=false,
+ *          in="query",
+ *          @OA\Schema(
+ *              type="boolean"
  *          )
  *      ),
  * 
@@ -233,8 +242,7 @@ use Illuminate\Http\JsonResponse;
  *      operationId="getMunsFromProvEV",
  *      tags={"Provincia Municipio Advance"},
  *      summary="Get 'Municipios' from a given 'Provincia' considered from 'España Vacia'",
- *      description="Get 'Municipios' from a given 'Provincia' considered from 'España Vacia'
- *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+ *      description="Get 'Municipios' from a given 'Provincia' considered from 'España Vacia'",
  *      @OA\Parameter(
  *          name="provincia",
  *          description="Nombre de la provincia",
@@ -291,8 +299,7 @@ use Illuminate\Http\JsonResponse;
  *      operationId="getCodesFromMun",
  *      tags={"Provincia Municipio Advance"},
  *      summary="Get 'Provincia' and 'Municipios' 'Codes' from given 'Provincia'",
- *      description="Get 'Provincia' and 'Municipios' 'Codes' from given 'Provincia'
- *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+ *      description="Get 'Provincia' and 'Municipios' 'Codes' from given 'Provincia'",
  *      @OA\Parameter(
  *          name="provincia",
  *          description="Nombre de la provincia",
@@ -320,8 +327,7 @@ use Illuminate\Http\JsonResponse;
  *      operationId="getCoordinatesFromMun",
  *      tags={"Provincia Municipio Advance"},
  *      summary="Get 'Provincia' and 'Municipios' 'Coordinates' from given 'Provincia'",
- *      description="Get 'Provincia' and 'Municipios' 'Coordinates' from given 'Provincia'
- *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+ *      description="Get 'Provincia' and 'Municipios' 'Coordinates' from given 'Provincia'",
  *      @OA\Parameter(
  *          name="provincia",
  *          description="Nombre de la provincia",
@@ -397,10 +403,27 @@ class DevApisController extends Controller
     }
 
     //Return "MUNICIPIOS" from given 'PROVINCIA' ordered by given population
-    public function getMunsFromProvPoblacionBasedOrdered($provincia, $poblacion){
+    /*
+        If "España Vaciada" query, then it will return also the "MUNICIPIOS" considered from "España Vaciada" if query 'ev' == 1, or not
+        considered from "España Vaciada" if 'ev' query == 0.
+    */
+    public function getMunsFromProvPoblacionBasedOrdered(Request $request, $provincia, $poblacion){
         if ((Place::where('provincia', $provincia)->first()) && ($poblacion > 0)){
-            return response()->json(Place::select('provincia', 'municipio', 'poblacion')->where('provincia', $provincia)->where('poblacion', '<=', $poblacion)->
-            orderBy('poblacion')->get(), JsonResponse::HTTP_OK);
+            if ($request->query('ev')){
+                if ($request->query('ev') == "true"){
+                    return response()->json(Place::select('provincia', 'municipio', 'poblacion', 'imagenMunicipio')->where('provincia', $provincia)->where('poblacion', '<=', $poblacion)->
+                    where('despoblacion', 1)->orderBy('poblacion')->get(), JsonResponse::HTTP_OK);
+                }
+                else{
+                    return response()->json(Place::select('provincia', 'municipio', 'poblacion', 'imagenMunicipio')->where('provincia', $provincia)->where('poblacion', '<=', $poblacion)->
+                    where('despoblacion', 0)->orderBy('poblacion')->get(), JsonResponse::HTTP_OK);
+                }
+            }
+            else{
+                return response()->json(Place::select('provincia', 'municipio', 'poblacion', 'imagenMunicipio')->where('provincia', $provincia)->where('poblacion', '<=', $poblacion)->
+                orderBy('poblacion')->get(), JsonResponse::HTTP_OK);
+            }
+
         }
         else if(!Place::where('provincia', $provincia)->first()){
             return response()->json(['error'=>"We couldn't find any place with that 'provincia' name in our application."], JsonResponse::HTTP_NOT_ACCEPTABLE);

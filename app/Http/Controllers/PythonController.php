@@ -20,7 +20,7 @@ use Illuminate\Http\JsonResponse;
 
 /**
  * @OA\Get(
- *      path="/api/trip/{provincia}/{municipio}{api_token?}",
+ *      path="/api/trip/{provincia}/{municipio}",
  *      operationId="getTrip",
  *      tags={"Tripadvisor"},
  *      summary="Get tripadvisor main content",
@@ -114,7 +114,7 @@ use Illuminate\Http\JsonResponse;
 
 /**
  * @OA\Get(
- *      path="/api/idea/{provincia}/{municipio}{api_token?}",
+ *      path="/api/idea/{provincia}/{municipio}",
  *      operationId="getTrip",
  *      tags={"Idealista"},
  *      summary="Get Idealista main content",

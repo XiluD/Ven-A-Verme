@@ -32,7 +32,7 @@ Route::get('munBasicOf/{municipio}', 'DevApisController@getMunData');
 
 Route::get('/munsPoblationOrdered/{poblacion}', 'DevApisController@getMunsPoblacionBasedOrdered');
 
-Route::get('/munsOfPoblationOrdered/{provincia}/{poblacion}', 'DevApisController@getMunsFromProvPoblacionBasedOrdered');
+Route::get('/munsOfPoblationOrdered/{provincia}/{poblacion}{ev?}', 'DevApisController@getMunsFromProvPoblacionBasedOrdered');
 
 Route::get('/munsEv', 'DevApisController@getMunsEV');
 

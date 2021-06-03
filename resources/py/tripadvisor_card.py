@@ -53,9 +53,15 @@ def getAttraction(link):
         except:
             contentData['address'] = ""
 
-        
-        imgs = soup.find_all('meta', property='og:image', content=re.compile('jpg$'))
-        contentData['images'] = [img['content'] for img in imgs]
+        if (soup.find('div', class_='_29SZ8xlv')):
+            imgs = soup.find_all('div', class_='_39RSYxGX')
+            contentData['images'] = [re.search('url\((.*)\)', img['style']).group(1) for img in imgs
+             if re.search('photo-s', str(re.search('url\((.*)\)', img['style']).group(1))) or 
+             re.search('photo-w', str(re.search('url\((.*)\)', img['style']).group(1))) or
+             re.search('photo-o', str(re.search('url\((.*)\)', img['style']).group(1)))]
+        else:
+            imgs = soup.find_all('meta', property='og:image', content=re.compile('jpg$'))
+            contentData['images'] = [img['content'] for img in imgs]
         
         commentInfo = {'bubbles':[],
                        'comments':[]}

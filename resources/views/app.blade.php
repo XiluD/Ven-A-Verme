@@ -10,6 +10,7 @@
             type="text/css"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
+        <link href="{{mix('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div id="root"></div>

@@ -8,8 +8,8 @@ use Illuminate\Http\JsonResponse;
 /**
  * @OA\Info(
  *      version="1.0.0",
- *      title="Laravel OpenApi Demo Documentation",
- *      description="L5 Swagger OpenApi description",
+ *      title="Ven A Verme OpenApi Documentation",
+ *      description="L5 Swagger OpenApi for Ven A Verme Application",
  *      @OA\Contact(
  *          email="dvicentevila@admin.com"
  *      ),

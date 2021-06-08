@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route for creating an Admin account
-Route::get('admin', 'AdminsController@create');
+//Route for showing and creating an Admin account/Admin account information
+
+Route::get('admin/{email}/{password}', 'AdminsController@show');
+Route::post('admin', 'AdminsController@create');
+
 
 //Basic routes without authentication needed
 Route::get('/provsMunsBasic', 'DevApisController@getProvMunsBasic');

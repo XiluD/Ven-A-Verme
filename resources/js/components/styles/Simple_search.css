@@ -1,0 +1,217 @@
+.simple-search {
+  width: 100%;
+  /* height: 81.832vh; */
+  height: 82vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.simple-search .main-col-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.simple-search .row-container-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 40vw;
+}
+.simple-search .row-container-title h1 {
+  color: var(--secondary9);
+  font-size: 1.5vw;
+  font-weight: 500;
+  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),
+    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),
+    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),
+    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);
+}
+.simple-search .row-container-title .col-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+.simple-search .main-col-container,
+.simple-search .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.simple-search .input_text_container {
+  margin-top: 6vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 3px solid rgb(87, 87, 87);
+}
+.simple-search .input_text_container:focus-within {
+  background-color: #aad386;
+}
+.simple-search #simple_search {
+  margin-left: 0.25vw;
+  padding: 1% 2%;
+  border: none;
+  background-color: transparent;
+  font-size: 1.2vw;
+  width: 25vw;
+}
+.simple-search #simple_search:focus {
+  outline-width: 0px;
+  outline: none;
+}
+.simple-search i {
+  margin-top: 2%;
+  animation-name: scale;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-delay: 5s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  transform: scale(1.2);
+}
+.simple-search select {
+  font-size: 1.1vw;
+  background-color: transparent;
+  margin-top: 2vw;
+}
+.simple-search select:focus {
+  outline-width: 0px;
+  outline: none;
+}
+.simple-search .relative-positioner {
+  position: relative;
+}
+.simple-search .listaMunicipios {
+  position: absolute;
+  visibility: hidden;
+  z-index: 1;
+  width: 100%;
+  max-height: 20vh;
+  overflow-y: scroll;
+  background-color: white;
+  border: 1px solid black;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.1vw;
+}
+.simple-search li {
+  font-weight: 500;
+}
+.simple-search li:hover {
+  background-color: var(--secondary7);
+  cursor: pointer;
+}
+.simple-search button {
+  margin-top: 2vw;
+  padding: 0.5vw 2vw;
+  border-width: 0;
+  border-radius: 1vw;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  background-color: var(--secondary5);
+  font-size: 1vw;
+  transition: background-color 0.3s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.simple-search button:hover {
+  background-color: #1e914e;
+  cursor: pointer;
+}
+.simple-search #titulo {
+  animation-name: fadeInLeft;
+  animation-duration: 0.8s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  transform: translateX(-20vw);
+  opacity: 0;
+}
+.simple-search #ilustracion {
+  animation-name: fadeInRight;
+  animation-duration: 0.8s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  transform: translateX(20vw);
+  opacity: 0;
+}
+.simple-search .content {
+  animation-name: fadeInBottom;
+  animation-duration: 0.8s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  transform: translateY(20vw);
+  opacity: 0;
+}
+.simple-search .content img {
+  width: 2vw;
+  height: 2vw;
+  margin-right: 1vw;
+}
+.simple-search .loading-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 2.5vw;
+}
+
+.simple-search .loading-div img {
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(20vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

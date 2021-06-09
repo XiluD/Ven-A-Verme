@@ -1,0 +1,542 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel OpenApi Demo Documentation",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "dvicentevila@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/provsMunsBasic": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Basic"
+                ],
+                "summary": "Get provincia and municipio basic data",
+                "description": "Get provincia and municipio basic data \r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "operationId": "getProvMunsBasicData",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/provsMunsUltraBasic": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Basic"
+                ],
+                "summary": "Get provincia and municipio ultra basic data",
+                "description": "Get provincia and municipio ultra basic data (provincias and municipios)\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "operationId": "getProvMunsUltraBasicData",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/munsBasic": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Basic"
+                ],
+                "summary": "Get municipios basic data",
+                "description": "Get municipios basic data\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "operationId": "getMunicipiosBasic",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/provsBasic": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Basic"
+                ],
+                "summary": "Get provincias basic data",
+                "description": "Get provincias basic data",
+                "operationId": "getProvinciasBasic",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/munsOf/{provincia}": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Basic"
+                ],
+                "summary": "Get 'Municipios' basic data from a given 'Provincia'",
+                "description": "Get 'Municipios' basic data from a given 'Provincia'\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "operationId": "getMunsFromProv",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    }
+                }
+            }
+        },
+        "/api/munBasicOf/{municipio}": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Basic"
+                ],
+                "summary": "Get 'Municipio' basic data from a given 'Municipio'",
+                "description": "Get 'Municipio' basic data from a given 'Municipio'",
+                "operationId": "getMunData",
+                "parameters": [
+                    {
+                        "name": "municipio",
+                        "in": "path",
+                        "description": "Nombre del municipio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    }
+                }
+            }
+        },
+        "/api/munsPoblationOrdered/{poblacion}": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Advance"
+                ],
+                "summary": "Get 'Municipios' ordered by given 'Population'",
+                "description": "Get 'Municipios' ordered by given 'Population'\r\n *      WARNING! Large body response, so it could take a while depending of the number supplied. Instead is recommended to see the API endpoint directly on the URL.",
+                "operationId": "getMunsPoblacionBasedOrdered",
+                "parameters": [
+                    {
+                        "name": "poblacion",
+                        "in": "path",
+                        "description": "Numero de habitantes maximos",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request. Invalid format."
+                    }
+                }
+            }
+        },
+        "/api/munsOfPoblationOrdered/{provincia}/{poblacion}": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Advance"
+                ],
+                "summary": "Get 'Municipios' from given 'PROVINCIA' ordered by given 'Population' with optional consider of 'España Vacia'",
+                "description": "Get 'Municipios' from given 'PROVINCIA' ordered by given 'Population'\r\n *      WARNING! Large body response depending of the parameters entered, so please note that it may take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "operationId": "getMunsFromProvPoblacionBasedOrdered",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "poblacion",
+                        "in": "path",
+                        "description": "Numero de habitantes maximos",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "ev",
+                        "in": "query",
+                        "description": "Optional parameter to consider also based on the base parameters, show only the places considered from 'España Vacia' or not ",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request. Invalid format."
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    }
+                }
+            }
+        },
+        "/api/munsEv": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Advance"
+                ],
+                "summary": "Get 'Municipios' considered from 'España Vacia'",
+                "description": "Get 'Municipios' considered from 'España Vacia'\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "operationId": "getMunsEv",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/munsEvOf/{provincia}": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Advance"
+                ],
+                "summary": "Get 'Municipios' from a given 'Provincia' considered from 'España Vacia'",
+                "description": "Get 'Municipios' from a given 'Provincia' considered from 'España Vacia'",
+                "operationId": "getMunsFromProvEV",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    }
+                }
+            }
+        },
+        "/api/munsEvOrderedOf/{provincia}": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Advance"
+                ],
+                "summary": "Get 'Municipios' from a given 'Provincia' considered from 'España Vacia' ordered by 'Poblacion'",
+                "description": "Get 'Municipios' from a given 'Provincia' considered from 'España Vacia' ordered by 'Poblacion'\r\n *      WARNING! Large body response, so it could take a while. Instead is recommended to see the API endpoint directly on the URL.",
+                "operationId": "getMunsFromProvEVOrdered",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    }
+                }
+            }
+        },
+        "/api/provMunCodesOf/{provincia}": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Advance"
+                ],
+                "summary": "Get 'Provincia' and 'Municipios' 'Codes' from given 'Provincia'",
+                "description": "Get 'Provincia' and 'Municipios' 'Codes' from given 'Provincia'",
+                "operationId": "getCodesFromMun",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    }
+                }
+            }
+        },
+        "/api/provMunCoordinatesOf/{provincia}": {
+            "get": {
+                "tags": [
+                    "Provincia Municipio Advance"
+                ],
+                "summary": "Get 'Provincia' and 'Municipios' 'Coordinates' from given 'Provincia'",
+                "description": "Get 'Provincia' and 'Municipios' 'Coordinates' from given 'Provincia'",
+                "operationId": "getCoordinatesFromMun",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    }
+                }
+            }
+        },
+        "/api/trip/{provincia}/{municipio}": {
+            "get": {
+                "tags": [
+                    "Tripadvisor"
+                ],
+                "summary": "Get tripadvisor main content",
+                "description": "Get tripadvisor content based on place info (provincia and municipio)",
+                "operationId": "getTrip",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "municipio",
+                        "in": "path",
+                        "description": "Nombre del municipio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api_token",
+                        "in": "query",
+                        "description": "API TOKEN Authentication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    }
+                }
+            }
+        },
+        "/api/tripCard{cardLink?}{api_token?}": {
+            "get": {
+                "tags": [
+                    "Tripadvisor"
+                ],
+                "summary": "Get Tripadvisor Card inner content",
+                "description": "Get Tripadvisor card inner content based on a card link",
+                "operationId": "getTripCard",
+                "parameters": [
+                    {
+                        "name": "cardLink",
+                        "in": "query",
+                        "description": "Enlace de la tarjeta (ej. /Attraction_Review-g187486-d10786893-Reviews-Parque_de_la_Pulgosa-Albacete_Province_of_Albacete_Cast)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api_token",
+                        "in": "query",
+                        "description": "API TOKEN Authentication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request. Invalid format."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/idea/{provincia}/{municipio}": {
+            "get": {
+                "tags": [
+                    "Idealista"
+                ],
+                "summary": "Get Idealista main content",
+                "description": "Get idealista content based on place info",
+                "operationId": "getTrip",
+                "parameters": [
+                    {
+                        "name": "provincia",
+                        "in": "path",
+                        "description": "Nombre de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "municipio",
+                        "in": "path",
+                        "description": "Nombre del municipio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api_token",
+                        "in": "query",
+                        "description": "API TOKEN Authentication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "406": {
+                        "description": "No information was found with those names."
+                    },
+                    "503": {
+                        "description": "Service Unavailable. Due to a TimeoutException when trying to collect the page data"
+                    }
+                }
+            }
+        },
+        "/api/ideaCard{cardLink?}{api_token?}": {
+            "get": {
+                "tags": [
+                    "Idealista"
+                ],
+                "summary": "Get Idealista Card inner content",
+                "description": "Get idealista card inner content based on a card link",
+                "operationId": "getIdeaCard",
+                "parameters": [
+                    {
+                        "name": "cardLink",
+                        "in": "query",
+                        "description": "Enlace de la tarjeta (ej. https://www.idealista.com/inmueble/1710415/)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api_token",
+                        "in": "query",
+                        "description": "API TOKEN Authentication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request. Invalid format."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "503": {
+                        "description": "Service Unavailable. Due to a TimeoutException when trying to collect the page data"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Ven a Verme",
+            "description": "API Endpoints of Ven A Verme"
+        }
+    ],
+    "security": [
+        []
+    ]
+}

@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "../../css/app.css";
 import App from "./App";
-import Login2 from "./Login2";
+import "./styles/App.css";
+
 
 ReactDOM.render(
     <React.StrictMode>
-        <Login2 />
+        <App />
     </React.StrictMode>,
     document.getElementById("root")
 );
+

@@ -1,24 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Orelega+One&display=swap");
-:root {
-  --primary1: #00e0ff;
-  --primary2: #4d9bac;
-  --primary3: #e5feff;
-  --primary4: #e6f4f1;
-  --secondary1: #94ff31;
-  --secondary2: #81986e;
-  --secondary3: #f6fbf2;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: var(--secondary2);
-}
 .login-card {
   border-radius: 1vw;
   border-style: none;
@@ -33,9 +12,14 @@ body {
   flex-direction: row;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  /* animación de entrada */
+  animation-name: goIn;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 }
-.left-container,
-.right-container {
+.login-card .left-container,
+.login-card .right-container {
   width: 100%;
   height: 100%;
   text-align: center;
@@ -43,27 +27,27 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.left-container {
+.login-card .left-container {
   justify-content: flex-start;
   padding-top: 5%;
 }
-.left-container-aligner {
+.login-card .left-container-aligner {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.right-container {
+.login-card .right-container {
   justify-content: flex-end;
   padding-bottom: 5%;
   padding-left: 5%;
 }
-.right-container-aligner {
+.login-card .right-container-aligner {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 /* ----------------------------MOVING PANEL---------------------------------------- */
-.moving-panel {
+.login-card .moving-panel {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-top-right-radius: 2vw;
@@ -81,29 +65,29 @@ body {
   align-items: center;
   transform: rotate(-33deg);
 }
-.moving-panel p {
+.login-card .moving-panel p {
   text-align: justify;
   text-justify: inter-word;
   font-size: 0.8vw;
 }
-.moving-panel h1 {
+.login-card .moving-panel h1 {
   font-family: "Orelega One", cursive;
-  color: #71a63c;
+  color: #77af3f;
   font-size: 2.5vw;
   margin-bottom: 8%;
 }
-.moving-panel img {
+.login-card .moving-panel img {
   width: 15%;
   margin-bottom: 9%;
 }
-.login-welcome {
+.login-card .login-welcome {
   width: 16%;
   transform: rotate(33deg);
   display: flex;
   flex-direction: column;
   align-content: center;
 }
-.input_text_container {
+.login-card .input_text_container {
   margin-top: 5%;
   display: flex;
   flex-direction: row;
@@ -111,9 +95,9 @@ body {
   align-items: center;
 }
 /* -------------------------FIN DE MOVING PANEL------------------------------------- */
-input[type="email"],
-[type="text"],
-[type="password"] {
+.login-card input[type="email"],
+.login-card [type="text"],
+.login-card [type="password"] {
   margin-left: 0.5vw;
   padding: 1% 2%;
   width: 15vw;
@@ -122,42 +106,50 @@ input[type="email"],
   border-bottom: 2px solid rgb(87, 87, 87);
   font-size: 1vw;
 }
-input[type="email"]:focus,
-[type="text"]:focus,
-[type="password"]:focus {
+.login-card input[type="email"]:focus,
+.login-card [type="text"]:focus,
+.login-card [type="password"]:focus {
   outline-width: 0px;
+  outline: none;
   background-color: #82db2f;
 }
-input[type="submit"],
-button {
+.login-card input[type="submit"],
+.login-card button {
   width: 100%;
   margin-top: 8%;
   padding: 2% 4%;
   border-width: 0;
   border-radius: 1vw;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  background-color: #2bc069;
+  background-color: var(--secondary5);
   font-size: 1vw;
   transition: background-color 0.3s;
 }
-input[type="submit"]:hover,
-button:hover {
+.login-card input[type="submit"]:hover,
+.login-card button:hover {
   background-color: #1e914e;
 }
-.right-container p {
+.login-card .right-container p {
   margin-top: 1%;
   font-size: 0.55vw;
   color: rgb(97, 97, 97);
 }
+.title-link {
+  transition: transform 0.2s;
+}
 
+.title-link:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 /* ---------------------------ANIMATIONS--------------------------------------- */
-.animation-goToLogin {
+.login-card .animation-goToLogin {
   animation-name: goToLogin;
   animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
-.animation-goToRegister {
+.login-card .animation-goToRegister {
   animation-name: goToRegister;
   animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
@@ -181,5 +173,13 @@ button:hover {
   100% {
     left: -75%; /* -50+top */
     top: -25%;
+  }
+}
+@keyframes goIn {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 50%;
   }
 }

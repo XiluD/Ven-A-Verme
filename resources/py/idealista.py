@@ -11,10 +11,10 @@ from selenium.webdriver.firefox.options import Options
 import json
 from db_connector import insertIntoDB
 
-
 def get_data(link, driver):
     driver.get(link)
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'main-footer')))
+
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     main_content = soup.find(id = 'main-content')
     cards_containers = main_content.find_all('article', class_='item-multimedia-container')
@@ -54,38 +54,43 @@ def get_data(link, driver):
     return content
 
 if __name__ == '__main__':
+
     options = Options()
     options.add_argument('--headless')
     options.add_argument("--window-size=1920,1080")
     driver = webdriver.Firefox(executable_path=f"{os.path.dirname(__file__)}/geckodriver.exe", options=options)
-    
+
     sql = """INSERT INTO idealistacards (cardLink, placeLink, cardTitle, cardPrice, cardDetail,
-     cardDescription, cardContact, cardImage, cardType) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""" 
+     cardDescription, cardContact, cardImage, cardType) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE cardLink=VALUES(cardLink)""" 
     
     content = {}
+    try:
+        content['onRent'] = get_data(f"https://www.idealista.com/alquiler-viviendas/{sys.argv[1]}/", driver)
+        
+        val = [(card['card_link'], f'/alquiler-viviendas/{sys.argv[1]}/', card['card_title'],
+        card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onRent') for card in content['onRent']]
 
-    content['onRent'] = get_data(f"https://www.idealista.com/alquiler-viviendas/{sys.argv[1]}/", driver)
-    
-    val = [(card['card_link'], f'/alquiler-viviendas/{sys.argv[1]}/', card['card_title'],
-     card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onRent') for card in content['onRent']]
+        insertIntoDB(sql, val)
 
-    insertIntoDB(sql, val)
+        content['onSale'] = get_data(f"https://www.idealista.com/venta-viviendas/{sys.argv[1]}/", driver)
 
-    content['onSale'] = get_data(f"https://www.idealista.com/venta-viviendas/{sys.argv[1]}/", driver)
+        val = [(card['card_link'], f'/venta-viviendas/{sys.argv[1]}/', card['card_title'],
+        card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onSale') for card in content['onSale']]
+        
+        insertIntoDB(sql, val)
 
-    val = [(card['card_link'], f'/venta-viviendas/{sys.argv[1]}/', card['card_title'],
-     card['card_price'], card['card_detail'], card['card_description'], card['card_contact'], card['card_img'], 'onSale') for card in content['onSale']]
-    
-    insertIntoDB(sql, val)
-
-    driver.quit()
+        driver.quit()
+        print(json.dumps({'operation': 'Success'}))
+    except TimeoutException:
+        driver.quit()
+        print(json.dumps({'operation': 'Error'}))
 
 
 '''  
 
 sql = "INSERT INTO idealistacards (cardLink, placeLink, cardTitle, cardPrice, cardDetail,
                                      cardDescription, cardContact, cardImage, cardType) VALUES (%s, %s, %s,
-                                                                                                %s, %s, %s,
+                                                                                                %s, %s, %s)
             
 val = [(https://www.idealista.com/inmueble/93804699/, https://www.idealista.com/venta-viviendas/tres-cantos-madrid/,
         Piso en avenida de Madrid, Primera Fase - Nuevo Tres Cantos, Tres Cantos, 630€/mes, 2 hab. 67 m² Planta 3ª  con ascensor Publicado ayer,

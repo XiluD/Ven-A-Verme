@@ -44,7 +44,7 @@ const MainWindow = () => {
                     {purposeContentType.queVisitar.length > 0 && <CardsContainer containerTypeContent={purposeContentType.queVisitar} title="Que visitar" handleCardClick={handleCardClick} />}
                     {purposeContentType.dondeComer.length > 0 && <CardsContainer containerTypeContent={purposeContentType.dondeComer} title="Donde comer" handleCardClick={handleCardClick} />}
                     {purposeContentType.alojamiento.length > 0 && <CardsContainer containerTypeContent={purposeContentType.alojamiento} title="Alojamiento" handleCardClick={handleCardClick} />}
-                    {purposeContentType.length > 0 && <CardsContainer containerTypeContent={purposeContentType.otros} title="Sigue el entretenimiento en" handleCardClick={handleCardClick} />}
+                    {purposeContentType.otros.length > 0 && <CardsContainer containerTypeContent={purposeContentType.otros} title="Sigue el entretenimiento en" handleCardClick={handleCardClick} />}
                 </div>
             );
         }

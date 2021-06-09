@@ -169,14 +169,12 @@ php artisan serve
 
 ## Usage
 
-  
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+Once you have launch the application, you will be able to use it.
 
 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-  
+This is an academic project and therefore will never be used for profit, take care of how you use it. Thank you!
 
 ## Contact us
 

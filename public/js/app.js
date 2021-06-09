@@ -7519,7 +7519,7 @@ var MainWindow = function MainWindow() {
           containerTypeContent: purposeContentType.alojamiento,
           title: "Alojamiento",
           handleCardClick: handleCardClick
-        }), purposeContentType.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CardsContainer__WEBPACK_IMPORTED_MODULE_3__.default, {
+        }), purposeContentType.otros.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CardsContainer__WEBPACK_IMPORTED_MODULE_3__.default, {
           containerTypeContent: purposeContentType.otros,
           title: "Sigue el entretenimiento en",
           handleCardClick: handleCardClick

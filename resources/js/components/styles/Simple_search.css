@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  background-color: #e7a4f7;
 }
 .simple-search .row-container-title {
   display: flex;
@@ -25,7 +26,7 @@
   color: var(--secondary9);
   font-size: 1.5vw;
   font-weight: 500;
-  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),
+  text-shadow: 2px 0 0 rgba(189, 184, 184, 0.678), -1px 0 0 var(--secondary9),
     0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),
     0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),
     0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);
@@ -118,7 +119,7 @@
   border-width: 0;
   border-radius: 1vw;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  background-color: var(--secondary5);
+  background-color: #46c476;
   font-size: 1vw;
   transition: background-color 0.3s;
 

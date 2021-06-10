@@ -25,6 +25,14 @@ function Simple_search() {
     document.activeElement.blur();
   };
 
+  const poneradmins = () => {
+    let municipio = inputText[0];
+    let provincia = inputText[1];
+    if (municipio !== "" && provincia !== "") {
+        alert(`Successful login, remember your API_TOKEN: ${data.api_token}`)
+    }
+  }
+
   const filter_function = () => {
     let input, filter, ul, li, i, txtValue;
     input = document.getElementById("simple_search");
@@ -74,12 +82,6 @@ function Simple_search() {
     } else {
       alert("Introduce un pueblo que consultar");
     }
-  };
-
-  const goToSearch2 = () => {
-    history.push("/Simple_search2"); 
-    /*window.location =
-      "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
   };
 
   /* USEEFECT --------------------------------------------------------------------------------------------- */
@@ -296,8 +298,7 @@ function Simple_search() {
               <option value="vacations">Vacaciones</option>
               <option value="rentSale">Búsqueda de vivienda</option>
             </select>
-            <button onClick={goToSearch}>Buscar</button>
-            <button onClick={goToSearch2}>Copia pantalla</button>
+            <button onClick={goToSearch} >BUSCAR FUNCIONA</button >
 
             <button
               onClick={() => {
@@ -310,6 +311,7 @@ function Simple_search() {
               />
               Búsqueda Avanzada
             </button>
+
           </div>
         </div>
       )}

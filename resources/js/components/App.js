@@ -2,6 +2,7 @@ import React from "react";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import Simple_search from "./Simple_search";
+import Simple_search2 from "./Simple_search2";
 import Footer from "./Footer";
 import NotFound from "./NotFound";
 import MainWindow from "./MainWindow";
@@ -15,6 +16,11 @@ function App() {
           <Route exact path="/" component={Simple_search}>
             <NavBar />
             <Simple_search />
+            <Footer />
+          </Route>
+          <Route exact path="/Simple_search2" component={Simple_search2}>
+            <NavBar />
+            <Simple_search2 />
             <Footer />
           </Route>
           <Route path="/Login" component={Login}>

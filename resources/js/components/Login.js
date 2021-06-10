@@ -60,7 +60,7 @@ function Login() {
 
 
 const handleRegisterSubmit = (e) => {
-  e.preventDefault();
+  e.preventDefault();handleRegisterSubmi
   const adminForm = {email, password, confirmPassword};
   if(adminForm.password !== adminForm.confirmPassword){
     alert('Confirmación incorrecta, intentelo de nuevo');

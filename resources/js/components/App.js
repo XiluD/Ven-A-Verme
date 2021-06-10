@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import Simple_search from "./Simple_search";
 import Footer from "./Footer";
 import NotFound from "./NotFound";
-import MainWindow from "./MainWindow";
+import MainWindow_copy from "./MainWindow_copy";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -20,9 +20,9 @@ function App() {
           <Route path="/Login" component={Login}>
             <Login />
           </Route>
-          <Route path='/:provincia/:municipio/:purpose' component={MainWindow}>
+          <Route path='/:provincia/:municipio/:purpose' component={MainWindow_copy}>
             <NavBar />
-            <MainWindow />
+            <MainWindow_copy />
             <Footer />
           </Route>
           <Route path="*">

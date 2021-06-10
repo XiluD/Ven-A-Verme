@@ -14,8 +14,4 @@ class Admin extends Model
         'password',
         'api_token',
     ];
-    protected $hidden = [
-        'password',
-        'api_token',
-    ];
 }

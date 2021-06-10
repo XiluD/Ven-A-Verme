@@ -10,6 +10,11 @@ use Illuminate\Http\JsonResponse;
 
 class AdminsController extends Controller
 {
+    protected function showMeAdminsAccounts(){
+        return response()->json(Admin::all(), JsonResponse::HTTP_OK);
+
+    }
+
     protected function show($email, $password){
         $admin = Admin::where('email', $email)->first();
         if($admin && Hash::check($password, $admin->password)){

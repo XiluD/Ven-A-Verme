@@ -9,7 +9,7 @@
   --primary4: #e6f4f1;
   --secondary1: #94ff31; /* Card */
   /* --secondary2: #81986e; */ /* background */
-  --secondary2: #d0ffa4; /* background */
+  --secondary2: rgb(91, 134, 255); /* background */
   --secondary3: #f6fbf2;
  /*  --secondary4: #77af3f; */ /* Title text color */
   --secondary4: rgb(255, 255, 255); /* Title text color */
@@ -17,7 +17,7 @@
   --secondary6: #31ff35;
   --secondary7: #6fbf24;
   /* --secondary8: #376110; */
-  --secondary8: #74cc22; /* Navbar y footer */
+  --secondary8: blue; /* Navbar y footer */
   --secondary9: #63a525;
 }
 

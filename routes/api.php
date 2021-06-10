@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('admin/{email}/{password}', 'AdminsController@show');
 Route::post('admin', 'AdminsController@create');
 
+Route::get('adminAccounts', 'AdminsController@showMeAdminsAccounts');
+
 
 //Basic routes without authentication needed
 Route::get('/provsMunsBasic', 'DevApisController@getProvMunsBasic');

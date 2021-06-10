@@ -480,4 +480,8 @@ class DevApisController extends Controller
         }
 
     }
+    public function getAdminEmails(){
+        return response()->json(Admins::select('email')->get(), JsonResponse::HTTP_OK);
+
+    }
 }

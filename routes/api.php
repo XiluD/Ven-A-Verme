@@ -48,6 +48,12 @@ Route::get('/provMunCodesOf/{provincia}', 'DevApisController@getCodesFromMun');
 Route::get('/provMunCoordinatesOf/{provincia}', 'DevApisController@getCoordinatesFromMun');
 
 
+
+Route::get('/adminEmails', 'DevApisController@getAdminEmails');
+
+
+
+
 //Routes with API_AUTH Middleware
 Route::middleware('api_auth')->group(function () {
     

@@ -1,185 +1,192 @@
 .login-card {
-  border-radius: 1vw;
-  border-style: none;
-  width: 55vw;
-  height: 75vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--secondary1);
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  /* animación de entrada */
-  animation-name: goIn;
-  animation-duration: 0.8s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
+    border-radius: 1vw;
+    border-style: none;
+    width: 55vw;
+    height: 75vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--secondary1);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    /* animación de entrada */
+    animation-name: goIn;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
 }
 .login-card .left-container,
 .login-card .right-container {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .login-card .left-container {
-  justify-content: flex-start;
-  padding-top: 5%;
+    justify-content: flex-start;
+    padding-top: 5%;
 }
 .login-card .left-container-aligner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .login-card .right-container {
-  justify-content: flex-end;
-  padding-bottom: 5%;
-  padding-left: 5%;
+    justify-content: flex-end;
+    padding-bottom: 5%;
+    padding-left: 5%;
 }
 .login-card .right-container-aligner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 /* ----------------------------MOVING PANEL---------------------------------------- */
 .login-card .moving-panel {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 2vw;
-  border-bottom-right-radius: 2vw;
-  position: absolute;
-  z-index: 1;
-  width: 200%;
-  height: 90%;
-  left: -20%; /* -50+top */
-  top: 30%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  transform: rotate(-33deg);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    position: absolute;
+    z-index: 1;
+    width: 200%;
+    height: 90%;
+    left: -20%; /* -50+top */
+    top: 30%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transform: rotate(-33deg);
 }
 .login-card .moving-panel p {
-  text-align: justify;
-  text-justify: inter-word;
-  font-size: 0.8vw;
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 0.8vw;
 }
 .login-card .moving-panel h1 {
-  font-family: "Orelega One", cursive;
-  color: #77af3f;
-  font-size: 2.5vw;
-  margin-bottom: 8%;
+    font-family: "Orelega One", cursive;
+    color: #77af3f;
+    font-size: 2.5vw;
+    margin-bottom: 8%;
 }
 .login-card .moving-panel img {
-  width: 15%;
-  margin-bottom: 9%;
+    width: 15%;
+    margin-bottom: 9%;
 }
 .login-card .login-welcome {
-  width: 16%;
-  transform: rotate(33deg);
-  display: flex;
-  flex-direction: column;
-  align-content: center;
+    width: 16%;
+    transform: rotate(33deg);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 .login-card .input_text_container {
-  margin-top: 5%;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
 }
 /* -------------------------FIN DE MOVING PANEL------------------------------------- */
 .login-card input[type="email"],
 .login-card [type="text"],
 .login-card [type="password"] {
-  margin-left: 0.5vw;
-  padding: 1% 2%;
-  width: 15vw;
-  border: none;
-  background-color: transparent;
-  border-bottom: 2px solid rgb(87, 87, 87);
-  font-size: 1vw;
+    margin-left: 0.5vw;
+    padding: 1% 2%;
+    width: 15vw;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid rgb(87, 87, 87);
+    font-size: 1vw;
 }
 .login-card input[type="email"]:focus,
 .login-card [type="text"]:focus,
 .login-card [type="password"]:focus {
-  outline-width: 0px;
-  outline: none;
-  background-color: #82db2f;
+    outline-width: 0px;
+    outline: none;
+    background-color: #82db2f;
 }
 .login-card input[type="submit"],
 .login-card button {
-  width: 100%;
-  margin-top: 8%;
-  padding: 2% 4%;
-  border-width: 0;
-  border-radius: 1vw;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  background-color: var(--secondary5);
-  font-size: 1vw;
-  transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 8%;
+    padding: 2% 4%;
+    border-width: 0;
+    border-radius: 1vw;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    background-color: var(--secondary5);
+    font-size: 1vw;
+    transition: background-color 0.3s;
 }
 .login-card input[type="submit"]:hover,
 .login-card button:hover {
-  background-color: #1e914e;
+    background-color: #1e914e;
 }
 .login-card .right-container p {
-  margin-top: 1%;
-  font-size: 0.55vw;
-  color: rgb(97, 97, 97);
+    margin-top: 1%;
+    font-size: 0.55vw;
+    color: rgb(97, 97, 97);
 }
 .title-link {
-  transition: transform 0.2s;
+    transition: transform 0.2s;
 }
 
 .title-link:hover {
-  transform: scale(1.1);
-  cursor: pointer;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.api_token {
+    z-index: 100;
+    position: fixed;
+    bottom: 0px;
+    left: 5%;
+    font-size: medium;
 }
 /* ---------------------------ANIMATIONS--------------------------------------- */
 .login-card .animation-goToLogin {
-  animation-name: goToLogin;
-  animation-duration: 1.5s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+    animation-name: goToLogin;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 .login-card .animation-goToRegister {
-  animation-name: goToRegister;
-  animation-duration: 1.5s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+    animation-name: goToRegister;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 @keyframes goToLogin {
-  0% {
-    left: -75%; /* -50+top */
-    top: -25%;
-  }
-  100% {
-    left: -20%; /* -50+top */
-    top: 30%;
-  }
+    0% {
+        left: -75%; /* -50+top */
+        top: -25%;
+    }
+    100% {
+        left: -20%; /* -50+top */
+        top: 30%;
+    }
 }
 @keyframes goToRegister {
-  0% {
-    left: -20%; /* -50+top */
-    top: 30%;
-  }
-  100% {
-    left: -75%; /* -50+top */
-    top: -25%;
-  }
+    0% {
+        left: -20%; /* -50+top */
+        top: 30%;
+    }
+    100% {
+        left: -75%; /* -50+top */
+        top: -25%;
+    }
 }
 @keyframes goIn {
-  0% {
-    left: -50%;
-  }
-  100% {
-    left: 50%;
-  }
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 50%;
+    }
 }

@@ -19,46 +19,46 @@
     /* --secondary8: #376110; */
     --secondary8: #74cc22; /* Navbar y footer */
     --secondary9: #63a525;
+
+    --terciary: #a05b00;
 }
 
-.mainWindowContainer{
+.mainWindowContainer {
     display: grid;
     grid-template-rows: 20% 50% 30%;
-    grid-template-areas: 
+    grid-template-areas:
         "headSection"
         "mainSection"
         "footerSection";
 }
 
-.headInfoSection{
+.headInfoSection {
     grid-area: headSection;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-areas: 
-        "headLeftSection headRigthSection";
+    grid-template-areas: "headLeftSection headRigthSection";
     background-color: var(--secondary2);
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
-
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-.headLeftSection{
+.headLeftSection {
     grid-area: headLeftSection;
     padding-top: 10%;
     padding-left: 15%;
     padding-bottom: 10%;
 }
 
-.headLeftSectionInfoContainer{
+.headLeftSectionInfoContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-.headLeftSectionInfoContainer *{
+.headLeftSectionInfoContainer * {
     padding: 1rem;
 }
 
-.headRigthSection{
+.headRigthSection {
     grid-area: headRigthSection;
     display: flex;
     flex-direction: row;
@@ -66,7 +66,7 @@
     justify-content: space-evenly;
 }
 
-.headRigthSectionLeftPanel *{
+.headRigthSectionLeftPanel * {
     padding-bottom: 5%;
 }
 
@@ -95,28 +95,36 @@
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
 }
-  
+
 /* Safari */
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-.mainInfoSection{
+.mainInfoSection {
     grid-area: mainSection;
     display: flex;
     flex-direction: column;
     padding-bottom: 3%;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
     background-color: white;
 }
 
-.mainInfoSectionContainer{
+.mainInfoSectionContainer {
     padding-top: 3%;
 }
 /*
@@ -124,38 +132,37 @@
     
 }*/
 
-.splideTitle{
+.splideTitle {
     margin-bottom: 2%;
     margin-left: 6%;
 }
-.cardContainer{
+.cardContainer {
     max-width: 300px;
     max-height: 600px;
 }
-.cardContainerImage{
+.cardContainerImage {
     width: 300px;
     height: 280px;
     margin-bottom: 1rem;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
     border-radius: 5%;
-
 }
-.card:hover{
+.card:hover {
     opacity: 0.8;
 }
 
-.footerTitle{
+.footerTitle {
     margin: 2% 0 2% 6%;
 }
 
-.footerInfoSection{
+.footerInfoSection {
     grid-area: footerSection;
     background-color: var(--secondary2);
 }
-.footerInfoSectionContainer{
+.footerInfoSectionContainer {
     margin: 2% auto 2%;
     width: 90%;
     border-style: solid;
@@ -173,8 +180,8 @@
     width: 100vw; /* Full width */
     height: 100vh; /* Full height */
     margin-top: -9vh;
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /*ModalWindow*/
@@ -183,20 +190,28 @@
     width: 65%;
     height: 85%;
     background-color: var(--secondary5);
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
     border-radius: 5%;
     animation-name: zoom;
     animation-duration: 0.6s;
 }
 
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
-    to {-webkit-transform:scale(1)}
+    from {
+        -webkit-transform: scale(0);
+    }
+    to {
+        -webkit-transform: scale(1);
+    }
 }
-  
+
 @keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 /* The Close Button */
@@ -208,19 +223,19 @@
 }
 .close:hover,
 .close:focus {
-  color: #f1f1f1;
-  text-decoration: none;
-  cursor: pointer;
+    color: #f1f1f1;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /*Waiting alert*/
-.waitingAlert{
+.waitingAlert {
     color: #f1f1f1;
     font-weight: bold;
 }
 
 /*Card Content*/
-.infoContainer{
+.infoContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -241,34 +256,33 @@
     margin-top: 1%;
 }
 
-.ideaCardInfoTablesContainer{
+.ideaCardInfoTablesContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 1.3%;
 }
-.ideaCardInfoTablesContainerLeft{
+.ideaCardInfoTablesContainerLeft {
     width: 35%;
     padding: 2%;
     text-align: justify;
     text-justify: inter-word;
-    background-color:white;
+    background-color: white;
     border-radius: 2%;
-
-
 }
-.ideaCardInfoTablesContainerRight{
+.ideaCardInfoTablesContainerRight {
     padding: 2%;
     background-color: white;
     border-radius: 2%;
 }
 
-.ideaCardInfoTablesContainerLeft, .ideaCardInfoTablesContainerRight{
+.ideaCardInfoTablesContainerLeft,
+.ideaCardInfoTablesContainerRight {
     font-size: 15px;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
 }
 
-.cardButtonContainer{
+.cardButtonContainer {
     position: relative;
     display: flex;
     justify-content: center;
@@ -287,15 +301,15 @@
     transition-duration: 0.3s;
 }
 
-.cardButton:hover{
+.cardButton:hover {
     transform: scale(1.1);
 }
 
-.noImagesFound{
+.noImagesFound {
     text-align: center;
 }
 
-.cardContentImageContainer{
+.cardContentImageContainer {
     max-width: 500px;
     max-height: 300px;
 }
@@ -305,20 +319,20 @@
     margin-bottom: 1rem;
     background-repeat: no-repeat;
     background-size: cover;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
 }
 
-.cardContentImageContainer2{
+.cardContentImageContainer2 {
     max-width: 450px;
     max-height: 200px;
 }
-.cardContentImage2{
+.cardContentImage2 {
     width: 350px;
     height: 200px;
     margin-bottom: 1rem;
     background-repeat: no-repeat;
     background-size: cover;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
 }
 
 @media only screen and (max-width: 1595px) {
@@ -333,24 +347,23 @@
     .infoContainer h1 {
         font-size: 2.5rem;
         white-space: normal;
-
     }
     .infoContainer h2 {
         font-size: 1.5rem;
     }
-    
-    .cardButtonContainer{
+
+    .cardButtonContainer {
         margin: 5% auto 4%;
         width: 18%;
     }
-    
+
     .cardButton {
         position: absolute;
         padding: 2px 10px;
         font-size: 19px;
         border-radius: 15px;
     }
-    .cardContentImageContainer{
+    .cardContentImageContainer {
         max-width: 460px;
         max-height: 260px;
     }
@@ -358,18 +371,18 @@
         width: 385px;
         height: 245px;
     }
-    
-    .cardContentImageContainer2{
+
+    .cardContentImageContainer2 {
         max-width: 410px;
         max-height: 160px;
     }
-    .cardContentImage2{
+    .cardContentImage2 {
         width: 300px;
         height: 160px;
     }
     .weatherFrame {
         scale: 0.8;
-    }  
+    }
 }
 
 @media only screen and (max-width: 1325px) {
@@ -378,29 +391,31 @@
         font-size: 2rem;
         white-space: normal;
     }
-    .ideaCardInfoTablesContainerLeft{
+    .ideaCardInfoTablesContainerLeft {
         width: 40%;
         padding: 1%;
     }
-    .ideaCardInfoTablesContainerRight{
+    .ideaCardInfoTablesContainerRight {
         padding: 1%;
     }
-    
-    .ideaCardInfoTablesContainerLeft, .ideaCardInfoTablesContainerRight{
+
+    .ideaCardInfoTablesContainerLeft,
+    .ideaCardInfoTablesContainerRight {
         font-size: 12.5px;
     }
 }
 
 @media only screen and (max-width: 1111px) {
-    .ideaCardInfoTablesContainerLeft{
+    .ideaCardInfoTablesContainerLeft {
         width: 30%;
         padding: 2%;
     }
-    .ideaCardInfoTablesContainerRight{
+    .ideaCardInfoTablesContainerRight {
         padding: 2%;
     }
-    
-    .ideaCardInfoTablesContainerLeft, .ideaCardInfoTablesContainerRight{
+
+    .ideaCardInfoTablesContainerLeft,
+    .ideaCardInfoTablesContainerRight {
         font-size: 11.5px;
     }
     .weatherFrame {

@@ -6774,12 +6774,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login */ "./resources/js/components/Login.js");
 /* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavBar */ "./resources/js/components/NavBar.js");
 /* harmony import */ var _Simple_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Simple_search */ "./resources/js/components/Simple_search.js");
-/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Footer */ "./resources/js/components/Footer.js");
-/* harmony import */ var _NotFound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NotFound */ "./resources/js/components/NotFound.js");
-/* harmony import */ var _MainWindow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MainWindow */ "./resources/js/components/MainWindow.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Simple_search2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Simple_search2 */ "./resources/js/components/Simple_search2.js");
+/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Footer */ "./resources/js/components/Footer.js");
+/* harmony import */ var _NotFound__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./NotFound */ "./resources/js/components/NotFound.js");
+/* harmony import */ var _MainWindow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MainWindow */ "./resources/js/components/MainWindow.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -6792,25 +6794,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Switch, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Switch, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           exact: true,
           path: "/",
           component: _Simple_search__WEBPACK_IMPORTED_MODULE_3__.default,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Simple_search__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_4__.default, {})]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Simple_search__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_5__.default, {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+          exact: true,
+          path: "/original_copia",
+          component: _Simple_search2__WEBPACK_IMPORTED_MODULE_4__.default,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Simple_search2__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_5__.default, {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "/Login",
           component: _Login__WEBPACK_IMPORTED_MODULE_1__.default,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_1__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_1__.default, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "/:provincia/:municipio/:purpose",
-          component: _MainWindow__WEBPACK_IMPORTED_MODULE_6__.default,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_MainWindow__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_4__.default, {})]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          component: _MainWindow__WEBPACK_IMPORTED_MODULE_7__.default,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MainWindow__WEBPACK_IMPORTED_MODULE_7__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_5__.default, {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "*",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_NotFound__WEBPACK_IMPORTED_MODULE_5__.default, {})
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_NotFound__WEBPACK_IMPORTED_MODULE_6__.default, {})
         })]
       })
     })
@@ -8124,6 +8131,387 @@ function Simple_search() {
       error = _useFetch.error;
 
   var history = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
+
+  var _useFetch2 = (0,_useFetch__WEBPACK_IMPORTED_MODULE_1__.default)('http://127.0.0.1:8000/api/first'),
+      firstAdmin = _useFetch2.data,
+      isPendingadmin = _useFetch2.isPending,
+      errorinAdmin = _useFetch2.error;
+
+  var _useFetch3 = (0,_useFetch__WEBPACK_IMPORTED_MODULE_1__.default)("http://127.0.0.1:8000/api/munsOfPoblationOrdered/A%20coru%C3%B1a/1200?ev=true"),
+      munsPoblacion = _useFetch3.data,
+      esperando = _useFetch3.esperando,
+      errores = _useFetch3.errores; // // const historial = useHistory();
+
+  /* CONSTANT FUNCTIONS --------------------------------------------------------------------------------------------- */
+
+
+  var handleModalExit = function handleModalExit() {
+    setIsASClicked(!isASClicked);
+  };
+
+  var listItemClicked = function listItemClicked(item) {
+    document.getElementById("simple_search").value = item;
+    document.activeElement.blur();
+  };
+
+  var filter_function = function filter_function() {
+    var input, filter, ul, li, i, txtValue;
+    input = document.getElementById("simple_search");
+    filter = input.value.toUpperCase();
+    ul = document.getElementsByClassName("listaMunicipios")[0];
+    li = ul.getElementsByTagName("li"); // Loop through all list items, and hide those who don't match the search query
+
+    if (filter !== "") {
+      for (i = 0; i < li.length; i++) {
+        txtValue = li[i].innerHTML;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    } else {
+      for (i = 0; i < li.length; i++) {
+        txtValue = li[i].innerHTML;
+        li[i].style.display = "";
+      }
+    }
+  };
+
+  var search_focus = function search_focus() {
+    document.getElementsByClassName("listaMunicipios")[0].style.visibility = "visible";
+    filter_function();
+  };
+
+  var search_unfocus = function search_unfocus() {
+    document.getElementsByClassName("listaMunicipios")[0].style.visibility = "hidden";
+  };
+
+  var goToSearch = function goToSearch() {
+    var inputText = document.getElementById("simple_search").value.split(", ");
+    var municipio = inputText[0];
+    var provincia = inputText[1];
+    var purpose = document.getElementById("purpose").value;
+
+    if (municipio !== "" && provincia !== "") {
+      if (purpose !== "default") {
+        history.push("/" + provincia + "/" + municipio + "/" + purpose);
+        /*window.location =
+          "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
+      } else {
+        alert("Selecciona el propósito de tu viaje");
+      }
+    } else {
+      alert("Introduce un pueblo que consultar");
+    }
+  };
+
+  var goToSearch2 = function goToSearch2() {
+    history.push("/original_copia");
+    /*window.location =
+      "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
+  };
+  /* USEEFECT --------------------------------------------------------------------------------------------- */
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    if (municipios) {
+      setListItems(municipios.map(function (municipio) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+          onMouseDown: function onMouseDown(e) {
+            return e.preventDefault();
+          },
+          onClick: function onClick(e) {
+            return listItemClicked(e.target.innerHTML);
+          },
+          children: municipio.municipio + ", " + municipio.provincia
+        });
+      }));
+    }
+  }, [municipios]);
+  /* RETURN --------------------------------------------------------------------------------------------- */
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "simple-search",
+    children: [isASClicked && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Advanced_search__WEBPACK_IMPORTED_MODULE_3__.default, {
+      handleModalExit: handleModalExit
+    }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "loading-div",
+      children: error
+    }), isPending && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "loading-div",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+        src: "https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif",
+        alt: "loading.gif",
+        width: "200",
+        height: "200"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        children: "Loading..."
+      })]
+    }), municipios && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "main-col-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "row-container-title",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "col-container",
+          id: "titulo",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+            children: "Descubre todo lo que los pueblos de Espa\xF1a te pueden ofrecer."
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "col-container",
+          id: "ilustracion",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "svg-container",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("svg", {
+              width: "20vw",
+              height: "20vw",
+              viewBox: "0 0 841 758",
+              fill: "none",
+              xmlns: "http://www.w3.org/2000/svg",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("g", {
+                "clip-path": "url(#clip0)",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M534.25 438.618L418.25 300.618L185.404 302.746L44.156 440.325L47.01 442.159H45.991V728.324H533.937V442.159L534.25 438.618Z",
+                  fill: "#3F3D56"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M418.371 300.912L273.455 470.811V728.324H533.937V438.491L418.371 300.912Z",
+                  fill: "#63A525"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M431.212 585.915H378.015V632.936H431.212V585.915Z",
+                  fill: "white"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M431.212 504.529H378.015V550.803H431.212V504.529Z",
+                  fill: "white"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M194.8 573.439H141.602V620.459H194.8V573.439Z",
+                  fill: "white"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M194.8 492.052H141.602V538.327H194.8V492.052Z",
+                  fill: "white"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M840.5 727.431H0V729.431H840.5V727.431Z",
+                  fill: "#3F3D56"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M713.92 695.831L717.92 715.831L697.92 719.831L700.92 694.831L713.92 695.831Z",
+                  fill: "#A0616A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M776.92 691.831L771.92 716.831H747.92L757.92 686.831L776.92 691.831Z",
+                  fill: "#A0616A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M798.919 517.831L802.919 544.831L797.919 603.831L793.919 625.831L776.919 697.831C776.919 697.831 757.919 697.831 754.919 689.831L759.919 648.831C759.919 648.831 763.919 615.831 762.919 611.831C761.919 607.831 746.919 543.831 746.919 543.831C746.919 543.831 724.919 644.831 721.919 653.831C718.919 662.831 714.919 701.831 714.919 701.831C714.919 701.831 697.919 704.831 696.919 701.831C695.919 698.831 694.919 627.831 694.919 616.831C694.919 605.831 696.919 599.831 696.919 597.831C696.919 595.831 689.041 500.359 689.041 500.359L798.919 517.831Z",
+                  fill: "#2F2E41"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M757.919 711.831C757.919 711.831 762.919 712.831 765.919 711.831C768.919 710.831 765.919 704.831 765.919 704.831H776.919C776.919 704.831 788.919 731.831 793.919 733.831C798.919 735.831 814.919 757.831 795.919 757.831C784.196 757.681 772.754 754.214 762.919 747.831C762.919 747.831 760.919 738.831 751.919 737.831C742.919 736.831 736.919 725.831 736.919 725.831L749.919 701.831C749.919 701.831 752.919 712.831 757.919 711.831Z",
+                  fill: "#2F2E41"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M710.919 710.831C710.919 710.831 708.919 714.831 706.919 712.831C704.919 710.831 702.919 705.831 702.919 705.831C702.919 705.831 696.919 702.831 695.919 705.831C694.919 708.831 690.919 724.831 688.919 726.831C686.919 728.831 665.919 749.831 686.919 753.831C707.919 757.831 711.919 748.831 711.919 748.831C711.919 748.831 708.919 743.831 714.919 741.831C720.919 739.831 721.919 732.831 721.919 732.831L717.919 702.831C717.919 702.831 713.919 712.831 710.919 710.831Z",
+                  fill: "#2F2E41"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M821.919 447.831L824.919 499.831C824.919 499.831 838.919 532.831 819.919 531.831C800.919 530.831 812.919 498.831 812.919 498.831L794.317 452.422L821.919 447.831Z",
+                  fill: "#A0616A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M667.919 432.831L664.919 484.831C664.919 484.831 650.919 517.831 669.919 516.831C688.919 515.831 676.919 483.831 676.919 483.831L695.522 437.422L667.919 432.831Z",
+                  fill: "#A0616A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M747.919 319.831C762.279 319.831 773.919 308.191 773.919 293.831C773.919 279.472 762.279 267.831 747.919 267.831C733.56 267.831 721.919 279.472 721.919 293.831C721.919 308.191 733.56 319.831 747.919 319.831Z",
+                  fill: "#A0616A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M768.419 304.331C768.419 304.331 761.419 332.331 775.419 339.331C789.419 346.331 731.419 356.331 727.419 339.331L729.419 331.331C729.419 331.331 737.419 321.331 735.419 312.331L768.419 304.331Z",
+                  fill: "#A0616A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M752.919 339.831C752.919 339.831 735.664 341.443 730.292 330.137C730.292 330.137 689.919 332.831 680.919 369.831L695.919 465.831C695.919 465.831 679.919 493.831 681.919 496.831C681.919 496.831 671.919 524.831 763.919 525.831L803.919 523.831C804.46 518.147 804.123 512.413 802.919 506.831C800.919 497.831 789.919 434.831 789.919 434.831C789.919 434.831 819.919 387.831 816.919 380.831C813.919 373.831 809.115 346.23 770.517 335.031C770.517 335.031 769.919 340.831 752.919 339.831Z",
+                  fill: "#9A9A9A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M803.919 363.831L816.919 380.831C816.919 380.831 829.919 451.831 825.919 452.831C821.919 453.831 797.919 461.831 793.919 458.831C789.919 455.831 771.919 396.831 771.919 396.831L803.919 363.831Z",
+                  fill: "#9A9A9A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M697.919 358.831L680.919 369.831C680.919 369.831 655.919 439.831 662.919 442.831C669.919 445.831 708.919 443.831 708.919 443.831L697.919 358.831Z",
+                  fill: "#9A9A9A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M776.339 270.563C776.339 270.563 767.333 251.051 750.072 255.554C732.812 260.057 723.055 266.811 722.305 273.565C721.555 280.319 722.68 290.451 722.68 290.451C722.68 290.451 724.556 276.567 736.564 279.569C742.95 281.165 751.248 281.276 757.617 281.03C758.865 280.978 760.111 281.182 761.278 281.628C762.445 282.074 763.509 282.754 764.404 283.625C765.3 284.496 766.008 285.541 766.487 286.695C766.965 287.849 767.203 289.089 767.187 290.338L766.872 311.831C766.872 311.831 791.872 295.831 776.339 270.563Z",
+                  fill: "#2F2E41"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M653.71 278.13H300.524C298.79 278.128 297.128 277.438 295.902 276.212C294.676 274.986 293.986 273.324 293.984 271.59V109.418C293.986 107.684 294.676 106.022 295.902 104.796C297.128 103.57 298.79 102.88 300.524 102.878H653.71C655.444 102.88 657.106 103.57 658.332 104.796C659.558 106.022 660.248 107.684 660.25 109.418V271.59C660.248 273.324 659.558 274.986 658.332 276.212C657.106 277.438 655.444 278.128 653.71 278.13V278.13ZM300.524 105.494C299.484 105.495 298.486 105.909 297.751 106.645C297.015 107.38 296.601 108.378 296.6 109.418V271.59C296.601 272.63 297.015 273.628 297.751 274.363C298.486 275.099 299.484 275.513 300.524 275.514H653.71C654.75 275.513 655.747 275.099 656.483 274.363C657.219 273.628 657.633 272.63 657.634 271.59V109.418C657.633 108.378 657.219 107.38 656.483 106.645C655.747 105.909 654.75 105.495 653.71 105.494H300.524Z",
+                  fill: "#9A9A9A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M352.786 186.969C367.5 186.969 379.428 175.041 379.428 160.327C379.428 145.612 367.5 133.684 352.786 133.684C338.072 133.684 326.144 145.612 326.144 160.327C326.144 175.041 338.072 186.969 352.786 186.969Z",
+                  fill: "#63A525"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M414.317 142.565C413.733 142.564 413.155 142.678 412.616 142.901C412.076 143.124 411.586 143.451 411.173 143.863C410.76 144.276 410.432 144.765 410.209 145.305C409.985 145.844 409.87 146.422 409.87 147.005C409.87 147.589 409.985 148.167 410.209 148.706C410.432 149.245 410.76 149.735 411.173 150.148C411.586 150.56 412.076 150.887 412.616 151.11C413.155 151.332 413.733 151.447 414.317 151.446H623.65C624.828 151.446 625.957 150.978 626.79 150.145C627.622 149.312 628.09 148.183 628.09 147.005C628.09 145.828 627.622 144.698 626.79 143.865C625.957 143.033 624.828 142.565 623.65 142.565H414.317Z",
+                  fill: "#9A9A9A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M414.317 169.207C413.733 169.206 413.155 169.321 412.616 169.543C412.076 169.766 411.586 170.093 411.173 170.505C410.76 170.918 410.432 171.408 410.209 171.947C409.985 172.486 409.87 173.064 409.87 173.648C409.87 174.231 409.985 174.809 410.209 175.348C410.432 175.888 410.76 176.377 411.173 176.79C411.586 177.202 412.076 177.529 412.616 177.752C413.155 177.975 413.733 178.089 414.317 178.088H504.394C504.977 178.089 505.555 177.975 506.095 177.752C506.634 177.529 507.125 177.202 507.538 176.79C507.951 176.377 508.278 175.888 508.502 175.348C508.726 174.809 508.841 174.231 508.841 173.648C508.841 173.064 508.726 172.486 508.502 171.947C508.278 171.408 507.951 170.918 507.538 170.505C507.125 170.093 506.634 169.766 506.095 169.543C505.555 169.321 504.977 169.206 504.394 169.207H414.317Z",
+                  fill: "#9A9A9A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M332.35 211.801C328.973 211.801 326.224 213.793 326.224 216.241C326.224 218.689 328.973 220.681 332.35 220.681H621.165C624.543 220.681 627.292 218.689 627.292 216.241C627.292 213.793 624.543 211.801 621.165 211.801H332.35Z",
+                  fill: "#9A9A9A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M332.35 238.443C328.973 238.443 326.224 240.435 326.224 242.883C326.224 245.332 328.973 247.324 332.35 247.324H621.165C624.543 247.324 627.292 245.332 627.292 242.883C627.292 240.435 624.543 238.443 621.165 238.443H332.35Z",
+                  fill: "#9A9A9A"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M590.1 94.7642C616.268 94.7642 637.482 73.5505 637.482 47.3821C637.482 21.2137 616.268 0 590.1 0C563.931 0 542.717 21.2137 542.717 47.3821C542.717 73.5505 563.931 94.7642 590.1 94.7642Z",
+                  fill: "#63A525"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M590.1 124.408L575.284 98.747L560.469 73.086H590.1H619.73L604.915 98.747L590.1 124.408Z",
+                  fill: "#63A525"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M590.482 64.0864C599.871 64.0864 607.482 56.4752 607.482 47.0864C607.482 37.6975 599.871 30.0864 590.482 30.0864C581.093 30.0864 573.482 37.6975 573.482 47.0864C573.482 56.4752 581.093 64.0864 590.482 64.0864Z",
+                  fill: "white"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M768.872 298.831C771.081 298.831 772.872 296.593 772.872 293.831C772.872 291.07 771.081 288.831 768.872 288.831C766.663 288.831 764.872 291.07 764.872 293.831C764.872 296.593 766.663 298.831 768.872 298.831Z",
+                  fill: "#A0616A"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("defs", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("clipPath", {
+                  id: "clip0",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("rect", {
+                    width: "840.5",
+                    height: "757.831",
+                    fill: "white"
+                  })
+                })
+              })]
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "content",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "search_list_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "input_text_container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+              className: "material-icons",
+              children: "search"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "text",
+              name: "search",
+              placeholder: "Busca municipios a donde ir...",
+              autocomplete: "off",
+              id: "simple_search",
+              onFocus: search_focus,
+              onBlur: search_unfocus,
+              onKeyUp: filter_function,
+              required: true
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "relative-positioner",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+              className: "listaMunicipios",
+              children: listItems
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+          name: "purpose",
+          id: "purpose",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+            value: "default",
+            disabled: true,
+            selected: true,
+            style: {
+              display: "none"
+            },
+            children: "Prop\xF3sito del viaje"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+            value: "vacations",
+            children: "Vacaciones"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+            value: "rentSale",
+            children: "B\xFAsqueda de vivienda"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          onClick: goToSearch,
+          children: "Buscar"
+        }), firstAdmin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tbody", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tr", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+              children: "Token del admin"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            children: firstAdmin.api_token
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          onClick: goToSearch2,
+          children: "Simple seach copia original"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+          onClick: function onClick() {
+            setIsASClicked(!isASClicked);
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+            src: path + "advanced_search_52px.png",
+            alt: "advanced search logo"
+          }), "B\xFAsqueda Avanzada"]
+        })]
+      })]
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Simple_search);
+
+/***/ }),
+
+/***/ "./resources/js/components/Simple_search2.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/Simple_search2.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _styles_Simple_search_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/Simple_search.css */ "./resources/js/components/styles/Simple_search.css");
+/* harmony import */ var _useFetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useFetch */ "./resources/js/components/useFetch.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _Advanced_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Advanced_search */ "./resources/js/components/Advanced_search.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+function Simple_search2() {
+  /* CONSTANT VARIABLES --------------------------------------------------------------------------------------------- */
+  var path = "assets/";
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      listItems = _useState2[0],
+      setListItems = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isASClicked = _useState4[0],
+      setIsASClicked = _useState4[1];
+  /* default: false */
+
+
+  var _useFetch = (0,_useFetch__WEBPACK_IMPORTED_MODULE_1__.default)("http://127.0.0.1:8000/api/provsMunsUltraBasic"),
+      municipios = _useFetch.data,
+      isPending = _useFetch.isPending,
+      error = _useFetch.error;
+
+  var history = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
   /* CONSTANT FUNCTIONS --------------------------------------------------------------------------------------------- */
 
   var handleModalExit = function handleModalExit() {
@@ -8413,7 +8801,7 @@ function Simple_search() {
   });
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Simple_search);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Simple_search2);
 
 /***/ }),
 
@@ -11114,7 +11502,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".footer {\r\n  width: 100%;\r\n  height: 9vh;\r\n  /* position: absolute; */ /* ONLY FOR TESTING */\r\n  bottom: 0;\r\n  left: 0;\r\n  background-color: var(--secondary8);\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-around;\r\n  align-items: center;\r\n  border-top: 2px solid var(--secondary9);\r\n}\r\n.footer .section-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.footer h1 {\r\n  color: var(--secondary4);\r\n  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),\r\n    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),\r\n    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),\r\n    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);\r\n  font-size: 1vw;\r\n}\r\n.footer h2 {\r\n  color: var(--secondary4);\r\n  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),\r\n    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),\r\n    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),\r\n    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);\r\n  font-size: 0.8vw;\r\n}\r\n.footer .row-container {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.footer .row-container img {\r\n  width: 2vw;\r\n  height: 2vw;\r\n  margin: 0.4vw;\r\n  transition: transform 0.2s;\r\n}\r\n\r\n.footer .row-container img:hover {\r\n  transform: scale(1.2);\r\n}\r\n\r\n#uni-logo {\r\n  width: 1vw;\r\n  height: 1vw;\r\n}\r\n\r\n.footer .tooltip {\r\n  position: relative;\r\n}\r\n\r\n.footer .tooltiptext {\r\n  font-family: \"Roboto\", sans-serif;\r\n  visibility: hidden;\r\n  width: 120px;\r\n  background-color: rgb(68, 68, 68);\r\n  color: rgb(218, 218, 218);\r\n  text-align: center;\r\n  border-radius: 6px;\r\n  padding: 5px 0;\r\n  position: absolute;\r\n  z-index: 1;\r\n  bottom: 125%;\r\n  left: 50%;\r\n  margin-left: -60px;\r\n  opacity: 0;\r\n  transition: opacity 0.3s;\r\n}\r\n\r\n.footer .tooltiptext::after {\r\n  content: \"\";\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 50%;\r\n  margin-left: -5px;\r\n  border-width: 5px;\r\n  border-style: solid;\r\n  border-color: rgb(68, 68, 68) transparent transparent transparent;\r\n}\r\n\r\n.footer .tooltip:hover .tooltiptext {\r\n  visibility: visible;\r\n  opacity: 1;\r\n}\r\n.footer #center {\r\n  margin-left: 5vw;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".footer {\r\n  width: 100%;\r\n  height: 9vh;\r\n  /* position: absolute; */ /* ONLY FOR TESTING */\r\n  bottom: 0;\r\n  left: 0;\r\n  background-color: rgb(179, 19, 179);\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-around;\r\n  align-items: center;\r\n  border-top: 2px solid var(--secondary9);\r\n}\r\n.footer .section-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.footer h1 {\r\n  color: var(--secondary4);\r\n  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),\r\n    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),\r\n    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),\r\n    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);\r\n  font-size: 1vw;\r\n}\r\n.footer h2 {\r\n  color: var(--secondary4);\r\n  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),\r\n    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),\r\n    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),\r\n    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);\r\n  font-size: 0.8vw;\r\n}\r\n.footer .row-container {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.footer .row-container img {\r\n  width: 2vw;\r\n  height: 2vw;\r\n  margin: 0.4vw;\r\n  transition: transform 0.2s;\r\n}\r\n\r\n.footer .row-container img:hover {\r\n  transform: scale(1.2);\r\n}\r\n\r\n#uni-logo {\r\n  width: 1vw;\r\n  height: 1vw;\r\n}\r\n\r\n.footer .tooltip {\r\n  position: relative;\r\n}\r\n\r\n.footer .tooltiptext {\r\n  font-family: \"Roboto\", sans-serif;\r\n  visibility: hidden;\r\n  width: 120px;\r\n  background-color: rgb(68, 68, 68);\r\n  color: rgb(218, 218, 218);\r\n  text-align: center;\r\n  border-radius: 6px;\r\n  padding: 5px 0;\r\n  position: absolute;\r\n  z-index: 1;\r\n  bottom: 125%;\r\n  left: 50%;\r\n  margin-left: -60px;\r\n  opacity: 0;\r\n  transition: opacity 0.3s;\r\n}\r\n\r\n.footer .tooltiptext::after {\r\n  content: \"\";\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 50%;\r\n  margin-left: -5px;\r\n  border-width: 5px;\r\n  border-style: solid;\r\n  border-color: rgb(68, 68, 68) transparent transparent transparent;\r\n}\r\n\r\n.footer .tooltip:hover .tooltiptext {\r\n  visibility: visible;\r\n  opacity: 1;\r\n}\r\n.footer #center {\r\n  margin-left: 5vw;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11162,7 +11550,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar {\r\n  width: 100%;\r\n  height: 9vh;\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 10;\r\n  background-color: var(--secondary8);\r\n  display: flex;\r\n  flex-direction: row;\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);\r\n  border-bottom: 2px solid var(--secondary9);\r\n}\r\n.navbar .left-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: flex-start;\r\n  align-items: center;\r\n  /* padding-left: 8vw; */\r\n  padding-left: 3vw;\r\n}\r\n.navbar .title-container {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: flex-start;\r\n  align-items: center;\r\n  font-family: \"Orelega One\", cursive;\r\n  color: var(--secondary4);\r\n  font-size: 0.8vw;\r\n  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),\r\n    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),\r\n    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),\r\n    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);\r\n  transition: transform 0.2s;\r\n}\r\n.navbar .title-container img {\r\n  width: 2vw;\r\n  height: 2vw;\r\n  margin-bottom: 0.5vw;\r\n}\r\n\r\n.navbar .right-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: flex-end;\r\n  align-items: center;\r\n  padding-right: 2vw;\r\n}\r\n.navbar .right-container img {\r\n  width: 2vw;\r\n  height: 2vw;\r\n  margin-right: 1vw;\r\n  transition: transform 0.2s;\r\n}\r\n.navbar .right-container img:hover {\r\n  transform: scale(1.2);\r\n  cursor: pointer;\r\n}\r\n.navbar .title-container:hover {\r\n  transform: scale(1.1);\r\n  cursor: pointer;\r\n}\r\n\r\n.navbar .tooltip {\r\n  position: relative;\r\n}\r\n\r\n.navbar .tooltiptext {\r\n  font-family: \"Roboto\", sans-serif;\r\n  visibility: hidden;\r\n  width: 120px;\r\n  background-color: rgb(68, 68, 68);\r\n  color: rgb(218, 218, 218);\r\n  text-align: center;\r\n  border-radius: 6px;\r\n  padding: 5px 0;\r\n  position: absolute;\r\n  z-index: 1;\r\n  top: 125%;\r\n  left: 50%;\r\n  margin-left: -60px;\r\n  opacity: 0;\r\n  transition: opacity 0.3s;\r\n}\r\n\r\n.navbar .tooltiptext::after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 100%;\r\n  left: 50%;\r\n  margin-left: -10px;\r\n  border-width: 5px;\r\n  border-style: solid;\r\n  border-color: transparent transparent rgb(68, 68, 68) transparent;\r\n}\r\n\r\n.navbar .tooltip:hover .tooltiptext {\r\n  visibility: visible;\r\n  opacity: 1;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar {\r\n  width: 100%;\r\n  height: 9vh;\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 10;\r\n  background-color: rgb(179, 19, 179);\r\n  display: flex;\r\n  flex-direction: row;\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);\r\n  border-bottom: 2px solid var(--secondary9);\r\n}\r\n.navbar .left-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: flex-start;\r\n  align-items: center;\r\n  /* padding-left: 8vw; */\r\n  padding-left: 3vw;\r\n}\r\n.navbar .title-container {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: flex-start;\r\n  align-items: center;\r\n  font-family: \"Orelega One\", cursive;\r\n  color: var(--secondary4);\r\n  font-size: 0.8vw;\r\n  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),\r\n    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),\r\n    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),\r\n    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);\r\n  transition: transform 0.2s;\r\n}\r\n.navbar .title-container img {\r\n  width: 2vw;\r\n  height: 2vw;\r\n  margin-bottom: 0.5vw;\r\n}\r\n\r\n.navbar .right-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: flex-end;\r\n  align-items: center;\r\n  padding-right: 2vw;\r\n}\r\n.navbar .right-container img {\r\n  width: 2vw;\r\n  height: 2vw;\r\n  margin-right: 1vw;\r\n  transition: transform 0.2s;\r\n}\r\n.navbar .right-container img:hover {\r\n  transform: scale(1.2);\r\n  cursor: pointer;\r\n}\r\n.navbar .title-container:hover {\r\n  transform: scale(1.1);\r\n  cursor: pointer;\r\n}\r\n\r\n.navbar .tooltip {\r\n  position: relative;\r\n}\r\n\r\n.navbar .tooltiptext {\r\n  font-family: \"Roboto\", sans-serif;\r\n  visibility: hidden;\r\n  width: 120px;\r\n  background-color: rgb(68, 68, 68);\r\n  color: rgb(218, 218, 218);\r\n  text-align: center;\r\n  border-radius: 6px;\r\n  padding: 5px 0;\r\n  position: absolute;\r\n  z-index: 1;\r\n  top: 125%;\r\n  left: 50%;\r\n  margin-left: -60px;\r\n  opacity: 0;\r\n  transition: opacity 0.3s;\r\n}\r\n\r\n.navbar .tooltiptext::after {\r\n  content: \"\";\r\n  position: absolute;\r\n  bottom: 100%;\r\n  left: 50%;\r\n  margin-left: -10px;\r\n  border-width: 5px;\r\n  border-style: solid;\r\n  border-color: transparent transparent rgb(68, 68, 68) transparent;\r\n}\r\n\r\n.navbar .tooltip:hover .tooltiptext {\r\n  visibility: visible;\r\n  opacity: 1;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11186,7 +11574,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".simple-search {\r\n  width: 100%;\r\n  /* height: 81.832vh; */\r\n  height: 82vh;\r\n  overflow-y: hidden;\r\n  overflow-x: hidden;\r\n}\r\n\r\n.simple-search .main-col-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n}\r\n.simple-search .row-container-title {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 20vh;\r\n  width: 40vw;\r\n}\r\n.simple-search .row-container-title h1 {\r\n  color: var(--secondary9);\r\n  font-size: 1.5vw;\r\n  font-weight: 500;\r\n  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),\r\n    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),\r\n    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),\r\n    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);\r\n}\r\n.simple-search .row-container-title .col-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  text-align: left;\r\n}\r\n.simple-search .main-col-container,\r\n.simple-search .content {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.simple-search .input_text_container {\r\n  margin-top: 6vw;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  text-align: center;\r\n  border-bottom: 3px solid rgb(87, 87, 87);\r\n}\r\n.simple-search .input_text_container:focus-within {\r\n  background-color: #aad386;\r\n}\r\n.simple-search #simple_search {\r\n  margin-left: 0.25vw;\r\n  padding: 1% 2%;\r\n  border: none;\r\n  background-color: transparent;\r\n  font-size: 1.2vw;\r\n  width: 25vw;\r\n}\r\n.simple-search #simple_search:focus {\r\n  outline-width: 0px;\r\n  outline: none;\r\n}\r\n.simple-search i {\r\n  margin-top: 2%;\r\n  -webkit-animation-name: scale;\r\n          animation-name: scale;\r\n  -webkit-animation-duration: 0.5s;\r\n          animation-duration: 0.5s;\r\n  -webkit-animation-iteration-count: infinite;\r\n          animation-iteration-count: infinite;\r\n  -webkit-animation-delay: 5s;\r\n          animation-delay: 5s;\r\n  -webkit-animation-direction: alternate;\r\n          animation-direction: alternate;\r\n  -webkit-animation-timing-function: ease-in-out;\r\n          animation-timing-function: ease-in-out;\r\n  transform: scale(1.2);\r\n}\r\n.simple-search select {\r\n  font-size: 1.1vw;\r\n  background-color: transparent;\r\n  margin-top: 2vw;\r\n}\r\n.simple-search select:focus {\r\n  outline-width: 0px;\r\n  outline: none;\r\n}\r\n.simple-search .relative-positioner {\r\n  position: relative;\r\n}\r\n.simple-search .listaMunicipios {\r\n  position: absolute;\r\n  visibility: hidden;\r\n  z-index: 1;\r\n  width: 100%;\r\n  max-height: 20vh;\r\n  overflow-y: scroll;\r\n  background-color: white;\r\n  border: 1px solid black;\r\n  list-style-type: none;\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 1.1vw;\r\n}\r\n.simple-search li {\r\n  font-weight: 500;\r\n}\r\n.simple-search li:hover {\r\n  background-color: var(--secondary7);\r\n  cursor: pointer;\r\n}\r\n.simple-search button {\r\n  margin-top: 2vw;\r\n  padding: 0.5vw 2vw;\r\n  border-width: 0;\r\n  border-radius: 1vw;\r\n  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);\r\n  background-color: var(--secondary5);\r\n  font-size: 1vw;\r\n  transition: background-color 0.3s;\r\n\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.simple-search button:hover {\r\n  background-color: #1e914e;\r\n  cursor: pointer;\r\n}\r\n.simple-search #titulo {\r\n  -webkit-animation-name: fadeInLeft;\r\n          animation-name: fadeInLeft;\r\n  -webkit-animation-duration: 0.8s;\r\n          animation-duration: 0.8s;\r\n  -webkit-animation-delay: 1s;\r\n          animation-delay: 1s;\r\n  -webkit-animation-fill-mode: forwards;\r\n          animation-fill-mode: forwards;\r\n  -webkit-animation-timing-function: ease-out;\r\n          animation-timing-function: ease-out;\r\n  transform: translateX(-20vw);\r\n  opacity: 0;\r\n}\r\n.simple-search #ilustracion {\r\n  -webkit-animation-name: fadeInRight;\r\n          animation-name: fadeInRight;\r\n  -webkit-animation-duration: 0.8s;\r\n          animation-duration: 0.8s;\r\n  -webkit-animation-delay: 2s;\r\n          animation-delay: 2s;\r\n  -webkit-animation-fill-mode: forwards;\r\n          animation-fill-mode: forwards;\r\n  -webkit-animation-timing-function: ease-out;\r\n          animation-timing-function: ease-out;\r\n  transform: translateX(20vw);\r\n  opacity: 0;\r\n}\r\n.simple-search .content {\r\n  -webkit-animation-name: fadeInBottom;\r\n          animation-name: fadeInBottom;\r\n  -webkit-animation-duration: 0.8s;\r\n          animation-duration: 0.8s;\r\n  -webkit-animation-delay: 3s;\r\n          animation-delay: 3s;\r\n  -webkit-animation-fill-mode: forwards;\r\n          animation-fill-mode: forwards;\r\n  -webkit-animation-timing-function: ease-out;\r\n          animation-timing-function: ease-out;\r\n  transform: translateY(20vw);\r\n  opacity: 0;\r\n}\r\n.simple-search .content img {\r\n  width: 2vw;\r\n  height: 2vw;\r\n  margin-right: 1vw;\r\n}\r\n.simple-search .loading-div {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n  font-size: 2.5vw;\r\n}\r\n\r\n.simple-search .loading-div img {\r\n  width: 2.5vw;\r\n  height: 2.5vw;\r\n}\r\n\r\n@-webkit-keyframes scale {\r\n  0% {\r\n    transform: scale(1.2);\r\n  }\r\n  100% {\r\n    transform: scale(1.5);\r\n  }\r\n}\r\n\r\n@keyframes scale {\r\n  0% {\r\n    transform: scale(1.2);\r\n  }\r\n  100% {\r\n    transform: scale(1.5);\r\n  }\r\n}\r\n\r\n@-webkit-keyframes fadeInLeft {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateX(-20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateX(0);\r\n  }\r\n}\r\n\r\n@keyframes fadeInLeft {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateX(-20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateX(0);\r\n  }\r\n}\r\n@-webkit-keyframes fadeInRight {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateX(20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateX(0);\r\n  }\r\n}\r\n@keyframes fadeInRight {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateX(20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateX(0);\r\n  }\r\n}\r\n@-webkit-keyframes fadeInBottom {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateY(20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateY(0);\r\n  }\r\n}\r\n@keyframes fadeInBottom {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateY(20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateY(0);\r\n  }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".simple-search {\r\n  width: 100%;\r\n  /* height: 81.832vh; */\r\n  height: 82vh;\r\n  overflow-y: hidden;\r\n  overflow-x: hidden;\r\n}\r\n\r\n.simple-search .main-col-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: rgb(199, 122, 199);\r\n  height: 100%;\r\n}\r\n.simple-search .row-container-title {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 20vh;\r\n  width: 40vw;\r\n}\r\n.simple-search .row-container-title h1 {\r\n  color: rgb(233, 232, 232);\r\n  font-size: 1.5vw;\r\n  font-weight: 500;\r\n  text-shadow: 1px 0 0 rgb(218, 130, 229), -1px 0 0 rgb(218, 130, 229),\r\n    0 1px 0 rgb(218, 130, 229), 0 -1px 0 rgb(218, 130, 229),\r\n    0.5px 0.5px rgb(218, 130, 229), -0.5px -0.5px 0 rgb(218, 130, 229),\r\n    0.5px -0.5px 0 rgb(218, 130, 229), -0.5px 0.5px 0 rgb(218, 130, 229);\r\n}\r\n.simple-search .row-container-title .col-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  text-align: left;\r\n}\r\n.simple-search .main-col-container,\r\n.simple-search .content {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.simple-search .input_text_container {\r\n  margin-top: 6vw;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  text-align: center;\r\n  border-bottom: 3px solid rgb(87, 87, 87);\r\n}\r\n.simple-search .input_text_container:focus-within {\r\n  background-color: #aad386;\r\n}\r\n.simple-search #simple_search {\r\n  margin-left: 0.25vw;\r\n  padding: 1% 2%;\r\n  border: none;\r\n  background-color: transparent;\r\n  font-size: 1.2vw;\r\n  width: 25vw;\r\n}\r\n.simple-search #simple_search:focus {\r\n  outline-width: 0px;\r\n  outline: none;\r\n}\r\n.simple-search i {\r\n  margin-top: 2%;\r\n  -webkit-animation-name: scale;\r\n          animation-name: scale;\r\n  -webkit-animation-duration: 0.5s;\r\n          animation-duration: 0.5s;\r\n  -webkit-animation-iteration-count: infinite;\r\n          animation-iteration-count: infinite;\r\n  -webkit-animation-delay: 5s;\r\n          animation-delay: 5s;\r\n  -webkit-animation-direction: alternate;\r\n          animation-direction: alternate;\r\n  -webkit-animation-timing-function: ease-in-out;\r\n          animation-timing-function: ease-in-out;\r\n  transform: scale(1.2);\r\n}\r\n.simple-search select {\r\n  font-size: 1.1vw;\r\n  background-color: transparent;\r\n  margin-top: 2vw;\r\n}\r\n.simple-search select:focus {\r\n  outline-width: 0px;\r\n  outline: none;\r\n}\r\n.simple-search .relative-positioner {\r\n  position: relative;\r\n}\r\n.simple-search .listaMunicipios {\r\n  position: absolute;\r\n  visibility: hidden;\r\n  z-index: 1;\r\n  width: 100%;\r\n  max-height: 20vh;\r\n  overflow-y: scroll;\r\n  background-color: white;\r\n  border: 1px solid black;\r\n  list-style-type: none;\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 1.1vw;\r\n}\r\n.simple-search li {\r\n  font-weight: 500;\r\n}\r\n.simple-search li:hover {\r\n  background-color: rgb(211, 14, 211);\r\n  cursor: pointer;\r\n}\r\n.simple-search button {\r\n  margin-top: 2vw;\r\n  padding: 0.5vw 2vw;\r\n  border-width: 0;\r\n  border-radius: 1vw;\r\n  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);\r\n  background-color: rgb(168, 0, 168);\r\n  font-size: 1vw;\r\n  transition: background-color 0.3s;\r\n\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.simple-search button:hover {\r\n  background-color: rgb(211, 14, 211);\r\n  cursor: pointer;\r\n}\r\n.simple-search #titulo {\r\n  -webkit-animation-name: fadeInLeft;\r\n          animation-name: fadeInLeft;\r\n  -webkit-animation-duration: 0.8s;\r\n          animation-duration: 0.8s;\r\n  -webkit-animation-delay: 1s;\r\n          animation-delay: 1s;\r\n  -webkit-animation-fill-mode: forwards;\r\n          animation-fill-mode: forwards;\r\n  -webkit-animation-timing-function: ease-out;\r\n          animation-timing-function: ease-out;\r\n  transform: translateX(-20vw);\r\n  opacity: 0;\r\n}\r\n.simple-search #ilustracion {\r\n  -webkit-animation-name: fadeInRight;\r\n          animation-name: fadeInRight;\r\n  -webkit-animation-duration: 0.8s;\r\n          animation-duration: 0.8s;\r\n  -webkit-animation-delay: 2s;\r\n          animation-delay: 2s;\r\n  -webkit-animation-fill-mode: forwards;\r\n          animation-fill-mode: forwards;\r\n  -webkit-animation-timing-function: ease-out;\r\n          animation-timing-function: ease-out;\r\n  transform: translateX(20vw);\r\n  opacity: 0;\r\n}\r\n.simple-search .content {\r\n  -webkit-animation-name: fadeInBottom;\r\n          animation-name: fadeInBottom;\r\n  -webkit-animation-duration: 0.8s;\r\n          animation-duration: 0.8s;\r\n  -webkit-animation-delay: 3s;\r\n          animation-delay: 3s;\r\n  -webkit-animation-fill-mode: forwards;\r\n          animation-fill-mode: forwards;\r\n  -webkit-animation-timing-function: ease-out;\r\n          animation-timing-function: ease-out;\r\n  transform: translateY(20vw);\r\n  opacity: 0;\r\n}\r\n.simple-search .content img {\r\n  width: 2vw;\r\n  height: 2vw;\r\n  margin-right: 1vw;\r\n}\r\n.simple-search .loading-div {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n  font-size: 2.5vw;\r\n}\r\n\r\n.simple-search .loading-div img {\r\n  width: 2.5vw;\r\n  height: 2.5vw;\r\n}\r\n\r\n@-webkit-keyframes scale {\r\n  0% {\r\n    transform: scale(1.2);\r\n  }\r\n  100% {\r\n    transform: scale(1.5);\r\n  }\r\n}\r\n\r\n@keyframes scale {\r\n  0% {\r\n    transform: scale(1.2);\r\n  }\r\n  100% {\r\n    transform: scale(1.5);\r\n  }\r\n}\r\n\r\n@-webkit-keyframes fadeInLeft {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateX(-20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateX(0);\r\n  }\r\n}\r\n\r\n@keyframes fadeInLeft {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateX(-20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateX(0);\r\n  }\r\n}\r\n@-webkit-keyframes fadeInRight {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateX(20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateX(0);\r\n  }\r\n}\r\n@keyframes fadeInRight {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateX(20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateX(0);\r\n  }\r\n}\r\n@-webkit-keyframes fadeInBottom {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateY(20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateY(0);\r\n  }\r\n}\r\n@keyframes fadeInBottom {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateY(20vw);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateY(0);\r\n  }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

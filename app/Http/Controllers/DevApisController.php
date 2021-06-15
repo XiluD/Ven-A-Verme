@@ -395,7 +395,7 @@ class DevApisController extends Controller
     //Return "MUNICIPIOS" ordered by given population
     public function getMunsPoblacionBasedOrdered($poblacion){
         if ($poblacion > 0){
-            return response()->json(Place::select('provincia', 'municipio', 'poblacion')->where('poblacion', '<=', $poblacion)->orderBy('poblacion')->get(), JsonResponse::HTTP_OK);
+            return response()->json(Place::select('municipio', 'poblacion')->where('poblacion', '<=', $poblacion)->orderBy('poblacion')->get(), JsonResponse::HTTP_OK);
         }
         else{
             return response()->json(['error'=>'Invalid number supplied'], JsonResponse::HTTP_BAD_REQUEST);

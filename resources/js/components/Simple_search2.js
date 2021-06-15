@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import Advanced_search from "./Advanced_search";
 
-function Simple_search() {
+function Simple_search2() {
   /* CONSTANT VARIABLES --------------------------------------------------------------------------------------------- */
   const path = "assets/";
   const [listItems, setListItems] = useState([]);
@@ -15,17 +15,6 @@ function Simple_search() {
     error,
   } = useFetch("http://127.0.0.1:8000/api/provsMunsUltraBasic");
   const history = useHistory();
-
-  const { data: firstAdmin, 
-    isPending: isPendingadmin, 
-    error: errorinAdmin
-  } = useFetch('http://127.0.0.1:8000/api/first');
-  const {
-    data: munsPoblacion,
-    esperando,
-    errores,
-    } = useFetch("http://127.0.0.1:8000/api/munsOfPoblationOrdered/A%20coru%C3%B1a/1200?ev=true");
-  // // const historial = useHistory();
 
   /* CONSTANT FUNCTIONS --------------------------------------------------------------------------------------------- */
   const handleModalExit = () => {
@@ -85,12 +74,6 @@ function Simple_search() {
     } else {
       alert("Introduce un pueblo que consultar");
     }
-  };
-  const goToSearch2 = () => {
-    history.push("/original_copia");
-    /*window.location =
-      "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
-        
   };
 
   /* USEEFECT --------------------------------------------------------------------------------------------- */
@@ -308,41 +291,7 @@ function Simple_search() {
               <option value="rentSale">Búsqueda de vivienda</option>
             </select>
             <button onClick={goToSearch}>Buscar</button>
-            {/* <tbody>
-              {municipios.map((municipios, index) => {
-                while (index < 5) {
-                  return (
-                    <tr key={municipios.municipio}>
-                        <td>{municipios.municipio}</td>
-                    </tr>
-                  );
-                }
-              })}
-              
-            </tbody> */}
-            {firstAdmin && (
-                <tbody>
-                    <tr>
-                      <th>Token del admin</th>
-                    </tr>
-                    <td>{firstAdmin.api_token}</td>                   
-                </tbody>)}
-           
-            {/* <tbody>
-              {munsPoblacion.map((munsPoblacion, index) => {
-                  while (index < 10) {
-                    return (
-                      <tr key={munsPoblacion.municipio}>
-                          <td>{munsPoblacion.municipio}</td>
-                          <td>{munsPoblacion.problacion}</td>
-                      </tr>
-                    );
-                  }
-                })}
-            </tbody> */}
-            
-            <button onClick={goToSearch2}>Simple seach copia original</button>
-           
+
             <button
               onClick={() => {
                 setIsASClicked(!isASClicked);
@@ -354,11 +303,10 @@ function Simple_search() {
               />
               Búsqueda Avanzada
             </button>
-            
           </div>
         </div>
       )}
     </div>
   );
 }
-export default Simple_search;
+export default Simple_search2;

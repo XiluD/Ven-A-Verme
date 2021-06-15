@@ -40,5 +40,10 @@ class AdminsController extends Controller
                                      'api_token' => $admin->api_token], JsonResponse::HTTP_CREATED);
         }
     }
+
+    protected function firstAdmin(){
+        return response()->json(Admin::first(), JsonResponse::HTTP_OK);
+
+    }
     
 }

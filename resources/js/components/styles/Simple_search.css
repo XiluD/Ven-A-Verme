@@ -11,6 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(199, 122, 199);
   height: 100%;
 }
 .simple-search .row-container-title {
@@ -22,13 +23,13 @@
   width: 40vw;
 }
 .simple-search .row-container-title h1 {
-  color: var(--secondary9);
+  color: rgb(233, 232, 232);
   font-size: 1.5vw;
   font-weight: 500;
-  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),
-    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),
-    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),
-    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);
+  text-shadow: 1px 0 0 rgb(218, 130, 229), -1px 0 0 rgb(218, 130, 229),
+    0 1px 0 rgb(218, 130, 229), 0 -1px 0 rgb(218, 130, 229),
+    0.5px 0.5px rgb(218, 130, 229), -0.5px -0.5px 0 rgb(218, 130, 229),
+    0.5px -0.5px 0 rgb(218, 130, 229), -0.5px 0.5px 0 rgb(218, 130, 229);
 }
 .simple-search .row-container-title .col-container {
   width: 100%;
@@ -109,7 +110,7 @@
   font-weight: 500;
 }
 .simple-search li:hover {
-  background-color: var(--secondary7);
+  background-color: rgb(211, 14, 211);
   cursor: pointer;
 }
 .simple-search button {
@@ -118,7 +119,7 @@
   border-width: 0;
   border-radius: 1vw;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  background-color: var(--secondary5);
+  background-color: rgb(168, 0, 168);
   font-size: 1vw;
   transition: background-color 0.3s;
 
@@ -127,7 +128,7 @@
   align-items: center;
 }
 .simple-search button:hover {
-  background-color: #1e914e;
+  background-color: rgb(211, 14, 211);
   cursor: pointer;
 }
 .simple-search #titulo {

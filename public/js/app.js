@@ -6777,9 +6777,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Footer */ "./resources/js/components/Footer.js");
 /* harmony import */ var _NotFound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NotFound */ "./resources/js/components/NotFound.js");
 /* harmony import */ var _MainWindow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MainWindow */ "./resources/js/components/MainWindow.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _MainWindow_old__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MainWindow_old */ "./resources/js/components/MainWindow_old.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -6792,25 +6794,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Switch, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Switch, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           exact: true,
           path: "/",
           component: _Simple_search__WEBPACK_IMPORTED_MODULE_3__.default,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Simple_search__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_4__.default, {})]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Simple_search__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_4__.default, {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "/Login",
           component: _Login__WEBPACK_IMPORTED_MODULE_1__.default,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_1__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_1__.default, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "/:provincia/:municipio/:purpose",
           component: _MainWindow__WEBPACK_IMPORTED_MODULE_6__.default,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_MainWindow__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_4__.default, {})]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MainWindow__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_4__.default, {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+          exact: true,
+          path: "old/:provincia/:municipio/:purpose",
+          component: _MainWindow_old__WEBPACK_IMPORTED_MODULE_7__.default,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MainWindow_old__WEBPACK_IMPORTED_MODULE_7__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_4__.default, {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
           path: "*",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_NotFound__WEBPACK_IMPORTED_MODULE_5__.default, {})
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_NotFound__WEBPACK_IMPORTED_MODULE_5__.default, {})
         })]
       })
     })
@@ -7492,6 +7499,377 @@ var MainWindow = function MainWindow() {
       cardLink = _useState4[0],
       setCardLink = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isPending = _useState6[0],
+      setIsPending = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState8 = _slicedToArray(_useState7, 2),
+      showData = _useState8[0],
+      setShowData = _useState8[1];
+
+  var handleCardClick = function handleCardClick(cardLinkParam) {
+    setCardLink(cardLinkParam);
+
+    if (cardLink) {
+      console.log(cardLink);
+      var cardContentEndPoint = null;
+
+      if (cardLink.startsWith('/Attraction_Review') || cardLink.startsWith('/Hotel_Review') || cardLink.startsWith('/Restaurant_Review') || cardLink.startsWith('/VacationRentalReview')) {
+        cardContentEndPoint = 'http://127.0.0.1:8000/api/tripCard?cardLink=' + cardLink + '&api_token=' + api_token;
+      } else {
+        cardContentEndPoint = 'http://127.0.0.1:8000/api/ideaCard?cardLink=' + cardLink + '&api_token=' + api_token;
+      }
+
+      if (cardContentEndPoint) {
+        var abortCont = new AbortController();
+        fetch(cardContentEndPoint, {
+          method: 'GET',
+          signal: abortCont.signal
+        }).then(function (response) {
+          if (!response.ok) {
+            throw new Error('cannot fetch the data');
+          }
+
+          return response.json();
+        }).then(function (data) {
+          setIsPending(false);
+          console.log(data);
+          setShowData(data);
+        });
+      }
+    }
+  };
+
+  var handleModalExit = function handleModalExit() {
+    setIsClicked(!isClicked);
+  };
+
+  var MainContainer = function MainContainer(_ref) {
+    var purposeContentType = _ref.purposeContentType;
+
+    if (purposeContentType.queVisitar) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.mainInfoSection,
+        children: [purposeContentType.queVisitar.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CardsContainer__WEBPACK_IMPORTED_MODULE_3__.default, {
+          containerTypeContent: purposeContentType.queVisitar,
+          title: "Zonas las que visitar",
+          handleCardClick: handleCardClick
+        }), purposeContentType.dondeComer.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CardsContainer__WEBPACK_IMPORTED_MODULE_3__.default, {
+          containerTypeContent: purposeContentType.dondeComer,
+          title: "Donde disfrutar comienda",
+          handleCardClick: handleCardClick
+        }), purposeContentType.alojamiento.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CardsContainer__WEBPACK_IMPORTED_MODULE_3__.default, {
+          containerTypeContent: purposeContentType.alojamiento,
+          title: "Para dormir y relajarse",
+          handleCardClick: handleCardClick
+        }), purposeContentType.otros.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CardsContainer__WEBPACK_IMPORTED_MODULE_3__.default, {
+          containerTypeContent: purposeContentType.otros,
+          title: "Sigue tu aventura en:",
+          handleCardClick: handleCardClick
+        })]
+      });
+    } else if (purposeContentType.onRent || purposeContentType.onSale) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.mainInfoSection,
+        children: [purposeContentType.onSale.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CardsContainer__WEBPACK_IMPORTED_MODULE_3__.default, {
+          containerTypeContent: purposeContentType.onSale,
+          title: "Casas en venta",
+          handleCardClick: handleCardClick
+        }), purposeContentType.onRent.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CardsContainer__WEBPACK_IMPORTED_MODULE_3__.default, {
+          containerTypeContent: purposeContentType.onRent,
+          title: "Casas en alquiler",
+          handleCardClick: handleCardClick
+        })]
+      });
+    }
+  };
+
+  var handleClickRedirect = function handleClickRedirect(cardLink) {
+    if (cardLink.startsWith('/Attraction_Review') || cardLink.startsWith('/Hotel_Review') || cardLink.startsWith('/Restaurant_Review') || cardLink.startsWith('/VacationRentalReview')) {
+      window.open('https://www.tripadvisor.es' + cardLink, '_blank');
+    } else {
+      window.open(cardLink, '_blank');
+    }
+  };
+
+  var handleSentimentResultText = function handleSentimentResultText(sentiment) {
+    if (sentiment === 'muyRecomendado') {
+      return "Muy recomendado por los usuarios";
+    } else if (sentiment === 'recomendado') {
+      return "Recomendado por los usuarios";
+    } else if (sentiment === 'valoracionesVariadas') {
+      return "Valoraciones variadas de los usuarios";
+    } else {
+      return "Poco recomendado por los usuarios";
+    }
+  };
+
+  var _useFetch3 = (0,_useFetch__WEBPACK_IMPORTED_MODULE_1__.default)('http://127.0.0.1:8000/api/adminAccounts'),
+      adminAccounts = _useFetch3.data,
+      isPendingAdmins = _useFetch3.isPending,
+      erroAdmins = _useFetch3.error;
+  /*
+  const simWeather = [
+      { value: 'Miercoles ⛅ 22ºC' },
+      { value: 'Jueves ☀️ 23ºC' },
+      { value: 'Viernes ☀️ 30ºC' },
+      { value: 'Sabado ⛅ 22ºC' },
+      { value: 'Domingo ⛅ 19ºC' },
+      { value: 'Lunes ⛅ 20ºC' },
+      { value: 'Martes ☀️ 25ºC' }
+  ];*/
+
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.mainWindowContainer,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.headInfoSection,
+      children: [errorMunBasic && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        children: errorMunBasic
+      }), munBasic && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.headLeftSection,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.headLeftSectionInfoContainer,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
+            children: [munBasic.municipio, ", ", munBasic.provincia]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
+            children: [munBasic.poblacion, " habitantes en este municipio"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+            children: munBasic.despoblacion === 1 ? 'Municipio de la España Vaciada' : 'Municipio NO considerado de la España Vacía'
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.headRigthSection,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.headRigthSectionLeftPanel,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(CurrentDate, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
+            children: "14\xBAC \u2601 "
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+            children: "Poco nuboso"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("iframe", {
+          id: "iframe_aemet_id33024",
+          className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.weatherFrame,
+          name: "iframe_aemet_id33024",
+          src: "https://www.aemet.es/es/eltiempo/prediccion/municipios/mostrarwidget/gijon-gijon-xixon-id33024",
+          width: "100%",
+          height: "190",
+          frameBorder: "0",
+          scrolling: "no"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      children: [adminAccounts && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.mainInfoAdmins,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+          children: "Cuidado, aqui hay datos sobre administradores, se ruega maxima discrepcion ssshhhhh..."
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("table", {
+          style: {
+            margin: '5% auto 5%',
+            borderWidth: 1,
+            border: '1px solid black'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tbody", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                children: "Id del admin"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                children: "Email del admin"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                children: "Password del admin"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                children: "Fecha de creacion"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                children: "Token del admin"
+              })]
+            }), adminAccounts.map(function (admin) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                  children: admin.id
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                  children: admin.email
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                  children: admin.password
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                  children: admin.created_at
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                  children: admin.api_token
+                })]
+              }, admin.id);
+            })]
+          })
+        })]
+      }), showData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.mainInfoTop,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+            children: "Datos de la tarjeta clickada"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+            children: showData.innerCardTitle
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+            children: showData.innerCardAddress
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h3", {
+            children: ["Nota media en TripAdvisor: ", showData.ratingSentimentPoints.toFixed(2), " sobre 10."]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h3", {
+            children: ["Valoraci\xF3n de an\xE1lisis de sentimiento: ", handleSentimentResultText(showData.ratingSentimentFeed), "."]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.cardButtonContainer,
+            style: {
+              marginTop: '3.5%'
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.cardButton,
+              onClick: function onClick() {
+                return handleClickRedirect(showData.cardLink);
+              },
+              children: "Saber m\xE1s"
+            })
+          })]
+        })
+      })]
+    }), isPendingPurposeContent && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.loaderPending
+    }), errorPurposeContent && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      children: errorPurposeContent
+    }), purposeContent && !purposeContent.closestPlace && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(MainContainer, {
+      purposeContentType: purposeContent
+    }), purposeContent && purposeContent.closestPlace && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.mainInfoSection,
+      style: {
+        textAlign: 'center',
+        marginTop: '1%'
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
+        children: ["Lo sentimos, pero no hemos podido encontrar informacion para tu proposito a cerca de ", municipio, " en la provincia de ", provincia, "."]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
+        children: ["Pero no te preocupes, el municipio m\xE1s cercano a ", municipio, " es ", purposeContent.closestPlaceMun, ", en la provincia de ", purposeContent.closestPlaceProv, "."]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
+        children: ["Por lo que, aqui te dejamos un poco de informacion de ", purposeContent.closestPlaceMun, ". Pasa buenas aventuras, viajero!"]
+      })]
+    }), purposeContent && purposeContent.closestPlace && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(MainContainer, {
+      purposeContentType: purposeContent.data
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.footerInfoSection,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
+        className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.footerTitle,
+        children: ["Ubicaci\xF3n de ", municipio, " (", provincia, "), en Google Maps:"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__.default.footerInfoSectionContainer,
+        children: munBasic && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Map__WEBPACK_IMPORTED_MODULE_5__.default, {
+          googleMapURL: mapURL,
+          position: {
+            latitud: munBasic.cLatitud,
+            longitud: munBasic.cLongitud
+          },
+          isMarkerShown: true,
+          containerElement: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            style: {
+              height: '80vh'
+            }
+          }),
+          mapElement: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            style: {
+              height: '100%'
+            }
+          }),
+          loadingElement: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+            children: "Cargando..."
+          })
+        })
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MainWindow);
+
+/***/ }),
+
+/***/ "./resources/js/components/MainWindow_old.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/MainWindow_old.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _useFetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useFetch */ "./resources/js/components/useFetch.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _styles_mainWindowStyle_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/mainWindowStyle.module.css */ "./resources/js/components/styles/mainWindowStyle.module.css");
+/* harmony import */ var _CardsContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CardsContainer */ "./resources/js/components/CardsContainer.js");
+/* harmony import */ var _ModalWindow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ModalWindow */ "./resources/js/components/ModalWindow.js");
+/* harmony import */ var _Map__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Map */ "./resources/js/components/Map.js");
+/* harmony import */ var _credentials__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./credentials */ "./resources/js/components/credentials.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+var MainWindowOld = function MainWindowOld() {
+  var _useParams = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useParams)(),
+      provincia = _useParams.provincia,
+      municipio = _useParams.municipio,
+      purpose = _useParams.purpose;
+
+  var _useFetch = (0,_useFetch__WEBPACK_IMPORTED_MODULE_1__.default)('http://127.0.0.1:8000/api/munBasicOf/' + municipio),
+      munBasic = _useFetch.data,
+      isPendingMunBasic = _useFetch.isPending,
+      errorMunBasic = _useFetch.error;
+
+  var api_token = "28uE4Cz64VWJtqA8VDJyZqZdAjSzSqUUGKvFAcsFfE8DtTsMfhWRmRX0gzLEYCjRI8IsC9Wn7SLybtG3";
+  var purposeContentEndPoint = purpose === 'vacations' ? 'http://127.0.0.1:8000/api/trip/' + provincia + '/' + municipio + '?api_token=' + api_token : purpose === 'rentSale' ? 'http://127.0.0.1:8000/api/idea/' + provincia + '/' + municipio + '?api_token=' + api_token : history.push('/');
+
+  var CurrentDate = function CurrentDate() {
+    var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    var diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+    var f = new Date();
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+      children: diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()]
+    });
+  };
+
+  var mapURL = "https://maps.googleapis.com/maps/api/js?v=3.exp&key=".concat(_credentials__WEBPACK_IMPORTED_MODULE_6__.default.mapsKey);
+
+  var _useFetch2 = (0,_useFetch__WEBPACK_IMPORTED_MODULE_1__.default)(purposeContentEndPoint),
+      purposeContent = _useFetch2.data,
+      isPendingPurposeContent = _useFetch2.isPending,
+      errorPurposeContent = _useFetch2.error;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isClicked = _useState2[0],
+      setIsClicked = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      cardLink = _useState4[0],
+      setCardLink = _useState4[1];
+
   var handleCardClick = function handleCardClick(cardLinkParam) {
     setCardLink(cardLinkParam);
     setIsClicked(!isClicked);
@@ -7647,7 +8025,7 @@ var MainWindow = function MainWindow() {
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MainWindow);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MainWindowOld);
 
 /***/ }),
 
@@ -8105,6 +8483,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Simple_search() {
   /* CONSTANT VARIABLES --------------------------------------------------------------------------------------------- */
   var path = "assets/";
+  var history = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -8122,9 +8501,8 @@ function Simple_search() {
       municipios = _useFetch.data,
       isPending = _useFetch.isPending,
       error = _useFetch.error;
-
-  var history = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
   /* CONSTANT FUNCTIONS --------------------------------------------------------------------------------------------- */
+
 
   var handleModalExit = function handleModalExit() {
     setIsASClicked(!isASClicked);
@@ -8178,6 +8556,25 @@ function Simple_search() {
     if (municipio !== "" && provincia !== "") {
       if (purpose !== "default") {
         history.push("/" + provincia + "/" + municipio + "/" + purpose);
+        /*window.location =
+          "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
+      } else {
+        alert("Selecciona el propósito de tu viaje");
+      }
+    } else {
+      alert("Introduce un pueblo que consultar");
+    }
+  };
+
+  var goToSearchOld = function goToSearchOld() {
+    var inputText = document.getElementById("simple_search").value.split(", ");
+    var municipio = inputText[0];
+    var provincia = inputText[1];
+    var purpose = document.getElementById("purpose").value;
+
+    if (municipio !== "" && provincia !== "") {
+      if (purpose !== "default") {
+        history.push("old/" + provincia + "/" + municipio + "/" + purpose);
         /*window.location =
           "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
       } else {
@@ -8398,7 +8795,10 @@ function Simple_search() {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
           onClick: goToSearch,
-          children: "Buscar"
+          children: "Buscar Checkpoint"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          onClick: goToSearchOld,
+          children: "Buscar Viejo"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
           onClick: function onClick() {
             setIsASClicked(!isASClicked);
@@ -11090,7 +11490,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.c
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Orelega+One&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n  --primary1: #00e0ff;\r\n  --primary2: #4d9bac;\r\n  --primary3: #e5feff;\r\n  --primary4: #e6f4f1;\r\n  --secondary1: #94ff31; /* Card */\r\n  /* --secondary2: #81986e; */ /* background */\r\n  --secondary2: #d0ffa4; /* background */\r\n  --secondary3: #f6fbf2;\r\n /*  --secondary4: #77af3f; */ /* Title text color */\r\n  --secondary4: rgb(255, 255, 255); /* Title text color */\r\n  --secondary5: #2bc069; /* Button color */\r\n  --secondary6: #31ff35;\r\n  --secondary7: #6fbf24;\r\n  /* --secondary8: #376110; */\r\n  --secondary8: #74cc22; /* Navbar y footer */\r\n  --secondary9: #63a525;\r\n}\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: \"Quicksand\";\r\n}\r\nbody {\r\n  margin-top: 9vh;\r\n  /* font-family: \"Roboto\", sans-serif; */\r\n  /*font-family: \"Quicksand\";*/\r\n  background-color: var(--secondary2);\r\n}\r\na {\r\n  padding: 0;\r\n  margin: 0;\r\n  text-decoration: none;\r\n}\r\n\r\n.splideContainer{\r\n  margin: auto;\r\n}\r\n\r\n.splideContainerModal{\r\n  margin: auto;\r\n  padding-top: 5%;\r\n}\r\n\r\n.splideContainerModal2{\r\n  margin: auto;\r\n  padding-top: 1.5%;\r\n}\r\n\r\n@media only screen and (max-width: 1595px) {\r\n    .splideContainerModal{\r\n      margin: auto;\r\n      padding-top: 10%;\r\n    }\r\n    \r\n    .splideContainerModal2{\r\n      margin: auto;\r\n      padding-top: 2%;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1111px) {\r\n  .splideContainerModal2{\r\n    margin: auto;\r\n    padding-top: 5%;\r\n  }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n  --primary1: #00e0ff;\r\n  --primary2: #4d9bac;\r\n  --primary3: #e5feff;\r\n  --primary4: #e6f4f1;\r\n  --secondary1: #94ff31; /* Card */\r\n  /* --secondary2: #81986e; */ /* background */\r\n  --secondary2: rgb(91, 134, 255); /* background */\r\n  --secondary3: #f6fbf2;\r\n /*  --secondary4: #77af3f; */ /* Title text color */\r\n  --secondary4: rgb(255, 255, 255); /* Title text color */\r\n  --secondary5: #2bc069; /* Button color */\r\n  --secondary6: #31ff35;\r\n  --secondary7: #6fbf24;\r\n  /* --secondary8: #376110; */\r\n  --secondary8: blue; /* Navbar y footer */\r\n  --secondary9: #63a525;\r\n}\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: \"Quicksand\";\r\n}\r\nbody {\r\n  margin-top: 9vh;\r\n  /* font-family: \"Roboto\", sans-serif; */\r\n  /*font-family: \"Quicksand\";*/\r\n  background-color: var(--secondary2);\r\n}\r\na {\r\n  padding: 0;\r\n  margin: 0;\r\n  text-decoration: none;\r\n}\r\n\r\n.splideContainer{\r\n  margin: auto;\r\n}\r\n\r\n.splideContainerModal{\r\n  margin: auto;\r\n  padding-top: 5%;\r\n}\r\n\r\n.splideContainerModal2{\r\n  margin: auto;\r\n  padding-top: 1.5%;\r\n}\r\n\r\n@media only screen and (max-width: 1595px) {\r\n    .splideContainerModal{\r\n      margin: auto;\r\n      padding-top: 10%;\r\n    }\r\n    \r\n    .splideContainerModal2{\r\n      margin: auto;\r\n      padding-top: 2%;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1111px) {\r\n  .splideContainerModal2{\r\n    margin: auto;\r\n    padding-top: 5%;\r\n  }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11210,7 +11610,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n    margin: 0;\r\n}\r\n\r\n:root {\r\n    --primary1: #00e0ff;\r\n    --primary2: #4d9bac;\r\n    --primary3: #e5feff;\r\n    --primary4: #e6f4f1;\r\n    --secondary1: #94ff31; /* Card */\r\n    /* --secondary2: #81986e; */ /* background */\r\n    --secondary2: #d0ffa4; /* background */\r\n    --secondary3: #f6fbf2;\r\n    /* --secondary4: #77af3f; */ /* Title text color */\r\n    --secondary4: rgb(255, 255, 255); /* Title text color */\r\n    --secondary5: #2bc069; /* Button color */\r\n    --secondary6: #31ff35;\r\n    --secondary7: #6fbf24;\r\n    /* --secondary8: #376110; */\r\n    --secondary8: #74cc22; /* Navbar y footer */\r\n    --secondary9: #63a525;\r\n}\r\n\r\n._3_bbT2P6lvACUzUKQ6-dX1{\r\n    display: grid;\r\n    grid-template-rows: 20% 50% 30%;\r\n    grid-template-areas: \r\n        \"headSection\"\r\n        \"mainSection\"\r\n        \"footerSection\";\r\n}\r\n\r\n._2Kfgyz75RntZPdbFNRKsd3{\r\n    grid-area: headSection;\r\n    display: grid;\r\n    grid-template-columns: 50% 50%;\r\n    grid-template-areas: \r\n        \"headLeftSection headRigthSection\";\r\n    background-color: var(--secondary2);\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);\r\n\r\n}\r\n\r\n.-IEWP4mSm-Cf-b6yO7vGr{\r\n    grid-area: headLeftSection;\r\n    padding-top: 10%;\r\n    padding-left: 15%;\r\n    padding-bottom: 10%;\r\n}\r\n\r\n.-sCrEPbBn3q1KRTuXHwt{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-around;\r\n}\r\n\r\n.-sCrEPbBn3q1KRTuXHwt *{\r\n    padding: 1rem;\r\n}\r\n\r\n._2e6gfj-TKNZINq5KIsmYJe{\r\n    grid-area: headRigthSection;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-evenly;\r\n}\r\n\r\n._3AoQMSBLMozGMwQFSvztE- *{\r\n    padding-bottom: 5%;\r\n}\r\n\r\n/*\r\n.headRigthSectionRightPanel{\r\n    max-width: 50%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    border-style: solid;\r\n    border-color: black;\r\n}\r\n\r\n.headRigthSectionRightPanel *{\r\n    padding: 1rem 3rem;\r\n}\r\n*/\r\n\r\n._1DJQMWbnDBw30z_V6MjUae {\r\n    margin: 10% auto;\r\n    border: 10px solid #f3f3f3;\r\n    border-radius: 50%;\r\n    border-top: 10px solid black;\r\n    width: 50px;\r\n    height: 50px;\r\n    -webkit-animation: _1VNtTdRF4gTY9SDecuDU3S 2s linear infinite; /* Safari */\r\n    animation: _1VNtTdRF4gTY9SDecuDU3S 2s linear infinite;\r\n}\r\n  \r\n/* Safari */\r\n@-webkit-keyframes _1VNtTdRF4gTY9SDecuDU3S {\r\n  0% { -webkit-transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); }\r\n}\r\n\r\n@keyframes _1VNtTdRF4gTY9SDecuDU3S {\r\n  0% { transform: rotate(0deg); }\r\n  100% { transform: rotate(360deg); }\r\n}\r\n\r\n._2K2DbEttxg0fOjKj5m55xu{\r\n    grid-area: mainSection;\r\n    display: flex;\r\n    flex-direction: column;\r\n    padding-bottom: 3%;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);\r\n    background-color: white;\r\n}\r\n\r\n._2zkjF9J6ZsvC5R06Lb1vnH{\r\n    padding-top: 3%;\r\n}\r\n/*\r\n.splideContainer{\r\n    \r\n}*/\r\n\r\n._2NXBFnMYFzKirkMcHfQJpQ{\r\n    margin-bottom: 2%;\r\n    margin-left: 6%;\r\n}\r\n._2GYynqK0_TpGTYrDUJSC_4{\r\n    max-width: 300px;\r\n    max-height: 600px;\r\n}\r\n._1ynUm23YZQ2KUKntTWRCp6{\r\n    width: 300px;\r\n    height: 280px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    cursor: pointer;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n    border-radius: 5%;\r\n\r\n}\r\n._1NTWuRDT-tI4f9l6FbKynl:hover{\r\n    opacity: 0.8;\r\n}\r\n\r\n.K7W0YCrJDjuhceFxpypwz{\r\n    margin: 2% 0 2% 6%;\r\n}\r\n\r\n.W2r_lP5pAEQ-UVPRF204y{\r\n    grid-area: footerSection;\r\n    background-color: var(--secondary2);\r\n}\r\n._1BHA64GbleXSh1pd60fzKh{\r\n    margin: 2% auto 2%;\r\n    width: 90%;\r\n    border-style: solid;\r\n    border-color: black;\r\n    border-width: 2px;\r\n}\r\n\r\n/* The Modal (background) */\r\n._3FpVOYk5pHjvf9p64kIUU5 {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: fixed; /* Stay in place */\r\n    z-index: 11; /* Sit on top */\r\n    width: 100vw; /* Full width */\r\n    height: 100vh; /* Full height */\r\n    margin-top: -9vh;\r\n    background-color: rgb(0,0,0); /* Fallback color */\r\n    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n}\r\n\r\n/*ModalWindow*/\r\n.zvsLtN9kKhG5zHgWBRAbQ {\r\n    display: block;\r\n    width: 65%;\r\n    height: 85%;\r\n    background-color: var(--secondary5);\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n    border-radius: 5%;\r\n    -webkit-animation-name: _3pSac2E3gLO721cA12fsuV;\r\n            animation-name: _3pSac2E3gLO721cA12fsuV;\r\n    -webkit-animation-duration: 0.6s;\r\n            animation-duration: 0.6s;\r\n}\r\n\r\n@-webkit-keyframes _3pSac2E3gLO721cA12fsuV {\r\n    from {-webkit-transform:scale(0)} \r\n    to {-webkit-transform:scale(1)}\r\n}\r\n  \r\n@keyframes _3pSac2E3gLO721cA12fsuV {\r\n  from {transform:scale(0)} \r\n  to {transform:scale(1)}\r\n}\r\n\r\n/* The Close Button */\r\n._1J8EsFZLn4eczbYY7-43By {\r\n    margin-left: 96%;\r\n    color: #000;\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n}\r\n._1J8EsFZLn4eczbYY7-43By:hover,\r\n._1J8EsFZLn4eczbYY7-43By:focus {\r\n  color: #f1f1f1;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n\r\n/*Waiting alert*/\r\n.rA7CL4eXtNHBnJI-X5E1Z{\r\n    color: #f1f1f1;\r\n    font-weight: bold;\r\n}\r\n\r\n/*Card Content*/\r\n._1MJTn5jKIWKmRMZ_CEXDUE{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n    margin-top: 2%;\r\n    font-size: 3rem;\r\n    white-space: nowrap;\r\n}\r\n._1MJTn5jKIWKmRMZ_CEXDUE h2 {\r\n    margin-top: 1%;\r\n    font-size: 2rem;\r\n}\r\n\r\n._1MJTn5jKIWKmRMZ_CEXDUE h3 {\r\n    margin-top: 1%;\r\n}\r\n\r\n._1jqqPNz699qayyviJ6lSBt{\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    margin-top: 1.3%;\r\n}\r\n._87jGaruYSbkv7pfp0Jd6W{\r\n    width: 35%;\r\n    padding: 2%;\r\n    text-align: justify;\r\n    text-justify: inter-word;\r\n    background-color:white;\r\n    border-radius: 2%;\r\n\r\n\r\n}\r\n._74WO15yAZXdnsrsmq3mGQ{\r\n    padding: 2%;\r\n    background-color: white;\r\n    border-radius: 2%;\r\n}\r\n\r\n._87jGaruYSbkv7pfp0Jd6W, ._74WO15yAZXdnsrsmq3mGQ{\r\n    font-size: 15px;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n}\r\n\r\n._25NEEP8iiQT2TGLxbKUnoY{\r\n    position: relative;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin: 1.8% auto 2.5%;\r\n    width: 15%;\r\n}\r\n\r\n._7dssFDlSSMobL0wAL3SkV {\r\n    position: absolute;\r\n    padding: 2px 10px;\r\n    font-size: 22px;\r\n    border-radius: 15px;\r\n    background-color: #ffffff;\r\n    color: black;\r\n    cursor: pointer;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n._7dssFDlSSMobL0wAL3SkV:hover{\r\n    transform: scale(1.1);\r\n}\r\n\r\n.gmVABIJITsjtehspiypwH{\r\n    text-align: center;\r\n}\r\n\r\n._1Vh-1gDh8OCCRsnI0qjxTx{\r\n    max-width: 500px;\r\n    max-height: 300px;\r\n}\r\n._3row-T38hyLAttROpz3tQU {\r\n    width: 425px;\r\n    height: 285px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n}\r\n\r\n.UL4J8d1bJ6euQ97-Dw6zP{\r\n    max-width: 450px;\r\n    max-height: 200px;\r\n}\r\n._39O6rO0IJ1LnYdzc42SYAs{\r\n    width: 350px;\r\n    height: 200px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n}\r\n\r\n@media only screen and (max-width: 1595px) {\r\n    .zvsLtN9kKhG5zHgWBRAbQ {\r\n        width: 75%;\r\n        height: 80%;\r\n        border-radius: 4%;\r\n    }\r\n    ._1J8EsFZLn4eczbYY7-43By {\r\n        font-size: 35px;\r\n    }\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n        font-size: 2.5rem;\r\n        white-space: normal;\r\n\r\n    }\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h2 {\r\n        font-size: 1.5rem;\r\n    }\r\n    \r\n    ._25NEEP8iiQT2TGLxbKUnoY{\r\n        margin: 5% auto 4%;\r\n        width: 18%;\r\n    }\r\n    \r\n    ._7dssFDlSSMobL0wAL3SkV {\r\n        position: absolute;\r\n        padding: 2px 10px;\r\n        font-size: 19px;\r\n        border-radius: 15px;\r\n    }\r\n    ._1Vh-1gDh8OCCRsnI0qjxTx{\r\n        max-width: 460px;\r\n        max-height: 260px;\r\n    }\r\n    ._3row-T38hyLAttROpz3tQU {\r\n        width: 385px;\r\n        height: 245px;\r\n    }\r\n    \r\n    .UL4J8d1bJ6euQ97-Dw6zP{\r\n        max-width: 410px;\r\n        max-height: 160px;\r\n    }\r\n    ._39O6rO0IJ1LnYdzc42SYAs{\r\n        width: 300px;\r\n        height: 160px;\r\n    }\r\n    ._3KeHJeJSv8vWefYDzWEEfX {\r\n        scale: 0.8;\r\n    }  \r\n}\r\n\r\n@media only screen and (max-width: 1325px) {\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n        margin-top: 2%;\r\n        font-size: 2rem;\r\n        white-space: normal;\r\n    }\r\n    ._87jGaruYSbkv7pfp0Jd6W{\r\n        width: 40%;\r\n        padding: 1%;\r\n    }\r\n    ._74WO15yAZXdnsrsmq3mGQ{\r\n        padding: 1%;\r\n    }\r\n    \r\n    ._87jGaruYSbkv7pfp0Jd6W, ._74WO15yAZXdnsrsmq3mGQ{\r\n        font-size: 12.5px;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1111px) {\r\n    ._87jGaruYSbkv7pfp0Jd6W{\r\n        width: 30%;\r\n        padding: 2%;\r\n    }\r\n    ._74WO15yAZXdnsrsmq3mGQ{\r\n        padding: 2%;\r\n    }\r\n    \r\n    ._87jGaruYSbkv7pfp0Jd6W, ._74WO15yAZXdnsrsmq3mGQ{\r\n        font-size: 11.5px;\r\n    }\r\n    ._3KeHJeJSv8vWefYDzWEEfX {\r\n        display: none;\r\n    }\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n    margin: 0;\r\n}\r\n\r\n:root {\r\n    --primary1: #00e0ff;\r\n    --primary2: #4d9bac;\r\n    --primary3: #e5feff;\r\n    --primary4: #e6f4f1;\r\n    --secondary1: #94ff31; /* Card */\r\n    /* --secondary2: #81986e; */ /* background */\r\n    --secondary2: #d0ffa4; /* background */\r\n    --secondary3: #f6fbf2;\r\n    /* --secondary4: #77af3f; */ /* Title text color */\r\n    --secondary4: rgb(255, 255, 255); /* Title text color */\r\n    --secondary5: #2bc069; /* Button color */\r\n    --secondary6: #31ff35;\r\n    --secondary7: #6fbf24;\r\n    /* --secondary8: #376110; */\r\n    --secondary8: #74cc22; /* Navbar y footer */\r\n    --secondary9: #63a525;\r\n}\r\n\r\n._3_bbT2P6lvACUzUKQ6-dX1{\r\n    display: grid;\r\n    grid-template-rows: 20% 5%  5% 40% 30%;\r\n    grid-template-areas: \r\n        \"headSection\"\r\n        \"mainSectionTop\"\r\n        \"mainSectionAdminData\"\r\n        \"mainSection\"\r\n        \"footerSection\";\r\n}\r\n\r\n._2Kfgyz75RntZPdbFNRKsd3{\r\n    grid-area: headSection;\r\n    display: grid;\r\n    grid-template-columns: 50% 50%;\r\n    grid-template-areas: \r\n        \"headLeftSection headRigthSection\";\r\n    background-color: var(--secondary2);\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);\r\n\r\n}\r\n\r\n.-IEWP4mSm-Cf-b6yO7vGr{\r\n    grid-area: headLeftSection;\r\n    padding-top: 10%;\r\n    padding-left: 15%;\r\n    padding-bottom: 10%;\r\n}\r\n\r\n.-sCrEPbBn3q1KRTuXHwt{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-around;\r\n}\r\n\r\n.-sCrEPbBn3q1KRTuXHwt *{\r\n    padding: 1rem;\r\n}\r\n\r\n._2e6gfj-TKNZINq5KIsmYJe{\r\n    grid-area: headRigthSection;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-evenly;\r\n}\r\n\r\n._3AoQMSBLMozGMwQFSvztE- *{\r\n    padding-bottom: 5%;\r\n}\r\n\r\n/*\r\n.headRigthSectionRightPanel{\r\n    max-width: 50%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    border-style: solid;\r\n    border-color: black;\r\n}\r\n\r\n.headRigthSectionRightPanel *{\r\n    padding: 1rem 3rem;\r\n}\r\n*/\r\n\r\n._1DJQMWbnDBw30z_V6MjUae {\r\n    margin: 10% auto;\r\n    border: 10px solid #f3f3f3;\r\n    border-radius: 50%;\r\n    border-top: 10px solid black;\r\n    width: 50px;\r\n    height: 50px;\r\n    -webkit-animation: _1VNtTdRF4gTY9SDecuDU3S 2s linear infinite; /* Safari */\r\n    animation: _1VNtTdRF4gTY9SDecuDU3S 2s linear infinite;\r\n}\r\n  \r\n/* Safari */\r\n@-webkit-keyframes _1VNtTdRF4gTY9SDecuDU3S {\r\n  0% { -webkit-transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); }\r\n}\r\n\r\n@keyframes _1VNtTdRF4gTY9SDecuDU3S {\r\n  0% { transform: rotate(0deg); }\r\n  100% { transform: rotate(360deg); }\r\n}\r\n._13d6K5D4bv_AWvXFFF-Apg {\r\n    grid-area: mainSectionAdminData;\r\n    padding: 3%;\r\n    background-color: rgb(0, 183, 255);\r\n}\r\n._3aXvuLgOTHY4Q-MnDxcHaE {\r\n    grid-area: mainSectionTop;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    align-self: center;\r\n    padding: 3%;\r\n    padding-bottom: 3%;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);\r\n    background-color: rgb(0, 214, 252);\r\n}\r\n._3aXvuLgOTHY4Q-MnDxcHaE h1{\r\n    margin: 1%;\r\n}\r\n\r\n._2K2DbEttxg0fOjKj5m55xu{\r\n    grid-area: mainSection;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding-bottom: 3%;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);\r\n    background-color: white;\r\n}\r\n\r\n._2zkjF9J6ZsvC5R06Lb1vnH{\r\n    padding-top: 3%;\r\n}\r\n/*\r\n.splideContainer{\r\n    \r\n}*/\r\n\r\n._2NXBFnMYFzKirkMcHfQJpQ{\r\n    margin-bottom: 2%;\r\n    margin-left: 6%;\r\n}\r\n._2GYynqK0_TpGTYrDUJSC_4{\r\n    max-width: 300px;\r\n    max-height: 600px;\r\n}\r\n._1ynUm23YZQ2KUKntTWRCp6{\r\n    width: 300px;\r\n    height: 280px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    cursor: pointer;\r\n    box-shadow: 1px 3px 5px rgba(0, 255, 234, 0.8);\r\n    border-radius: 5%;\r\n\r\n}\r\n._1NTWuRDT-tI4f9l6FbKynl:hover{\r\n    opacity: 0.8;\r\n}\r\n\r\n.K7W0YCrJDjuhceFxpypwz{\r\n    margin: 2% 0 2% 6%;\r\n}\r\n\r\n.W2r_lP5pAEQ-UVPRF204y{\r\n    grid-area: footerSection;\r\n    background-color: var(--secondary2);\r\n}\r\n._1BHA64GbleXSh1pd60fzKh{\r\n    margin: 2% auto 2%;\r\n    width: 90%;\r\n    border-style: solid;\r\n    border-color: black;\r\n    border-width: 2px;\r\n}\r\n\r\n/* The Modal (background) */\r\n._3FpVOYk5pHjvf9p64kIUU5 {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: fixed; /* Stay in place */\r\n    z-index: 11; /* Sit on top */\r\n    width: 100vw; /* Full width */\r\n    height: 100vh; /* Full height */\r\n    margin-top: -9vh;\r\n    background-color: rgb(0,0,0); /* Fallback color */\r\n    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n}\r\n\r\n/*ModalWindow*/\r\n.zvsLtN9kKhG5zHgWBRAbQ {\r\n    display: block;\r\n    width: 65%;\r\n    height: 85%;\r\n    background-color: var(--secondary5);\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n    border-radius: 5%;\r\n    -webkit-animation-name: _3pSac2E3gLO721cA12fsuV;\r\n            animation-name: _3pSac2E3gLO721cA12fsuV;\r\n    -webkit-animation-duration: 0.6s;\r\n            animation-duration: 0.6s;\r\n}\r\n\r\n@-webkit-keyframes _3pSac2E3gLO721cA12fsuV {\r\n    from {-webkit-transform:scale(0)} \r\n    to {-webkit-transform:scale(1)}\r\n}\r\n  \r\n@keyframes _3pSac2E3gLO721cA12fsuV {\r\n  from {transform:scale(0)} \r\n  to {transform:scale(1)}\r\n}\r\n\r\n/* The Close Button */\r\n._1J8EsFZLn4eczbYY7-43By {\r\n    margin-left: 96%;\r\n    color: #000;\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n}\r\n._1J8EsFZLn4eczbYY7-43By:hover,\r\n._1J8EsFZLn4eczbYY7-43By:focus {\r\n  color: #f1f1f1;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n\r\n/*Waiting alert*/\r\n.rA7CL4eXtNHBnJI-X5E1Z{\r\n    color: #f1f1f1;\r\n    font-weight: bold;\r\n}\r\n\r\n/*Card Content*/\r\n._1MJTn5jKIWKmRMZ_CEXDUE{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n    margin-top: 2%;\r\n    font-size: 3rem;\r\n    white-space: nowrap;\r\n}\r\n._1MJTn5jKIWKmRMZ_CEXDUE h2 {\r\n    margin-top: 1%;\r\n    font-size: 2rem;\r\n}\r\n\r\n._1MJTn5jKIWKmRMZ_CEXDUE h3 {\r\n    margin-top: 1%;\r\n}\r\n\r\n._1jqqPNz699qayyviJ6lSBt{\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    margin-top: 1.3%;\r\n}\r\n._87jGaruYSbkv7pfp0Jd6W{\r\n    width: 35%;\r\n    padding: 2%;\r\n    text-align: justify;\r\n    text-justify: inter-word;\r\n    background-color:white;\r\n    border-radius: 2%;\r\n\r\n\r\n}\r\n._74WO15yAZXdnsrsmq3mGQ{\r\n    padding: 2%;\r\n    background-color: white;\r\n    border-radius: 2%;\r\n}\r\n\r\n._87jGaruYSbkv7pfp0Jd6W, ._74WO15yAZXdnsrsmq3mGQ{\r\n    font-size: 15px;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n}\r\n\r\n._25NEEP8iiQT2TGLxbKUnoY{\r\n    position: relative;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin: 1.8% auto 2.5%;\r\n    width: 15%;\r\n}\r\n\r\n._7dssFDlSSMobL0wAL3SkV {\r\n    position: absolute;\r\n    padding: 2px 10px;\r\n    font-size: 22px;\r\n    border-radius: 15px;\r\n    background-color: #ffffff;\r\n    color: black;\r\n    cursor: pointer;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n._7dssFDlSSMobL0wAL3SkV:hover{\r\n    transform: scale(1.1);\r\n}\r\n\r\n.gmVABIJITsjtehspiypwH{\r\n    text-align: center;\r\n}\r\n\r\n._1Vh-1gDh8OCCRsnI0qjxTx{\r\n    max-width: 500px;\r\n    max-height: 300px;\r\n}\r\n._3row-T38hyLAttROpz3tQU {\r\n    width: 425px;\r\n    height: 285px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n}\r\n\r\n.UL4J8d1bJ6euQ97-Dw6zP{\r\n    max-width: 450px;\r\n    max-height: 200px;\r\n}\r\n._39O6rO0IJ1LnYdzc42SYAs{\r\n    width: 350px;\r\n    height: 200px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n}\r\n\r\n@media only screen and (max-width: 1595px) {\r\n    .zvsLtN9kKhG5zHgWBRAbQ {\r\n        width: 75%;\r\n        height: 80%;\r\n        border-radius: 4%;\r\n    }\r\n    ._1J8EsFZLn4eczbYY7-43By {\r\n        font-size: 35px;\r\n    }\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n        font-size: 2.5rem;\r\n        white-space: normal;\r\n\r\n    }\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h2 {\r\n        font-size: 1.5rem;\r\n    }\r\n    \r\n    ._25NEEP8iiQT2TGLxbKUnoY{\r\n        margin: 5% auto 4%;\r\n        width: 18%;\r\n    }\r\n    \r\n    ._7dssFDlSSMobL0wAL3SkV {\r\n        position: absolute;\r\n        padding: 2px 10px;\r\n        font-size: 19px;\r\n        border-radius: 15px;\r\n    }\r\n    ._1Vh-1gDh8OCCRsnI0qjxTx{\r\n        max-width: 460px;\r\n        max-height: 260px;\r\n    }\r\n    ._3row-T38hyLAttROpz3tQU {\r\n        width: 385px;\r\n        height: 245px;\r\n    }\r\n    \r\n    .UL4J8d1bJ6euQ97-Dw6zP{\r\n        max-width: 410px;\r\n        max-height: 160px;\r\n    }\r\n    ._39O6rO0IJ1LnYdzc42SYAs{\r\n        width: 300px;\r\n        height: 160px;\r\n    }\r\n    ._3KeHJeJSv8vWefYDzWEEfX {\r\n        scale: 0.8;\r\n    }  \r\n}\r\n\r\n@media only screen and (max-width: 1325px) {\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n        margin-top: 2%;\r\n        font-size: 2rem;\r\n        white-space: normal;\r\n    }\r\n    ._87jGaruYSbkv7pfp0Jd6W{\r\n        width: 40%;\r\n        padding: 1%;\r\n    }\r\n    ._74WO15yAZXdnsrsmq3mGQ{\r\n        padding: 1%;\r\n    }\r\n    \r\n    ._87jGaruYSbkv7pfp0Jd6W, ._74WO15yAZXdnsrsmq3mGQ{\r\n        font-size: 12.5px;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1111px) {\r\n    ._87jGaruYSbkv7pfp0Jd6W{\r\n        width: 30%;\r\n        padding: 2%;\r\n    }\r\n    ._74WO15yAZXdnsrsmq3mGQ{\r\n        padding: 2%;\r\n    }\r\n    \r\n    ._87jGaruYSbkv7pfp0Jd6W, ._74WO15yAZXdnsrsmq3mGQ{\r\n        font-size: 11.5px;\r\n    }\r\n    ._3KeHJeJSv8vWefYDzWEEfX {\r\n        display: none;\r\n    }\r\n}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"mainWindowContainer": "_3_bbT2P6lvACUzUKQ6-dX1",
@@ -11221,6 +11621,8 @@ ___CSS_LOADER_EXPORT___.locals = {
 	"headRigthSectionLeftPanel": "_3AoQMSBLMozGMwQFSvztE-",
 	"loaderPending": "_1DJQMWbnDBw30z_V6MjUae",
 	"spin": "_1VNtTdRF4gTY9SDecuDU3S",
+	"mainInfoAdmins": "_13d6K5D4bv_AWvXFFF-Apg",
+	"mainInfoTop": "_3aXvuLgOTHY4Q-MnDxcHaE",
 	"mainInfoSection": "_2K2DbEttxg0fOjKj5m55xu",
 	"mainInfoSectionContainer": "_2zkjF9J6ZsvC5R06Lb1vnH",
 	"splideTitle": "_2NXBFnMYFzKirkMcHfQJpQ",

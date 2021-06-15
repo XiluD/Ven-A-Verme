@@ -23,9 +23,11 @@
 
 .mainWindowContainer{
     display: grid;
-    grid-template-rows: 20% 50% 30%;
+    grid-template-rows: 20% 5%  5% 40% 30%;
     grid-template-areas: 
         "headSection"
+        "mainSectionTop"
+        "mainSectionAdminData"
         "mainSection"
         "footerSection";
 }
@@ -106,11 +108,32 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.mainInfoAdmins {
+    grid-area: mainSectionAdminData;
+    padding: 3%;
+    background-color: rgb(0, 183, 255);
+}
+.mainInfoTop {
+    grid-area: mainSectionTop;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    padding: 3%;
+    padding-bottom: 3%;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+    background-color: rgb(0, 214, 252);
+}
+.mainInfoTop h1{
+    margin: 1%;
+}
 
 .mainInfoSection{
     grid-area: mainSection;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 3%;
     box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
     background-color: white;
@@ -139,7 +162,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);
+    box-shadow: 1px 3px 5px rgba(0, 255, 234, 0.8);
     border-radius: 5%;
 
 }

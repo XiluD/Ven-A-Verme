@@ -5,6 +5,7 @@ import Simple_search from "./Simple_search";
 import Footer from "./Footer";
 import NotFound from "./NotFound";
 import MainWindow from "./MainWindow";
+import MainWindowOld from "./MainWindow_old";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -23,6 +24,11 @@ function App() {
           <Route path='/:provincia/:municipio/:purpose' component={MainWindow}>
             <NavBar />
             <MainWindow />
+            <Footer />
+          </Route>
+          <Route exact path='old/:provincia/:municipio/:purpose' component={MainWindowOld}>
+            <NavBar />
+            <MainWindowOld />
             <Footer />
           </Route>
           <Route path="*">

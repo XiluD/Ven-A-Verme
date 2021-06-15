@@ -7,6 +7,7 @@ import Advanced_search from "./Advanced_search";
 function Simple_search() {
   /* CONSTANT VARIABLES --------------------------------------------------------------------------------------------- */
   const path = "assets/";
+  const history = useHistory();
   const [listItems, setListItems] = useState([]);
   const [isASClicked, setIsASClicked] = useState(false); /* default: false */
   const {
@@ -14,7 +15,6 @@ function Simple_search() {
     isPending,
     error,
   } = useFetch("http://127.0.0.1:8000/api/provsMunsUltraBasic");
-  const history = useHistory();
 
   /* CONSTANT FUNCTIONS --------------------------------------------------------------------------------------------- */
   const handleModalExit = () => {
@@ -66,6 +66,24 @@ function Simple_search() {
     if (municipio !== "" && provincia !== "") {
       if (purpose !== "default") {
         history.push("/" + provincia + "/" + municipio + "/" + purpose);
+        /*window.location =
+          "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
+      } else {
+        alert("Selecciona el propósito de tu viaje");
+      }
+    } else {
+      alert("Introduce un pueblo que consultar");
+    }
+  };
+
+  const goToSearchOld = () => {
+    let inputText = document.getElementById("simple_search").value.split(", ");
+    let municipio = inputText[0];
+    let provincia = inputText[1];
+    let purpose = document.getElementById("purpose").value;
+    if (municipio !== "" && provincia !== "") {
+      if (purpose !== "default") {
+        history.push("old/" + provincia + "/" + municipio + "/" + purpose);
         /*window.location =
           "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
       } else {
@@ -290,7 +308,9 @@ function Simple_search() {
               <option value="vacations">Vacaciones</option>
               <option value="rentSale">Búsqueda de vivienda</option>
             </select>
-            <button onClick={goToSearch}>Buscar</button>
+            <button onClick={goToSearch}>Buscar Checkpoint</button>
+            <button onClick={goToSearchOld}>Buscar Viejo</button>
+
 
             <button
               onClick={() => {

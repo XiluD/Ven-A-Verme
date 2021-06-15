@@ -6483,6 +6483,416 @@ function Advanced_search(_ref) {
       listMunis = _useState16[0],
       setListMunis = _useState16[1];
 
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState18 = _slicedToArray(_useState17, 2),
+      allMunicipios = _useState18[0],
+      setAllMunicipios = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState20 = _slicedToArray(_useState19, 2),
+      listAllMunis = _useState20[0],
+      setListAllMunis = _useState20[1];
+
+  var _useFetch = (0,_useFetch__WEBPACK_IMPORTED_MODULE_2__.default)("http://127.0.0.1:8000/api/provsBasic"),
+      provincias = _useFetch.data,
+      isPending = _useFetch.isPending,
+      error = _useFetch.error;
+
+  var listItemClicked = function listItemClicked(item) {
+    document.getElementById("advanced_search").value = item;
+    document.activeElement.blur();
+  };
+
+  var filter_function = function filter_function() {
+    var input, filter, ul, li, i, txtValue;
+    input = document.getElementById("advanced_search");
+    filter = input.value.toUpperCase();
+    ul = document.getElementsByClassName("listaProvincias")[0];
+    li = ul.getElementsByTagName("li"); // Loop through all list items, and hide those who don't match the search query
+
+    if (filter !== "") {
+      for (i = 0; i < li.length; i++) {
+        txtValue = li[i].innerHTML;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    } else {
+      for (i = 0; i < li.length; i++) {
+        txtValue = li[i].innerHTML;
+        li[i].style.display = "";
+      }
+    }
+  };
+
+  var search_focus = function search_focus() {
+    document.getElementsByClassName("listaProvincias")[0].style.visibility = "visible";
+    filter_function();
+  };
+
+  var search_unfocus = function search_unfocus() {
+    document.getElementsByClassName("listaProvincias")[0].style.visibility = "hidden";
+  };
+
+  var handleChangeSlider = function handleChangeSlider(event) {
+    setSliderValue(event.target.value);
+  };
+
+  var handleChangeTextSlider = function handleChangeTextSlider(event) {
+    if (event.target.value == "") {
+      setSliderValue("0");
+    } else {
+      setSliderValue(event.target.value.replaceAll(",", ""));
+    }
+  };
+
+  var handleChangeMaxHabs = function handleChangeMaxHabs(event) {
+    if (event.target.value == "") {
+      setMaxHabitantes("0");
+    } else {
+      setMaxHabitantes(event.target.value.replaceAll(",", ""));
+    }
+  };
+
+  var filterMunicipios = function filterMunicipios() {
+    var provincia = document.getElementById("advanced_search").value;
+    provincia = provincia.split(",")[0];
+    var despoblacion = document.getElementById("check").checked;
+
+    if (provincia == "") {
+      alert("Introduce una provincia que consultar");
+    } else {
+      var url = "";
+
+      if (despoblacion) {
+        url = "http://localhost:8000/api/munsOfPoblationOrdered/" + provincia + "/" + sliderValue + "?ev=true";
+      } else {
+        url = "http://localhost:8000/api/munsOfPoblationOrdered/" + provincia + "/" + sliderValue;
+      }
+
+      setPendingSearch(true);
+      setSearchDone(false);
+      fetch(url).then(function (res) {
+        if (!res.ok) {
+          throw Error("could not fetch the data for that resource");
+        }
+
+        return res.json();
+      }).then(function (data) {
+        url = "http://127.0.0.1:8000/api/munsOf/" + provincia;
+        fetch(url).then(function (res) {
+          if (!res.ok) {
+            throw Error("could not fetch the data for that resource");
+          }
+
+          return res.json();
+        }).then(function (data2) {
+          setAllMunicipios(data2);
+        })["catch"](function (err) {
+          setMessage(err.message);
+          setPendingSearch(false);
+        });
+        setMunicipiosFiltered(data);
+        setPendingSearch(false);
+        setSearchDone(true);
+      })["catch"](function (err) {
+        setMessage(err.message);
+        setPendingSearch(false);
+      });
+    }
+  };
+
+  var listMuniClicked = function listMuniClicked(e) {
+    document.getElementById("simple_search").value = e;
+    handleModalExit();
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (provincias) {
+      setListItems(provincias.map(function (provincia) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+          onMouseDown: function onMouseDown(e) {
+            return e.preventDefault();
+          },
+          onClick: function onClick(e) {
+            return listItemClicked(e.target.innerHTML);
+          },
+          children: [provincia.provincia, ", c\xF3digo provincia =", provincia.codigoProvincia]
+        });
+      }));
+    }
+
+    if (municipiosFiltered) {
+      setListMunis(municipiosFiltered.map(function (municipio) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "muniCard",
+          onClick: function onClick(e) {
+            return listMuniClicked("".concat(municipio.municipio, ", ").concat(municipio.provincia));
+          },
+          style: {
+            backgroundImage: "url(".concat(municipio.imagenMunicipio, ")")
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "gradient",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+              className: "cardInfo",
+              children: [municipio.municipio, ", ", municipio.provincia]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+              className: "cardInfo",
+              children: ["poblaci\xF3n: ", municipio.poblacion]
+            })]
+          })
+        });
+      }));
+    }
+
+    if (allMunicipios) {
+      setListAllMunis(allMunicipios.map(function (municipio) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "muniCard2",
+          onClick: function onClick(e) {
+            return listMuniClicked("".concat(municipio.municipio, ", ").concat(municipio.provincia));
+          },
+          style: {
+            backgroundImage: "url(".concat(municipio.imagenMunicipio, ")")
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "gradient",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+              className: "cardInfo2",
+              children: [municipio.municipio, ", ", municipio.provincia]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+              className: "cardInfo2",
+              children: ["poblaci\xF3n: ", municipio.poblacion, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "coordenadas: ", municipio.cLatitud, ",", " ", municipio.cLongitud]
+            })]
+          })
+        });
+      }));
+    }
+  }, [provincias, municipiosFiltered, allMunicipios]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "Advanced_search",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: "modal_screen",
+      onClick: handleModalExit,
+      children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "loading-div",
+        children: error
+      }), isPending && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "loading-div",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+          src: "https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif",
+          alt: "loading.gif",
+          width: "200",
+          height: "200"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          children: "Loading..."
+        })]
+      }), provincias && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "Advanced_search_card",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "close",
+          onClick: handleModalExit,
+          children: "\xD7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "left_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+            children: "B\xFAsqueda Avanzada"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "search_list_container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "input_text_container",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+                className: "material-icons",
+                children: "search"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                type: "text",
+                name: "search",
+                placeholder: "Buscar provincias...",
+                autocomplete: "off",
+                id: "advanced_search",
+                onFocus: search_focus,
+                onBlur: search_unfocus,
+                onKeyUp: filter_function
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "relative-positioner",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
+                className: "listaProvincias",
+                children: listItems
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            children: "N\xFAmero m\xE1ximo de habitantes en el municipio:"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            "class": "slidecontainer",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              children: minHabitantes
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "range",
+              min: minHabitantes,
+              max: maxHabitantes,
+              step: "10",
+              "class": "slider",
+              id: "myRange",
+              value: sliderValue,
+              onChange: handleChangeSlider
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "text",
+              name: "maxHabitantes",
+              autocomplete: "off",
+              id: "maxHabitantes",
+              value: parseInt(maxHabitantes).toLocaleString("en-US"),
+              onChange: handleChangeMaxHabs
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            id: "quantity",
+            name: "quantity",
+            autocomplete: "off",
+            value: parseInt(sliderValue).toLocaleString("en-US"),
+            onChange: handleChangeTextSlider
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "checkContainer",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "checkbox",
+              id: "check",
+              name: "check",
+              value: "check"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              "for": "check",
+              children: "Mostrar resultados de la Espa\xF1a vaciada"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            id: "info",
+            children: "Marcando esta casilla, nuestro buscador analizar\xE1 la informaci\xF3n de noticias relevantes sobre el municipio y aplicar\xE1 un modelo de Inteligencia Artificial para determinar si se trata de un pueblo de la Espa\xF1a vaciada o no."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            onClick: filterMunicipios,
+            children: "Buscar"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+            children: "LISTADO DE TODAS LAS PROVINCIAS"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
+            className: "listaProvincias2",
+            children: listItems
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "right_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+            children: "Resultados de tu b\xFAsqueda"
+          }), !searchDone && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            id: "message",
+            children: message
+          }), pendingSearch && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "loading-div",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+              src: "https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif",
+              alt: "loading.gif",
+              width: "200",
+              height: "200"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              children: "Loading..."
+            })]
+          }), searchDone && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "cards_container",
+            children: [listMunis, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+              className: "newTitle",
+              children: "TODOS LOS PUEBLOS"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), listAllMunis]
+          })]
+        })]
+      })]
+    })
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Advanced_search);
+
+/***/ }),
+
+/***/ "./resources/js/components/Advanced_search_old.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/Advanced_search_old.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _styles_Advanced_search_old_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/Advanced_search_old.css */ "./resources/js/components/styles/Advanced_search_old.css");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _useFetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useFetch */ "./resources/js/components/useFetch.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+function Advanced_search_old(_ref) {
+  var handleModalExit = _ref.handleModalExit;
+  var path = "assets/";
+  var minHabitantes = "0";
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("50000"),
+      _useState2 = _slicedToArray(_useState, 2),
+      maxHabitantes = _useState2[0],
+      setMaxHabitantes = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      listItems = _useState4[0],
+      setListItems = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(maxHabitantes / 2),
+      _useState6 = _slicedToArray(_useState5, 2),
+      sliderValue = _useState6[0],
+      setSliderValue = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("Introduce los parámetros de filtrado y comienza a buscar."),
+      _useState8 = _slicedToArray(_useState7, 2),
+      message = _useState8[0],
+      setMessage = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      pendingSearch = _useState10[0],
+      setPendingSearch = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      searchDone = _useState12[0],
+      setSearchDone = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState14 = _slicedToArray(_useState13, 2),
+      municipiosFiltered = _useState14[0],
+      setMunicipiosFiltered = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState16 = _slicedToArray(_useState15, 2),
+      listMunis = _useState16[0],
+      setListMunis = _useState16[1];
+
   var _useFetch = (0,_useFetch__WEBPACK_IMPORTED_MODULE_2__.default)("http://127.0.0.1:8000/api/provsBasic"),
       provincias = _useFetch.data,
       isPending = _useFetch.isPending,
@@ -6626,7 +7036,7 @@ function Advanced_search(_ref) {
     }
   }, [provincias, municipiosFiltered]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "Advanced_search",
+    className: "Advanced_search_old",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "modal_screen",
       onClick: handleModalExit,
@@ -6755,7 +7165,7 @@ function Advanced_search(_ref) {
   });
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Advanced_search);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Advanced_search_old);
 
 /***/ }),
 
@@ -8079,9 +8489,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_Simple_search_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/Simple_search.css */ "./resources/js/components/styles/Simple_search.css");
 /* harmony import */ var _useFetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useFetch */ "./resources/js/components/useFetch.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Advanced_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Advanced_search */ "./resources/js/components/Advanced_search.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Advanced_search_old__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Advanced_search_old */ "./resources/js/components/Advanced_search_old.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8093,6 +8504,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -8118,16 +8530,27 @@ function Simple_search() {
   /* default: false */
 
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isASClicked2 = _useState6[0],
+      setIsASClicked2 = _useState6[1];
+  /* default: false */
+
+
   var _useFetch = (0,_useFetch__WEBPACK_IMPORTED_MODULE_1__.default)("http://127.0.0.1:8000/api/provsMunsUltraBasic"),
       municipios = _useFetch.data,
       isPending = _useFetch.isPending,
       error = _useFetch.error;
 
-  var history = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
+  var history = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   /* CONSTANT FUNCTIONS --------------------------------------------------------------------------------------------- */
 
   var handleModalExit = function handleModalExit() {
     setIsASClicked(!isASClicked);
+  };
+
+  var handleModalExit2 = function handleModalExit2() {
+    setIsASClicked2(!isASClicked2);
   };
 
   var listItemClicked = function listItemClicked(item) {
@@ -8179,7 +8602,7 @@ function Simple_search() {
       if (purpose !== "default") {
         history.push("/" + provincia + "/" + municipio + "/" + purpose);
         /*window.location =
-          "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
+        "/venaverme/" + provincia + "/" + municipio + "/" + purpose;*/
       } else {
         alert("Selecciona el propósito de tu viaje");
       }
@@ -8193,7 +8616,7 @@ function Simple_search() {
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     if (municipios) {
       setListItems(municipios.map(function (municipio) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
           onMouseDown: function onMouseDown(e) {
             return e.preventDefault();
           },
@@ -8207,141 +8630,143 @@ function Simple_search() {
   }, [municipios]);
   /* RETURN --------------------------------------------------------------------------------------------- */
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "simple-search",
-    children: [isASClicked && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Advanced_search__WEBPACK_IMPORTED_MODULE_3__.default, {
+    children: [isASClicked && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Advanced_search_old__WEBPACK_IMPORTED_MODULE_4__.default, {
       handleModalExit: handleModalExit
-    }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    }), isASClicked2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Advanced_search__WEBPACK_IMPORTED_MODULE_3__.default, {
+      handleModalExit: handleModalExit2
+    }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "loading-div",
       children: error
-    }), isPending && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    }), isPending && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "loading-div",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
         src: "https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif",
         alt: "loading.gif",
         width: "200",
         height: "200"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
         children: "Loading..."
       })]
-    }), municipios && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    }), municipios && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "main-col-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "row-container-title",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "col-container",
           id: "titulo",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
             children: "Descubre todo lo que los pueblos de Espa\xF1a te pueden ofrecer."
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "col-container",
           id: "ilustracion",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "svg-container",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("svg", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
               width: "20vw",
               height: "20vw",
               viewBox: "0 0 841 758",
               fill: "none",
               xmlns: "http://www.w3.org/2000/svg",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("g", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("g", {
                 "clip-path": "url(#clip0)",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M534.25 438.618L418.25 300.618L185.404 302.746L44.156 440.325L47.01 442.159H45.991V728.324H533.937V442.159L534.25 438.618Z",
                   fill: "#3F3D56"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M418.371 300.912L273.455 470.811V728.324H533.937V438.491L418.371 300.912Z",
                   fill: "#63A525"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M431.212 585.915H378.015V632.936H431.212V585.915Z",
                   fill: "white"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M431.212 504.529H378.015V550.803H431.212V504.529Z",
                   fill: "white"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M194.8 573.439H141.602V620.459H194.8V573.439Z",
                   fill: "white"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M194.8 492.052H141.602V538.327H194.8V492.052Z",
                   fill: "white"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M840.5 727.431H0V729.431H840.5V727.431Z",
                   fill: "#3F3D56"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M713.92 695.831L717.92 715.831L697.92 719.831L700.92 694.831L713.92 695.831Z",
                   fill: "#A0616A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M776.92 691.831L771.92 716.831H747.92L757.92 686.831L776.92 691.831Z",
                   fill: "#A0616A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M798.919 517.831L802.919 544.831L797.919 603.831L793.919 625.831L776.919 697.831C776.919 697.831 757.919 697.831 754.919 689.831L759.919 648.831C759.919 648.831 763.919 615.831 762.919 611.831C761.919 607.831 746.919 543.831 746.919 543.831C746.919 543.831 724.919 644.831 721.919 653.831C718.919 662.831 714.919 701.831 714.919 701.831C714.919 701.831 697.919 704.831 696.919 701.831C695.919 698.831 694.919 627.831 694.919 616.831C694.919 605.831 696.919 599.831 696.919 597.831C696.919 595.831 689.041 500.359 689.041 500.359L798.919 517.831Z",
                   fill: "#2F2E41"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M757.919 711.831C757.919 711.831 762.919 712.831 765.919 711.831C768.919 710.831 765.919 704.831 765.919 704.831H776.919C776.919 704.831 788.919 731.831 793.919 733.831C798.919 735.831 814.919 757.831 795.919 757.831C784.196 757.681 772.754 754.214 762.919 747.831C762.919 747.831 760.919 738.831 751.919 737.831C742.919 736.831 736.919 725.831 736.919 725.831L749.919 701.831C749.919 701.831 752.919 712.831 757.919 711.831Z",
                   fill: "#2F2E41"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M710.919 710.831C710.919 710.831 708.919 714.831 706.919 712.831C704.919 710.831 702.919 705.831 702.919 705.831C702.919 705.831 696.919 702.831 695.919 705.831C694.919 708.831 690.919 724.831 688.919 726.831C686.919 728.831 665.919 749.831 686.919 753.831C707.919 757.831 711.919 748.831 711.919 748.831C711.919 748.831 708.919 743.831 714.919 741.831C720.919 739.831 721.919 732.831 721.919 732.831L717.919 702.831C717.919 702.831 713.919 712.831 710.919 710.831Z",
                   fill: "#2F2E41"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M821.919 447.831L824.919 499.831C824.919 499.831 838.919 532.831 819.919 531.831C800.919 530.831 812.919 498.831 812.919 498.831L794.317 452.422L821.919 447.831Z",
                   fill: "#A0616A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M667.919 432.831L664.919 484.831C664.919 484.831 650.919 517.831 669.919 516.831C688.919 515.831 676.919 483.831 676.919 483.831L695.522 437.422L667.919 432.831Z",
                   fill: "#A0616A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M747.919 319.831C762.279 319.831 773.919 308.191 773.919 293.831C773.919 279.472 762.279 267.831 747.919 267.831C733.56 267.831 721.919 279.472 721.919 293.831C721.919 308.191 733.56 319.831 747.919 319.831Z",
                   fill: "#A0616A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M768.419 304.331C768.419 304.331 761.419 332.331 775.419 339.331C789.419 346.331 731.419 356.331 727.419 339.331L729.419 331.331C729.419 331.331 737.419 321.331 735.419 312.331L768.419 304.331Z",
                   fill: "#A0616A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M752.919 339.831C752.919 339.831 735.664 341.443 730.292 330.137C730.292 330.137 689.919 332.831 680.919 369.831L695.919 465.831C695.919 465.831 679.919 493.831 681.919 496.831C681.919 496.831 671.919 524.831 763.919 525.831L803.919 523.831C804.46 518.147 804.123 512.413 802.919 506.831C800.919 497.831 789.919 434.831 789.919 434.831C789.919 434.831 819.919 387.831 816.919 380.831C813.919 373.831 809.115 346.23 770.517 335.031C770.517 335.031 769.919 340.831 752.919 339.831Z",
                   fill: "#9A9A9A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M803.919 363.831L816.919 380.831C816.919 380.831 829.919 451.831 825.919 452.831C821.919 453.831 797.919 461.831 793.919 458.831C789.919 455.831 771.919 396.831 771.919 396.831L803.919 363.831Z",
                   fill: "#9A9A9A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M697.919 358.831L680.919 369.831C680.919 369.831 655.919 439.831 662.919 442.831C669.919 445.831 708.919 443.831 708.919 443.831L697.919 358.831Z",
                   fill: "#9A9A9A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M776.339 270.563C776.339 270.563 767.333 251.051 750.072 255.554C732.812 260.057 723.055 266.811 722.305 273.565C721.555 280.319 722.68 290.451 722.68 290.451C722.68 290.451 724.556 276.567 736.564 279.569C742.95 281.165 751.248 281.276 757.617 281.03C758.865 280.978 760.111 281.182 761.278 281.628C762.445 282.074 763.509 282.754 764.404 283.625C765.3 284.496 766.008 285.541 766.487 286.695C766.965 287.849 767.203 289.089 767.187 290.338L766.872 311.831C766.872 311.831 791.872 295.831 776.339 270.563Z",
                   fill: "#2F2E41"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M653.71 278.13H300.524C298.79 278.128 297.128 277.438 295.902 276.212C294.676 274.986 293.986 273.324 293.984 271.59V109.418C293.986 107.684 294.676 106.022 295.902 104.796C297.128 103.57 298.79 102.88 300.524 102.878H653.71C655.444 102.88 657.106 103.57 658.332 104.796C659.558 106.022 660.248 107.684 660.25 109.418V271.59C660.248 273.324 659.558 274.986 658.332 276.212C657.106 277.438 655.444 278.128 653.71 278.13V278.13ZM300.524 105.494C299.484 105.495 298.486 105.909 297.751 106.645C297.015 107.38 296.601 108.378 296.6 109.418V271.59C296.601 272.63 297.015 273.628 297.751 274.363C298.486 275.099 299.484 275.513 300.524 275.514H653.71C654.75 275.513 655.747 275.099 656.483 274.363C657.219 273.628 657.633 272.63 657.634 271.59V109.418C657.633 108.378 657.219 107.38 656.483 106.645C655.747 105.909 654.75 105.495 653.71 105.494H300.524Z",
                   fill: "#9A9A9A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M352.786 186.969C367.5 186.969 379.428 175.041 379.428 160.327C379.428 145.612 367.5 133.684 352.786 133.684C338.072 133.684 326.144 145.612 326.144 160.327C326.144 175.041 338.072 186.969 352.786 186.969Z",
                   fill: "#63A525"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M414.317 142.565C413.733 142.564 413.155 142.678 412.616 142.901C412.076 143.124 411.586 143.451 411.173 143.863C410.76 144.276 410.432 144.765 410.209 145.305C409.985 145.844 409.87 146.422 409.87 147.005C409.87 147.589 409.985 148.167 410.209 148.706C410.432 149.245 410.76 149.735 411.173 150.148C411.586 150.56 412.076 150.887 412.616 151.11C413.155 151.332 413.733 151.447 414.317 151.446H623.65C624.828 151.446 625.957 150.978 626.79 150.145C627.622 149.312 628.09 148.183 628.09 147.005C628.09 145.828 627.622 144.698 626.79 143.865C625.957 143.033 624.828 142.565 623.65 142.565H414.317Z",
                   fill: "#9A9A9A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M414.317 169.207C413.733 169.206 413.155 169.321 412.616 169.543C412.076 169.766 411.586 170.093 411.173 170.505C410.76 170.918 410.432 171.408 410.209 171.947C409.985 172.486 409.87 173.064 409.87 173.648C409.87 174.231 409.985 174.809 410.209 175.348C410.432 175.888 410.76 176.377 411.173 176.79C411.586 177.202 412.076 177.529 412.616 177.752C413.155 177.975 413.733 178.089 414.317 178.088H504.394C504.977 178.089 505.555 177.975 506.095 177.752C506.634 177.529 507.125 177.202 507.538 176.79C507.951 176.377 508.278 175.888 508.502 175.348C508.726 174.809 508.841 174.231 508.841 173.648C508.841 173.064 508.726 172.486 508.502 171.947C508.278 171.408 507.951 170.918 507.538 170.505C507.125 170.093 506.634 169.766 506.095 169.543C505.555 169.321 504.977 169.206 504.394 169.207H414.317Z",
                   fill: "#9A9A9A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M332.35 211.801C328.973 211.801 326.224 213.793 326.224 216.241C326.224 218.689 328.973 220.681 332.35 220.681H621.165C624.543 220.681 627.292 218.689 627.292 216.241C627.292 213.793 624.543 211.801 621.165 211.801H332.35Z",
                   fill: "#9A9A9A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M332.35 238.443C328.973 238.443 326.224 240.435 326.224 242.883C326.224 245.332 328.973 247.324 332.35 247.324H621.165C624.543 247.324 627.292 245.332 627.292 242.883C627.292 240.435 624.543 238.443 621.165 238.443H332.35Z",
                   fill: "#9A9A9A"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M590.1 94.7642C616.268 94.7642 637.482 73.5505 637.482 47.3821C637.482 21.2137 616.268 0 590.1 0C563.931 0 542.717 21.2137 542.717 47.3821C542.717 73.5505 563.931 94.7642 590.1 94.7642Z",
                   fill: "#63A525"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M590.1 124.408L575.284 98.747L560.469 73.086H590.1H619.73L604.915 98.747L590.1 124.408Z",
                   fill: "#63A525"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M590.482 64.0864C599.871 64.0864 607.482 56.4752 607.482 47.0864C607.482 37.6975 599.871 30.0864 590.482 30.0864C581.093 30.0864 573.482 37.6975 573.482 47.0864C573.482 56.4752 581.093 64.0864 590.482 64.0864Z",
                   fill: "white"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
                   d: "M768.872 298.831C771.081 298.831 772.872 296.593 772.872 293.831C772.872 291.07 771.081 288.831 768.872 288.831C766.663 288.831 764.872 291.07 764.872 293.831C764.872 296.593 766.663 298.831 768.872 298.831Z",
                   fill: "#A0616A"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("defs", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("clipPath", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("defs", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("clipPath", {
                   id: "clip0",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("rect", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("rect", {
                     width: "840.5",
                     height: "757.831",
                     fill: "white"
@@ -8351,16 +8776,16 @@ function Simple_search() {
             })
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "search_list_container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "input_text_container",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
               className: "material-icons",
               children: "search"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
               type: "text",
               name: "search",
               placeholder: "Busca municipios a donde ir...",
@@ -8371,17 +8796,17 @@ function Simple_search() {
               onKeyUp: filter_function,
               required: true
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "relative-positioner",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
               className: "listaMunicipios",
               children: listItems
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
           name: "purpose",
           id: "purpose",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
             value: "default",
             disabled: true,
             selected: true,
@@ -8389,24 +8814,32 @@ function Simple_search() {
               display: "none"
             },
             children: "Prop\xF3sito del viaje"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
             value: "vacations",
             children: "Vacaciones"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
             value: "rentSale",
             children: "B\xFAsqueda de vivienda"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
           onClick: goToSearch,
           children: "Buscar"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
           onClick: function onClick() {
-            setIsASClicked(!isASClicked);
+            setIsASClicked2(!isASClicked2);
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
             src: path + "advanced_search_52px.png",
             alt: "advanced search logo"
           }), "B\xFAsqueda Avanzada"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+          onClick: function onClick() {
+            setIsASClicked(!isASClicked);
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+            src: path + "advanced_search_52px.png",
+            alt: "advanced search logo"
+          }), "B\xFAsqueda Avanzada_old"]
         })]
       })]
     })]
@@ -11063,7 +11496,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".Advanced_search .modal_screen {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: fixed; /* Stay in place */\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 11; /* Sit on top */\r\n  width: 100vw; /* Full width */\r\n  height: 100vh; /* Full height */\r\n  background-color: rgb(0, 0, 0); /* Fallback color */\r\n  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\r\n}\r\n\r\n/* The Close Button */\r\n.Advanced_search .close {\r\n  position: absolute;\r\n  top: 9%;\r\n  right: 19%;\r\n  color: #000;\r\n  font-size: 40px;\r\n  font-weight: bold;\r\n  opacity: 0;\r\n  -webkit-animation-name: appear;\r\n          animation-name: appear;\r\n  -webkit-animation-fill-mode: forwards;\r\n          animation-fill-mode: forwards;\r\n  -webkit-animation-duration: 1s;\r\n          animation-duration: 1s;\r\n}\r\n.Advanced_search .close:hover,\r\n.Advanced_search .close:focus {\r\n  color: #f1f1f1;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n\r\n.Advanced_search .Advanced_search_card {\r\n  width: 65%;\r\n  height: 85%;\r\n  z-index: 3;\r\n  background-color: rgb(255, 255, 255);\r\n  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);\r\n  border-radius: 5%;\r\n  -webkit-animation-name: zoom;\r\n          animation-name: zoom;\r\n  -webkit-animation-duration: 0.6s;\r\n          animation-duration: 0.6s;\r\n\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n  overflow: hidden;\r\n}\r\n.Advanced_search .left_container,\r\n.Advanced_search .right_container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n  width: 50%;\r\n}\r\n.Advanced_search .left_container {\r\n  background-color: var(--secondary2);\r\n  font-size: 1vw;\r\n}\r\n/* .Advanced_search .right_container {\r\n} */\r\n.Advanced_search h1 {\r\n  color: var(--secondary9);\r\n  font-size: 1.5vw;\r\n  font-weight: 500;\r\n  text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),\r\n    0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),\r\n    0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),\r\n    0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);\r\n}\r\n.Advanced_search .left_container p {\r\n  margin-top: 5%;\r\n  font-size: large;\r\n}\r\n/* SLIDER---------------------------------------------------------------------------------------------------------------- */\r\n\r\n.Advanced_search .slidecontainer {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n  width: 70%; /* Width of the outside container */\r\n}\r\n.Advanced_search .slidecontainer p {\r\n  height: 100%;\r\n}\r\n.Advanced_search .slider {\r\n  width: 100%; /* Full-width */\r\n  background: #d3d3d3; /* Grey background */\r\n  outline: none; /* Remove outline */\r\n  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */ /* 0.2 seconds transition on hover */\r\n  transition: opacity 0.2s;\r\n}\r\n\r\n/* Mouse-over effects */\r\n.Advanced_search .slider:hover {\r\n  opacity: 1; /* Fully shown on mouse-over */\r\n}\r\n.Advanced_search #maxHabitantes {\r\n  padding: 1% 2%;\r\n  background-color: transparent;\r\n  border: 1px solid rgb(87, 87, 87);\r\n  width: 25%;\r\n  font-size: 1vw;\r\n}\r\n.Advanced_search #maxHabitantes:focus {\r\n  outline-width: 0px;\r\n  outline: none;\r\n}\r\n\r\n.Advanced_search #quantity {\r\n  padding: 1% 2%;\r\n  border: 1px solid rgb(87, 87, 87);\r\n  width: 25%;\r\n  font-size: 1vw;\r\n}\r\n.Advanced_search #quantity:focus {\r\n  outline-width: 0px;\r\n  outline: none;\r\n}\r\n\r\n.Advanced_search .checkContainer {\r\n  margin-top: 5%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.Advanced_search #check {\r\n  width: 1vw;\r\n  height: 1vw;\r\n  margin-right: 1%;\r\n}\r\n.Advanced_search label {\r\n  width: 20vw;\r\n}\r\n.Advanced_search #info {\r\n  font-size: 0.8vw;\r\n  width: 75%;\r\n  text-align: justify;\r\n  text-justify: inter-word;\r\n  margin-top: 1%;\r\n}\r\n\r\n.Advanced_search .cards_container {\r\n  width: 87%;\r\n  height: 87%;\r\n  margin-top: 2%;\r\n\r\n  display: flex;\r\n  flex-flow: row wrap;\r\n  justify-content: flex-start;\r\n  align-items: flex-start;\r\n  overflow-y: scroll;\r\n}\r\n.Advanced_search .muniCard {\r\n  margin: 2%;\r\n  width: 8vw;\r\n  height: 8vw;\r\n  background-size: cover;\r\n  background-repeat: no-repeat;\r\n  cursor: pointer;\r\n  transition: transform 0.2s;\r\n}\r\n.Advanced_search .muniCard:hover {\r\n  transform: scale(1.1);\r\n}\r\n.Advanced_search .gradient {\r\n  width: 100%;\r\n  height: 100%;\r\n  background: linear-gradient(\r\n    rgba(0, 0, 0, 0) 0%,\r\n    rgba(0, 0, 0, 0) 40%,\r\n    rgba(0, 0, 0, 1) 100%\r\n  );\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: flex-end;\r\n}\r\n.Advanced_search .cardInfo {\r\n  padding-left: 5%;\r\n  padding-right: 5%;\r\n  font-size: 0.7vw;\r\n  color: white;\r\n  font-weight: 500;\r\n}\r\n/* INPUT TEXT Y BÚSQUEDA DINÁMICA---------------------------------------------------------------------------------------- */\r\n.Advanced_search .input_text_container {\r\n  margin-top: 6vw;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  text-align: center;\r\n  border-bottom: 3px solid rgb(87, 87, 87);\r\n}\r\n.Advanced_search .input_text_container:focus-within {\r\n  background-color: #aad386;\r\n}\r\n.Advanced_search .input_text_container #advanced_search {\r\n  margin-left: 0.25vw;\r\n  padding: 1% 2%;\r\n  border: none;\r\n  background-color: transparent;\r\n  font-size: 1.2vw;\r\n  width: 15vw;\r\n}\r\n.Advanced_search .input_text_container #advanced_search:focus {\r\n  outline-width: 0px;\r\n  outline: none;\r\n}\r\n.Advanced_search i {\r\n  margin-top: 2%;\r\n  -webkit-animation-name: scale;\r\n          animation-name: scale;\r\n  -webkit-animation-duration: 0.5s;\r\n          animation-duration: 0.5s;\r\n  -webkit-animation-iteration-count: infinite;\r\n          animation-iteration-count: infinite;\r\n  -webkit-animation-delay: 5s;\r\n          animation-delay: 5s;\r\n  -webkit-animation-direction: alternate;\r\n          animation-direction: alternate;\r\n  -webkit-animation-timing-function: ease-in-out;\r\n          animation-timing-function: ease-in-out;\r\n  transform: scale(1.2);\r\n}\r\n.Advanced_search select {\r\n  font-size: 1.1vw;\r\n  background-color: transparent;\r\n  margin-top: 2vw;\r\n}\r\n.Advanced_search select:focus {\r\n  outline-width: 0px;\r\n  outline: none;\r\n}\r\n.Advanced_search .relative-positioner {\r\n  position: relative;\r\n}\r\n.Advanced_search .listaProvincias {\r\n  position: absolute;\r\n  visibility: hidden;\r\n  z-index: 1;\r\n  width: 100%;\r\n  max-height: 20vh;\r\n  overflow-y: scroll;\r\n  background-color: white;\r\n  border: 1px solid black;\r\n  list-style-type: none;\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 1.1vw;\r\n}\r\n.Advanced_search li {\r\n  font-weight: 500;\r\n}\r\n.Advanced_search li:hover {\r\n  background-color: var(--secondary7);\r\n  cursor: pointer;\r\n}\r\n\r\n/* ANIMACIONES----------------------------------------------------------------------------------------------------------- */\r\n@-webkit-keyframes zoom {\r\n  from {\r\n    -webkit-transform: scale(0);\r\n  }\r\n  to {\r\n    -webkit-transform: scale(1);\r\n  }\r\n}\r\n\r\n@keyframes zoom {\r\n  from {\r\n    transform: scale(0);\r\n  }\r\n  to {\r\n    transform: scale(1);\r\n  }\r\n}\r\n\r\n@-webkit-keyframes appear {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n  99% {\r\n    opacity: 0;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes appear {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n  99% {\r\n    opacity: 0;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".Advanced_search .modal_screen {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: fixed; /* Stay in place */\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 11; /* Sit on top */\r\n    width: 100vw; /* Full width */\r\n    height: 100vh; /* Full height */\r\n    background-color: rgb(0, 0, 0); /* Fallback color */\r\n    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\r\n}\r\n\r\n/* The Close Button */\r\n.Advanced_search .close {\r\n    position: absolute;\r\n    top: 9%;\r\n    right: 19%;\r\n    color: #000;\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n    opacity: 0;\r\n    -webkit-animation-name: appear;\r\n            animation-name: appear;\r\n    -webkit-animation-fill-mode: forwards;\r\n            animation-fill-mode: forwards;\r\n    -webkit-animation-duration: 1s;\r\n            animation-duration: 1s;\r\n}\r\n.Advanced_search .close:hover,\r\n.Advanced_search .close:focus {\r\n    color: #f1f1f1;\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.Advanced_search .Advanced_search_card {\r\n    width: 65%;\r\n    height: 85%;\r\n    z-index: 3;\r\n    background-color: rgb(255, 255, 255);\r\n    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);\r\n    border-radius: 5%;\r\n    -webkit-animation-name: zoom;\r\n            animation-name: zoom;\r\n    -webkit-animation-duration: 0.6s;\r\n            animation-duration: 0.6s;\r\n\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    overflow: hidden;\r\n}\r\n.Advanced_search .left_container,\r\n.Advanced_search .right_container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: 100%;\r\n    width: 50%;\r\n}\r\n.Advanced_search .left_container {\r\n    background-color: #ffa837;\r\n    font-size: 1vw;\r\n}\r\n/* .Advanced_search .right_container {\r\n} */\r\n.Advanced_search h1 {\r\n    color: #a05b00;\r\n    font-size: 1.5vw;\r\n    font-weight: 500;\r\n    text-shadow: 1px 0 0 var(--terciary), -1px 0 0 var(--terciary),\r\n        0 1px 0 var(--terciary), 0 -1px 0 var(--terciary),\r\n        0.5px 0.5px var(--terciary), -0.5px -0.5px 0 var(--terciary),\r\n        0.5px -0.5px 0 var(--terciary), -0.5px 0.5px 0 var(--terciary);\r\n}\r\n.Advanced_search .left_container p {\r\n    margin-top: 5%;\r\n    font-size: large;\r\n}\r\n/* SLIDER---------------------------------------------------------------------------------------------------------------- */\r\n\r\n.Advanced_search .slidecontainer {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    width: 70%; /* Width of the outside container */\r\n}\r\n.Advanced_search .slidecontainer p {\r\n    height: 100%;\r\n}\r\n.Advanced_search .slider {\r\n    width: 100%; /* Full-width */\r\n    background: #d3d3d3; /* Grey background */\r\n    outline: none; /* Remove outline */\r\n    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */ /* 0.2 seconds transition on hover */\r\n    transition: opacity 0.2s;\r\n}\r\n\r\n/* Mouse-over effects */\r\n.Advanced_search .slider:hover {\r\n    opacity: 1; /* Fully shown on mouse-over */\r\n}\r\n.Advanced_search #maxHabitantes {\r\n    padding: 1% 2%;\r\n    background-color: transparent;\r\n    border: 1px solid rgb(87, 87, 87);\r\n    width: 25%;\r\n    font-size: 1vw;\r\n}\r\n.Advanced_search #maxHabitantes:focus {\r\n    outline-width: 0px;\r\n    outline: none;\r\n}\r\n\r\n.Advanced_search #quantity {\r\n    padding: 1% 2%;\r\n    border: 1px solid rgb(87, 87, 87);\r\n    width: 25%;\r\n    font-size: 1vw;\r\n}\r\n.Advanced_search #quantity:focus {\r\n    outline-width: 0px;\r\n    outline: none;\r\n}\r\n\r\n.Advanced_search .checkContainer {\r\n    margin-top: 5%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n.Advanced_search #check {\r\n    width: 1vw;\r\n    height: 1vw;\r\n    margin-right: 1%;\r\n}\r\n.Advanced_search label {\r\n    width: 20vw;\r\n}\r\n.Advanced_search #info {\r\n    font-size: 0.8vw;\r\n    width: 75%;\r\n    text-align: justify;\r\n    text-justify: inter-word;\r\n    margin-top: 1%;\r\n}\r\n\r\n.Advanced_search .cards_container {\r\n    width: 87%;\r\n    height: 87%;\r\n    margin-top: 2%;\r\n\r\n    display: flex;\r\n    flex-flow: row wrap;\r\n    justify-content: flex-start;\r\n    align-items: flex-start;\r\n    overflow-y: scroll;\r\n}\r\n.Advanced_search .muniCard {\r\n    margin: 2%;\r\n    width: 8vw;\r\n    height: 8vw;\r\n    background-size: cover;\r\n    background-repeat: no-repeat;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n.Advanced_search .muniCard:hover {\r\n    transform: scale(1.1);\r\n}\r\n\r\n.Advanced_search .muniCard2 {\r\n    margin: 2%;\r\n    width: 20vw;\r\n    height: 20vw;\r\n    background-size: cover;\r\n    background-repeat: no-repeat;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n.Advanced_search .muniCard2:hover {\r\n    transform: scale(1.1);\r\n}\r\n\r\n.Advanced_search .gradient {\r\n    width: 100%;\r\n    height: 100%;\r\n    background: linear-gradient(\r\n        rgba(0, 0, 0, 0) 0%,\r\n        rgba(0, 0, 0, 0) 40%,\r\n        rgba(0, 0, 0, 1) 100%\r\n    );\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: flex-end;\r\n}\r\n.Advanced_search .cardInfo {\r\n    padding-left: 5%;\r\n    padding-right: 5%;\r\n    font-size: 0.7vw;\r\n    color: white;\r\n    font-weight: 500;\r\n}\r\n.Advanced_search .cardInfo2 {\r\n    padding-left: 5%;\r\n    padding-right: 5%;\r\n    font-size: 0.9vw;\r\n    color: white;\r\n    font-weight: 600;\r\n}\r\n/* INPUT TEXT Y BÚSQUEDA DINÁMICA---------------------------------------------------------------------------------------- */\r\n.Advanced_search .input_text_container {\r\n    margin-top: 6vw;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    text-align: center;\r\n    border-bottom: 3px solid rgb(87, 87, 87);\r\n}\r\n.Advanced_search .input_text_container:focus-within {\r\n    background-color: #b38850;\r\n}\r\n.Advanced_search .input_text_container #advanced_search {\r\n    margin-left: 0.25vw;\r\n    padding: 1% 2%;\r\n    border: none;\r\n    background-color: transparent;\r\n    font-size: 1.2vw;\r\n    width: 15vw;\r\n}\r\n.Advanced_search .input_text_container #advanced_search:focus {\r\n    outline-width: 0px;\r\n    outline: none;\r\n}\r\n.Advanced_search i {\r\n    margin-top: 2%;\r\n    -webkit-animation-name: scale;\r\n            animation-name: scale;\r\n    -webkit-animation-duration: 0.5s;\r\n            animation-duration: 0.5s;\r\n    -webkit-animation-iteration-count: infinite;\r\n            animation-iteration-count: infinite;\r\n    -webkit-animation-delay: 5s;\r\n            animation-delay: 5s;\r\n    -webkit-animation-direction: alternate;\r\n            animation-direction: alternate;\r\n    -webkit-animation-timing-function: ease-in-out;\r\n            animation-timing-function: ease-in-out;\r\n    transform: scale(1.2);\r\n}\r\n.Advanced_search select {\r\n    font-size: 1.1vw;\r\n    background-color: transparent;\r\n    margin-top: 2vw;\r\n}\r\n.Advanced_search select:focus {\r\n    outline-width: 0px;\r\n    outline: none;\r\n}\r\n.Advanced_search .relative-positioner {\r\n    position: relative;\r\n}\r\n.Advanced_search .listaProvincias {\r\n    position: absolute;\r\n    visibility: hidden;\r\n    z-index: 1;\r\n    width: 100%;\r\n    max-height: 20vh;\r\n    overflow-y: scroll;\r\n    background-color: white;\r\n    border: 1px solid black;\r\n    list-style-type: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    font-size: 1.1vw;\r\n}\r\n.Advanced_search .listaProvincias2 {\r\n    z-index: 1;\r\n    max-height: 30vh;\r\n    overflow-y: scroll;\r\n    background-color: white;\r\n    border: 1px solid black;\r\n    list-style-type: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    font-size: 1.1vw;\r\n}\r\n.Advanced_search li {\r\n    font-weight: 500;\r\n}\r\n.Advanced_search li:hover {\r\n    background-color: var(--terciary);\r\n    cursor: pointer;\r\n}\r\n.Advanced_search .newTitle {\r\n    width: 100%;\r\n    text-align: center;\r\n}\r\n\r\n.buttonOrange {\r\n    background-color: #ffc375;\r\n}\r\n.Advanced_search button {\r\n    margin-top: 2vw;\r\n    padding: 0.5vw 2vw;\r\n    border-width: 0;\r\n    border-radius: 1vw;\r\n    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);\r\n    background-color: #ffd6a0;\r\n    font-size: 1vw;\r\n    transition: background-color 0.3s;\r\n\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n.Advanced_search button:hover {\r\n    background-color: #ac8450;\r\n    cursor: pointer;\r\n}\r\n/* ANIMACIONES----------------------------------------------------------------------------------------------------------- */\r\n@-webkit-keyframes zoom {\r\n    from {\r\n        -webkit-transform: scale(0);\r\n    }\r\n    to {\r\n        -webkit-transform: scale(1);\r\n    }\r\n}\r\n\r\n@keyframes zoom {\r\n    from {\r\n        transform: scale(0);\r\n    }\r\n    to {\r\n        transform: scale(1);\r\n    }\r\n}\r\n\r\n@-webkit-keyframes appear {\r\n    0% {\r\n        opacity: 0;\r\n    }\r\n    99% {\r\n        opacity: 0;\r\n    }\r\n    100% {\r\n        opacity: 1;\r\n    }\r\n}\r\n\r\n@keyframes appear {\r\n    0% {\r\n        opacity: 0;\r\n    }\r\n    99% {\r\n        opacity: 0;\r\n    }\r\n    100% {\r\n        opacity: 1;\r\n    }\r\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/styles/Advanced_search_old.css":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/styles/Advanced_search_old.css ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".Advanced_search_old .modal_screen {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: fixed; /* Stay in place */\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 11; /* Sit on top */\r\n    width: 100vw; /* Full width */\r\n    height: 100vh; /* Full height */\r\n    background-color: rgb(0, 0, 0); /* Fallback color */\r\n    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\r\n}\r\n\r\n/* The Close Button */\r\n.Advanced_search_old .close {\r\n    position: absolute;\r\n    top: 9%;\r\n    right: 19%;\r\n    color: #000;\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n    opacity: 0;\r\n    -webkit-animation-name: appear;\r\n            animation-name: appear;\r\n    -webkit-animation-fill-mode: forwards;\r\n            animation-fill-mode: forwards;\r\n    -webkit-animation-duration: 1s;\r\n            animation-duration: 1s;\r\n}\r\n.Advanced_search_old .close:hover,\r\n.Advanced_search_old .close:focus {\r\n    color: #f1f1f1;\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.Advanced_search_old .Advanced_search_card {\r\n    width: 65%;\r\n    height: 85%;\r\n    z-index: 3;\r\n    background-color: rgb(255, 255, 255);\r\n    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);\r\n    border-radius: 5%;\r\n    -webkit-animation-name: zoom;\r\n            animation-name: zoom;\r\n    -webkit-animation-duration: 0.6s;\r\n            animation-duration: 0.6s;\r\n\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    overflow: hidden;\r\n}\r\n.Advanced_search_old .left_container,\r\n.Advanced_search_old .right_container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: 100%;\r\n    width: 50%;\r\n}\r\n.Advanced_search_old .left_container {\r\n    background-color: var(--secondary2);\r\n    font-size: 1vw;\r\n}\r\n/* .Advanced_search .right_container {\r\n} */\r\n.Advanced_search_old h1 {\r\n    color: var(--secondary9);\r\n    font-size: 1.5vw;\r\n    font-weight: 500;\r\n    text-shadow: 1px 0 0 var(--secondary9), -1px 0 0 var(--secondary9),\r\n        0 1px 0 var(--secondary9), 0 -1px 0 var(--secondary9),\r\n        0.5px 0.5px var(--secondary9), -0.5px -0.5px 0 var(--secondary9),\r\n        0.5px -0.5px 0 var(--secondary9), -0.5px 0.5px 0 var(--secondary9);\r\n}\r\n.Advanced_search_old .left_container p {\r\n    margin-top: 5%;\r\n    font-size: large;\r\n}\r\n/* SLIDER---------------------------------------------------------------------------------------------------------------- */\r\n\r\n.Advanced_search_old .slidecontainer {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    width: 70%; /* Width of the outside container */\r\n}\r\n.Advanced_search_old .slidecontainer p {\r\n    height: 100%;\r\n}\r\n.Advanced_search_old .slider {\r\n    width: 100%; /* Full-width */\r\n    background: #d3d3d3; /* Grey background */\r\n    outline: none; /* Remove outline */\r\n    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */ /* 0.2 seconds transition on hover */\r\n    transition: opacity 0.2s;\r\n}\r\n\r\n/* Mouse-over effects */\r\n.Advanced_search_old .slider:hover {\r\n    opacity: 1; /* Fully shown on mouse-over */\r\n}\r\n.Advanced_search_old #maxHabitantes {\r\n    padding: 1% 2%;\r\n    background-color: transparent;\r\n    border: 1px solid rgb(87, 87, 87);\r\n    width: 25%;\r\n    font-size: 1vw;\r\n}\r\n.Advanced_search_old #maxHabitantes:focus {\r\n    outline-width: 0px;\r\n    outline: none;\r\n}\r\n\r\n.Advanced_search_old #quantity {\r\n    padding: 1% 2%;\r\n    border: 1px solid rgb(87, 87, 87);\r\n    width: 25%;\r\n    font-size: 1vw;\r\n}\r\n.Advanced_search_old #quantity:focus {\r\n    outline-width: 0px;\r\n    outline: none;\r\n}\r\n\r\n.Advanced_search_old .checkContainer {\r\n    margin-top: 5%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n.Advanced_search_old #check {\r\n    width: 1vw;\r\n    height: 1vw;\r\n    margin-right: 1%;\r\n}\r\n.Advanced_search_old label {\r\n    width: 20vw;\r\n}\r\n.Advanced_search_old #info {\r\n    font-size: 0.8vw;\r\n    width: 75%;\r\n    text-align: justify;\r\n    text-justify: inter-word;\r\n    margin-top: 1%;\r\n}\r\n\r\n.Advanced_search_old .cards_container {\r\n    width: 87%;\r\n    height: 87%;\r\n    margin-top: 2%;\r\n\r\n    display: flex;\r\n    flex-flow: row wrap;\r\n    justify-content: flex-start;\r\n    align-items: flex-start;\r\n    overflow-y: scroll;\r\n}\r\n.Advanced_search_old .muniCard {\r\n    margin: 2%;\r\n    width: 8vw;\r\n    height: 8vw;\r\n    background-size: cover;\r\n    background-repeat: no-repeat;\r\n    cursor: pointer;\r\n    transition: transform 0.2s;\r\n}\r\n.Advanced_search_old .muniCard:hover {\r\n    transform: scale(1.1);\r\n}\r\n.Advanced_search_old .gradient {\r\n    width: 100%;\r\n    height: 100%;\r\n    background: linear-gradient(\r\n        rgba(0, 0, 0, 0) 0%,\r\n        rgba(0, 0, 0, 0) 40%,\r\n        rgba(0, 0, 0, 1) 100%\r\n    );\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: flex-end;\r\n}\r\n.Advanced_search_old .cardInfo {\r\n    padding-left: 5%;\r\n    padding-right: 5%;\r\n    font-size: 0.7vw;\r\n    color: white;\r\n    font-weight: 500;\r\n}\r\n/* INPUT TEXT Y BÚSQUEDA DINÁMICA---------------------------------------------------------------------------------------- */\r\n.Advanced_search_old .input_text_container {\r\n    margin-top: 6vw;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    text-align: center;\r\n    border-bottom: 3px solid rgb(87, 87, 87);\r\n}\r\n.Advanced_search_old .input_text_container:focus-within {\r\n    background-color: #aad386;\r\n}\r\n.Advanced_search_old .input_text_container #advanced_search {\r\n    margin-left: 0.25vw;\r\n    padding: 1% 2%;\r\n    border: none;\r\n    background-color: transparent;\r\n    font-size: 1.2vw;\r\n    width: 15vw;\r\n}\r\n.Advanced_search_old .input_text_container #advanced_search:focus {\r\n    outline-width: 0px;\r\n    outline: none;\r\n}\r\n.Advanced_search_old i {\r\n    margin-top: 2%;\r\n    -webkit-animation-name: scale;\r\n            animation-name: scale;\r\n    -webkit-animation-duration: 0.5s;\r\n            animation-duration: 0.5s;\r\n    -webkit-animation-iteration-count: infinite;\r\n            animation-iteration-count: infinite;\r\n    -webkit-animation-delay: 5s;\r\n            animation-delay: 5s;\r\n    -webkit-animation-direction: alternate;\r\n            animation-direction: alternate;\r\n    -webkit-animation-timing-function: ease-in-out;\r\n            animation-timing-function: ease-in-out;\r\n    transform: scale(1.2);\r\n}\r\n.Advanced_search_old select {\r\n    font-size: 1.1vw;\r\n    background-color: transparent;\r\n    margin-top: 2vw;\r\n}\r\n.Advanced_search_old select:focus {\r\n    outline-width: 0px;\r\n    outline: none;\r\n}\r\n.Advanced_search_old .relative-positioner {\r\n    position: relative;\r\n}\r\n.Advanced_search_old .listaProvincias {\r\n    position: absolute;\r\n    visibility: hidden;\r\n    z-index: 1;\r\n    width: 100%;\r\n    max-height: 20vh;\r\n    overflow-y: scroll;\r\n    background-color: white;\r\n    border: 1px solid black;\r\n    list-style-type: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    font-size: 1.1vw;\r\n}\r\n.Advanced_search_old li {\r\n    font-weight: 500;\r\n}\r\n.Advanced_search_old li:hover {\r\n    background-color: var(--secondary7);\r\n    cursor: pointer;\r\n}\r\n\r\n/* ANIMACIONES----------------------------------------------------------------------------------------------------------- */\r\n@-webkit-keyframes zoom {\r\n    from {\r\n        -webkit-transform: scale(0);\r\n    }\r\n    to {\r\n        -webkit-transform: scale(1);\r\n    }\r\n}\r\n\r\n@keyframes zoom {\r\n    from {\r\n        transform: scale(0);\r\n    }\r\n    to {\r\n        transform: scale(1);\r\n    }\r\n}\r\n\r\n@-webkit-keyframes appear {\r\n    0% {\r\n        opacity: 0;\r\n    }\r\n    99% {\r\n        opacity: 0;\r\n    }\r\n    100% {\r\n        opacity: 1;\r\n    }\r\n}\r\n\r\n@keyframes appear {\r\n    0% {\r\n        opacity: 0;\r\n    }\r\n    99% {\r\n        opacity: 0;\r\n    }\r\n    100% {\r\n        opacity: 1;\r\n    }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11210,7 +11667,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n    margin: 0;\r\n}\r\n\r\n:root {\r\n    --primary1: #00e0ff;\r\n    --primary2: #4d9bac;\r\n    --primary3: #e5feff;\r\n    --primary4: #e6f4f1;\r\n    --secondary1: #94ff31; /* Card */\r\n    /* --secondary2: #81986e; */ /* background */\r\n    --secondary2: #d0ffa4; /* background */\r\n    --secondary3: #f6fbf2;\r\n    /* --secondary4: #77af3f; */ /* Title text color */\r\n    --secondary4: rgb(255, 255, 255); /* Title text color */\r\n    --secondary5: #2bc069; /* Button color */\r\n    --secondary6: #31ff35;\r\n    --secondary7: #6fbf24;\r\n    /* --secondary8: #376110; */\r\n    --secondary8: #74cc22; /* Navbar y footer */\r\n    --secondary9: #63a525;\r\n}\r\n\r\n._3_bbT2P6lvACUzUKQ6-dX1{\r\n    display: grid;\r\n    grid-template-rows: 20% 50% 30%;\r\n    grid-template-areas: \r\n        \"headSection\"\r\n        \"mainSection\"\r\n        \"footerSection\";\r\n}\r\n\r\n._2Kfgyz75RntZPdbFNRKsd3{\r\n    grid-area: headSection;\r\n    display: grid;\r\n    grid-template-columns: 50% 50%;\r\n    grid-template-areas: \r\n        \"headLeftSection headRigthSection\";\r\n    background-color: var(--secondary2);\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);\r\n\r\n}\r\n\r\n.-IEWP4mSm-Cf-b6yO7vGr{\r\n    grid-area: headLeftSection;\r\n    padding-top: 10%;\r\n    padding-left: 15%;\r\n    padding-bottom: 10%;\r\n}\r\n\r\n.-sCrEPbBn3q1KRTuXHwt{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-around;\r\n}\r\n\r\n.-sCrEPbBn3q1KRTuXHwt *{\r\n    padding: 1rem;\r\n}\r\n\r\n._2e6gfj-TKNZINq5KIsmYJe{\r\n    grid-area: headRigthSection;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-evenly;\r\n}\r\n\r\n._3AoQMSBLMozGMwQFSvztE- *{\r\n    padding-bottom: 5%;\r\n}\r\n\r\n/*\r\n.headRigthSectionRightPanel{\r\n    max-width: 50%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    border-style: solid;\r\n    border-color: black;\r\n}\r\n\r\n.headRigthSectionRightPanel *{\r\n    padding: 1rem 3rem;\r\n}\r\n*/\r\n\r\n._1DJQMWbnDBw30z_V6MjUae {\r\n    margin: 10% auto;\r\n    border: 10px solid #f3f3f3;\r\n    border-radius: 50%;\r\n    border-top: 10px solid black;\r\n    width: 50px;\r\n    height: 50px;\r\n    -webkit-animation: _1VNtTdRF4gTY9SDecuDU3S 2s linear infinite; /* Safari */\r\n    animation: _1VNtTdRF4gTY9SDecuDU3S 2s linear infinite;\r\n}\r\n  \r\n/* Safari */\r\n@-webkit-keyframes _1VNtTdRF4gTY9SDecuDU3S {\r\n  0% { -webkit-transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); }\r\n}\r\n\r\n@keyframes _1VNtTdRF4gTY9SDecuDU3S {\r\n  0% { transform: rotate(0deg); }\r\n  100% { transform: rotate(360deg); }\r\n}\r\n\r\n._2K2DbEttxg0fOjKj5m55xu{\r\n    grid-area: mainSection;\r\n    display: flex;\r\n    flex-direction: column;\r\n    padding-bottom: 3%;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);\r\n    background-color: white;\r\n}\r\n\r\n._2zkjF9J6ZsvC5R06Lb1vnH{\r\n    padding-top: 3%;\r\n}\r\n/*\r\n.splideContainer{\r\n    \r\n}*/\r\n\r\n._2NXBFnMYFzKirkMcHfQJpQ{\r\n    margin-bottom: 2%;\r\n    margin-left: 6%;\r\n}\r\n._2GYynqK0_TpGTYrDUJSC_4{\r\n    max-width: 300px;\r\n    max-height: 600px;\r\n}\r\n._1ynUm23YZQ2KUKntTWRCp6{\r\n    width: 300px;\r\n    height: 280px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    cursor: pointer;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n    border-radius: 5%;\r\n\r\n}\r\n._1NTWuRDT-tI4f9l6FbKynl:hover{\r\n    opacity: 0.8;\r\n}\r\n\r\n.K7W0YCrJDjuhceFxpypwz{\r\n    margin: 2% 0 2% 6%;\r\n}\r\n\r\n.W2r_lP5pAEQ-UVPRF204y{\r\n    grid-area: footerSection;\r\n    background-color: var(--secondary2);\r\n}\r\n._1BHA64GbleXSh1pd60fzKh{\r\n    margin: 2% auto 2%;\r\n    width: 90%;\r\n    border-style: solid;\r\n    border-color: black;\r\n    border-width: 2px;\r\n}\r\n\r\n/* The Modal (background) */\r\n._3FpVOYk5pHjvf9p64kIUU5 {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: fixed; /* Stay in place */\r\n    z-index: 11; /* Sit on top */\r\n    width: 100vw; /* Full width */\r\n    height: 100vh; /* Full height */\r\n    margin-top: -9vh;\r\n    background-color: rgb(0,0,0); /* Fallback color */\r\n    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n}\r\n\r\n/*ModalWindow*/\r\n.zvsLtN9kKhG5zHgWBRAbQ {\r\n    display: block;\r\n    width: 65%;\r\n    height: 85%;\r\n    background-color: var(--secondary5);\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n    border-radius: 5%;\r\n    -webkit-animation-name: _3pSac2E3gLO721cA12fsuV;\r\n            animation-name: _3pSac2E3gLO721cA12fsuV;\r\n    -webkit-animation-duration: 0.6s;\r\n            animation-duration: 0.6s;\r\n}\r\n\r\n@-webkit-keyframes _3pSac2E3gLO721cA12fsuV {\r\n    from {-webkit-transform:scale(0)} \r\n    to {-webkit-transform:scale(1)}\r\n}\r\n  \r\n@keyframes _3pSac2E3gLO721cA12fsuV {\r\n  from {transform:scale(0)} \r\n  to {transform:scale(1)}\r\n}\r\n\r\n/* The Close Button */\r\n._1J8EsFZLn4eczbYY7-43By {\r\n    margin-left: 96%;\r\n    color: #000;\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n}\r\n._1J8EsFZLn4eczbYY7-43By:hover,\r\n._1J8EsFZLn4eczbYY7-43By:focus {\r\n  color: #f1f1f1;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n\r\n/*Waiting alert*/\r\n.rA7CL4eXtNHBnJI-X5E1Z{\r\n    color: #f1f1f1;\r\n    font-weight: bold;\r\n}\r\n\r\n/*Card Content*/\r\n._1MJTn5jKIWKmRMZ_CEXDUE{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n    margin-top: 2%;\r\n    font-size: 3rem;\r\n    white-space: nowrap;\r\n}\r\n._1MJTn5jKIWKmRMZ_CEXDUE h2 {\r\n    margin-top: 1%;\r\n    font-size: 2rem;\r\n}\r\n\r\n._1MJTn5jKIWKmRMZ_CEXDUE h3 {\r\n    margin-top: 1%;\r\n}\r\n\r\n._1jqqPNz699qayyviJ6lSBt{\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    margin-top: 1.3%;\r\n}\r\n._87jGaruYSbkv7pfp0Jd6W{\r\n    width: 35%;\r\n    padding: 2%;\r\n    text-align: justify;\r\n    text-justify: inter-word;\r\n    background-color:white;\r\n    border-radius: 2%;\r\n\r\n\r\n}\r\n._74WO15yAZXdnsrsmq3mGQ{\r\n    padding: 2%;\r\n    background-color: white;\r\n    border-radius: 2%;\r\n}\r\n\r\n._87jGaruYSbkv7pfp0Jd6W, ._74WO15yAZXdnsrsmq3mGQ{\r\n    font-size: 15px;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n}\r\n\r\n._25NEEP8iiQT2TGLxbKUnoY{\r\n    position: relative;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin: 1.8% auto 2.5%;\r\n    width: 15%;\r\n}\r\n\r\n._7dssFDlSSMobL0wAL3SkV {\r\n    position: absolute;\r\n    padding: 2px 10px;\r\n    font-size: 22px;\r\n    border-radius: 15px;\r\n    background-color: #ffffff;\r\n    color: black;\r\n    cursor: pointer;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n._7dssFDlSSMobL0wAL3SkV:hover{\r\n    transform: scale(1.1);\r\n}\r\n\r\n.gmVABIJITsjtehspiypwH{\r\n    text-align: center;\r\n}\r\n\r\n._1Vh-1gDh8OCCRsnI0qjxTx{\r\n    max-width: 500px;\r\n    max-height: 300px;\r\n}\r\n._3row-T38hyLAttROpz3tQU {\r\n    width: 425px;\r\n    height: 285px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n}\r\n\r\n.UL4J8d1bJ6euQ97-Dw6zP{\r\n    max-width: 450px;\r\n    max-height: 200px;\r\n}\r\n._39O6rO0IJ1LnYdzc42SYAs{\r\n    width: 350px;\r\n    height: 200px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    box-shadow: 1px 3px 5px rgba(0,0,0,0.8);\r\n}\r\n\r\n@media only screen and (max-width: 1595px) {\r\n    .zvsLtN9kKhG5zHgWBRAbQ {\r\n        width: 75%;\r\n        height: 80%;\r\n        border-radius: 4%;\r\n    }\r\n    ._1J8EsFZLn4eczbYY7-43By {\r\n        font-size: 35px;\r\n    }\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n        font-size: 2.5rem;\r\n        white-space: normal;\r\n\r\n    }\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h2 {\r\n        font-size: 1.5rem;\r\n    }\r\n    \r\n    ._25NEEP8iiQT2TGLxbKUnoY{\r\n        margin: 5% auto 4%;\r\n        width: 18%;\r\n    }\r\n    \r\n    ._7dssFDlSSMobL0wAL3SkV {\r\n        position: absolute;\r\n        padding: 2px 10px;\r\n        font-size: 19px;\r\n        border-radius: 15px;\r\n    }\r\n    ._1Vh-1gDh8OCCRsnI0qjxTx{\r\n        max-width: 460px;\r\n        max-height: 260px;\r\n    }\r\n    ._3row-T38hyLAttROpz3tQU {\r\n        width: 385px;\r\n        height: 245px;\r\n    }\r\n    \r\n    .UL4J8d1bJ6euQ97-Dw6zP{\r\n        max-width: 410px;\r\n        max-height: 160px;\r\n    }\r\n    ._39O6rO0IJ1LnYdzc42SYAs{\r\n        width: 300px;\r\n        height: 160px;\r\n    }\r\n    ._3KeHJeJSv8vWefYDzWEEfX {\r\n        scale: 0.8;\r\n    }  \r\n}\r\n\r\n@media only screen and (max-width: 1325px) {\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n        margin-top: 2%;\r\n        font-size: 2rem;\r\n        white-space: normal;\r\n    }\r\n    ._87jGaruYSbkv7pfp0Jd6W{\r\n        width: 40%;\r\n        padding: 1%;\r\n    }\r\n    ._74WO15yAZXdnsrsmq3mGQ{\r\n        padding: 1%;\r\n    }\r\n    \r\n    ._87jGaruYSbkv7pfp0Jd6W, ._74WO15yAZXdnsrsmq3mGQ{\r\n        font-size: 12.5px;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1111px) {\r\n    ._87jGaruYSbkv7pfp0Jd6W{\r\n        width: 30%;\r\n        padding: 2%;\r\n    }\r\n    ._74WO15yAZXdnsrsmq3mGQ{\r\n        padding: 2%;\r\n    }\r\n    \r\n    ._87jGaruYSbkv7pfp0Jd6W, ._74WO15yAZXdnsrsmq3mGQ{\r\n        font-size: 11.5px;\r\n    }\r\n    ._3KeHJeJSv8vWefYDzWEEfX {\r\n        display: none;\r\n    }\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n    margin: 0;\r\n}\r\n\r\n:root {\r\n    --primary1: #00e0ff;\r\n    --primary2: #4d9bac;\r\n    --primary3: #e5feff;\r\n    --primary4: #e6f4f1;\r\n    --secondary1: #94ff31; /* Card */\r\n    /* --secondary2: #81986e; */ /* background */\r\n    --secondary2: #d0ffa4; /* background */\r\n    --secondary3: #f6fbf2;\r\n    /* --secondary4: #77af3f; */ /* Title text color */\r\n    --secondary4: rgb(255, 255, 255); /* Title text color */\r\n    --secondary5: #2bc069; /* Button color */\r\n    --secondary6: #31ff35;\r\n    --secondary7: #6fbf24;\r\n    /* --secondary8: #376110; */\r\n    --secondary8: #74cc22; /* Navbar y footer */\r\n    --secondary9: #63a525;\r\n\r\n    --terciary: #a05b00;\r\n}\r\n\r\n._3_bbT2P6lvACUzUKQ6-dX1 {\r\n    display: grid;\r\n    grid-template-rows: 20% 50% 30%;\r\n    grid-template-areas:\r\n        \"headSection\"\r\n        \"mainSection\"\r\n        \"footerSection\";\r\n}\r\n\r\n._2Kfgyz75RntZPdbFNRKsd3 {\r\n    grid-area: headSection;\r\n    display: grid;\r\n    grid-template-columns: 50% 50%;\r\n    grid-template-areas: \"headLeftSection headRigthSection\";\r\n    background-color: var(--secondary2);\r\n    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.-IEWP4mSm-Cf-b6yO7vGr {\r\n    grid-area: headLeftSection;\r\n    padding-top: 10%;\r\n    padding-left: 15%;\r\n    padding-bottom: 10%;\r\n}\r\n\r\n.-sCrEPbBn3q1KRTuXHwt {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-around;\r\n}\r\n\r\n.-sCrEPbBn3q1KRTuXHwt * {\r\n    padding: 1rem;\r\n}\r\n\r\n._2e6gfj-TKNZINq5KIsmYJe {\r\n    grid-area: headRigthSection;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-evenly;\r\n}\r\n\r\n._3AoQMSBLMozGMwQFSvztE- * {\r\n    padding-bottom: 5%;\r\n}\r\n\r\n/*\r\n.headRigthSectionRightPanel{\r\n    max-width: 50%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap;\r\n    border-style: solid;\r\n    border-color: black;\r\n}\r\n\r\n.headRigthSectionRightPanel *{\r\n    padding: 1rem 3rem;\r\n}\r\n*/\r\n\r\n._1DJQMWbnDBw30z_V6MjUae {\r\n    margin: 10% auto;\r\n    border: 10px solid #f3f3f3;\r\n    border-radius: 50%;\r\n    border-top: 10px solid black;\r\n    width: 50px;\r\n    height: 50px;\r\n    -webkit-animation: _1VNtTdRF4gTY9SDecuDU3S 2s linear infinite; /* Safari */\r\n    animation: _1VNtTdRF4gTY9SDecuDU3S 2s linear infinite;\r\n}\r\n\r\n/* Safari */\r\n@-webkit-keyframes _1VNtTdRF4gTY9SDecuDU3S {\r\n    0% {\r\n        -webkit-transform: rotate(0deg);\r\n    }\r\n    100% {\r\n        -webkit-transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n@keyframes _1VNtTdRF4gTY9SDecuDU3S {\r\n    0% {\r\n        transform: rotate(0deg);\r\n    }\r\n    100% {\r\n        transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n._2K2DbEttxg0fOjKj5m55xu {\r\n    grid-area: mainSection;\r\n    display: flex;\r\n    flex-direction: column;\r\n    padding-bottom: 3%;\r\n    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);\r\n    background-color: white;\r\n}\r\n\r\n._2zkjF9J6ZsvC5R06Lb1vnH {\r\n    padding-top: 3%;\r\n}\r\n/*\r\n.splideContainer{\r\n    \r\n}*/\r\n\r\n._2NXBFnMYFzKirkMcHfQJpQ {\r\n    margin-bottom: 2%;\r\n    margin-left: 6%;\r\n}\r\n._2GYynqK0_TpGTYrDUJSC_4 {\r\n    max-width: 300px;\r\n    max-height: 600px;\r\n}\r\n._1ynUm23YZQ2KUKntTWRCp6 {\r\n    width: 300px;\r\n    height: 280px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    cursor: pointer;\r\n    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);\r\n    border-radius: 5%;\r\n}\r\n._1NTWuRDT-tI4f9l6FbKynl:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n.K7W0YCrJDjuhceFxpypwz {\r\n    margin: 2% 0 2% 6%;\r\n}\r\n\r\n.W2r_lP5pAEQ-UVPRF204y {\r\n    grid-area: footerSection;\r\n    background-color: var(--secondary2);\r\n}\r\n._1BHA64GbleXSh1pd60fzKh {\r\n    margin: 2% auto 2%;\r\n    width: 90%;\r\n    border-style: solid;\r\n    border-color: black;\r\n    border-width: 2px;\r\n}\r\n\r\n/* The Modal (background) */\r\n._3FpVOYk5pHjvf9p64kIUU5 {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: fixed; /* Stay in place */\r\n    z-index: 11; /* Sit on top */\r\n    width: 100vw; /* Full width */\r\n    height: 100vh; /* Full height */\r\n    margin-top: -9vh;\r\n    background-color: rgb(0, 0, 0); /* Fallback color */\r\n    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\r\n}\r\n\r\n/*ModalWindow*/\r\n.zvsLtN9kKhG5zHgWBRAbQ {\r\n    display: block;\r\n    width: 65%;\r\n    height: 85%;\r\n    background-color: var(--secondary5);\r\n    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);\r\n    border-radius: 5%;\r\n    -webkit-animation-name: _3pSac2E3gLO721cA12fsuV;\r\n            animation-name: _3pSac2E3gLO721cA12fsuV;\r\n    -webkit-animation-duration: 0.6s;\r\n            animation-duration: 0.6s;\r\n}\r\n\r\n@-webkit-keyframes _3pSac2E3gLO721cA12fsuV {\r\n    from {\r\n        -webkit-transform: scale(0);\r\n    }\r\n    to {\r\n        -webkit-transform: scale(1);\r\n    }\r\n}\r\n\r\n@keyframes _3pSac2E3gLO721cA12fsuV {\r\n    from {\r\n        transform: scale(0);\r\n    }\r\n    to {\r\n        transform: scale(1);\r\n    }\r\n}\r\n\r\n/* The Close Button */\r\n._1J8EsFZLn4eczbYY7-43By {\r\n    margin-left: 96%;\r\n    color: #000;\r\n    font-size: 40px;\r\n    font-weight: bold;\r\n}\r\n._1J8EsFZLn4eczbYY7-43By:hover,\r\n._1J8EsFZLn4eczbYY7-43By:focus {\r\n    color: #f1f1f1;\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n}\r\n\r\n/*Waiting alert*/\r\n.rA7CL4eXtNHBnJI-X5E1Z {\r\n    color: #f1f1f1;\r\n    font-weight: bold;\r\n}\r\n\r\n/*Card Content*/\r\n._1MJTn5jKIWKmRMZ_CEXDUE {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n    margin-top: 2%;\r\n    font-size: 3rem;\r\n    white-space: nowrap;\r\n}\r\n._1MJTn5jKIWKmRMZ_CEXDUE h2 {\r\n    margin-top: 1%;\r\n    font-size: 2rem;\r\n}\r\n\r\n._1MJTn5jKIWKmRMZ_CEXDUE h3 {\r\n    margin-top: 1%;\r\n}\r\n\r\n._1jqqPNz699qayyviJ6lSBt {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    margin-top: 1.3%;\r\n}\r\n._87jGaruYSbkv7pfp0Jd6W {\r\n    width: 35%;\r\n    padding: 2%;\r\n    text-align: justify;\r\n    text-justify: inter-word;\r\n    background-color: white;\r\n    border-radius: 2%;\r\n}\r\n._74WO15yAZXdnsrsmq3mGQ {\r\n    padding: 2%;\r\n    background-color: white;\r\n    border-radius: 2%;\r\n}\r\n\r\n._87jGaruYSbkv7pfp0Jd6W,\r\n._74WO15yAZXdnsrsmq3mGQ {\r\n    font-size: 15px;\r\n    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);\r\n}\r\n\r\n._25NEEP8iiQT2TGLxbKUnoY {\r\n    position: relative;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin: 1.8% auto 2.5%;\r\n    width: 15%;\r\n}\r\n\r\n._7dssFDlSSMobL0wAL3SkV {\r\n    position: absolute;\r\n    padding: 2px 10px;\r\n    font-size: 22px;\r\n    border-radius: 15px;\r\n    background-color: #ffffff;\r\n    color: black;\r\n    cursor: pointer;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n._7dssFDlSSMobL0wAL3SkV:hover {\r\n    transform: scale(1.1);\r\n}\r\n\r\n.gmVABIJITsjtehspiypwH {\r\n    text-align: center;\r\n}\r\n\r\n._1Vh-1gDh8OCCRsnI0qjxTx {\r\n    max-width: 500px;\r\n    max-height: 300px;\r\n}\r\n._3row-T38hyLAttROpz3tQU {\r\n    width: 425px;\r\n    height: 285px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);\r\n}\r\n\r\n.UL4J8d1bJ6euQ97-Dw6zP {\r\n    max-width: 450px;\r\n    max-height: 200px;\r\n}\r\n._39O6rO0IJ1LnYdzc42SYAs {\r\n    width: 350px;\r\n    height: 200px;\r\n    margin-bottom: 1rem;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);\r\n}\r\n\r\n@media only screen and (max-width: 1595px) {\r\n    .zvsLtN9kKhG5zHgWBRAbQ {\r\n        width: 75%;\r\n        height: 80%;\r\n        border-radius: 4%;\r\n    }\r\n    ._1J8EsFZLn4eczbYY7-43By {\r\n        font-size: 35px;\r\n    }\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n        font-size: 2.5rem;\r\n        white-space: normal;\r\n    }\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h2 {\r\n        font-size: 1.5rem;\r\n    }\r\n\r\n    ._25NEEP8iiQT2TGLxbKUnoY {\r\n        margin: 5% auto 4%;\r\n        width: 18%;\r\n    }\r\n\r\n    ._7dssFDlSSMobL0wAL3SkV {\r\n        position: absolute;\r\n        padding: 2px 10px;\r\n        font-size: 19px;\r\n        border-radius: 15px;\r\n    }\r\n    ._1Vh-1gDh8OCCRsnI0qjxTx {\r\n        max-width: 460px;\r\n        max-height: 260px;\r\n    }\r\n    ._3row-T38hyLAttROpz3tQU {\r\n        width: 385px;\r\n        height: 245px;\r\n    }\r\n\r\n    .UL4J8d1bJ6euQ97-Dw6zP {\r\n        max-width: 410px;\r\n        max-height: 160px;\r\n    }\r\n    ._39O6rO0IJ1LnYdzc42SYAs {\r\n        width: 300px;\r\n        height: 160px;\r\n    }\r\n    ._3KeHJeJSv8vWefYDzWEEfX {\r\n        scale: 0.8;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1325px) {\r\n    ._1MJTn5jKIWKmRMZ_CEXDUE h1 {\r\n        margin-top: 2%;\r\n        font-size: 2rem;\r\n        white-space: normal;\r\n    }\r\n    ._87jGaruYSbkv7pfp0Jd6W {\r\n        width: 40%;\r\n        padding: 1%;\r\n    }\r\n    ._74WO15yAZXdnsrsmq3mGQ {\r\n        padding: 1%;\r\n    }\r\n\r\n    ._87jGaruYSbkv7pfp0Jd6W,\r\n    ._74WO15yAZXdnsrsmq3mGQ {\r\n        font-size: 12.5px;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 1111px) {\r\n    ._87jGaruYSbkv7pfp0Jd6W {\r\n        width: 30%;\r\n        padding: 2%;\r\n    }\r\n    ._74WO15yAZXdnsrsmq3mGQ {\r\n        padding: 2%;\r\n    }\r\n\r\n    ._87jGaruYSbkv7pfp0Jd6W,\r\n    ._74WO15yAZXdnsrsmq3mGQ {\r\n        font-size: 11.5px;\r\n    }\r\n    ._3KeHJeJSv8vWefYDzWEEfX {\r\n        display: none;\r\n    }\r\n}\r\n", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"mainWindowContainer": "_3_bbT2P6lvACUzUKQ6-dX1",
@@ -59587,6 +60044,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Advanced_search_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./resources/js/components/styles/Advanced_search_old.css":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/styles/Advanced_search_old.css ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Advanced_search_old_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./Advanced_search_old.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/styles/Advanced_search_old.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Advanced_search_old_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_Advanced_search_old_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 

@@ -1,8 +1,8 @@
-import "./styles/Advanced_search.css";
+import "./styles/Advanced_search_old.css";
 import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
 
-function Advanced_search({ handleModalExit }) {
+function Advanced_search_old({ handleModalExit }) {
     const path = "assets/";
     const minHabitantes = "0";
     const [maxHabitantes, setMaxHabitantes] = useState("50000");
@@ -15,9 +15,6 @@ function Advanced_search({ handleModalExit }) {
     const [searchDone, setSearchDone] = useState(false);
     const [municipiosFiltered, setMunicipiosFiltered] = useState(null);
     const [listMunis, setListMunis] = useState([]);
-
-    const [allMunicipios, setAllMunicipios] = useState(null);
-    const [listAllMunis, setListAllMunis] = useState([]);
 
     const {
         data: provincias,
@@ -83,7 +80,6 @@ function Advanced_search({ handleModalExit }) {
 
     const filterMunicipios = () => {
         let provincia = document.getElementById("advanced_search").value;
-        provincia = provincia.split(",")[0];
         let despoblacion = document.getElementById("check").checked;
         if (provincia == "") {
             alert("Introduce una provincia que consultar");
@@ -115,24 +111,6 @@ function Advanced_search({ handleModalExit }) {
                     return res.json();
                 })
                 .then((data) => {
-                    url = "http://127.0.0.1:8000/api/munsOf/" + provincia;
-                    fetch(url)
-                        .then((res) => {
-                            if (!res.ok) {
-                                throw Error(
-                                    "could not fetch the data for that resource"
-                                );
-                            }
-                            return res.json();
-                        })
-                        .then((data2) => {
-                            setAllMunicipios(data2);
-                        })
-                        .catch((err) => {
-                            setMessage(err.message);
-                            setPendingSearch(false);
-                        });
-
                     setMunicipiosFiltered(data);
                     setPendingSearch(false);
                     setSearchDone(true);
@@ -155,8 +133,7 @@ function Advanced_search({ handleModalExit }) {
                         onMouseDown={(e) => e.preventDefault()}
                         onClick={(e) => listItemClicked(e.target.innerHTML)}
                     >
-                        {provincia.provincia}, código provincia =
-                        {provincia.codigoProvincia}
+                        {provincia.provincia}
                     </li>
                 ))
             );
@@ -187,39 +164,10 @@ function Advanced_search({ handleModalExit }) {
                 ))
             );
         }
-        if (allMunicipios) {
-            setListAllMunis(
-                allMunicipios.map((municipio) => (
-                    <div
-                        className="muniCard2"
-                        onClick={(e) =>
-                            listMuniClicked(
-                                `${municipio.municipio}, ${municipio.provincia}`
-                            )
-                        }
-                        style={{
-                            backgroundImage: `url(${municipio.imagenMunicipio})`,
-                        }}
-                    >
-                        <div className="gradient">
-                            <p className="cardInfo2">
-                                {municipio.municipio}, {municipio.provincia}
-                            </p>
-                            <p className="cardInfo2">
-                                población: {municipio.poblacion}
-                                <br />
-                                coordenadas: {municipio.cLatitud},{" "}
-                                {municipio.cLongitud}
-                            </p>
-                        </div>
-                    </div>
-                ))
-            );
-        }
-    }, [provincias, municipiosFiltered, allMunicipios]);
+    }, [provincias, municipiosFiltered]);
 
     return (
-        <div className="Advanced_search">
+        <div className="Advanced_search_old">
             <div className="modal_screen" onClick={handleModalExit}>
                 {error && <div className="loading-div">{error}</div>}
                 {isPending && (
@@ -316,8 +264,6 @@ function Advanced_search({ handleModalExit }) {
                                 trata de un pueblo de la España vaciada o no.
                             </p>
                             <button onClick={filterMunicipios}>Buscar</button>
-                            <h1>LISTADO DE TODAS LAS PROVINCIAS</h1>
-                            <ul className="listaProvincias2">{listItems}</ul>
                         </div>
                         <div className="right_container">
                             <h1>Resultados de tu búsqueda</h1>
@@ -336,14 +282,6 @@ function Advanced_search({ handleModalExit }) {
                             {searchDone && (
                                 <div className="cards_container">
                                     {listMunis}
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <h1 className="newTitle">
-                                        TODOS LOS PUEBLOS
-                                    </h1>
-                                    <br />
-                                    {listAllMunis}
                                 </div>
                             )}
                         </div>
@@ -354,4 +292,4 @@ function Advanced_search({ handleModalExit }) {
     );
 }
 
-export default Advanced_search;
+export default Advanced_search_old;

@@ -1,5 +1,6 @@
 import os
 import sys
+from typing_extensions import final
 from bs4 import BeautifulSoup
 import re
 from selenium import webdriver
@@ -9,6 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.options import Options
 import json
+from db_connector import insertIntoDB
 
 
 link = sys.argv[1]
@@ -18,9 +20,9 @@ options.add_argument('--headless')
 options.add_argument("--window-size=1920,1080")
 driver = webdriver.Firefox(executable_path=f"{os.path.dirname(__file__)}/geckodriver.exe", options=options)
 
-driver.get(link)
 try:
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'idealista-banner-wrapper')))
+    driver.get(link)
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, 'idealista-banner-wrapper')))
 
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -41,9 +43,9 @@ try:
     features_containers = card_features_container.find_all(class_ = 'details-property_features')
 
     try:
-        content['inner_card_feautures'] = {'basic_fe': [feature.text.strip('\n').strip() for feature in features_containers[0].find_all('li')]}
-        content['inner_card_feautures'].update({'building_fe': [feature.text.strip('\n') for feature in features_containers[1].find_all('li')]})
-        content['inner_card_feautures'].update({'equipment_fe': [feature.text.strip('\n') for feature in features_containers[2].find_all('li')]})
+        content['inner_card_features'] = {'basic': [feature.text.strip('\n').strip() for feature in features_containers[0].find_all('li')]}
+        content['inner_card_features'].update({'building': [feature.text.strip('\n') for feature in features_containers[1].find_all('li')]})
+        content['inner_card_features'].update({'equipment': [feature.text.strip('\n') for feature in features_containers[2].find_all('li')]})
     except:
         pass
 
@@ -56,12 +58,30 @@ try:
 
     driver.quit()
 
-    print(json.dumps(content))
-except:
-    print(json.dumps({
-        'error': 'Fail to connect/not existing resource'
-    }))
 
+    # Full insert into idealistainnercard
+    sql = """INSERT INTO idealistainnercard (cardLink, innerCardTitle, innerCardPlace,
+     innerCardDetail, innerCardPrice, innerCardDescription, innerCardContact) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+    val = [(link, content['inner_card_title'], content['inner_card_place'], content['inner_card_detail'],
+     content['inner_card_price'], content['inner_card_description'], content['inner_card_contact'])]
+    insertIntoDB(sql, val)
+    
+
+    # Full insert into idealistainnercardfeatures
+    sql = "INSERT INTO idealistainnercardfeatures (cardLink, featureData, featureType) VALUES (%s, %s, %s)"
+    val = [(link, feature_value, key) for key, feature in content['inner_card_features'].items() for feature_value in feature]
+    insertIntoDB(sql, val)
+    
+
+    # Full insert into innercardimages (idealista images)
+    sql = "INSERT INTO ideainnercardimages (imageLink, cardLink) VALUES (%s, %s)"
+    val = [(image, link) for image in content['inner_card_images']]
+    insertIntoDB(sql, val)
+
+    print(json.dumps({'operation': 'Success'}))
+except TimeoutException:
+    driver.quit()
+    print(json.dumps({'operation': 'Error'}))
 '''
 sql = "INSERT INTO idealistainnercard (cardLink, innerCardTitle, innerCardPlace, innerCardDetail,
                                         innerCardPrice, innerCardDescription, innerCardContact) VALUES (%s, %s, %s, %s

@@ -18,9 +18,9 @@ class CreateIdealistainnercardTable extends Migration
             $table->string('innerCardTitle', 45);
             $table->string('innerCardPlace', 45);
             $table->string('innerCardDetail', 300);
-            $table->integer('innerCardPrice');
+            $table->string('innerCardPrice', 50);
             $table->string('innerCardDescription', 300);
-            $table->integer('innerCardContact');
+            $table->string('innerCardContact', 20);
             $table->primary(['cardLink']);
         });
     }

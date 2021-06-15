@@ -4,19 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePasswordResetsTable extends Migration
+class TripinnercardimagesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+
+
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('tripinnercardimages', function (Blueprint $table) {
+            $table->string('imageLink', 300)->primary();
+            $table->string('cardLink', 100)->index('fk_cardLink');
         });
     }
 
@@ -27,6 +28,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('tripinnercardimages');
     }
 }

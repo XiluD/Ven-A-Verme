@@ -8,18 +8,22 @@ from db_connector import insertIntoDB
 
 link = f"https://www.tripadvisor.es{sys.argv[1]}"
 
-page = requests.get(link)
+page = requests.get(link, headers = {'User-agent': 'venaverme-scrapper-bot'})
 soup = BeautifulSoup(page.content, 'html.parser')
 
 main_content = soup.find(class_='_1HQROFP')
 
 header_titles = main_content.find_all('h3', class_='_1QGef_ZJ')
-cards_containers = main_content.find_all('ul', class_='_5Vb6a0_6')
+cards_containers = main_content.find_all('ul', class_='_19Yovgro')
 image_container = str(soup.find_all('script')[-1])
 
 val = []
 for header_title, cards_container in list(itertools.zip_longest(header_titles, cards_containers, fillvalue='')):
     for card in cards_container:
+        try:
+            header_title.text
+        except:
+            continue
         content = []
         #cardLink
         try:
@@ -32,7 +36,10 @@ for header_title, cards_container in list(itertools.zip_longest(header_titles, c
         content.append(sys.argv[1])
 
         #cardTitle
-        content.append(card.find('div', 'VQlgmkyI').text)
+        try:
+            content.append(card.find('div', 'VQlgmkyI').text)
+        except:
+            continue
 
         #cardSubtitle
         try:
@@ -44,7 +51,7 @@ for header_title, cards_container in list(itertools.zip_longest(header_titles, c
         try:
             img_regex = cardLink + '.*?(https.*?)\\"}'
             img = re.search('\{img_regex}'.format(img_regex = img_regex), image_container).group(1)
-            img = img[:-1].replace('w=100&h=100', 'w=800&h=800')
+            img = img[:-1].replace('w={width}&h={height}', 'w=800&h=800')
             content.append(img)
         except:
             content.append(None)
@@ -62,7 +69,7 @@ for header_title, cards_container in list(itertools.zip_longest(header_titles, c
         val.append(tuple(content))
 
 
-sql = "INSERT INTO tripadvisorcards (cardLink, placeLink, cardTitle, cardSubtitle, cardImage, cardType) VALUES (%s, %s, %s, %s, %s, %s)"
+sql = "INSERT INTO tripadvisorcards (cardLink, placeLink, cardTitle, cardSubtitle, cardImage, cardType) VALUES (%s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE cardLink=VALUES(cardLink)"
 insertIntoDB(sql, val)
 
 

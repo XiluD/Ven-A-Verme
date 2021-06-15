@@ -9,9 +9,13 @@ use Illuminate\Notifications\Notifiable;
 class Admin extends Model
 {
     use HasFactory, Notifiable;
+    protected $fillable = [
+        'email',
+        'password',
+        'api_token',
+    ];
     protected $hidden = [
         'password',
-        'remember_token',
         'api_token',
     ];
 }

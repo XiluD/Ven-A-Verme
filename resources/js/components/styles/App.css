@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orelega+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary1: #00e0ff;
+  --primary2: #4d9bac;
+  --primary3: #e5feff;
+  --primary4: #e6f4f1;
+  --secondary1: #94ff31; /* Card */
+  /* --secondary2: #81986e; */ /* background */
+  --secondary2: #d0ffa4; /* background */
+  --secondary3: #f6fbf2;
+ /*  --secondary4: #77af3f; */ /* Title text color */
+  --secondary4: rgb(255, 255, 255); /* Title text color */
+  --secondary5: #2bc069; /* Button color */
+  --secondary6: #31ff35;
+  --secondary7: #6fbf24;
+  /* --secondary8: #376110; */
+  --secondary8: #74cc22; /* Navbar y footer */
+  --secondary9: #63a525;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand";
+}
+body {
+  margin-top: 9vh;
+  /* font-family: "Roboto", sans-serif; */
+  /*font-family: "Quicksand";*/
+  background-color: var(--secondary2);
+}
+a {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+.splideContainer{
+  margin: auto;
+}
+
+.splideContainerModal{
+  margin: auto;
+  padding-top: 5%;
+}
+
+.splideContainerModal2{
+  margin: auto;
+  padding-top: 1.5%;
+}
+
+@media only screen and (max-width: 1595px) {
+    .splideContainerModal{
+      margin: auto;
+      padding-top: 10%;
+    }
+    
+    .splideContainerModal2{
+      margin: auto;
+      padding-top: 2%;
+    }
+}
+
+@media only screen and (max-width: 1111px) {
+  .splideContainerModal2{
+    margin: auto;
+    padding-top: 5%;
+  }
+}

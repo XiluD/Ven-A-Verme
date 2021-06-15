@@ -18,10 +18,10 @@ class CreatePlaceTable extends Migration
             $table->string('municipio', 45);
             $table->integer('codigoProvincia');
             $table->integer('codigoMunicipio');
-            $table->integer('poblacion');
+            $table->bigInteger('poblacion');
             $table->string('imagenMunicipio', 300)->nullable();
-            $table->bigInteger('cLatitud')->nullable();
-            $table->bigInteger('cLongitud')->nullable();
+            $table->double('cLatitud');
+            $table->double('cLongitud');
             $table->boolean('despoblacion')->nullable();
             $table->primary(['provincia', 'municipio']);
         });

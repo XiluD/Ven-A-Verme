@@ -18,7 +18,7 @@ class CreateSchoolsmedicalcentersTable extends Migration
             $table->string('direccion', 100);
             $table->string('provincia', 45);
             $table->string('municipio', 45);
-            $table->integer('telefono');
+            $table->string('telefono', 20)->nullable();
             $table->index(['provincia', 'municipio'], 'fk_prov_mun');
             $table->primary(['nombreCentro', 'direccion']);
         });

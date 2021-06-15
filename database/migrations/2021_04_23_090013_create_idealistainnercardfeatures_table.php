@@ -15,7 +15,7 @@ class CreateIdealistainnercardfeaturesTable extends Migration
     {
         Schema::create('idealistainnercardfeatures', function (Blueprint $table) {
             $table->string('cardLink', 100)->index('pk_fk_cardLink');
-            $table->string('featureData', 45);
+            $table->string('featureData', 60);
             $table->set('featureType', ['basic', 'building', 'equipment']);
             $table->primary(['cardLink', 'featureData']);
         });

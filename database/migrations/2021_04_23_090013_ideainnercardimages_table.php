@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInnercardimagesTable extends Migration
+class IdeainnercardimagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInnercardimagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('innercardimages', function (Blueprint $table) {
+        Schema::create('ideainnercardimages', function (Blueprint $table) {
             $table->string('imageLink', 300)->primary();
             $table->string('cardLink', 100)->index('fk_cardLink');
         });
@@ -26,6 +26,6 @@ class CreateInnercardimagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('innercardimages');
+        Schema::dropIfExists('ideainnercardimages');
     }
 }

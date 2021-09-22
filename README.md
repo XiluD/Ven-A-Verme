@@ -181,6 +181,14 @@ This is an academic project and therefore will never be used for profit, take ca
     
 [YouTube Video Demo](https://www.youtube.com/watch?v=RlNnR1dqPXE)
     
+## Full Report
+    
+[Final Report of the project](https://drive.google.com/file/d/1J2rG87myqggxl6uho_EVNomFz9gLgAUz/view?usp=sharing)
+
+## User Manual
+    
+[User Manual Document](https://drive.google.com/file/d/16ITHAIZsKu0_mzD2Py42kBKunUClhaWo/view?usp=sharing)
+    
 ## Contact us
 
   
